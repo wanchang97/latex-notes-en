@@ -1,25 +1,5 @@
-#!/bin/bash
-
-# Create new note script
-if [ -z "$1" ]; then
-echo "Usage: ./scripts/new-note.sh <note-name>"
-echo "Example: ./scripts/new-note.sh machine-learning-basics"
-exit 1
-fi
-
-NOTE_NAME="$1"
-NOTE_DIR="notes/$NOTE_NAME"
-
-echo "Creating new note: $NOTE_NAME"
-
-# Create directories
-mkdir -p "$NOTE_DIR"
-mkdir -p "$NOTE_DIR/assets"
-
-# Create main.tex from template
-cat > "$NOTE_DIR/main.tex" << 'EOF'
 \documentclass[11pt]{article}
-\usepackage{../styles/notes-en}
+\usepackage{../../styles/notes-en}
 
 \title{Note Title}
 \author{Your Name}
@@ -63,9 +43,3 @@ cat > "$NOTE_DIR/main.tex" << 'EOF'
 	\end{note}
 	
 \end{document}
-EOF
-
-echo "✅ Created: $NOTE_DIR/main.tex"
-echo "🚀 Start editing: $NOTE_DIR/main.tex"
-echo "🔧 Test compilation: cd $NOTE_DIR && pdflatex -interaction=nonstopmode main.tex"
-echo "🌐 Deploy: git add . && git commit -m 'Add $NOTE_NAME' && git push"
