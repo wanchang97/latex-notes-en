@@ -1,0 +1,32 @@
+% styles/base-en.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{styles/base-en}[2024/01/01 Base configuration for English notes]
+
+% Basic packages
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{geometry}
+\RequirePackage{setspace}
+\RequirePackage{hyperref}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{float}
+
+% Page settings
+\geometry{a4paper, margin=1in}
+\onehalfspacing
+
+% Hyperlink settings
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=cyan,
+	citecolor=magenta
+}
+
+% List settings
+\setlist{nosep}
+
+\endinput

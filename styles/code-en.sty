@@ -1,0 +1,73 @@
+% styles/code-en.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{styles/code-en}[2024/01/01 Code configuration for English notes]
+
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+
+% Code style settings
+\definecolor{codeback}{rgb}{0.95,0.95,0.97}
+\definecolor{codeframe}{rgb}{0.92,0.92,0.94}
+\definecolor{keyword}{rgb}{0.13,0.29,0.53}
+\definecolor{comment}{rgb}{0.25,0.50,0.31}
+\definecolor{string}{rgb}{0.64,0.08,0.08}
+\definecolor{number}{rgb}{0.50,0.00,0.50}
+
+% Basic listings settings
+\lstset{
+	backgroundcolor=\color{codeback},
+	basicstyle=\ttfamily\footnotesize,
+	breaklines=true,
+	frame=single,
+	rulecolor=\color{codeframe},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{keyword},
+	commentstyle=\color{comment},
+	stringstyle=\color{string},
+	showstringspaces=false,
+	tabsize=4,
+	captionpos=b
+}
+
+% Python style
+\lstdefinestyle{python}{
+	language=Python,
+	morekeywords={and, as, assert, async, await, break, class, continue, def,
+		del, elif, else, except, False, finally, for, from, global, if,
+		import, in, is, lambda, None, nonlocal, not, or, pass, raise,
+		return, True, try, while, with, yield},
+	morecomment=[l]{\#},
+	morestring=[b]',
+	morestring=[b]"
+}
+
+% JavaScript style
+\lstdefinestyle{javascript}{
+	language=JavaScript,
+	morekeywords={break, case, catch, class, const, continue, debugger,
+		default, delete, do, else, export, extends, finally, for,
+		function, if, import, in, instanceof, let, new, return, super,
+		switch, this, throw, try, typeof, var, void, while, with, yield},
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]",
+	sensitive=true
+}
+
+% Java style
+\lstdefinestyle{java}{
+	language=Java,
+	morekeywords={abstract, assert, boolean, break, byte, case, catch, char,
+		class, const, continue, default, do, double, else, enum, extends,
+		final, finally, float, for, goto, if, implements, import, instanceof,
+		int, interface, long, native, new, package, private, protected,
+		public, return, short, static, strictfp, super, switch, synchronized,
+		this, throw, throws, transient, try, void, volatile, while},
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]"
+}
+
+\endinput

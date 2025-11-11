@@ -1,0 +1,209 @@
+name: Build and Deploy English LaTeX Notes
+
+on:
+push:
+branches: [ main ]
+pull_request:
+branches: [ main ]
+
+env:
+BUILD_DIR: public
+
+jobs:
+build:
+runs-on: ubuntu-latest
+
+steps:
+- name: Checkout repository
+uses: actions/checkout@v4
+
+- name: Setup LaTeX environment
+run: |
+sudo apt-get update
+sudo apt-get install -y \
+texlive-latex-base \
+texlive-latex-extra \
+texlive-latex-recommended \
+texlive-fonts-recommended \
+texlive-fonts-extra \
+texlive-science \
+texlive-pictures
+
+- name: Compile all notes
+run: |
+mkdir -p $BUILD_DIR/notes
+
+# Set LaTeX search path
+export TEXINPUTS="./styles:"
+
+# Compile each note
+find notes -name "main.tex" -type f | while read texfile; do
+dir=$(dirname "$texfile")
+name=$(basename "$dir")
+echo "Compiling: $name"
+
+cd "$dir"
+pdflatex -interaction=nonstopmode main.tex
+
+if [ -f "main.pdf" ]; then
+cp main.pdf "../../$BUILD_DIR/notes/${name}.pdf"
+echo "✅ Success: $name"
+else
+echo "❌ Failed: $name"
+# Show errors if compilation fails
+if [ -f "main.log" ]; then
+echo "=== Error Log ==="
+grep -A 3 -B 3 "Error:" main.log || tail -10 main.log
+fi
+fi
+
+cd - > /dev/null
+done
+
+- name: Generate index page
+run: |
+cat > $BUILD_DIR/index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Study Notes</title>
+<style>
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	line-height: 1.6;
+	margin: 0;
+	padding: 20px;
+	background: #f5f5f5;
+	color: #333;
+}
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	background: white;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+header {
+	text-align: center;
+	margin-bottom: 40px;
+	border-bottom: 2px solid #eaeaea;
+	padding-bottom: 20px;
+}
+h1 {
+	color: #2c3e50;
+	margin-bottom: 10px;
+}
+.subtitle {
+	color: #7f8c8d;
+	font-size: 1.1em;
+}
+.notes-grid {
+	display: grid;
+	gap: 20px;
+}
+.note-card {
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	padding: 20px;
+	background: #fafafa;
+	transition: all 0.3s ease;
+}
+.note-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+	border-color: #3498db;
+}
+.note-title {
+	color: #2c3e50;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+.note-link {
+	display: inline-block;
+	background: #3498db;
+	color: white;
+	padding: 8px 16px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin-top: 10px;
+	transition: background 0.3s ease;
+}
+.note-link:hover {
+	background: #2980b9;
+}
+.last-updated {
+	font-size: 0.9em;
+	color: #7f8c8d;
+	margin-top: 10px;
+}
+.empty-state {
+	text-align: center;
+	padding: 40px;
+	color: #7f8c8d;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>📚 My Study Notes</h1>
+<p class="subtitle">Automatically generated from LaTeX source • Last updated: <span id="update-date"></span></p>
+</header>
+
+<div class="notes-grid" id="notes-container">
+EOF
+
+# Dynamically add note cards
+find notes -name "main.tex" | while read texfile; do
+dir=$(dirname "$texfile")
+name=$(basename "$dir")
+
+# Extract title from LaTeX file
+title=$(grep -m 1 '\\title{' "$texfile" | sed 's/.*{//' | sed 's/}.*//' 2>/dev/null || echo "$name")
+	# Get last modification time
+	last_modified=$(git log -1 --format="%cd" --date=short "$texfile" 2>/dev/null || echo "Unknown")
+	
+	cat >> $BUILD_DIR/index.html << EOF
+	<div class="note-card">
+	<h3 class="note-title">$title</h3>
+	<p>Automatically generated PDF notes</p>
+	<a href="notes/${name}.pdf" class="note-link" target="_blank">View PDF</a>
+	<div class="last-updated">Updated: $last_modified</div>
+	</div>
+	EOF
+	done
+	
+	# If no notes found
+	if [ -z "$(find notes -name "main.tex")" ]; then
+	cat >> $BUILD_DIR/index.html << EOF
+	<div class="empty-state">
+	<h3>No Notes Yet</h3>
+	<p>Create your first note in the notes/ directory!</p>
+	</div>
+	EOF
+	fi
+	
+	cat >> $BUILD_DIR/index.html << 'EOF'
+	</div>
+	</div>
+	
+	<script>
+	// Show current date
+	document.getElementById('update-date').textContent = new Date().toLocaleDateString();
+	
+	// Simple search functionality (optional)
+	console.log('Notes system loaded successfully!');
+	</script>
+	</body>
+	</html>
+	EOF
+	
+	- name: Deploy to GitHub Pages
+	uses: peaceiris/actions-gh-pages@v3
+	with:
+	github_token: ${{ secrets.GITHUB_TOKEN }}
+	publish_dir: ./public
+	force_orphan: true

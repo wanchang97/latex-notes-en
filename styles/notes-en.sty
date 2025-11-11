@@ -1,0 +1,47 @@
+% styles/notes-en.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{styles/notes-en}[2024/01/01 Notes configuration for English notes]
+
+\RequirePackage{./base-en}
+\RequirePackage{./math-en}
+\RequirePackage{./code-en}
+
+% Additional packages
+\RequirePackage{tcolorbox}
+\RequirePackage{marginnote}
+\RequirePackage{titlesec}
+
+% Note box environments
+\newtcolorbox{note}{
+	colback=blue!5!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title=Note
+}
+
+\newtcolorbox{warning}{
+	colback=red!5!white,
+	colframe=red!75!black,
+	fonttitle=\bfseries,
+	title=Warning
+}
+
+\newtcolorbox{important}{
+	colback=green!5!white,
+	colframe=green!75!black,
+	fonttitle=\bfseries,
+	title=Important
+}
+
+% Section formatting
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+% Custom commands
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\term}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\endinput
