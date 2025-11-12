@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
 permissions:
   contents: write
 
@@ -14,6 +15,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -54,14 +56,7 @@ jobs:
           done
 
       - name: Generate index page
-        run: |
-          mkdir -p $BUILD_DIR
-          echo "<!DOCTYPE html><html><head><meta charset='utf-8'><title>My LaTeX Notes</title></head><body><h1>📚 My Notes</h1><ul>" > $BUILD_DIR/index.html
-          for pdf in $BUILD_DIR/notes/*.pdf; do
-            base=$(basename "$pdf" .pdf)
-            echo "<li><a href='notes/${base}.pdf' target='_blank'>${base}</a></li>" >> $BUILD_DIR/index.html
-          done
-          echo "</ul><p>Last updated: $(date)</p></body></html>" >> $BUILD_DIR/index.html
+        run: bash scripts/generate_index.sh
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
