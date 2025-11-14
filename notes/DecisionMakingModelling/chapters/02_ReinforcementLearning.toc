@@ -1,0 +1,54 @@
+\contentsline {chapter}{\numberline {1}Reninforcement Learning}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Markov Decision Process}{2}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Basic Formulation and terminology}{2}{subsection.1.1.1}%
+\contentsline {subsubsection}{State space $\mathds {S}$ }{3}{section*.3}%
+\contentsline {subsubsection}{Action space $\mathds {A}$}{3}{section*.4}%
+\contentsline {subsubsection}{Policy $\pi (a|s)$ }{3}{section*.5}%
+\contentsline {subsubsection}{State Transition Model $\mathbf {T}$}{4}{section*.6}%
+\contentsline {subsubsection}{Reward model $\mathbf {R}$ (negative cost function)}{4}{section*.7}%
+\contentsline {subsubsection}{The cumulative weighted total return $ U^{\pi }(s_t,a_t,\cdots ,s_T,a_T) $}{4}{section*.8}%
+\contentsline {subsubsection}{The Expected cumulative weighted total return $J^{\pi }$}{4}{section*.9}%
+\contentsline {subsubsection}{The State-Action Value function $Q^{\pi }(s_t,a_t)$}{5}{section*.10}%
+\contentsline {subsubsection}{The State Value Function $V^{\pi }(s_t)$}{5}{section*.11}%
+\contentsline {subsubsection}{The Optimal State Action Value Function $Q^{\star }(s_t,a_t)$}{5}{section*.12}%
+\contentsline {subsubsection}{The Optimal State Value Function $V^{\star }(s_t)$}{6}{section*.13}%
+\contentsline {subsubsection}{Bellman Equation for State-Action Value Function $Q^{\pi }(s_t,a_t)$}{6}{section*.14}%
+\contentsline {subsubsection}{Bellman Equation for State Value Function $V^{\pi }(s_t)$}{7}{section*.15}%
+\contentsline {subsubsection}{Optimal Bellman Equation for State Action Value Function $Q^{\star }(s_t,a_t)$}{8}{section*.16}%
+\contentsline {subsubsection}{Optimal Bellman Equation for State Value Function $V^{\star }(s_t)$}{9}{section*.17}%
+\contentsline {subsection}{\numberline {1.1.2}Algorithm to solve a Markov Decision Process}{10}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Value Learning}{10}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Policy Learning}{11}{subsection.1.1.4}%
+\contentsline {section}{\numberline {1.2}Deep Reinforcement Learning}{13}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Deep Q-Network (DQN)}{14}{subsection.1.2.1}%
+\contentsline {subsubsection}{Disadvantages of DQN}{15}{section*.21}%
+\contentsline {subsubsection}{Improve the training algorithm}{16}{section*.22}%
+\contentsline {subsubsection}{Improved the Neural Network Architecture}{17}{section*.23}%
+\contentsline {subsection}{\numberline {1.2.2}Deep Policy Gradients}{19}{subsection.1.2.2}%
+\contentsline {subsubsection}{Actor-Critic Algorithm}{19}{section*.27}%
+\contentsline {subsubsection}{Advantage Actor-Critic (A2C) Algorithm}{22}{section*.28}%
+\contentsline {subsubsection}{Asynchronous Advantage Actor Critic (A3C) Algorithm}{22}{section*.29}%
+\contentsline {subsection}{\numberline {1.2.3}Multi-agent Actor Critic(MAC)}{23}{subsection.1.2.3}%
+\contentsline {subsubsection}{Fully cooperative mode}{23}{section*.30}%
+\contentsline {subsubsection}{Deep Centralized Multi-agent Actor Critic (DCMAC)}{23}{section*.31}%
+\contentsline {subsubsection}{Deep Decentralized Multi-agent Actor Critic (DDMAC)}{24}{section*.33}%
+\contentsline {subsubsection}{Hierarchical Resource Allocation and Continuous-control Reinforcement Learning}{24}{section*.35}%
+\contentsline {section}{\numberline {1.3}Partially Observable Markov Decision Process}{25}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Basic Formulation and terminology}{25}{subsection.1.3.1}%
+\contentsline {subsubsection}{Belief Space $\mathbb {B}$}{26}{section*.37}%
+\contentsline {subsubsection}{Belief Update Rule}{27}{section*.38}%
+\contentsline {subsubsection}{Belief-MDP}{27}{section*.39}%
+\contentsline {subsubsection}{Observation Model of Belief-MDP $P(o_{t+1}|\mathbf {b}_t,a_t)$}{28}{section*.41}%
+\contentsline {subsubsection}{State Transition Model of Belief-MDP $\mathbf {T}_{belief}$}{28}{section*.42}%
+\contentsline {subsubsection}{Reward Model of Belief-MDP $\mathbf {R}_{belief}$}{29}{section*.43}%
+\contentsline {subsubsection}{The cumulative weighted total return $ U^{\pi }(\mathbf {b}_t,a_t,\cdots ,\mathbf {b}_T,a_T) $}{29}{section*.44}%
+\contentsline {subsubsection}{The State-Action Value Function $Q^{\pi }(\mathbf {b}_t,a_t)$}{29}{section*.45}%
+\contentsline {subsubsection}{The State Value Function $V^{\pi }(\mathbf {b}_t)$}{30}{section*.46}%
+\contentsline {subsubsection}{The Optimal State Action Value Function $Q^{\star }(\mathbf {b}_t,a_t)$}{30}{section*.47}%
+\contentsline {subsubsection}{The Optimal State Value Function $V^{\star }(\mathbf {b}_t)$}{30}{section*.48}%
+\contentsline {subsubsection}{The Optimal State Action Value Function $V^{\star }(\mathbf {b}_t)$}{30}{section*.49}%
+\contentsline {subsection}{\numberline {1.3.2}Algorithm to solve a Partially Observable Markov Decision Process}{32}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Common Implementations}{32}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Recent Advances}{32}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Machine Learning Techniques}{33}{subsection.1.5.1}%
+\contentsline {section}{\numberline {1.6}Research Gaps}{33}{section.1.6}%

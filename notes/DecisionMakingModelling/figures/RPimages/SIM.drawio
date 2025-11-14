@@ -1,0 +1,40 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.3 Chrome/130.0.6723.137 Electron/33.2.1 Safari/537.36" version="26.0.3">
+  <diagram name="Page-1" id="zaSF6hxBZ_EbGSLmhPae">
+    <mxGraphModel dx="343" dy="428" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="eftkhJk-bwIcDeWuufod-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="eftkhJk-bwIcDeWuufod-1" target="eftkhJk-bwIcDeWuufod-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eftkhJk-bwIcDeWuufod-1" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 18px;&quot;&gt;Structural State&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="280" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eftkhJk-bwIcDeWuufod-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="eftkhJk-bwIcDeWuufod-2" target="eftkhJk-bwIcDeWuufod-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eftkhJk-bwIcDeWuufod-2" value="&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Structural Health Monitoring (SHM)&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="360" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eftkhJk-bwIcDeWuufod-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eftkhJk-bwIcDeWuufod-3" target="eftkhJk-bwIcDeWuufod-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eftkhJk-bwIcDeWuufod-3" value="&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Structural Condition&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="440" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eftkhJk-bwIcDeWuufod-4" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 18px;&quot;&gt;Action&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="440" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eftkhJk-bwIcDeWuufod-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eftkhJk-bwIcDeWuufod-5" target="eftkhJk-bwIcDeWuufod-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eftkhJk-bwIcDeWuufod-5" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 18px;&quot;&gt;Decision Making (Inspection &amp;amp; Maintenance)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="440" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eftkhJk-bwIcDeWuufod-15" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 18px;&quot;&gt;Structural Integrity Management&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="290" y="240" width="320" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

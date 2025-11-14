@@ -1,0 +1,1134 @@
+% chapters/02_literature_review.tex
+\documentclass[../main.tex]{subfiles}
+\addbibresource{DeepRL.bib} 
+\begin{document}
+	\pagenumbering{roman}
+	\tableofcontents
+	\pagenumbering{arabic}
+	\chapter{Reninforcement Learning}
+	\label{chap:Reinforcement Learning}
+	
+	\section{Markov Decision Process}
+	\subsection{Basic Formulation and terminology}
+	
+	A \textbf{Markov Decision Process (MDP)} has the following four key componnents: states space $\mathbb{S}$, action space $\mathbb{A}$, transtion model $\mathbf{T}$, reward model $\mathbf{r}$. In some literature the discount factor $\gamma $ may be treated as the fifth components of a MDP. The reward is commonly chosen to be one scalar for simplicity, so a MDP can be written as a 5-tuple $\{\mathbb{S},\mathbb{A},\mathbf{T},\mathbf{r},\gamma\}$.
+	
+	The relative definitions are summaried in the following subsections.A basic MDP means the state space and actions spaces are finite, time steps are discrete. Classical Dynamic Programming algorithms can be used to solve this case.
+	
+	
+	\begin{figure}[h]
+		%\includesvg{RPimages/SHMOverviewSVG.svg}
+		\includegraphics[width=1.0\textwidth
+		]{figures/POMDPImage/MDPDiagram}
+		\centering
+		\caption{Sequential Probabilistic Graphical Model of Markovian Decision Process}		
+		\label{fig: MDPDiagramSequential}
+	\end{figure}
+	
+	\subsubsection{State space $\mathds{S}$ }
+	a finite set of states $\mathds{S}$. It is very important to choose the state variables to represent the key information of the environment. In real life there are multiple state variables representing different properties of the environment. We may use the $d_{\mathbb{S}}$ to represent the number of features we choose as state variables. e.g. The healthy state of a person contain mental health and physical health two aspects, $d_{\mathbb{S}}= 2$. 
+	For each kind of state variable, its value could be discrete or continous. 
+	\begin{itemize}
+		\item Discrete State Variable, has the number of $N$ possible values, e.g. the mental health level could be \{"Happy","Depressive","sad","angry"\}, then $N = 4$
+		\item Continuous State Variable
+	\end{itemize}
+	
+			\subsubsection{Action space $\mathds{A}$}
+	a finite set of actions $\mathds{A}$; $a_{i\geq t} \in \mathds{A}$
+	
+	
+	\subsubsection{Policy $\pi(a|s)$	}
+	A policy $\pi(a|s)$: the state-dependent sequence of actions
+	\begin{itemize}
+		\item Deterministic policy  $\pi(a|s): \mathds{S} \rightarrow \mathds{A}$
+		\item or Stochastic policy  $\pi(a|s): \mathds{S}\times \mathds{A} \rightarrow \mathds{R} \in [0,1]$ 
+	\end{itemize} 
+	
+	In the reinforcement learning, we need to let the agent and the environment interact with each other, and record all observed states, actons, rewards trajectories to learn a best policy from these experiences. Here we need to distinguish two kinds of policies:  Behavior policy $\mu$: the policy we use to collect experience; Target policy $\pi$: the finally trained policy 
+	
+	\begin{itemize}
+		\item If the Behavior policy $\mu$ and the target policy $\pi$ are the same, which means $a_{i\geq t} \sim \pi$ ,then it is called the On-policy. 
+		
+		\item If the Behavior policy $\mu$ and the target policy $\pi$ are different, which means $a_{i>t} \sim \pi$, $a_t \sim \mu$, then it is called the Off-policy. The advantage of Off-policy is that we could use the behavior policy to collect experience , save $(s_t,a_t,r_t,s_{t+1})$ to an array and use such array (aka. replay buffer) repeatedly to update the target policy. This training method is called the experience replay. 
+		
+		The commonly-chosen behavior policy is $\epsilon-$greedy policy:
+		\begin{equation}
+			a_t = 
+			\begin{cases}
+				arg\max_a \Qstar(s_t,a;\theta)& \text{with the prob. } 1-\epsilon , \\
+				\textsf{randomly choose one action from } \mathbb{A}  & \text{with the prob. }\epsilon.
+			\end{cases}
+		\end{equation}
+		The random behavior policy could explore more unknown states and it is good to enlarge the $\epsilon$ at the beginning (e.g. $\epsilon = 0.5$) and reduce it during the trainning process (e.g. $\epsilon = 0.01$)
+		
+		
+	\end{itemize}
+	
+%	\begin{figure}%
+%		\centering
+%		\subfloat[\centering On Policy]{{\includegraphics[scale = 0.7]{SimpleExampleFigure/On-policy} }}%
+%		\qquad
+%		\subfloat[\centering Off Policy]{{\includegraphics[scale = 0.5]{SimpleExampleFigure/Off-policy} }}%
+%		\caption{On-policyAndOff-policy}%
+%		\label{fig:On-policy and Off-policy}%
+%	\end{figure}
+		\subsubsection{State Transition Model $\mathbf{T}$}
+	\begin{itemize}
+		\item It could be a deterministic transition function: e.g. $s_{t+1} = f(s_t,a_t)$;
+		\item or a transition probability: $P(s_{t+1}|s_t, a_t, \cdots , s_1, a_1)$ ($P(s_{t+1}|s_t, a_t)$ under the Markov Assumption), naturallly we have $$\sum_{s_{t+1} \in \mathbb{S}} P(s_{t+1}|s_t,a_t) = 1$$
+	\end{itemize} 
+	\subsubsection{Reward model $\mathbf{R}$ (negative cost function)}  
+	If we consider determnistic reward model, $\mathbf{R} = P(r_{t+1}|a_t,s_t)$ can be written as $\mathbf{R} =R(a_t,\bb_t)$
+	A reward model(negative cost function could be formulated as:
+	\begin{itemize}
+		\item A general reward function $R(s_t,a_t,s_{t+1})$
+		\item Or an immediate reward function $R(s_t,a_t)$
+	\end{itemize} 
+	
+	\subsubsection{The cumulative weighted total return $ U^{\pi}(s_t,a_t,\cdots,s_T,a_T) $} 
+	\textbf{The cumulative weighted total return} is a function of all the states and actions from time $t$ when taking a policy $\pi$:
+	\begin{equation}
+		U_t^{\pi} = U^{\pi}(s_t,a_t,\cdots,s_T,a_T) = k_t R(s_t,a_t,s_{t+1}) + \cdots +k_T R(s_T,a_T,s_{T+1}) = \sum_{i=t}^T k_i R(s_i,a_i,s_{i+t}) =  \sum_{i=t}^T \gamma^{i-t} R(s_i,a_i,s_{i+t}) 
+	\end{equation}
+	where the discount factor $\gamma \in [0,1]$: weighting the relative importance of the current reward against the future reward. In extreme cases when $\gamma = 0$, means only the current reward matters.
+	
+	
+	\subsubsection{The Expected cumulative weighted total return $\Jpi$} 
+	\textbf{The Expected cumulative weighted total return} is a meassure of the policy $\pi$:
+	\begin{equation}
+		\Jpi = \mathbb{E}_{S_{i\geq t}\sim \bT,A_{i \geq t}\sim \pi}\left[U^{\pi}(s_t,a_t,S_{t+1},A_{t+1},\cdots,S_T,A_T)\right]
+	\end{equation}
+	where $\bT = P(s_{t}|s_{t-1},a_{t-1})$ is the transition probability distribution of state $s_{t}$ and $\pi$ is the probability of action (aka. the stochastic policy).
+	
+	
+	
+	
+	\subsubsection{The State-Action Value function $\Qpi(s_t,a_t)$} 
+	
+	\textbf{The State-Action value function $\Qpi(s_t,a_t)$} describes the value of the policy $\pi$ given a State-Action Pair $\Qpi(s_t,a_t)$. 	It is a meassure of the State-Action pair at time step $t$ and the policy $\pi$ from time step $t+1$. That is why we need to reduce all the  randomness from all the future state and future action.
+	
+	The value of taking an action $a_t$ at the state $s_t$ and using the strategy $\pi$ for the rest of time span until T is calculated by the expectation of all the state and actions from time $t$ to $T$. s
+	\begin{equation}
+		\Qpi(s_t,a_t) = \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t}\sim \pi}\left[U^{\pi}(s_t,a_t,S_{t+1},A_{t+1},\cdots,S_T,A_T)|s_t,a_t\right]
+	\end{equation}
+	where $\bT = P(s_{t}|s_{t-1},a_{t-1})$ is the transition probability distribution of state $s_{t}$ and $\pi$ is the probability of action (aka. the stochastic policy).
+	
+	\subsubsection{The State Value Function $\Vpi(s_t)$}
+	
+	\textbf{The State Value Function $\Vpi(s_t)$} is a measure of the value of current state $s_t$ and that is why we need to further eliminate the randomness of action at time $A_t$.
+	
+	The value of a state $s_t$ when taking a policy from this time step $t$ until the rest of the time span can be expressed by the expected total return, mathematically written as:
+	\begin{subequations}
+		\begin{align}
+			\Vpi (s_t) &= \mathbb{E}_{A_t \sim \mu} \left[\Qpi(s_t,A_t)\right]\\
+			&=  \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi,A_t \sim \mu}\left[U^{\pi}(s_t,A_t,\cdots,S_T,A_T)|s_t,a_t\right]\\
+			&= \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[U^{\pi}(s_t,a_t,\cdots,S_T,A_T)\right]\\
+			&= \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[\sum_{i=t}^T\gamma^{i-t}R(s_i,a_i,s_{i+1}) \bigg|s_t\right] ,
+		\end{align}
+	\end{subequations}
+	where $\mu$ shows the probability distribution of $a_t$ at time $t$ specifically, which is not necessarily equal to the policy $\pi$ chosen to taken actions from time $t+1$ on.
+	
+	\subsubsection{The Optimal State Action Value Function $\Qstar(s_t,a_t)$}
+	\textbf{The Optimal State Action Value function $\Qstar(s_t,a_t)$ } is a meassure of values of the current state-action pair $s_t$. Based on the State Action Value function $\Qpi(s_t.a_t)$ we need to further eliminate the randomness of the policy $\pi$:
+	\begin{equation}
+		\Qstar(s_t,a_t) = \max_{\pi} \mathbb{E}_{S_{i>t}\sim \bT}\left[\sum_{i=t}^T\gamma^{i-t}R(s_i,a_i,s_{i+1})\bigg|s_t,a_t\right]
+	\end{equation}
+	
+	\subsubsection{The Optimal State Value Function $V^{\star}(s_t)$}
+	The Optimal State Value function $\Vstar(s_t)$ is a meassure of values of the current state $s_t$ only. Based on the State Value function $\Vpi(s_t)$ we need to further eliminate the randomness of the policy $\pi$:
+	\begin{equation}
+		\Vstar(s_t) = \max_{\pi} \mathbb{E}_{S_{i>t}\sim \bT}\left[\sum_{i=t}^T\gamma^{i-t}R(s_i,a_i,s_{i+1})\bigg|s_t\right]
+	\end{equation}
+	
+	\subsubsection{Bellman Equation for State-Action Value Function $\Qpi(s_t,a_t)$}
+	
+	Now we will derive the Bellman equation for the state-action value function 
+	\begin{subequations}
+		\label{eqn: Bellman Qpi}
+		\begin{align}
+			\Qpi (s_t,a_t) &= \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi} \left[U^{\pi}(s_t,a_t,\cdots,S_T,A_T)|s_t ,a_t \right]\\
+			&=\mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[\sum_{i=t}^{T}\gamma^{i-t} R(s_i,a_i,s_{i+1})\bigg|s_t ,a_t\right] \\
+			& = \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[R(s_t,a_t,S_{t+1})+\gamma \sum_{i=t+1}^{T}\gamma^{i-(t+1)} R(s_i,a_i,s_{i+1})\bigg|s_t ,a_t \right] \\
+			& = \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[R(s_t,a_t,S_{t+1})+\gamma U^{\pi}(s_{t+1},a_{t+1},\cdots,S_T,A_T)\big|s_t,a_t\right] \\
+			& =  \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[R(s_t,a_t,S_{t+1})\right] + \gamma \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[ U^{\pi}(S_{t+1},A_{t+1},\cdots,S_T,A_T)\big|s_t,a_t\right] 
+		\end{align} 
+	\end{subequations}
+	With the assumption of discrete states and discrete actions, the first expectation can be written as:
+	\begin{equation}
+		\mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[R(s_t,a_t,S_{t+1})\big|s_t,a_t\right] = \sum_{s_{t+1}\in \mathbb{S}}R(s_t,a_t,s_{t+1})P(s_{t+1}|s_t,a_t)
+	\end{equation}
+	The second expecation 
+	\begin{subequations}
+		\begin{align}
+			\mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[ U^{\pi}_{t+1}|s_t,a_t\right] &= \sum_{s_{t+1} \in \mathbb{S}}P(s_{t+1}|s_t,a_t)\sum_{a_{t+1} \in  \mathbb{A}}\pi(a_{t+1}|s_{t+1})\mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[U^{\pi}_{t+1}\big|s_{t+1},a_{t+1}\right] \\
+			&= \sum_{s_{t+1} \in \mathbb{S}}P(s_{t+1}|s_t,a_t)\sum_{a_{t+1} \in  \mathbb{A}}\pi(a_{t+1}|s_{t+1})\mathbb{E}_{S_{i>t+1}\sim \rho,A_{i>t+1} \sim \pi}\left[U^{\pi}_{t+1}\big|s_{t+1},a_{t+1}\right]
+		\end{align}
+	\end{subequations}
+	Combining the two equations we have
+	\begin{subequations}
+		\begin{align}
+			\Qpi(s_t,a_t) &= \sum_{s_{t+1} \in \mathbb{S}}P(s_{t+1}|s_t,a_t)\left[ R(s_t,a_t,s_{t+1}) + \gamma \sum_{a_{t+1} \in \mathbb{A}}\pi(a_{t+1}|s_{t+1})\mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}\left[U^{\pi}_{t+1}\big|s_{t+1},a_{t+1}\right]\right]\\
+			&= \sum_{s_{t+1} \in \mathbb{S}}P(s_{t+1}|s_t,a_t)\left[ R(s_t,a_t,s_{t+1}) + \gamma \sum_{a_{t+1} \in \mathbb{A}}\pi(a_{t+1}|s_{t+1})\Qpi(s_{t+1},a_{t+1})\right]
+		\end{align}
+	\end{subequations}
+	If we can simplify the reward function as $R(s_t,a_t,s_{t+1}) = R(s_t,a_t)$, then the above recursive equation can be written as 
+	\begin{equation}
+		\Qpi(s_t,a_t) = R(s_t,a_t) + \gamma \sum_{s_{t+1} \in \mathbb{S}} \sum_{a_{t+1} \in \mathbb{A}}P(s_{t+1}|s_t,a_t) \pi(a_{t+1}|s_{t+1})\Qpi(s_{t+1},a_{t+1})
+	\end{equation}
+	Written in expectation form as
+	\begin{equation}
+		\Qpi(s_t,a_t) = R(s_t,a_t) + \gamma \mathbb{E}_{S_{t+1}\sim \bT,A_{t+1} \sim \pi}[\Qpi(S_{t+1},A_{t+1})]
+	\end{equation}
+	
+	\subsubsection{Bellman Equation for State Value Function $\Vpi(s_t)$}
+	Now we will derive the Bellman equation for the state value function 
+	\begin{subequations}
+		\begin{align}
+			\Vpi (s_t) &= \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi,A_t \sim \mu}\left[U^{\pi}(s_t,A_t,\cdots,S_T,A_T)|s_t\right] \\
+			&=\mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi,A_t \sim \mu}\left[\sum_{i=t}^{T}\gamma^{i-t} R(s_i,a_i,s_{i+1})\big|s_t \right] \\
+			& = \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi,A_t \sim \mu}\left[R(s_t,A_t,S_{t+1})+\gamma \sum_{i=t+1}^{T}\gamma^{i-(t+1)} R(s_i,a_i,s_{i+1})\big|s_t\right] \\
+			& = \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi,A_t \sim \mu}\left[R(s_t,A_t,S_{t+1})+\gamma U^{\pi}(s_{t+1},a_{t+1},\cdots,s_T,a_T)\big|s_t\right] \\
+			& =  \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi,A_t \sim \mu}\left[R(s_t,A_t,S_{t+1})\big|s_t\right] + \gamma \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi,A_t \sim \mu}\left[ U^{\pi}(s_{t+1},a_{t+1},\cdots,s_T,a_T)\big|s_t\right] 
+		\end{align} 
+	\end{subequations}
+	Now we can look at the two expectations separately. Assume that the state and actions are discrete, then the first expectation can be written as:
+	\begin{subequations}
+		\begin{align}
+			\mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi,A_t \sim \mu}\left[R(s_t,A_t,S_{t+1})|s_t\right] & = \sum_{a_t \in \mathbb{A}} \mu(a_t|s_t)  \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi}[R(s_t,a_t,S_{t+1})|s_t,a_t] \\
+			& = \sum_{a_t \in \mathbb{A}} \mu(a_t|s_t) \sum_{s_{t+1} \in \mathbb{S}} R(s_t,a_t,s_{t+1}) p (s_{t+1}|s_t,a_t)
+		\end{align}
+	\end{subequations}
+	The second expectation $\gamma \mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi,A_t \sim \mu}\left[ U^{\pi}(S_{t+1},A_{t+1},\cdots,S_T,A_T)\big|s_t\right]$:
+	\begin{subequations}
+		\begin{align}
+			\mathbb{E}_{S_{i>t}\sim \bT,A_{i>t} \sim \pi,A_t \sim \mu}\left[ U^{\pi}_{t+1}\big|s_t\right] & = \sum_{a_t \in \mathbb{A}} \mu(a_t|s_t) \sum_{s_{t+1} \in \mathbb{S}}P(s_{t+1}|s_t,a_t)  \mathbb{E}_{s_{i>t+1}\sim \rho,a_{i>t+1} \sim \pi,a_{t+1} \sim \pi}\left[ U^{\pi}_{t+1}\big|s_{t+1}\right]\\
+			& =  \sum_{a_t \in \mathbb{A}} \mu(a_t|s_t) \sum_{s_{t+1}\in \mathbb{S}}P(s_{t+1}|s_t,a_t) \Vpi(s_{t+1})
+		\end{align}
+	\end{subequations}
+	Combining these two expectations, we have 
+	\begin{equation}
+		\Vpi(s_t) = \sum_{a_t \in \mathbb{A}} \mu(a_t|s_t) \sum_{s_{t+1} \in \mathbb{S}}P(s_{t+1}|s_t,a_t) \left(R(s_t,a_t,s_{t+1})+ \gamma \Vpi(s_{t+1})\right)
+	\end{equation}
+	With the simplification of $R(s_t,a_t,s_{t+1}) = R(s_t,a_t)$, then the above recursive equation can be written as 
+	s	\begin{subequations}
+		\begin{align}
+			\Vpi(s_t)& = \sum_{a_t \in \mathbb{A}} \mu(a_t|s_t) \sum_{s_{t+1} \in \mathbb{S}}P(s_{t+1}|s_t,a_t) \left(R(s_t,a_t)+ \gamma \Vpi(s_{t+1})\right) \\
+			& = \sum_{a_t \in \mathbb{A}} \mu(a_t|s_t) \left( R(s_t,a_t) + \gamma \sum_{s_{t+1} \in \mathbb{S}} P(s_{t+1}|s_t,a_t)  \Vpi(s_{t+1})\right) \\
+			& = \mathbb{E}_{A_{i = t} \sim \mu} \left[R(s_t,A_t)\right] + \gamma \mathbb{E}_{A_{t} \sim \mu, S_{t+1}\sim \bT  } \left[ \Vpi (S_{t+1})\right]
+		\end{align}
+	\end{subequations}
+	
+	\subsubsection{Optimal Bellman Equation for State Action Value Function $\Qstar(s_t,a_t)$}
+	Bellman Equation for Optimal State Value Function $\Vstar(s_t)$ is also known as Optimal Bellman Equation.
+	
+	Under standard conditions for discounted MDPs, out of all possible policies there existes at least one deterministic policy that is optimal, maximizing the value of state $\Vpi(s_t)$.
+	For a deterministic policy, with a given transition probability $P(s_{t+1}|s_t,a_t)$, the optimal state-action value function is denoted as $\Qstar(s_t,a_t)$ and the optimal state value function is denoted as $\Vstar(s_t)$.
+	The optimal Bellman equation of the state-action value function is:
+	\begin{subequations}
+		\label{eqn: MaxValueOfStateAction}
+		\begin{align}
+			\Qstar(s_t,a_t) &= \mathbb{E}_{S_{i>t}\sim \bT}\left[ R(s_t,a_t,S_{t+1}) + \gamma \Vstar(s_{t+1})\right] \\
+			&= \mathbb{E}_{S_{i>t}\sim \bT}\left[ R(s_t,a_t,S_{t+1}) + \gamma \max_{a_{t+1} \in \mathbb{A}} \Qstar(s_{t+1},a_{t+1})\right]\\
+			&= \sum_{s_{t+1} \in \mathbb{S}} P(s_{t+1}|s_t,a_t)\left[ R(s_t,a_t,s_{t+1}) + \gamma \max_{a_{t+1} \in \mathbb{A}} \Qstar(s_{t+1},a_{t+1})\right]
+		\end{align}
+	\end{subequations}
+	
+	
+	with the simplification of $R(s_t,a_t,s_{t+1}) = R(s_t,a_t)$, we can write the above optimal Bellman equation as
+	
+	\begin{subequations}
+		\begin{align}
+			\Qstar(s_t,a_t) &= R(s_t,a_t) + \gamma \mathbb{E}_{S_{i>t}\sim \bT}\left[ \max_{a_{t+1}\in \mathbb{A}}\Qstar(s_{t+1},a_{t+1})\right] \\
+			&= R(s_t,a_t) + \gamma \sum_{s_{t+1}\in \mathbb{S}}\left[ \max_{a_{t+1}\in \mathbb{A}}P(s_{t+1}|s_t,a_t)\Qstar(s_{t+1},a_{t+1})\right] \\
+			&= R(s_t,a_t) + \gamma \sum_{s_{t+1}\in \mathbb{S}}\left[ \max_{a_{t+1}\in \mathbb{A}}P(s_{t+1}|s_t,a_t)\Qstar(s_{t+1},a_{t+1})\right] 
+		\end{align}
+	\end{subequations}
+	
+	\subsubsection{Optimal Bellman Equation for State Value Function $\Vstar(s_t)$}
+	Bellman Equation for Optimal State Value Function $\Vstar(s_t)$ is also known as Optimal Bellman Equation.
+	
+	Under standard conditions for discounted MDPs, out of all possible policies there existes at least one deterministic policy that is optimal, maximizing the value of state $\Vpi(s_t)$.
+	For a deterministic policy, with a given transition probability $P(s_{t+1}|s_t,a_t)$, the optimal state-action value function is denoted as $\Qstar(s_t,a_t)$ and the optimal state value function is denoted as $\Vstar(s_t)$.
+	
+	The optimal Bellman equation of the state value function is
+	\begin{subequations}
+		\label{eqn: MaxValueOfState}
+		\begin{align}
+			\Vstar(s_t) &= \max_{a_t \in \mathbb{A}} \Qstar(s_t,a_t)\\
+			&= \max_{a_t \in \mathbb{A}}   \mathbb{E}_{S_{t+1}\sim \rho} \left(R(s_t,a_t,S_{t+1})+ \gamma \Vstar(s_{t+1})\right) \\
+			&=  \max_{a_t \in \mathbb{A}}  \sum_{s_{t+1} \in \mathbb{S}}P(s_{t+1}|s_t,a_t) \left(R(s_t,a_t,s_{t+1})+ \gamma \Vstar(s_{t+1})\right)
+		\end{align}
+	\end{subequations}
+	
+	with the simplification of $R(s_t,a_t,s_{t+1}) = R(s_t,a_t)$, we can write the above optimal Bellman equation as
+	
+	
+	\begin{subequations}
+		\label{eqn:BellmanEqnOptimalValueFunction}
+		\begin{align}
+			\Vstar(s_t) &= \max_{a_t \in \mathbb{A}} \left\{R(s_t,a_t) + \gamma \mathbb{E}_{S_{t+1}\sim \bT}\left[\Vstar(s_{t+1})\right]\right\}  \\
+			&= \max_{a_t \in \mathbb{A}} \left\{R(s_t,a_t) + \gamma \sum_{s_{t+1}\in \mathbb{S}}P(s_{t+1}|s_t,a_t)\Vstar(s_{t+1})\right\}
+		\end{align}
+	\end{subequations}
+	
+	
+	
+	
+	\subsection{Algorithm to solve a Markov Decision Process}
+	\subsection{Value Learning}
+	
+	Value Learning is a reinforcement learning methods where we want to estimate the value function ($Q(s,a)$, $V(s)$, $Q^{\pi}(s,a)$,$V^{\pi}(s)$) as accurate as possible.  
+	
+	The old way of estimation is to build a table to approximate the value function. This is only applicable for discrete state space and discrete action space. For example in Table \ref{table: ExampleOfTableEstimationForQ}: 
+	
+	\begin{table}[h!]
+		\centering
+		\caption{Example of a table estimation for the optimal state-action value function $Q(S,A)$}
+		\label{table: ExampleOfTableEstimationForQ}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			$Q(S,A)$ & $A_1$ & $A_2$ & $A_3$ & $A_4$ \\ \hline
+			$S_1$          & 380   & -95   & 20    & 173   \\ \hline
+			$S_2$          & -7    & 64    & -195  & 210   \\ \hline
+			$S_3$          & 152   & 72    & 413   & -80   \\ \hline
+		\end{tabular}
+	\end{table}
+	
+	The more widely used estimation is to build a neural network $Q(s,a;\thetaQ)$, $V(s;\thetaV)$, $Q^{\pi}(s,a;\thetaQpi)$,$V^{\pi}(s;\thetaVpi)$ to estimate the corresponding value $Q(s,a)$, $V(s)$, $Q^{\pi}(s,a)$,$V^{\pi}(s)$. 
+	\begin{itemize}
+		\item Deep Q-Network (DQN): To learn optimal value function $Q(s,a)$ or $V(s)$. It requries 5-tuple $\{s_t,a_t,r_t,s_{t+1}\}$ generated from any policy stored in experience replay. It belongs to the off-policy learning.
+		\item State Action Reward State Action (SARSA): To learn policy-based value function $Q^{\pi}(s,a)$ or $V^{\pi}(s)$. As suggested by the name, SARSA requires a five-tuple $\{s_t,a_t,r_t,s_{t+1},\tilde{a}_{t+1}\}$ .It belongs to the on-policy algorithm. The policy-based value learning is usually combined with policy learning, which is usually called Actor-Critic Algorithm
+	\end{itemize}
+	
+	
+	To train any one of the Neural Network estimated Value function, we will make use of the Bellman equation, take $Q(s,a)$ as an example, the Bellman equation of the optimal state action value function is given in \eqref{eqn: MaxValueOfStateAction}
+	\begin{equation}
+		Q(s_t,a_t) =\mathbb{E}_{S_{i>t}\sim \rho }\left[ U_t^{\pi}|s_t,a_t\right] =\mathbb{E}_{S_{i>t}\sim \rho}\left[ R_t + \gamma V(S_{t+1})\right] 
+		= \mathbb{E}_{S_{i>t}\sim \rho}\left[ r_t+ \gamma \max_{a_{t+1} \in \mathbb{A}} Q(S_{t+1},a_{t+1})\right]
+	\end{equation}
+	
+	where $U_t^{\pi} = \sum_{t=t}^{T} \gamma^{i}R_{i} $ and $R_t = R(s_t,a_t,s_{t+1})$.
+	
+	Neural Network approximation is $\hat{q}_t = Q(s_t,a_t;\thetaQ)$. 
+	The loss function is defined as $L(\thetaQ) \defeq \mathbb{E} [\hat{q}_t- \hat{y}_t)^2]$ e.g. $L(\thetaQ) \defeq  \frac{1}{2} [\hat{q}_t - \hat{y}_t]^2$. We hope to minimize the loss function and based on the gradient descent:
+	\begin{equation}
+		\label{eqn: GradientL}
+		\bnabla_{\thetaQ} L(\thetapi) = (\hat{q}_t-\hat{y}_t)\cdot \bnabla_{\thetaQ} \hat{q}_t
+	\end{equation}
+	
+	To minimize the loss function, we need to update the parameter like this 
+	\begin{equation}
+		\label{eqn:ParameterUpdateQ}
+		\thetaQ \leftarrow \thetaQ - \alpha (\hat{q}_t-\hat{y}_t) \bnabla_{\bm{\thetaQ}}\hat{q}_t = \thetaQ - \alpha \delta_t \bnabla_{\bm{\thetaQ}}\hat{q}_t 
+	\end{equation}
+	
+	There are usually two ways of training the parameters of the neural network:
+	
+	\begin{itemize}
+		\item Monte Carlo estimation: 
+		The target is the real observation of one episode (the return of one episode) starting from $s_t$ and taking action $a_t$: 
+		\begin{equation}
+			\label{eqn: MonteCarloTarget}
+			\hat{y}_t = u_t = \sum_{t=t}^{T} \gamma^{i}r_{i}
+		\end{equation}
+		
+		\item Temperal Difference estimation: 
+		The m-step TD target is  combined of the first m observations and the expected return of the remaining steps:
+		\begin{equation}
+			\label{eqn: mstepTDtargetQ}
+			\hat{y}_t  
+			=  \sum_{t=t}^{m} \gamma^{i}r_{i} + \gamma^m \max_{a_t \in \mathbb{A}} q(s_{t+m},a_{t+m};\thetaQ)
+		\end{equation}
+	\end{itemize}
+	
+	
+	
+	
+	
+	
+	\subsection{Policy Learning} 
+	Policy learning is to find the best policy $\pi(a|s)$ directly. Policy learning is usually combined with also the value learning of this policy $q^{\pi}(s,a;\thetaQpi)$ or $v(s;\thetaVpi)$. 
+	Take $Q^{\pi}(s,a)$ as an example, the Bellman equation of the state action value function is given in equation \eqref{eqn: Bellman Qpi}
+	\begin{equation}
+		Q^{\pi}(s_t,a_t) =\mathbb{E}_{S_{i>t}\sim \rho, A_{i>t} \sim \pi }\left[ U_t^{\pi}|s_t,a_t\right] =\mathbb{E}_{S_{i>t}\sim \rho, A_{i>t} \sim \pi }\left[ R_t + \gamma Q^{\pi}(S_{t+1},A_{t+1})\right] 
+	\end{equation}
+	
+	For discrete states and discrete action space, we could also use a table for estimation shown in Table \ref{table: ExampleOfTableEstimationForQpi}:
+	
+	\begin{table}[h!]
+		\centering
+		\caption{Example of a table estimation for $Q^{\pi}(S,A)$}
+		\label{table: ExampleOfTableEstimationForQpi}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			$Q^{\pi}(S,A)$ & $A_1$ & $A_2$ & $A_3$ & $A_4$ \\ \hline
+			$S_1$          & 380   & -95   & 20    & 173   \\ \hline
+			$S_2$          & -7    & 64    & -195  & 210   \\ \hline
+			$S_3$          & 152   & 72    & 413   & -80   \\ \hline
+		\end{tabular}
+	\end{table}
+	
+	Or using neural Network approximation is $\hat{Q}_t = Q(s_t,a_t;\thetaQpi)$. 
+	
+	Similarly we can build the loss function and update the parameters as following
+	\begin{equation}
+		\label{eqn:ParameterUpdateQpi}
+		\thetaQpi \leftarrow \thetaQpi - \alpha (\hat{Q}_t-\hat{y}_t) \bnabla_{\bm{\thetaQpi}}\hat{Q}_t = \thetaQpi - \alpha \delta_t \bnabla_{\bm{\thetaQpi}}\hat{Q}_t 
+	\end{equation}
+	
+	There are usually two ways of training the parameters of the neural network:
+	
+	\begin{itemize}
+		\item Monte Carlo estimation: 
+		The target is the real observation of one episode (the return of one episode) starting from $s_t$ and taking action $a_t$: 
+		\begin{equation}
+			\label{eqn: MonteCarloTargetQpi}
+			\hat{y}_t = u_t = \sum_{t=t}^{T} \gamma^{i}r_{i}
+		\end{equation}
+		
+		\item Temperal Difference estimation: 
+		The m-step TD target is combined of the first m observations and the expected return of the remaining steps:
+		\begin{equation}
+			\label{eqn: mstepTDtargetQpi}
+			\hat{y}_t
+			=  \sum_{t=t}^{m} \gamma^{i}r_{i} + \gamma^m q(s_{t+m},a_{t+m};\thetaQpi)
+		\end{equation}
+		
+	\end{itemize}
+	
+	
+	There will be a neural network estimation of the policy function $\pi(a,s;\thetapi)$. The objective function is the so-called $J$ function:
+	\begin{equation}
+		J(\thetapi) \defeq \mathbb{E}_{S_t\sim \rho}[V^{\pi}(S_t)]=\mathbb{E}_{S_t\sim \rho}[\mathbb{E}_{A_t\sim \pi}[Q^{\pi}(S_t,A_t)]]
+	\end{equation}
+	
+	\begin{equation}
+		\bg \defeq \bnabla_{\thetapi} J(\thetapi) \approx \mathbb{E}_{S_t \sim \rho, A_t \sim \pi} [Q^{\pi}(S_t,A_t) \cdot \bnabla_{\thetapi}\ln \pi (A_t|S_t; \thetapi)] 
+	\end{equation}
+	
+	Here we hope to maximize the J function, so we will use the gradient ascent to update the parameter by \eqref{eqn:ParameterUpdateJ}
+	\begin{equation}
+		\label{eqn:ParameterUpdateJ}
+		\thetapi \leftarrow \thetapi + \beta \bnabla_{\thetapi} J(\thetapi) 
+	\end{equation}
+	
+	
+	We need some more approximation and advanced techniques to represent the gradient $\bnabla_{\thetapi} J(\thetapi)$:
+	Usually we will add baseline $b = V^{\pi}(S)$ for better training result
+	\begin{equation}
+		\label{eqn:GradientJ}
+		\bg_b \defeq \bnabla_{\thetapi} J(\thetapi) \approx \mathbb{E}_{S_t \sim \rho, A_t \sim \pi} [(Q^{\pi}(S_t,A_t) - V^{\pi}(S_t))\cdot \bnabla_{\thetapi}\ln \pi (A_t|S_t; \thetapi)] 
+	\end{equation}
+	The advantage function is defined as \begin{equation}
+		A^{\pi}(s_t,a_t) \defeq  Q^{\pi}(s_t,a_t) - V^{\pi}(s_t)
+	\end{equation}
+	We could see that in the gradients calculation for policy learning, we need to also know the value of this policy$Q^{\pi}$ or $V^{\pi}$.
+	There are many possible ways to handle this:
+	\begin{itemize}
+		\item REINFORCE: 
+		without base line 
+		\begin{equation}
+			\bgtilde_{REINFORCE} (s_t,a_t;\thetapi)=q(s_t,a_t;\thetaQpi)\cdot \bnabla_{\thetapi}\ln \pi(a_t|s_t;\thetapi) 
+		\end{equation}
+		Considering baseline, we will use the real observed return to approximate $Q^{\pi}(S_t,A_t)$, and use another neural network $v(s_t; \thetaVpi)$ to approximate $V^{\pi}(S_t)$
+		\begin{equation}
+			\label{eqn:GradientREINFORCEwithbaseline}
+			\bgtilde_{REINFORCE_b}(s_t,a_t;\thetapi) = [u_t-v(s_t;\thetaVpi)]\bnabla_{\thetapi} \ln \pi(a_t|s_t:\thetapi)
+		\end{equation}
+		\item Actor Critic (AC):
+		\begin{equation}
+			\label{eqn:ACgradient}
+			\bgtilde_{AC} (s_t,a_t;\thetapi)=q(s_t,a_t;\thetaQpi)\cdot \bnabla_{\thetapi}\ln \pi(a_t|s_t;\thetapi) 
+		\end{equation}
+		When Actor-Critic considers the baseline, it becomes Advantage-Actor-Critic (A2C): First due to the Bellman equation of the state action value function \eqref{eqn: Bellman Qpi}
+		\begin{equation}
+			Q^{\pi}(s_t,a_t) = \mathbb{E}_{S_{t+1}\sim p(\cdot|s_t,a_t)}[R_t + \gamma V^{\pi}(S_{t+1})]
+		\end{equation}
+		
+		the expression in equation \eqref{eqn:GradientJ} $ \mathbb{E}_{S_t \sim \rho, A_t \sim \pi} [(Q^{\pi}(S_t,A_t) - V^{\pi}(S_t))\cdot \bnabla_{\thetapi}\ln \pi (A_t|S_t; \thetapi)] $ could be transferred to 
+		\begin{equation}
+			\bnabla_{\thetapi} J(\thetapi) \approx \mathbb{E}_{S_t \sim \rho, A_t \sim \pi,S_{t+1}\sim p(\cdot|s_t,a_t)} [R_t + \gamma V^{\pi}(S_{t+1}) - V^{\pi}(S_t))\cdot \bnabla_{\thetapi}\ln \pi (A_t|S_t; \thetapi)] 
+		\end{equation}
+		
+		So the gradient in actor-critic algorithm is now approximated as
+		\begin{equation}
+			\label{eqn:GradientA2C}
+			\bgtilde_{A2C} = (r_t + \gamma v(s_{t+1}:\thetaVpi) - v(s_{t},\thetaVpi)) \cdot \bnabla_{\thetapi} \ln \pi (a_t|s_t;\thetapi)
+		\end{equation}
+		
+		\begin{equation}
+			\label{eqn:ParameterUpdateJcontinue}
+			\thetapi \leftarrow \thetapi + \beta (r_t + \gamma v(s_{t+1}:\thetaVpi) - v(s_{t},\thetaVpi)) \cdot \bnabla_{\thetapi} \ln \pi (a_t|s_t;\thetapi) =  \thetapi - \beta \delta_t \cdot \bnabla_{\thetapi} \ln \pi (a_t|s_t;\thetapi)
+		\end{equation}
+		
+		The one-step TD error of value learning $\delta_t$ is defined as $\delta_t \defeq -( r_t  + \gamma v(s_{t+1};\thetaVpi)-v(s_t;\thetaVpi) )$.
+		
+		%	When we use parallel computing for A2C, it becomes Asynchronous Advantage Actor Critic (A3C) method.
+	\end{itemize}
+	
+	\section{Deep Reinforcement Learning}
+	
+		Deep Reinforcement Learning is the Reinforcment Learning employed the deep neural networks.
+	
+	Neural networks (like any other approximation structure like polynomials, splines, radial basis functions) can approximate any continous function within a compact set. In other words, given a continous function $f(x)$, a finite range for the input $x \in [a,b]$ and an expected approximation accuracy $\epsilon$, there exists a neural network that approximate $f(x)$ with an approximation error less than $\epsilon$ everywhere within $[a,b]$.
+	
+	According to the universal approximation theorem, any continuous function can be arbitrarily closely approximated by a multi-layer perceptron with only one hidden layer and a finite number of neurons \cite{info10040122,cybenko1989approximation,hornik1989multilayer,yarotsky2017error,cuomo2022scientific}. Deep neural networks is a type of artificial neural network with more than two layers.
+	
+	The key idea of DRL is to utilize the deep neural networks as function approximators to provide arbitrarily accurate proxies of the original functions in large state spaces, such as:
+	\begin{equation}
+		F \simeq F(\cdot|\theta^F),
+	\end{equation}
+	where $F$ is one of the previously defined functions $Q^{\pi},V^{\pi},Q,V,\pi$ and $\theta^{F} \in \Theta$ are real-vallued vectors of parameters. Thereby, the whole problem of determining values at each point of a high-dimensional space $ \mathbb{A} \times \mathbb{S}$ to the lower-dimensional space $\Theta$, $|\Theta| << |\mathbb{S} \times \mathbb{A}|$. 
+	\subsection{Deep Q-Network (DQN)}
+	Deep Q-Network is based on the off-policy Q-learning scheme using the NN to approximate the optimal Q-function. The general DQN concept ist shown in Figure \ref{fig: NNapproximateQ}. State $s_t$ is introduced as input to a deep neural network, with an appropriate number of hidden layers and nonlinear unit activations, which output an approximation of the action-value function $Q(s_t,a_t|\theta^{Q}) \in \RR^{|\mathbb{A}|}$
+	\begin{figure}[h]
+		\includegraphics[scale = 1
+		]{figures/RPimages/DeepQNetwork}
+		\centering
+		\caption{Deep Q-Network approximate the Q function for every available action using state as input $Q(s_t,a_t)$}		
+		\label{fig: NNapproximateQ}
+	\end{figure}
+	If the state is matrix or multi-dimensional tensor, we will use Convolutional Neural Network ; if the state is a vector, then we can use Multi-layer Perceptron (MLP) directly. 
+	
+	The objective function that is minimized during training to determine $\theta^{Q}$ is given by the loss function
+	\begin{equation}
+		L_{Q}(\theta^{Q}) = \mathbb{E}\left[(Q(s_t,a_t|\theta^{Q})-y_t)^2\right],
+	\end{equation}
+	where $\mu$ is the behaviour policy of off-policy learning with $\mu \neq \pi$, $\rho$ is the limiting distribution of states for policy $\mu$, and $y_t \defeq R(s_t,a_t) + \gamma \max_{a_{t+1} \in \mathbb{A}} Q(s_{t+1},a_{t+1})$.
+	
+	To increase the training stability and robustness, we can also use two central features in the DQN algorithm \cite{mnih2013playing}: the first is the experience replay (replay buffer) and the second is the use of a separate target network.
+	
+	\RestyleAlgo{ruled}
+	\noindent\begin{minipage}{1\textwidth}
+		\begin{algorithm}[H]
+			\caption{Deep Q Network(DQN) Training}
+			\label{alg: DQN}
+			\KwIn{The decision process model MDP $\{\mathbb{S},\mathbb{A},\mathbf{T},\mathbf{r},\gamma\}$, or POMDP $\{\mathbb{S}, \mathbb{A}, \mathbb{O},\mathbf{T},\mathbf{r},\mathbf{O},\gamma\}$ }
+			\KwOut{The optimal state-action value function $Q(s,a)$}
+			Collect the training data: 
+			Use any policy (e.g. use the $\epsilon-$greedy policy) to interact with the environment and get many trajectories( where each trajectory consists of the following elements $s_1,a_1,r_1,\cdots,s_T,a_T,r_T$): 
+			\begin{equation}
+				a_t =\begin{cases}
+					\argmax_{a_t}Q(s_t,a_t;\thetaQ), & \text{ with prob. $1-\epsilon$}\\
+					\textsf{randomly select from the action space $\mathbb{A}$}, & \text{ with prob. $\epsilon$}.
+				\end{cases}
+			\end{equation}
+			Store the most recent $10^4$ most recent $(s,a,r,s_{t+1})$tuples in the replay buffer;
+			
+			Update the parameters $\thetaQ$:\
+			
+			\Repeat{$\thetaQ $ converges
+			}
+			{Select one four-tuple from the replay buffer based on priortized experience replay;
+				
+				TD target $\hat{y}_t = r_t + \gamma \max_{a_{t+1}\in \mathbb{A}}Q(s_{t+1},a_{t+1};\thetaQ)$;
+				
+				TD error  $\delta_t = \hat{q}_t = Q(s_t,a_t,\bzeta;\muQ,\sigmaQ) - \hat{y}_t$;
+				
+				$\thetaQ \leftarrow \thetaQ - \alpha \delta_t \cdot \bnabla_{\thetaQ}Q(s_t,a_t;\thetaQ)$
+			}
+		\end{algorithm}
+	\end{minipage}
+	\subsubsection{Disadvantages of DQN}
+	The Deep Q Network has two problems: Overestimating and bootstrapping:
+	\begin{itemize}
+		\item Overestimating due to maximization :
+		Wiithout detailed proofs, it could be shown that:
+		Assume that $x_1,\cdots,x_d$ are $d$ random real numbers. After adding randome noise with zero expectation, we could get random variables $Z_1,\cdots,Z_d$, it can be proved that
+		\begin{equation}
+			\begin{cases}
+				\mathbb{E}[\textsf{mean}(Z_1,Z_2,\cdots,Z_d)] &= \textsf{mean}(x_1,\cdots,x_d) \\
+				\mathbb{E}\left[ \max(Z_1,Z_2,\cdots,Z_d)\right] &\geq \max(x_1,\cdots,x_d)
+			\end{cases}	
+		\end{equation}
+		Which means that the random noise will not affect the expectation value, but will increase the maximization value.
+		
+		Look back at  the Depp Q Network (DQN) $q(s,a;\thetaQ)$. Assume for all actions $a \in \mathbb{A}$ and states $s \in \mathbb{S}$, the output of DQN is the real value plus random noise with zero expectation $\epsilon$
+		\begin{equation}
+			q(s,a;\thetaQ) = Q(s,a) + \epsilon
+		\end{equation}
+		So obviously, $q(s,a;\thetaQ)$ is the unbiased estimation of $Q(s,a)$, and the following inequality holds:
+		\begin{equation}
+			\mathbb{E}_{\epsilon}\left[\max_{a\in \mathbb{A}}q(s,a;\thetaQ)\right] \geq \max_{a\in \mathbb{A}} Q(s,a)
+		\end{equation}
+		Recall that our TD target is $\hat{y}_t = r_t + \gamma \cdot \max_{ a_{t+1} \in \mathbb{A}} q(s_{t+1},a_{t+1};\thetaQ)$. And Temperal difference algorithm encourages the estimation $q(s_t,a_t;\thetaQ)$ to come close to the TD target. That is why the estimation $q(s,a;\thetaQ)$would overestimate the true value $Q(s,a)$.
+		\item  Bootstrapping: bootstrapping means the problem when we evaluate ourselves based on our value. For the Temperal Difference algorithm, the overestimating at time step $t+1$ will propagate to the time step $t$.
+	\end{itemize}
+	
+	\subsubsection{Improve the training algorithm}
+	To overcome the above overestimating problem of Temporal Difference Training algorithm, we could use another target network or double Q learning
+	Review that for the basic Q learning algorithm: the TD target is calculated as
+	\begin{equation}
+		\label{eqn: TDtargetofQ-learning}
+		\hat{y}_t = r_t + \gamma  \max_{ a_{t+1} \in \mathbb{A}}q(s_{t+1},a_{t+1};\thetaQ)
+		=  r_t + \gamma q\left(s_{t+1},\argmax_{a_{t+1}\in \mathbb{A}}q(s_{t+1},a_{t+1};\thetaQ);\thetaQ\right)
+	\end{equation} 
+	\begin{itemize}
+		\item Q-learning with target network could alleviate bootstrapping
+		TD target is 
+		\begin{equation}
+			\label{eqn: TDtargetofQ-learningWithTarget}
+			\hat{y}_t = r_t + \gamma q\left(s_{t+1},\argmax_{a_{t+1}\in \mathbb{A}}q(s_{t+1},a_{t+1};\thetaQminus);\thetaQminus\right)
+		\end{equation} 
+		\item Double Q-learning: could alleviate bootstrapping and overestimating
+		TD target is 
+		\begin{equation}
+			\label{eqn: TDtargetofDoubleQlearning}
+			\hat{y}_t = r_t + \gamma q\left(s_{t+1},\argmax_{a_{t+1}\in \mathbb{A}}q(s_{t+1},a_{t+1};\thetaQ);\thetaQminus\right)
+		\end{equation} 
+	\end{itemize}
+	\subsubsection{Improved the Neural Network Architecture}
+	Now we will focus on the techniques to improve the architecture design and the training algorithm is kept the same as the prrevious DQN:
+	\begin{itemize}
+		\item Dueling Network: Divide the state-action value to the state value and the advantage function shown in Figure \ref{fig: Dueling Network approximate Q}:
+		\begin{equation}
+			Q(s_t,a_t) = V(s_t) + D(s_t,a_t)
+		\end{equation}
+		To assure the uniqueness, the dueling network is designed as 
+		\begin{equation}
+			Q(s_t,a_t;\thetaQ) \defeq V(s_t;\thetaV) + V(s_t,a_t;\thetaD) - \max_{a_t \in \mathbb{A}} D(s_t,a_t;\thetaD)
+		\end{equation}
+		or 
+		\begin{equation}
+			Q(s_t,a_t;\thetaQ) \defeq V(s_t;\thetaV) + V(s_t,a_t;\thetaD) - mean_{a_t \in \mathbb{A}}D(s_t,a_t;\thetaD)
+		\end{equation}
+		And $\thetaQ = (\thetaD, \thetaV)$
+		\begin{figure}[h]
+			\includegraphics[scale = 1
+			]{figures/RPimages/DuelingQNetwork}
+			\centering
+			\caption{Dueling Network architecture}		
+			\label{fig: Dueling Network approximate Q}
+		\end{figure}
+		
+		\item Noisy net:
+		Replace the parameters of the Neural Network with the mean and standard deviation
+		\begin{equation}
+			\theta = \mu + \sigma \pdot \bzeta, 
+		\end{equation}
+		where  $\pdot$ is the element-wise product, $\bzeta$ is random noise following standard normal distribution $\mathcal{N}(0,1)$; $\mu$ and $\sigma$ are parameters to be learned. Thus the parameters of noisy network is doubled.
+		The adding noise will contribute to the exploration and robustness of the result. 
+		Based on the previous algorithm of DQN \ref{alg: DQN}, the modifications are the following:
+		
+		\noindent\begin{minipage}{0.95\textwidth}
+			\begin{algorithm}[H]
+				\caption{Deep Q Network(DQN) with Noisy Net Training}
+				\label{alg: DQNwithNoisyNet}
+				\KwIn{The decision process model MDP $\{\mathbb{S},\mathbb{A},\mathbf{T},\mathbf{r},\gamma\}$, or POMDP $\{\mathbb{S}, \mathbb{A}, \mathbb{O},\mathbf{T},\mathbf{r},\mathbf{O},\gamma\}$ }
+				\KwOut{The optimal state-action value function $Q(s,a)$}
+				Collect the training data: 
+				Use any policy (e.g. here we can directly use the noisy DQN) to interact with the environment and get many trajectories( where each trajectory consists of the following elements $s_1,a_1,r_1,\cdots,s_T,a_T,r_T$): 
+				\begin{equation}
+					a_t =	\argmax_{a_t}Q(s_t,a_t,\bzeta;\muQ,\sigmaQ)
+				\end{equation}
+				Store the most recent $10^4$ most recent $(s,a,r,s_{t+1})$tuples in the replay buffer;
+				
+				Update the parameters $\muQ, \sigmaQ$:\
+				
+				\Repeat{$\thetaQ $ converges
+				}
+				{Select one four-tuple from the replay buffer based on priortized experience replay;
+					
+					TD target $\hat{y}_t = r_t + \gamma \max_{a_{t+1}\in \mathbb{A}}Q(s_{t+1},a_{t+1},\bzeta;\muQ,\sigmaQ)$;
+					
+					TD error  $\delta_t = Q(s_t,a_t,\bzeta;\muQ,\sigmaQ) - \hat{y}_t$;
+					\begin{equation}
+						\begin{cases}
+							\muQ &\leftarrow \muQ - \alpha_{\mu} \delta_t \cdot \bnabla_{\muQ}Q(s_t,a_t,\bzeta;\muQ,\sigmaQ) \\
+							\sigmaQ &\leftarrow \sigmaQ - \alpha_{\sigma} \delta_t \cdot \bnabla_{\sigmaQ}Q(s_t,a_t,\bzeta;\muQ,\sigmaQ)
+						\end{cases}
+					\end{equation}
+				}
+			\end{algorithm}
+		\end{minipage}
+		After training, we will use the trained network to make decisions. At this stage, no noise is necessary and the noisy network becomes standard DQN
+		\begin{equation}
+			Q(s,a,\bzeta;\muQ,\sigmaQ=\bm{0}) = Q(s,a;\muQ)
+		\end{equation}
+	\end{itemize}
+	\subsection{Deep Policy Gradients}
+	\begin{figure}[h]
+		\includegraphics[scale = 1
+		]{figures/RPimages/PolicyNetwork}
+		\centering
+		\caption{NN approximates $\pi(a_t|s_t)$}		
+		\label{fig: NNapproximate Pi}
+	\end{figure}
+	Commonly used policy gradients algorithms are REINFORCE and Actor Critic. Actor-Critic method shown in the Figure \ref{fig: NNapproximate AC} and its advanced version like Advantage Actor-Critic (A2C). When it comes to multi-agent actor critic training algorithm, the so-called  Asynchronous Advantage Actor-Critic (A3C) is used very often. 
+	
+	\begin{figure}[h]
+		\includegraphics[scale = 0.9
+		]{figures/RPimages/ActorCritic}
+		\centering
+		\caption{Actor Critic Neural Network architecture}		
+		\label{fig: NNapproximate AC}
+	\end{figure}
+	
+	\subsubsection{Actor-Critic Algorithm}
+	Here is the basic training process of Actor-Critic is the following:
+	
+	\noindent\begin{minipage}{0.95\textwidth}
+		\begin{algorithm}[H]
+			\caption{Actor-Critic(AC)}\label{alg: AC}
+			\KwIn{The decision process model MDP $\{\mathbb{S},\mathbb{A},\mathbf{T},\mathbf{r},\gamma\}$, or POMDP $\{\mathbb{S}, \mathbb{A}, \mathbb{O},\mathbf{T},\mathbf{r},\mathbf{O},\gamma\}$ }
+			\KwOut{The optimal state-action-policy value function $Q^{\pi}(s,a)$ and the policy function $\pi(a|s)$}
+			Initialize the policy network and the value network randomly as $\pi(s,a,\thetapi)$ and $q(s,a;\thetaQpi)$;
+			\Repeat{$q(s,a;\thetaQpi) $ and $\pi(a|s;\thetapi)$ converges
+			}
+			{Take action according to policy network $a_t = \pi(\cdot|s_t;\thetapi)$ and perform action $a_t$;
+				
+				Observe the reward $r_t = r(s_t,a_t)$ and the new state $s_{t+1}$ from the environment;
+				
+				Take action according to policy network $\tilde{a}_{t+1} = \pi(\cdot|s_{t+1};\thetapi)$ but not perform action $\tilde{a}_{t+!}$;
+				
+				Use the value network to evaluate the two time steps:
+				\begin{equation}
+					\begin{cases}
+						\hat{q}_t &= q(s_t,a_t;\thetaQpi)\\
+						\hat{q}_{t+1} &= q(s_{t+1},\tilde{a}_{t+1};\thetaQpi)
+					\end{cases}
+				\end{equation}
+				
+				Calculate TD target and TD error
+				\begin{equation}
+					\begin{cases}
+						\hat{y}_t &= r_t +\gamma \hat{q}_{t+1} \\ 
+						\delta_t &= \hat{q}_t - \hat{y}_t
+					\end{cases}
+				\end{equation}
+				
+				Update the parameters
+				\begin{equation}
+					\begin{cases}
+						\thetaQpi &\leftarrow \thetaQpi - \alpha \cdot \delta_t \cdot \bnabla_{\thetaQpi}q(s_t,a_t;\thetaQpi) \\
+						\thetapi &\leftarrow \thetapi - \beta \cdot \hat{q}_t \cdot \bnabla_{\thetapi}\ln\pi(a_t|s_t;\thetapi)
+					\end{cases}
+				\end{equation}
+			}
+		\end{algorithm}
+	\end{minipage}
+	
+	To alleviate the bootstrapping problem of time difference algorithm, we can also introduce a target value network separately to calculate TD target $q(s,a;\thetaQpiminus)$, then the Actor Critic C algorithm \ref{alg: AC} becomes:
+	
+	\noindent\begin{minipage}{0.95\textwidth}
+		\begin{algorithm}[H]
+			\caption{Actor-Critic(AC) with target network}\label{alg: ACwithTargetNetwork}
+			\KwIn{The decision process model MDP $\{\mathbb{S},\mathbb{A},\mathbf{T},\mathbf{r},\gamma\}$, or POMDP $\{\mathbb{S}, \mathbb{A}, \mathbb{O},\mathbf{T},\mathbf{r},\mathbf{O},\gamma\}$ }
+			\KwOut{The optimal state-action-policy value function $Q^{\pi}(s,a)$ and the policy function $\pi(a|s)$}
+			Initialize the policy network and the value network randomly as $\pi(s,a,\thetapi)$  $q(s,a;\thetaQpi)$, and the target value network $q(s,a;\thetaQpiminus)$;
+			
+			\Repeat{$Q(s,a;\thetaQpi) $ and $\pi(a|s;\thetapi)$ converges
+			}
+			{Take action according to policy network $a_t = \pi(\cdot|s_t;\thetapi)$ and perform action $a_t$;
+				
+				Observe the reward $r_t = r(s_t,a_t)$ and the new state $s_{t+1}$ from the environment;
+				
+				Take action according to policy network $\tilde{a}_{t+1} = \pi(\cdot|s_{t+1};\thetapi)$ but not perform action $\tilde{a}_{t+!}$;
+				
+				Use the value network to evaluate the two time steps:
+				\begin{equation}
+					\begin{cases}
+						\hat{q}_t &= q(s_t,a_t;\thetaQpi)\\
+						\hat{q}_{t+1} &= q(s_{t+1},\tilde{a}_{t+1};\thetaQpiminus)
+					\end{cases}
+				\end{equation}
+				
+				Calculate TD target and TD error
+				\begin{equation}
+					\begin{cases}
+						\hat{y}_t &= r_t +\gamma \hat{q}_{t+1} \\ 
+						\delta_t &= \hat{q}_t - \hat{y}_t
+					\end{cases}
+				\end{equation}
+				
+				Update the parameters
+				\begin{equation}
+					\begin{cases}
+						\thetapi &\leftarrow \thetapi - \beta \cdot \hat{q}_t \cdot \bnabla_{\thetapi}\ln\pi(a_t|s_t;\thetapi)\\
+						\thetaQpi &\leftarrow \thetaQpi - \alpha \cdot \delta_t \cdot \bnabla_{\thetaQ}Q(s_t,a_t;\thetaQpi) \\
+						\thetaQpiminus &\leftarrow \tau \cdot \thetaQpi + (1-\tau) \thetaQpiminus,
+					\end{cases}
+				\end{equation}
+				where $\tau \in (0,1)$
+			}
+		\end{algorithm}
+	\end{minipage}
+	\subsubsection{Advantage Actor-Critic (A2C) Algorithm}
+	\noindent\begin{minipage}{0.95\textwidth}
+		\begin{algorithm}[H]
+			\caption{Advantage Actor-Critic(A2C) with target network}\label{alg: A2C}
+			\KwIn{The decision process model MDP $\{\mathbb{S},\mathbb{A},\mathbf{T},\mathbf{r},\gamma\}$, or POMDP $\{\mathbb{S}, \mathbb{A}, \mathbb{O},\mathbf{T},\mathbf{r},\mathbf{O},\gamma\}$ }
+			\KwOut{The optimal state-action-policy value function $V^{\pi}(s,a)$ and the policy function $\pi(a|s)$}
+			Initialize the policy network and the value network randomly as $\pi(s,a,\thetapi)$  $v(s;\thetaVpi)$, and the target value network $v(s;\thetaVpiminus)$;
+			
+			\Repeat{$Q(s,a;\thetaQ) $ and $\pi(a|s;\thetapi)$ converges
+			}
+			{Take action according to policy network $a_t = \pi(\cdot|s_t;\thetapi)$ and perform action $a_t$;
+				
+				Observe the reward $r_t = r(s_t,a_t)$ and the new state $s_{t+1}$ from the environment;
+				
+				Take action according to policy network $\tilde{a}_{t+1} = \pi(\cdot|s_{t+1};\thetapi)$ but not perform action $\tilde{a}_{t+!}$;
+				
+				Use the value network to evaluate the two time steps:
+				\begin{equation}
+					\begin{cases}
+						\hat{v}_t &= v(s_t,a_t;\thetaVpi)\\
+						\hat{v}_{t+1} &= v(s_{t+1},\tilde{a}_{t+1};\thetaVpiminus)
+					\end{cases}
+				\end{equation}
+				
+				Calculate TD target and TD error
+				\begin{equation}
+					\begin{cases}
+						\hat{y}_t &= r_t +\gamma \hat{v}_{t+1} \\ 
+						\delta_t &= \hat{q}_t - \hat{y}_t
+					\end{cases}
+				\end{equation}
+				
+				Update the parameters
+				\begin{equation}
+					\begin{cases}
+						\thetaVpi &\leftarrow \thetaVpi - \alpha \cdot \delta_t \cdot \bnabla_{\thetaVpi}v(s_t;\thetaVpi) \\
+						\thetapi &\leftarrow \thetapi - \beta \cdot \delta_t \cdot \bnabla_{\thetapi}\ln\pi(a_t|s_t;\thetapi)\\
+						\thetaVpiminus &\leftarrow \tau \cdot \thetaVpi + (1-\tau) \thetaVpiminus,
+					\end{cases}
+				\end{equation}
+				where $\tau \in (0,1)$
+			}
+		\end{algorithm}
+	\end{minipage}
+	\subsubsection{Asynchronous Advantage Actor Critic (A3C) Algorithm}
+	A3C is the parallel computing based on A2C. Parallel gradient descent
+	
+	\subsection{Multi-agent Actor Critic(MAC)}
+	When there are multiple agents in the environment e.g. there are $m$ components in the system and $n$ control units, the system state is determined by components state $\bs_t = \{s_t^{j}\}_{j=1}^m$. And the final action is also a combination of all control units $\ba_t = \{a_t^{i}\}_{i=1}^n$. 
+	
+	Depends on the relationship of all components, there are typically four assumptions: fully cooperative mode, fully competitive mode, mixed cooperative $\&$ competitive and self-interested. 
+	\subsubsection{Fully cooperative mode}
+	In fully cooperative assumption, the reward , return, value are the same for all agents.  
+	All agent uses one same value network 
+	
+	\subsubsection{Deep Centralized Multi-agent Actor Critic (DCMAC)}
+	Deep Centralized Multi-agent Actor Critic Architecture \cite{andriotis2019managing} is shown in Figure \ref{fig: DCMAC}:
+	\begin{figure}[h]
+		\includegraphics[scale = 0.8
+		]{figures/RPimages/DCMAC}
+		\centering
+		\caption{Deep Centralized Multi-agent Actor Critic Neural Network architecture}		
+		\label{fig: DCMAC}
+	\end{figure}
+	
+	\subsubsection{Deep Decentralized Multi-agent Actor Critic (DDMAC)}
+	Deep Decentralized Multi-agent Actor Critic Architecture \cite{andriotis2021deep} is shown in Figure \ref{fig: DDMAC}:
+	\begin{figure}[h]
+		\includegraphics[scale = 0.8
+		]{figures/RPimages/DDMAC}
+		\centering
+		\caption{Deep Decentralized Multi-agent Actor Critic Neural Network architecture}		
+		\label{fig: DDMAC}
+	\end{figure}
+	\subsubsection{Hierarchical Resource Allocation and Continuous-control Reinforcement Learning}
+	Hierarchical Resource Allocation and continuous-control reinforcemnt learning \cite{andriotis2023structural}
+	
+	\section{Partially Observable Markov Decision Process}
+	
+	\subsection{Basic Formulation and terminology}
+	
+		Based on the Markov Decision Process (MDP), the Partially Observable MDP can not fully observe the state, but instead, obtain some observation of the state. Thus we need to add observation space $\mathbb{O}$ and observation model $P(o_t|s_t,a_{t-1})$ in the original MDP. It can be written a 7-tuple $\{\mathbb{S},\mathbb{A},\mathbb{O},\mathbf{T},\mathbf{R},\mathbf{O},\gamma\}$. The sequential Probabilistic Grphical Model of POMDP is shown in Figure \ref{fig: POMDPDiagramSequential}. The shaded round node denoting the state variable is not directly observable, but a hidden variable. 
+	
+	
+	A Markov Decision Process shows the markovian property, where the next state $s_{t+1}$ can be predicted just based on the current state $s_t$ and action $a_t$, regardless of the whole past history $s_{0:t},a_{0:t}$\footnote{$s_{0:t}$ is a short notation of $s_0,s_1,\cdots,s_t$ and $a_{0:t}$ a short notation of $a_0,a_1,\cdots,a_t$}. In other words, $s_t,a_t$ already contains all the information needed to predict the next state $s_{t+1}$.
+	
+	But for Partially observable MDP, just the current observation $o_t$ and the current action $a_t$ could not provide all of the necessary information needed to make decisions. e.g. the Tiger problem,, we could not confidently choose the side when hearing the sound once behind another door. The whole history $o_{0:t}$ are necessary for making decisions.
+	
+	\begin{figure}[h]
+		%\includesvg{RPimages/SHMOverviewSVG.svg}
+		\includegraphics[width=1.0\textwidth
+		]{figures/POMDPImage/POMDPDiagram}
+		\centering
+		\caption{Probabilistic Graphical Model of Partially Observable Markovian Decision Process defined in State Space}		
+		\label{fig: POMDPDiagramSequential}
+	\end{figure}
+	
+	
+	\subsubsection{Belief Space $\mathbb{B}$}
+	To implement those methods for solving MDP in solving POMDP, we can introduce the belief of the state variable, which is the probability distribution over the whole state space. to transfer the POMDP as a belief-MDP. 
+	\begin{equation}
+		b_t(s) \defeq P(S_t = s|o_{1:t},a_{0:t-1}) 
+	\end{equation}
+	$\bb_t \in \mathbb{B} $ is the our believed-disctribution of all possible state variables based on all history observations and actions until time $t$. The dimension of the belief state space is dependent on the original state space $\mathbb{S}$
+	
+	\begin{itemize}
+		\item For discrete state space, the belief $\bb$ is the Probability Mass Function (PMF). If the discrete state has $N$ possible values, then the belief state $\bb_t$ is a point in the $(N-1)$-simplex $\Delta^{N-1}$. The definition of a simplex is 
+		\begin{equation}
+			\Delta^{N-1} = \left\{(p_1,p_2,\cdot,p_N) \in \mathbb{R}^N \Bigg| p_i > 0 \ \forall i \textsf{ and } \sum_{i=1}^N p_i = 1 \right\}
+		\end{equation}
+		
+		\begin{itemize}
+			\item if $N = 2$, where the original state space is a 2D space, the belief state $\bb_t$ is a point on a line between $(1,0)$ and $(0,1)$, e.g. $\bb_t=(0.4,0.6)$ ;
+			\item if $N = 3$, where the original state space is a 3D space, the belief state $\bb_t$ is a point on a triangle between  $(1,0,0)$, $(0,1,0)$ and $(0,0,1)$, e.g.$\bb_t=(0.3,0.2,0.5)$ 
+		\end{itemize}
+		\item For continuous state space, the belief $\bb$ is the Probability Density Function (PDF). If there are more than one chosen state variables are continuous, the belief of those states are also the joint PDF. In real life application, Under some assumptions, if we could parameterize the PDF, then the number of parameters determine the dimension of the belief space.
+		\begin{itemize}
+			\item 	If we assume the Multi-gaussian Distribution for these $d_{\mathbb{S}}$ continuous state variables, for every continuous state variables, we have the mean and standard deviation to describe them. Considering also the correlation between those variables.  The total number of parameters is calculated as:
+			\begin{equation}
+				d_{\mathbb{B}}= d_{\mathbb{S}} + \frac{d_{\mathbb{S}}(d_{\mathbb{S}} + 1)}{2}
+			\end{equation}
+			\item If we assuem the Gaussian Mixture Distribution for these $d_{\mathbb{S}}$ continuous state variables, the number of parameters is calculated as
+			\begin{equation}
+				d_{\mathbb{B}}= K(d_{\mathbb{S}} + \frac{d_{\mathbb{S}}(d_{\mathbb{S}} + 1)}{2}+1) -1
+			\end{equation}
+			
+		\end{itemize}
+		
+	\end{itemize}
+	
+	$\bb_t$ contains the probability of the whole state space.
+	
+	For discrete state variables, $\bb_t$
+	$\bb_t$ denotes the probability density function 
+	
+	
+	\subsubsection{Belief Update Rule}
+	The belief $\bb_t$ is our current guess of the state distributions based on the information we have until time $t$, it is not stationary, and it will update dynamically when we perform new actions $a_t$ and the new observation $o_{t+1}$. If we have performed action $a_t$ and obtained the new observation $o_{t+1}$, how to update our belief $\bb_{t+1}$?
+	\begin{equation}
+		\label{eqn: BeliefUpdate}
+		b_{t+1}(s_{t+1}) \defeq P(S_{t+1} = s_{t+1}\big| o_{t+1},a_t,\bb_t) = \frac{P(O_{t+1}=o_{t+1}
+			\big|s_{t+1},a_t,\bb_t) P(S_{t+1}=s_{t+1}\big|a_t,\bb_t)}{P(O_{t+1}=o_{t+1}\big|a_t,\bb_t)}
+	\end{equation}
+	where 
+	\begin{itemize}
+		\item $P(O_{t+1}=o_{t+1}\big|s_{t+1},a_t,\bb_t) = P(O_{t+1}=o_{t+1}\big|s_{t+1},a_t) $, which is the observation model defined in POMDP
+		\item $P(S_{t+1}=s_{t+1}\big|a_t,\bb_t) = \int_{s_t \in \mathbb{S}} P(S_{t+1}=s_{t+1}\big|s_t,a_t)\bb_t(s_t)ds_t$
+		\item $P(O_{t+1}=o_{t+1}\big|a_t,\bb_t) = \int_{s_{t+1} \in \mathbb{S}}P(O_{t+1} = o_{t+1}\big|s_{t+1},a_t) \int_{s_t\in \mathbb{S}}P(S_{t+1} =s_{t+1}\big|s_t,a_t) \bb_t(s_t)ds_t ds_{t+1}$
+	\end{itemize}
+	
+	Then the simplified Belief Update equation becomes
+	
+	\begin{equation}
+		\label{eqn: BeliefUpdateSimplified}
+		b_{t+1}(s_{t+1}) \defeq P(s_{t+1}\big| o_{t+1},a_t,\bb_t) = \frac{P(o_{t+1}
+			\big|s_{t+1},a_t) P(s_{t+1}\big|a_t,\bb_t)}{P(o_{t+1}\big|a_t,\bb_t)}
+	\end{equation}
+	
+	
+	
+	\subsubsection{Belief-MDP}
+	
+	After introducing the belief, the POMDP becomes the Belief-MDP shown in Figure \ref{fig: BeliefMDPDiagramSequential}, since the next belief state $\bb_{t+1}$ is only dependent on the curretn belief state $\bb_t$ and current action $a_t$. The belief state transition model can be derived from the above belief update formular:
+	\begin{equation}
+		P(\bb_{t+1}\big|\bb_t,a_t) = \int_{o_{t+1} \in \mathbb{O}} P(\bb_{t+1}\big| \bb_{t},a_t,o_{t+1}) P(o_{t+1}\big|\bb_t,a_t)do_{t+1}
+	\end{equation}
+	\begin{equation}
+		P(\bb_{t+1}\big|\bb_t,a_t) = \sum_{o_{t+1} \in \mathbb{O}} P(\bb_{t+1}\big| \bb_{t},a_t,o_{t+1}) P(o_{t+1}\big|\bb_t,a_t)
+	\end{equation}	 
+	
+	\begin{figure}[h]
+		%\includesvg{RPimages/SHMOverviewSVG.svg}
+		\includegraphics[width=1.4\textwidth
+		]{figures/POMDPImage/BeliefMDPDiagram}
+		\centering
+		\caption{Probabilistic Graphical Model of Partially Observable Markovian Decision Process defined in Belief Space}		
+		\label{fig: BeliefMDPDiagramSequential}
+	\end{figure}
+	\subsubsection{Observation Model of Belief-MDP $P(o_{t+1}|\bb_t,a_t)$}
+	\begin{itemize}
+		\item For continuous State space
+		\begin{equation}
+			P(o_{t+1}|\bb_t,a_t) = \int_{s_{t+1}\in \mathbb{S}}P(o_{t+1}|s_{t+1},a_t)\int_{s_t\in \mathbb{S}}P(s_{t+1}|s_t,a_t)b_t(s_t) ds_t ds_{t+1}
+		\end{equation}
+		\item For discrete State space
+		\begin{equation}
+			P(o_{t+1}|\bb_t,a_t) = \sum_{s_{t+1}\in \mathbb{S}}P(o_{t+1}|s_{t+1},a_t)\sum_{s_t\in \mathbb{S}}P(s_{t+1}|s_t,a_t)b_t(s_t)
+		\end{equation}
+	\end{itemize}
+	\subsubsection{State Transition Model of Belief-MDP $\mathbf{T}_{belief}$}
+	\begin{itemize}
+		\item For continuous Observation space
+		\begin{equation}
+			P(\bb_{t+1}|\bb_t,a_t) = \int_{o_{t+1}\in \mathbb{O}}P(\bb_{t+1}|\bb_t,a_t,o_{t+1})P(o_{t+1}|\bb_t,a_t)do_{t+1}= \int_{o_{t+1}\in \mathbb{O}}P(o_{t+1}|\bb_t,a_t)do_{t+1}
+		\end{equation}
+		\item For discrete Observation space
+		\begin{equation}
+			P(\bb_{t+1}|\bb_t,a_t) = \sum_{o_{t+1}\in \mathbb{O}}P(\bb_{t+1}|\bb_t,a_t,o_{t+1})P(o_{t+1}|\bb_t,a_t)= \sum_{o_{t+1}\in \mathbb{O}}P(o_{t+1}|\bb_t,a_t)
+		\end{equation}
+	\end{itemize}
+	
+	
+	
+	
+	\subsubsection{Reward Model of Belief-MDP $\mathbf{R}_{belief}$}
+	If we consider determnistic reward model, $\mathbf{R}_{belief} = P(r_{t+1}|a_t,\bb_t)$ can be written as $\mathbf{R}_{belief} = r_{belief}(a_t,\bb_t)$
+	\begin{itemize}
+		\item For continuous Observation space
+		\begin{equation}
+			r_{belief}(a_t,\bb_t)= \int_{s_{t}\in \mathbb{S}}r(a_t,s_t)b_t(s_t)
+		\end{equation}
+		\item For discrete Observation space
+		\begin{equation}
+			r_{belief}(a_t,\bb_t) = \sum_{s_{t}\in \mathbb{S}}r(a_t,s_t)b_t(s_t)
+		\end{equation}
+	\end{itemize}
+	
+	\subsubsection{The cumulative weighted total return $ U^{\pi}(\bb_t,a_t,\cdots,\bb_T,a_T) $}
+	
+	\textbf{The cumulative weighted total reward} is now a function of all the belief states and actions from time $t$ when taking a policy $\pi$:
+	\begin{equation}
+		U_t^{\pi} = U^{\pi}(\bb_t,a_t,\cdots,\bb_T,a_T) =  \sum_{i=t}^T \gamma^{i-t} r_{belief}(a_i,\bb_i) 
+	\end{equation}
+	where the discount factor $\gamma \in [0,1]$: weighting the relative importance of the current reward against the future reward. In extreme cases when $\gamma = 0$, means only the current reward matters.
+	\subsubsection{The State-Action Value Function $\Qpi(\bb_t,a_t)$}
+	\textbf{The State-Action value function $\Qpi(\bb_t,a_t)$} describes the value of the policy $\pi$ given a State-Action Pair $\Qpi(\bb_t,a_t)$. 	It is a meassure of the State-Action pair at time step $t$ and the policy $\pi$ from time step $t+1$. That is why we need to reduce all the  randomness from all the future state and future action.
+	
+	The value of taking an action $a_t$ at the state $\bb_t$ and using the strategy $\pi$ for the rest of time span until T is calculated by the expectation of all the state and actions from time $t$ to $T$. s
+	\begin{equation}
+		\Qpi(\bb_t,a_t) = \mathbb{E}_{\bB_{i>t}\sim \bT_{belief},A_{i>t}\sim \pi}\left[U^{\pi}(\bb_t,a_t,\bB_{t+1},A_{t+1},\cdots,\bB_T,A_T)|\bb_t,a_t\right]
+	\end{equation}
+	where $\bT_{belief} = P(\bb_{t}|\bb_{t-1},a_{t-1})$ is the transition probability distribution of state $\bb_{t}$ and $\pi$ is the probability of action (aka. the stochastic policy).
+	\subsubsection{The State Value Function $\Vpi(\bb_t)$}
+	
+	\textbf{The State Value Function $\Vpi(\bb_t)$} is a measure of the value of current state $\bb_t$ and that is why we need to further eliminate the randomness of action at time $A_t$.
+	
+	The value of a state $\bb_t$ when taking a policy from this time step $t$ until the rest of the time span can be expressed by the expected total return, mathematically written as:
+	\begin{subequations}
+		\begin{align}
+			\Vpi (\bb_t) &= \mathbb{E}_{A_t \sim \mu} \left[\Qpi(\bb_t,A_t)\right]\\
+			&=  \mathbb{E}_{\bB_{i>t}\sim \bT_{belief},A_{i>t} \sim \pi,A_t \sim \mu}\left[U^{\pi}(\bb_t,A_t,\cdots,\bb_T,A_T)|\bb_t,a_t\right]\\
+			&= \mathbb{E}_{\bB_{i>t}\sim \bT_{belief},A_{i>t} \sim \pi}\left[U^{\pi}(\bb_t,a_t,\cdots,\bB_T,A_T)\right]\\
+			&= \mathbb{E}_{\bB_{i>t}\sim \bT_{belief},A_{i>t} \sim \pi}\left[\sum_{i=t}^T\gamma^{i-t}r_{belief}(a_i,\bb_i)  \bigg|\bb_t\right] ,
+		\end{align}
+	\end{subequations}
+	where $\mu$ shows the probability distribution of $a_t$ at time $t$ specifically, which is not necessarily equal to the policy $\pi$ chosen to taken actions from time $t+1$ on.
+	
+	\subsubsection{The Optimal State Action Value Function $\Qstar(\bb_t,a_t)$}
+	The Optimal State Action Value function $\Qstar(\bb_t,a_t)$ is a meassure of values of the current state-action pair $\bb_t$. Based on the State Action Value function $\Qpi(\bb_t.a_t)$ we need to further eliminate the randomness of the policy $\pi$:
+	\begin{equation}
+		\Qstar(\bb_t,a_t) = \max_{\pi} \mathbb{E}_{\bB_{i>t}\sim \bT_{belief}}\left[\sum_{i=t}^T\gamma^{i-t}r_{belief}(a_i,\bb_i) \bigg|\bb_t,a_t\right]
+	\end{equation}
+	
+	\subsubsection{The Optimal State Value Function $V^{\star}(\bb_t)$}
+	The Optimal State Value function $\Vstar(\bb_t)$ is a meassure of values of the current state $\bb_t$ only. Based on the State Value function $\Vpi(\bb_t)$ we need to further eliminate the randomness of the policy $\pi$:
+	\begin{equation}
+		\Vstar(\bb_t) = \max_{\pi} \mathbb{E}_{\bB_{i>t}\sim \bT_{belief}}\left[\sum_{i=t}^T\gamma^{i-t}r_{belief}(a_i,\bb_i) \bigg|\bb_t\right]
+	\end{equation}
+	\subsubsection{The Optimal State Action Value Function $\Vstar(\bb_t)$}
+	Bellman Equation for Optimal State Value Function $\Vstar(\bb_t)$ is also known as Optimal Bellman Equation.
+	
+	Under standard conditions for discounted MDPs, out of all possible policies there existes at least one deterministic policy that is optimal, maximizing the value of state $\Vpi(\bb_t)$.
+	For a deterministic policy, with a given transition probability $P(\bb_{t+1}|\bb_t,a_t)$, the optimal state-action value function is denoted as $\Qstar(\bb_t,a_t)$ and the optimal state value function is denoted as $\Vstar(\bb_t)$.
+	
+	The optimal Bellman equation of the state value function is
+	\begin{subequations}
+		\label{eqn: MaxValueOfBeliefState}
+		\begin{align}
+			\Vstar(\bb_t) &= \max_{a_t \in \mathbb{A}} \Qstar(\bb_t,a_t)\\
+			&= \max_{a_t \in \mathbb{A}}   \mathbb{E}_{\bB_{t+1}\sim \bT_{belief}} \left(r_{belief}(\bb_t,a_t,\bB_{t+1})+ \gamma \Vstar(\bb_{t+1})\right) \\
+			&=  \max_{a_t \in \mathbb{A}}  \int_{\bb_{t+1} \in \mathbb{B}}P(\bb_{t+1}|\bb_t,a_t) \left(r_{belief}(\bb_t,a_t,\bB_{t+1})+ \gamma \Vstar(\bb_{t+1})\right)d\bb_{t+1}
+		\end{align}
+	\end{subequations}
+	
+	with the simplification of $r_{belief}(\bb_t,a_t,\bb_{t+1}) = r_{belief}(\bb_t,a_t)$, we can write the above optimal Bellman equation as
+	
+	
+	\begin{subequations}
+		\label{eqn:BellmanEqnOptimalValueFunctionforBeliefState}
+		\begin{align}
+			\Vstar(\bb_t) &= \max_{a_t \in \mathbb{A}} \left\{r_{belief}(\bb_t,a_t) + \gamma \mathbb{E}_{\bB_{t+1}\sim \bT_{belief}}\left[\Vstar(\bb_{t+1})\right]\right\}  \\
+			&= \max_{a_t \in \mathbb{A}} \left\{r_{belief}(\bb_t,a_t) + \gamma \int_{\bb_{t+1}\in \mathbb{B}}P(\bb_{t+1}|\bb_t,a_t)\Vstar(\bb_{t+1})d\bb_{t+1}\right\}\\
+			&= \max_{a_t \in \mathbb{A}} \left\{ \sum_{s_{t}\in \mathbb{S}}r(a_t,s_t)b_t(s_t)+ \gamma \sum_{o_{t+1}\in \mathbb{O}}P(o_{t+1}|\bb_t,a_t)\Vstar(\bb_{t+1})\right\}
+		\end{align}
+	\end{subequations}
+	
+	The optimal state-value function is defined over the continuous space of the belief simplex $\mathbb{B}$, which essentially consists of an infinite number of beliefs. However, it has been proven that the optimal value function is piece-wise linear and convex, and can thus be described by a finite number of affine hyperplanes. This important result reduces the decision problem to determining a finite set of vectors, also known as the $\hat{\alpha}-$vectors:
+	
+	\begin{equation}
+		\label{eqn:OptimalValueFunctionAffineHyperplaneRepresentation}
+		\Vstar(\bb) = \max_{\hat{\alpha}\in \Gamma}\sum_{s\in\mathbb{S}}b(s)\hat{\alpha}(s),
+	\end{equation}
+	where $\Gamma$ is the set comprising all $\alpha-$vectors. 
+	After substituting the \eqref{eqn:OptimalValueFunctionAffineHyperplaneRepresentation} for $\Vstar(\bb_{t+1})$into \eqref{eqn:BellmanEqnOptimalValueFunctionforBeliefState}, we could get:
+	\begin{equation}
+		\Vstar(\bb_t) = \max_{a_t\in\mathbb{A}}\left[\sum_{s_t\in\mathbb{S}}b_t(s_t)r(a_t,s_t)+\gamma \sum_{o_{t+1} \in \mathbb{O}}P(o_{t+1}|\bb_t,a_t)\max_{\hat{a}\in \Gamma}\sum_{s_{t+1}\in \mathbb{S}}b_{t+1}(s_{t+1})\hat{\alpha}(s_{t+15})\right] 
+	\end{equation}
+	Considering the belief update formular in \eqref{eqn: BeliefUpdate} $b_{t+1}(s_{t+1}) \defeq P(s_{t+1}|o_{t+1},a_t,\bb_t) = \frac{P(o_{t+1}
+		|s_{t+1},a_t) P(s_{t+1}|a_t,\bb_t)}{P(o_{t+1}|a_t,\bb_t)}$
+	
+	
+	\begin{equation}
+		\Vstar(\bb_t) = \max_{a_t\in\mathbb{A}}\left[\sum_{s_t\in\mathbb{S}}b_t(s_t)r(a_t,s_t)+\gamma \sum_{o_{t+1} \in \mathbb{O}}P(o_{t+1}|\bb_t,a_t)\max_{\hat{a}\in \Gamma}\sum_{s_{t+1}\in \mathbb{S}}\frac{P(o_{t+1}
+			\big|s_{t+1},a_t) P(s_{t+1}\big|a_t,\bb_t)}{P(o_{t+1}\big|a_t,\bb_t)}\hat{\alpha}(s_{t+1})\right] 
+	\end{equation}
+	After rearanging the terms, we could get
+	\begin{equation}
+		\Vstar(\bb_t) = \max_{a_t\in\mathbb{A}}\left[\sum_{s_t\in\mathbb{S}}b_t(s_t)r(a_t,s_t)+\gamma \sum_{o_{t+1} \in \mathbb{O}}\max_{\hat{a}\in \Gamma}\sum_{s_{t+1}\in \mathbb{S}}P(o_{t+1}
+		\big|s_{t+1},a_t) P(s_{t+1}\big|a_t,\bb_t)\hat{\alpha}(s_{t+1})\right] 
+	\end{equation}
+	Since $P(s_{t+1}\big|a_t,\bb_t) = \sum_{s_t \in \mathbb{S}} P(s_{t+1}\big|s_t,a_t)\bb_t(s_t)ds_t$ we could get 
+	
+	\begin{equation}
+		\Vstar(\bb_t) = \max_{a_t\in\mathbb{A}}\left[\sum_{s_t\in\mathbb{S}}b_t(s_t)r(a_t,s_t)+\gamma \sum_{o_{t+1} \in \mathbb{O}}\max_{\hat{a}\in \Gamma}\sum_{s_{t+1}\in \mathbb{S}}P(o_{t+1}
+		\big|s_{t+1},a_t)  \sum_{s_t \in \mathbb{S}} P(s_{t+1}\big|s_t,a_t)\bb_t(s_t)\hat{\alpha}(s_{t+1})\right] 
+	\end{equation}
+	
+	After arranging the sum order we could get
+	
+	\begin{equation}
+		\Vstar(\bb_t) = \max_{a_t\in\mathbb{A}}\left[\sum_{s_t\in\mathbb{S}}b_t(s_t)r(a_t,s_t)+\gamma \sum_{o_{t+1} \in \mathbb{O}}\max_{\hat{a}\in \Gamma} \sum_{s_t \in \mathbb{S}} \bb_t(s_t) \sum_{s_{t+1}\in \mathbb{S}}P(o_{t+1}
+		\big|s_{t+1},a_t) P(s_{t+1}\big|s_t,a_t)\hat{\alpha}(s_{t+1})\right] 
+	\end{equation}
+	
+	
+	\subsection{Algorithm to solve a Partially Observable Markov Decision Process}
+	
+	
+	
+	
+	
+	
+	
+	The theoretical foundations of this research are rooted in several key areas. \cite{johnson2018foundations} provided a comprehensive overview of the fundamental principles.
+	
+	\section{Common Implementations}
+	
+	Traditional methods have primarily focused on...
+	
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{lccc}
+			\toprule
+			Method & Accuracy & Complexity & Scalability \\
+			\midrule
+			Method A & 0.85 & O(n) & High \\
+			Method B & 0.92 & O($n^2$) & Medium \\
+			Method C & 0.78 & O($n log n$) & High \\
+			\bottomrule
+		\end{tabular}
+		\caption{Comparison of traditional methods}
+		\label{tab:traditional_methods}
+	\end{table}
+	
+	\section{Recent Advances}
+	
+	Recent developments in the field have introduced novel approaches...
+	
+	\subsection{Machine Learning Techniques}
+	
+	Deep learning methods have shown remarkable performance in various applications \cite{brown2021deeplearning}. The key architectures include:
+	
+	\begin{itemize}
+		\item \textbf{Convolutional Neural Networks (CNNs)}: Particularly effective for image processing...
+		\item \textbf{Recurrent Neural Networks (RNNs)}: Suitable for sequential data analysis...
+		\item \textbf{Transformer Networks}: Revolutionized natural language processing...
+	\end{itemize}
+	
+	\section{Research Gaps}
+	
+	Despite the significant progress, several research gaps remain:
+	
+	\begin{enumerate}
+		\item Limited studies addressing the scalability issues...
+		\item Inadequate consideration of real-world constraints...
+		\item Lack of comprehensive benchmarking across diverse datasets...
+	\end{enumerate}
+	
+\end{document}

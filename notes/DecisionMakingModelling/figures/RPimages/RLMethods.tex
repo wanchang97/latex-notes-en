@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+		
+		% Model-based RL Box
+		\node[draw, thick, rounded corners, fill=blue!5, text width=6cm, align=left] (modelbased) 
+		{
+			\textbf{Model-based RL} \\
+			\textit{Markov Decision Process} \\
+			$P(s', s, a)$ \\
+			\textbf{Policy Iteration} $\pi_\theta(s, a)$ \\
+			\textbf{Value Iteration} $V(s)$ \\
+			\\
+			\textbf{Dynamic programming \& Bellman optimality} \\
+			\textit{Nonlinear Dynamics} \\
+			$\frac{d}{dt}x = f(x(t), u(t), t)dt$ \\
+			Optimal Control \& HJB
+		};
+		
+		% Actor Critic Box (inside Model-based RL)
+		\node[draw, thick, rounded corners, fill=purple!10, right=of modelbased, xshift=-1cm, yshift=2cm, text width=2cm, align=center] (actorcritic) 
+		{Actor Critic};
+		
+		% Deep MPC Box (inside Model-based RL)
+		\node[draw, thick, rounded corners, fill=green!10, below=of actorcritic, yshift=-0.5cm, text width=2cm, align=center] (deepmpc) 
+		{Deep MPC};
+		
+		% Deep RL Box
+		\node[draw, thick, rounded corners, below=of modelbased, yshift=-1cm, fill=orange!10, text width=3cm, align=center] (deeprl) 
+		{Deep RL};
+		
+		% Learn a Model Arrow
+		\draw[thick, ->, bend left] (deeprl.west) to [out=180, in=-90] node[below, align=center] {Learn a Model!} (modelbased.south west);
+		
+		% Model-free RL Box
+		\node[draw, thick, rounded corners, fill=red!5, right=of modelbased, xshift=4cm, text width=6cm, align=left] (modelfree) 
+		{
+			\textbf{Model-free RL} \\
+			\textbf{Gradient free} \\
+			Off Policy \\
+			DQN, DDQN \\
+			Q Learning \\
+			On Policy \\
+			TD(0), TD($\infty$) $\equiv$ MC \\
+			TD-$\lambda$, SARSA \\
+			\textbf{Gradient based} \\
+			$\theta_{new} = \theta_{old} + \alpha \nabla_{\theta}R(\theta)$ \\
+			Policy Gradient Optimization
+		};
+		
+		% Deep Policy Network Box (inside Model-free RL)
+		\node[draw, thick, rounded corners, fill=purple!10, right=of modelfree, xshift=-2cm, yshift=-2cm, text width=3cm, align=center] (deepnetwork) 
+		{Deep Policy Network};
+		
+		% Arrows to indicate grouping
+		\draw[thick, blue] (modelbased.north west) rectangle (modelbased.south east);
+		\draw[thick, red] (modelfree.north west) rectangle (modelfree.south east);
+		
+	\end{tikzpicture}
+	
+\end{document}

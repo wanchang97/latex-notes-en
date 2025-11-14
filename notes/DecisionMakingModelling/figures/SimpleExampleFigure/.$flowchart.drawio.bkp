@@ -1,0 +1,40 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.0.6 Chrome/138.0.7204.100 Electron/37.2.3 Safari/537.36" version="28.0.6">
+  <diagram name="Page-1" id="s1ucvjpdrbhR52iQSJHN">
+    <mxGraphModel dx="1196" dy="503" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GFRqTiI3xBKmxRww3IPR-2" value="\(E_{t + \Delta t} = E_t + \Delta E_{natural}\),&amp;nbsp; if \(a_t == 0 \)&amp;nbsp;&lt;div&gt;\(E_{t+\Delta t} = E_t *1.2 \), if \(a_t == 1\)&lt;/div&gt;&lt;div&gt;\(E_{t+\Delta t} = E_0\) if \(a_t == 2\)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-65" y="120" width="290" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GFRqTiI3xBKmxRww3IPR-3" value="\(K_{t + \Delta t} =&amp;nbsp; \) &lt;b&gt;&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;assemble_K&lt;/font&gt;&lt;/b&gt;\((E_{t+\Delta t}, A_{t+\Delta t},L_e,N\))" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-200" y="210" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GFRqTiI3xBKmxRww3IPR-4" value="Static Analysis:&lt;div&gt;\(U_{t+\Delta t} = \) &lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;&lt;b&gt;Static_&lt;/b&gt;&lt;/font&gt;&lt;b&gt;&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;solve &lt;/font&gt;&lt;/b&gt;\((K_{t+\Delta t},F)\)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-200" y="290" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GFRqTiI3xBKmxRww3IPR-7" value="\(a_{t+\Delta t} = f(o_{0:t+\Delta t}) = \)&lt;b&gt;&lt;font style=&quot;color: rgb(255, 181, 112);&quot;&gt;NN&lt;/font&gt;&lt;/b&gt; \( (o_{0:t+\Delta t})\)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-30" y="450" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GFRqTiI3xBKmxRww3IPR-8" value="\(r_{t+\Delta t} = f(a_{t+\Delta t},o_{0:t+\Delta t})\)&lt;div&gt;&amp;nbsp;&lt;b&gt;&lt;font style=&quot;color: rgb(255, 181, 112);&quot;&gt;NN is trained to optimize the total weighted reward&lt;/font&gt;&lt;/b&gt;&amp;nbsp;\( R_t^{\pi}&amp;nbsp; = \sum_{i=t}^T \gamma^{i-t}r(o_i,a_i,o_{i+1}) \)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-170" y="530" width="525" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TKVBDIRg27_Jb6VfDS_I-1" value="\(\Delta E_{natural} = \) &lt;b&gt;&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;natural_deterioration_step&lt;/font&gt;&lt;/b&gt;\((t,\Delta t, \mu_A, \sigma_A, \mu_B,\sigma_B,\mu_w,\sigma_w,\lambda,\alpha,\beta)\)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-170" y="40" width="500" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Dutt7XBVDrG8iBe1wo8U-1" value="DSF =&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt; &lt;b&gt;DamageSensitiveFeature&lt;/b&gt;&lt;/font&gt;(acceleration time series data)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="100" y="370" width="370" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Dutt7XBVDrG8iBe1wo8U-3" value="Dynamic Analysis:&lt;div&gt;\(acc_{t+\Delta t} = \) &lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;&lt;b&gt;Dynamic_&lt;/b&gt;&lt;/font&gt;&lt;b&gt;&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;solve &lt;/font&gt;&lt;/b&gt;\((K_{t+\Delta t},M_{t + \Delta t},F_{t+\Delta t})\)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="100" y="290" width="370" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Dutt7XBVDrG8iBe1wo8U-4" value="Static Analysis:&lt;div&gt;\(O_{t+\Delta t} = (U_{t+\Delta t} + noise ) \) [mid_point]&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="-200" y="370" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qY6Iyi4oivOmKKabPU0p-1" value="\(M_{t + \Delta t} =&amp;nbsp; \) &lt;b&gt;&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;assemble_M&lt;/font&gt;&lt;/b&gt;\((\ \rho_{t+\Delta t} , A_{t+\Delta_t},L_e,N\))" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="210" width="370" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

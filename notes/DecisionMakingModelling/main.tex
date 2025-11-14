@@ -1,0 +1,55 @@
+% main.tex
+\documentclass[12pt,a4paper]{report}
+
+% 导入导言区设置
+\input{preamble}
+\addbibresource{DecisionMakingModeling.bib} 
+\title{Decision Making Modelling}
+\author{Wanchang ZHANG}
+\date{\today}
+
+\begin{document}
+	
+	% 封面页
+	\begin{titlepage}
+		\centering
+		\vspace*{2cm}
+		{\Huge\bfseries Decision Making Modelling\par}
+		\vspace{1cm}
+		{\Large Wanchang ZHANG\par}
+		\vspace{1.5cm}
+		{\Large A Summary of Decision Making Modelling\\Learning Note\par}
+		\vspace{2cm}
+		{\Large Bauhaus University Weimar\\Institute of Computational Mechanics\par}
+		\vspace{1cm}
+		{\large \today\par}
+	\end{titlepage}
+	
+	% 前置部分
+	\subfile{sections/abstract}
+	\subfile{sections/acknowledgements}
+	\subfile{sections/dedication}
+	
+	% 目录
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	
+	% 正文章节
+	%\subfile{chapters/01_SequentialDecisionMakingProblemFormulation}
+	\subfile{chapters/02_ReinforcementLearning}
+%	\subfile{chapters/03_ActiveInference}
+	\subfile{chapters/04_StructuralIntegrationManagement}
+%	\subfile{chapters/05_conclusion}
+	
+	% 参考文献
+	\printbibliography[heading=bibintoc]
+	%\bibliographystyle{plain}
+	%\bibliography{bibliography/references}
+	
+	% 附录
+	\appendix
+	\chapter{Additional Data}
+	% 附录内容...
+	
+\end{document}

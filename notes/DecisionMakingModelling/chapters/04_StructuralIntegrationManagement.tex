@@ -1,0 +1,206 @@
+% chapters/03_methodology.tex
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	
+	\chapter{Structural Integration Management}
+	\label{chap:StructuralIntegrationManagement}
+	\section{simple example}
+	Now we need to build the code block shown in the Figure \ref{fig: flowchart} to connect all the relevant functions.
+	\begin{figure}[h]
+		\includegraphics[scale = 0.9 
+		]{figures/SimpleExampleFigure/flowchart_Echanges}
+		\centering
+		\caption{Flowchart diagram}	
+		\label{fig: flowchart}
+	\end{figure}
+	In our code, we can also write the following blocks:
+
+	\subsection{Problem Formulation: 1D Beam with deteriorating stiffness}
+	
+	We model a 1D fixed-fixed beam under a point load at mid-span with a predefined geometry, Loading condition, boundary condition, material properties are summarized in the following Table \ref{table: ConfigurationBeam}:
+	
+	\begin{figure}[h]
+		\includegraphics[scale = 1 
+		]{figures/SimpleExampleFigure/1DBeamExample}
+		\centering
+		\caption{Geometrical Property of Steel Truss Bridge Structure}	
+		\label{fig: 1D beam example}
+	\end{figure}
+	
+	\begin{table}[h!]
+		\caption{Configuration of Steel Truss Bridge Structure}	
+		\centering
+		\begin{tabular}{|l|l|l|}
+			\hline
+			Geometry Property          & length $L$           & $1m $   \\
+			& Cross Section $A$    & $1.0 m^2 $  \\
+			\hline
+			Machanical Property  &  Youngs modulus $E $                 & $E(t=0) = 210e9 Pa $\\
+			\hline
+			Material Property & Density  $\rho$    & $7800 kg/m^3 $  \\
+			\hline
+			Loading            & Mid point load $F$   & 10kN  \\
+			\hline
+			Boundary Condition & $u_L = 0$, $u_R = 0$ &       \\
+			\hline
+		\end{tabular}
+		\label{table: ConfigurationBeam}
+	\end{table}
+	
+	To model as a POMDP model, we will think through the following components of the model
+	\begin{itemize}
+		\item States space $\mathbb{S}$: is a continuous spaces $\RR^N$ containing the Youngs modulus for all elements  $\mathbf{E} = [E_1, E_2,\cdots,E_{n_{elements}}]$. In other words, we will assume that the only changing parameters over time is the mechanical property Youngs modulus. The mass (usually depends on density and geometry) is constant if we assume that the density and geometry do not change over time.
+		
+		
+		\item Action space $\mathbb{A}$: is a discrete space contains three elements ${a_0,a_1,a_2}$
+		
+		The state-dependent sequence of actions is defined as policy $\pi$. There could be two types of policies, the deterministic policy $\pi(a|s): \mathbb{S} \rightarrow \mathbb{A}$ (mapping from the state space to the action space) and the stochastic policy $\pi(a|s): \mathbb{S} \times \mathbb{A} \rightarrow  \RR \in [0,1]$(mapping from the state space to the probability of actions). Depending on whether the action space are continuous or discrete we can have the conditional probability density function (PDF) and the conditional probability mass function (PMF).
+		
+		\item Observation space $\mathbb{O}$: is a continous observation space containing the observation of the mid-point displacement observations
+		
+		\item Transition probability $\mathbf{T}$: 
+		$s_{t+\Delta t} \leftarrow \mathbf{T}(s_t,a_t)$
+		The natural degradation process is modelled as the basic deterioration and repairs are applied element-wise
+		\begin{itemize}
+			\item $a_0$: do nothing $\rightarrow$ natural deterioration. We could define a deterioration level as $D (t)\defeq  E(t=0)  - 	E(t ) $ to indicate the deterioration extent from the beginning to the time $t$.
+			\begin{itemize}
+				\item gradual deterioration (aging process):
+				The gradual deterioration process can be modelled as a simple rate function \cite{ellingwood2005risk}: 
+				\begin{equation}
+					\label{eqn: gradualDeteriorationModel1}
+					D(t) \defeq E(t=0) - E(t)  =  A t^B e^{w(t)} 
+				\end{equation}
+				where $A$ is the random variable modelling the deterioration rate, $B$ is the random variable modelling the nonlinearity effect in terms of a lower law in time and $w(t)$ models the gaussian stochastic process noise. Realization plot of an aging process is shown in Figure \ref{fig: gradual deterioration example plot}
+				
+				The changes of the deterioration can be approximated by the derivative $\frac{dD}{dt} \Delta t$ if we treate $w(t)$ as a constant number $w_k$
+				\begin{equation}
+					\label{eqn: changeOfgradualDeteriorationModel1}
+					\Delta D(t)= E(t) - E(t + \Delta t) \approx AB  t^{B-1} e^{w_k} \Delta t
+				\end{equation}
+				
+				\begin{figure}[h!]
+					\includegraphics[scale = 0.5
+					]{figures/Deterioration_Natural/Deterioration_Gradual_Model1}
+					\centering
+					\caption{Gradual deterioration realization plot modeled by a simple rate function}		
+					\label{fig: gradual deterioration example plot}
+				\end{figure}
+				\item sudden deterioration:
+				The sudden deterioration can be modelled as a homogeneous compound Poisson Process(CPP) \cite{van2009survey,sanchez2016reliability}
+				\begin{equation}
+					\label{eqn: fSuddenDeteriorationModel1}
+					D (t)\defeq  E(t=0)  - 	E(t ) =  \sum_{i=1}^{N( t)} D_i \sim CPP( t; \lambda, F_D(d))
+				\end{equation}
+				where the number of jumps in the time interval $t$  $N(\Delta t) \sim PoissonProcess(\lambda)$; the amplitude of each jump $D_i \sim F_D(d) $ are independent and identically distributed random variables following a given distribution $F_D(d)$ e.g. a Gamma distribution. Realization plot of a CPP process is shown in Figure \ref{fig: sudden deterioration example plot}
+				
+				The change of the deterioration during the time interval $\Delta t$ is calculated as: 
+				
+				\begin{equation}
+					\label{eqn: changeOfSuddenDeteriorationModel1}
+					\Delta D (t)= E(t) - 	E(t + \Delta t) =  \sum_{i=1}^{N(\Delta t)} D_i \sim CPP(\Delta t; \lambda, F_D(d))
+				\end{equation}
+				where the number of jumps in the time interval $\Delta t$  $N(\Delta t) \sim PoissonProcess(\lambda)$; the amplitude of each jump $D_i \sim F_D(d) $ are independent and identically distributed random variables following a given distribution $F_D(d)$ e.g. a Gamma distribution
+				\begin{figure}[h!]
+					\includegraphics[scale = 0.5
+					]{figures/Deterioration_Natural/Deterioration_Sudden_Model1}
+					\centering
+					\caption{sudden deterioration realization plot modelled by a CPP process}		
+					\label{fig: sudden deterioration example plot}
+				\end{figure}
+				
+			\end{itemize}
+			In summary the deterioraion model parameters are defined in the Table \ref{table: Prior distribution of deterioration model parameters}
+			\begin{table}[h!]
+				\caption{Prior distribution of deterioration model parameters}	
+				\label{table: Prior distribution of deterioration model parameters}
+				\centering
+				\begin{tabular}{|llll|}
+					\hline
+					Parameter  & Distribution & Mean                & cv     \\ \hline
+					$A$        & Lognormal    & $1.94\cdot 10^{-4}$ & $0.4$  \\ \hline
+					$B$        & Normal       & $2.0$               & $0.1$  \\ \hline
+					$\omega_k$ & Normal       & $-0.005$            & $0.1$  \\ \hline
+					$D_i$      & Lognormal    & $3.75$              & $0.25$ \\ \hline
+					$N(t)$     & Poisson      & $0.04 \cdot t$      & $0.04 \cdot t$       \\ \hline
+				\end{tabular}
+			\end{table}
+			\item $a_1$: minor repair $\rightarrow$ $E(t+\Delta t) = E(t)  + (E(t=0) - E(t))\cdot \alpha_{repair} $
+			\item $a_2$: full replacement $\rightarrow$ $E(t+\Delta t) = E(t=0)$
+		\end{itemize}
+		where $\Delta t = T/N$, $T$ is the total time span e.g. 50 years and $N$ is the total number of decision steps.
+		
+		
+		\item Observation model $\mathbf{O}(o_{t+\Delta t}|s_{t+\Delta t},a_t)$:
+		\begin{itemize}
+			\item Static analysis:
+			Observation from the static analysis is the midpoint displacement. It is continuous observation. The displacement vector is calculated via 
+			\begin{equation}
+				\label{eqn: staticDisplacementCalculation}
+				u_{t+\Delta t} = StaticSolver (K(E(t+\Delta t)),F_{t+\Delta t}).
+			\end{equation}
+			We could generate the synthetic observations by adding the noise 
+			\begin{equation}
+				\label{eqn: staticObservationCalculation}
+				o_{t+\Delta t} = f(u_{t+\Delta t}+ \mathbf{N}(0,\sigma^2)).
+			\end{equation}
+			
+			\item Dynamic analysis:
+			We could generate the synthetic observation from dynamic analysis is the acceleration time series data. 
+			\begin{equation}
+				\label{eqn: dynamicAcc}
+				acc_{t+\Delta t} = dynamicSolver (K(E(t+\Delta t)),F_{t+\Delta t}).
+			\end{equation} We could use the Vibration-based SHM method to extract the damage sensitive feature from the acceleration time serires data. 
+			\begin{equation}
+				\label{eqn: dynamicObservationCalculation}
+				DSF_{t+\Delta t} = DamageSensitiveFeatureExtraction (acc_{0: t+\Delta t}) 
+			\end{equation}
+			
+		\end{itemize}
+		
+		
+		\item Reward Model $\mathbf{r}(s,a)$: 
+		
+		Accumulated Discount Reward for the whole episode $T$ is defined as the weighted sum of reward at each time step:
+		\begin{equation}
+			\label{def:AccumulatedDiscountReward}
+			R = R(s_0,a_0,\cdots,s_T.a_T) = \sum_{i = 0}^T \gamma^{i-t}R(s_i,a_i)
+		\end{equation}
+		
+		where the discount factor $\gamma \in [0,1]$. It weights more on the current reward than the future reward. When $\gamma = 0$: only the current reward matters;
+		when $\gamma = 1$: rewards in all steps equally matter.
+		
+		The total reward is also composed of three parts: $R = R_{insp} + R_{disp} + R_{repair} + R_{replace}+ R_{failure}$
+		
+		\begin{table}[h!]
+			\caption{Cost Definition in the beam monitoring process}	
+			\centering
+			\begin{tabular}{|l|l|l|}
+				\hline
+				Cost due to displacement     &  $R_{disp} = - \sum_{i=1}^T k_i u_i^2$    &  $k_i = 10 $  for $i = 0, \cdots ,T$  \\
+				& or simpler $-\beta |u_i|$   & $\beta = 50$  \\
+				\hline
+				Cost due to repair  &   $R_{repair} = -c_{repair} \cdot n_{repair}$               & $c_{repair} = 500  $   \\
+				&  & $n_{repair}$ is the total repair times \\
+				\hline
+				Cost due to replace& $R_{replace} = -c_{replace} \cdot n_{replace}$   & $c_{replace} = 2000$\\ 
+				&  & $n_{replace}$ is the total replace times \\
+				\hline
+				Cost due to inspection  & $R_{insp} = -c_{insp} \cdot n_{inspection}$   & $c_{insp} = 200$  \\
+				&  & $n_{insp}$ is the total inspection times \\
+				\hline
+				Cost due to failure & $R_{failure} = - c_{failure}$ &$c_{failure} = 10000$ is the equivalent injury cost   \\
+				&  &  During time $T$ , the structure failure will occur once   \\
+				\hline
+			\end{tabular}
+			\label{table: Cost definition in the beam monitoring process}
+		\end{table}
+		
+	\end{itemize}
+	
+	\section{Proposed Framework}
+	
+	This section presents the proposed framework for addressing the research problem. The overall architecture is depicted in \Cref{fig:framework}.
+	
+	
+\end{document}

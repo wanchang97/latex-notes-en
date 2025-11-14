@@ -1,0 +1,158 @@
+% preamble.tex
+\usepackage[utf8]{inputenc}
+\usepackage[
+maxbibnames=99,
+backend=biber,
+style= numeric,
+sorting=none
+]{biblatex}
+%\addbibresource{DecisionMakingModeling.bib} 
+
+\usepackage[linesnumbered]{algorithm2e}%
+\usepackage{ragged2e}
+\usepackage{layout}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{mathtools}
+\usepackage{dsfont}
+\usepackage{bm}
+\usepackage{empheq}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{eulervm}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{romannum}
+\usepackage{esint}
+\usepackage{gensymb}
+\usepackage{nomencl}
+\usepackage{scalerel}
+\usepackage{subfiles}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{geometry}
+\usepackage{setspace}
+\urlstyle{same}
+\usepackage{enumitem}
+\newlist{steps}{enumerate}{1}
+\setlist[steps, 1]{label = Step \arabic*:}
+\usepackage[acronym]{glossaries}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{tabularx}
+% \usepackage{fontspec} % 注释掉，除非使用 XeLaTeX
+
+% 算法包 - 添加这些
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+
+
+
+% 数学环境
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}
+
+% 自定义命令
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcommand{\code}[1]{\texttt{#1}}
+%\newcommand \bV {\underline{\bm{V}}}
+\newcommand \Disp {\bm{U}}
+\newcommand \disp {\bm{u}} % Displacement
+\newcommand \velocity {\dot{\disp}} % Velocity
+\newcommand \acc {\ddot{\disp}} % Acceleration
+\newcommand \state {{\bm{x}}} % state vector
+\newcommand \deristate {\dot{\state}} % derivative of state vector with respect to time
+\newcommand \observable {{\bm{y}}} % observable vector
+\newcommand \Observable {{\bm{Y}}}
+%\newcommand \bW {{\bm{W}}} % disturbance vector
+\newcommand \bV {{\bm{V}}} 
+\newcommand \bw {{\bm{w}}} % process noise vector
+\newcommand \bv {{\bm{v}}} % measurement noise vector
+\newcommand \RR {\mathbb{R}}
+\newcommand \bb {\mathbf{b}}
+
+\newcommand \Jpi {J^{\pi}}
+\newcommand \Qpi {Q^{\pi}}
+\newcommand \Qstar {Q^{\star}}
+\newcommand \Vpi {V^{\pi}}
+\newcommand \Vstar {V^{\star}}
+
+
+
+
+\newcommand \bsigma {\bm{\sigma}}
+\newcommand \bSigma {\bm{\Sigma}}
+\newcommand \bnabla {\bm{\nabla}}
+\newcommand \blambda {\bm{\lambda}}
+\newcommand \bepsilon{\bm{\epsilon}}
+\newcommand \bDelta {\bm{\Delta}}
+\newcommand \btheta {\bm{\theta}}
+\newcommand \inputvector {\bm{p}}
+
+\newcommand \PSD {\bm{G}}
+\newcommand \PSDold {\underline{\underline{\bm{G}}}}
+\newcommand \bU {\underline{\underline{\bm{U}}}}
+\newcommand \bu {\underline{\bm{u}}}
+%\newcommand \bV {\underline{\bm{V}}}
+\newcommand \bK {\bm{K}}
+%\newcommand \bb {\bm{b}}
+\newcommand \bQ {\bm{Q}}
+\newcommand \bR {\bm{R}}
+\newcommand \bM {\bm{M}}
+\newcommand \bA {\bm{A}}
+\newcommand \bB {\bm{B}}
+\newcommand \bI {\bm{I}}
+\newcommand \bC {\bm{C}}
+\newcommand \Fb {\bm{F}}
+\newcommand \fb {\bm{f}}
+\newcommand \bT {\bm{T}}
+\newcommand \bX {\bm{X}}
+\newcommand \bg {\bm{g}}
+\newcommand \bs {\bm{s}}
+\newcommand \ba {\bm{a}}
+\newcommand \bgtilde {\tilde{\bm{g}}}
+\newcommand \bphi {\bm{\phi}}
+\newcommand \bzeta {\bm{\zeta}}
+\newcommand \bOmega {\underline{\underline{\bm{\Omega}}}}
+\newcommand\continous{\stackrel{\mathclap{\normalfont\mbox{continous RV}}}{=}}
+
+\newcommand \cIone {\tilde{c}_\textsf{insp}}
+\newcommand \cRone {\tilde{c}_\textsf{repair}}
+\newcommand \cFone {\tilde{c}_\textsf{failure}}
+
+\newcommand \cI {c_\textsf{insp}}
+\newcommand \cR {c_\textsf{repair}}
+\newcommand \cF {c_\textsf{failure}}
+\newcommand \nI {n_\textsf{insp}}
+\newcommand \nR {n_\textsf{repair}}
+\newcommand \muQ {\bm{\mu}^Q}
+\newcommand \sigmaQ {\bm{\sigma}^Q}
+\newcommand \thetaD{\bm{\theta}^D}
+\newcommand \thetaA{\bm{\theta}^A}
+\newcommand \thetaQ {\bm{\theta}^Q}
+\newcommand \thetaF {\bm{\theta}^F}
+\newcommand \thetaV{\bm{\theta}^V}
+\newcommand \thetaQminus {\bm{\theta}^{Q-}}
+\newcommand \thetaVminus{\bm{\theta}^{V-}}
+\newcommand \thetapi {\bm{\theta}^{\pi}}
+\newcommand \thetaQpi {\bm{\theta}^{Q^{\pi}}}
+\newcommand \thetaQpiminus {\bm{\theta}^{Q^{\pi}-}}
+\newcommand \thetaVpi {\bm{\theta}^{V^{\pi}}}
+\newcommand \thetaVpiminus {\bm{\theta}^{V^{\pi}-}}
+% absolute value and norm
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\spn}{span}	
+\newcommand{\defeq}{\overset{\mathrm{def}}{=\joinrel=}}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\renewcommand{\eqref}[1]{Eq. \textup{\ref{#1}}}
+\newcommand*{\pdot}{\mathbin{\scalerel*{\boldsymbol\odot}{\circ}}}
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother

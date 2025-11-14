@@ -1,0 +1,16 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Sequential Probabilistic Graphical Model of Markovian Decision Process}}{2}{figure.caption.8}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Deep Q-Network approximate the Q function for every available action using state as input $Q(s_t,a_t)$}}{14}{figure.caption.26}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Dueling Network architecture}}{18}{figure.caption.30}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces NN approximates $\pi (a_t|s_t)$}}{19}{figure.caption.31}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Actor Critic Neural Network architecture}}{20}{figure.caption.32}%
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Deep Centralized Multi-agent Actor Critic Neural Network architecture}}{23}{figure.caption.38}%
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Deep Decentralized Multi-agent Actor Critic Neural Network architecture}}{24}{figure.caption.40}%
+\contentsline {figure}{\numberline {1.8}{\ignorespaces Probabilistic Graphical Model of Partially Observable Markovian Decision Process defined in State Space}}{25}{figure.caption.42}%
+\contentsline {figure}{\numberline {1.9}{\ignorespaces Probabilistic Graphical Model of Partially Observable Markovian Decision Process defined in Belief Space}}{28}{figure.caption.46}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Flowchart diagram}}{35}{figure.caption.57}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Geometrical Property of Steel Truss Bridge Structure}}{36}{figure.caption.58}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Gradual deterioration realization plot modeled by a simple rate function}}{37}{figure.caption.60}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces sudden deterioration realization plot modelled by a CPP process}}{38}{figure.caption.61}%
+\addvspace {10\p@ }

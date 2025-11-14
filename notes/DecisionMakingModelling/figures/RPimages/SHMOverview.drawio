@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0" version="24.7.6">
+  <diagram name="Seite-1" id="CbR5HC97bjEH0hSkkuwy">
+    <mxGraphModel dx="846" dy="502" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-3" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="200" y="220" width="330" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-1" value="&lt;font face=&quot;Times New Roman&quot;&gt;Sensor selection and placement&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+          <mxGeometry y="260" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-2" value="Data acquisition and management" style="rounded=0;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="100" y="240" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-4" value="Decision Making:&lt;div&gt;based on the Value of Information of SHM system&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="530" y="200" width="150" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-5" value="Taking Actions: Inspection and Maintenance" style="rounded=0;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+          <mxGeometry x="680" y="180" width="100" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-6" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Damage existence&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="200" y="290" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-7" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Damage localisation&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="280" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-9" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Damage classification&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="270" width="70" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-10" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Damage quantification&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="390" y="260" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-11" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Life time prognosis&amp;nbsp;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="470" y="250" width="60" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="RvaLJHtlrz0ZDxewpgZs-13" value="&lt;span style=&quot;text-align: left;&quot;&gt;Structural Health Monitoring (Damage Identification)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="200" y="220" width="330" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

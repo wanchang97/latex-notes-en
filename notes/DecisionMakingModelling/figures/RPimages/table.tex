@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc,patterns}
+
+\begin{document}
+	\begin{tikzpicture}[
+		node distance=2cm and 1.5cm,
+		every node/.style={draw, minimum size=10mm, font=\small},
+		cost/.style={diamond, aspect=2, fill=white},
+		shaded/.style={circle,pattern=north east lines, pattern color=yellow},
+		obs/.style={circle, fill=white},
+		action/.style={rectangle, fill=white},
+		->, >=Stealth, thick, black
+		]
+	
+		% Denote 
+		\node[cost] at (-7,0) (costnode) {$c_t$};
+		\node[draw = white,right= of costnode,align=center]  {Cost or Loss \\ or negative Utility \\or negative Reward \\at time t};
+		\node[shaded, below = of costnode, yshift = 12mm] (statenode) {$s_t$};
+		\node[draw = white, right = of statenode,align = center] {State Random Variable \\ at time t};
+		\node[obs, below= of statenode,yshift = 12mm]  (obsnode) {$o_t$};
+		\node[draw = white, right = of obsnode,align = center]  {Output from SHM result \\ at time t};
+		\node[action,below = of obsnode,yshift = 12mm]  (actionnode) {$a_t$};
+		\node[draw = white, right = of actionnode, align=center] {Action or Decision \\or Policy taken \\ at time t};
+		
+	\end{tikzpicture}
+\end{document}

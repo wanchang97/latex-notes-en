@@ -1,0 +1,5 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'MarkovModels.blg'
+[25] biber-darwin:340> INFO - === Fri Jan 10, 2025, 13:17:49
+[92] Utils.pm:410> ERROR - Cannot find 'MarkovModels.bcf'!
+[92] Biber.pm:136> INFO - ERRORS: 1

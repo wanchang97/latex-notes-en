@@ -1,0 +1,55 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.16 Chrome/132.0.6834.196 Electron/34.2.0 Safari/537.36" version="26.0.16">
+  <diagram name="Page-1" id="-GHnUIzWnIY5hK2A88wW">
+    <mxGraphModel dx="2284" dy="907" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-1" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="-11" y="680" width="430" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-2" value="" style="group;fontSize=18;fontFamily=Times New Roman;" vertex="1" connectable="0" parent="GTfKEUsFB4Sx3ISPgnYe-1">
+          <mxGeometry y="80" width="430" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-3" value="" style="endArrow=classic;html=1;rounded=0;fontSize=18;fontFamily=Times New Roman;" edge="1" parent="GTfKEUsFB4Sx3ISPgnYe-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="50" y="200" as="sourcePoint" />
+            <mxPoint x="420" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-4" value="$$t$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontFamily=Times New Roman;" vertex="1" parent="GTfKEUsFB4Sx3ISPgnYe-2">
+          <mxGeometry x="378" y="210" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-5" value="" style="endArrow=classic;html=1;rounded=0;fontSize=18;fontFamily=Times New Roman;" edge="1" parent="GTfKEUsFB4Sx3ISPgnYe-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="50" y="200" as="sourcePoint" />
+            <mxPoint x="51" y="-50" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-6" value="0" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontFamily=Times New Roman;" vertex="1" parent="GTfKEUsFB4Sx3ISPgnYe-2">
+          <mxGeometry y="190" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-13" value="$$S(t=0) = 0$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontFamily=Times New Roman;" vertex="1" parent="GTfKEUsFB4Sx3ISPgnYe-2">
+          <mxGeometry x="21" y="210" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-7" value="$$S(t)$$" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontFamily=Times New Roman;" vertex="1" parent="GTfKEUsFB4Sx3ISPgnYe-1">
+          <mxGeometry x="-9" y="20" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-8" value="&lt;font&gt;Parameters are continuous, states are continuous. \(S(t)\) is continuous (no jump)&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontSize=18;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="65" y="650" width="580" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-9" value="&lt;font&gt;The accumulated total amount until time t is \(S(t) \sim \Gamma(t;a,b)\)&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;$$ \mathbb{E}[S(t)] = abt, V[S(t)] = ab^2t $$&lt;/span&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;The increment of each time interval are independent and identically distributed $$S(t+\Delta t) - S(t) \in (0,+\infty) \sim \Gamma (a\Delta t, b),&amp;nbsp; a&amp;gt;0,t&amp;gt;0 $$&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontSize=18;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="430" y="770" width="420" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-10" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: &amp;quot;Times New Roman&amp;quot;; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;Gamma Process \(\Gamma (t;a,b)\)&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="65" y="610" width="320" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-11" value="" style="shape=stencil(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);fillColor=none;strokeColor=#EA6B66;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="38.66666666666674" y="751.5" width="363.33333333333337" height="208.33333333333334" as="geometry" />
+        </mxCell>
+        <mxCell id="GTfKEUsFB4Sx3ISPgnYe-12" value="&lt;div&gt;The RV \(X \sim \Gamma(a,b)\), \(a\) is the shape parameter, \(b\) is the scale parameter&lt;/div&gt;&lt;div&gt;The PDF is \(f_X(x) = \frac{(\frac{x}{b})^{a-1}}{b\Gamma(a)} e^{-\frac{x}{b}}\), \(x \geq 0\)&lt;/div&gt;&lt;div&gt;$$ \mathbb{E}[X] = ab, V[X] = ab^2 $$&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontSize=18;fontColor=default;labelBackgroundColor=default;" vertex="1" parent="1">
+          <mxGeometry x="419" y="475" width="420" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

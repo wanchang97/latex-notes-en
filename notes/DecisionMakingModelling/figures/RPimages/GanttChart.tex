@@ -1,0 +1,104 @@
+\documentclass[tikz]{standalone}
+\usepackage{pgfgantt}
+\title{Gantt Charts with the pgfgantt Package}
+\begin{document}
+	
+	%
+	% A fairly complicated example from section 2.9 of the package
+	% documentation. This reproduces an example from Wikipedia:
+	% http://en.wikipedia.org/wiki/Gantt_chart
+	%
+	\definecolor{barblue}{RGB}{153,204,254}
+	\definecolor{groupblue}{RGB}{51,102,254}
+	\definecolor{linkred}{RGB}{165,0,33}
+	\renewcommand\sfdefault{phv}
+	\renewcommand\mddefault{mc}
+	\renewcommand\bfdefault{bc}
+	\setganttlinklabel{s-s}{START-TO-START}
+	\setganttlinklabel{f-s}{FINISH-TO-START}
+	\setganttlinklabel{f-f}{FINISH-TO-FINISH}
+	\sffamily
+	\begin{ganttchart}[
+		canvas/.append style={fill=none, draw=black!5, line width=.75pt},
+		hgrid style/.style={draw=black!5, line width=.75pt},
+		vgrid={*1{draw=black!5, line width=.75pt}},
+				today=5,
+		today rule/.style={
+			draw=black!64,
+			dash pattern=on 3.5pt off 4.5pt,
+			line width=1.5pt
+		},
+		group label font=\LARGE\bfseries,
+		today label font=\Large\bfseries,
+		title/.style={draw=none, fill=none},
+		title label font=\bfseries\normalsize,
+		title label node/.append style={below=5pt},
+		include title in canvas=false,
+		bar label font=\mdseries\Large\color{black!70},
+		bar label node/.append style={left=2cm},
+		bar/.append style={draw=none, fill=black!63},
+		bar incomplete/.append style={fill=barblue},
+		bar progress label font=\mdseries\Large\color{black!70},
+		group incomplete/.append style={fill=groupblue},
+		group left shift=0,
+		group right shift=0,
+		group height=.5,
+		group peaks tip position=0,
+		group label node/.append style={left=.6cm},
+		group progress label font=\bfseries\Large,
+		link/.style={-latex, line width=1.5pt, linkred},
+		link label font=\large\bfseries,
+		link label node/.append style={below left=-2pt and 0pt}
+		]{1}{25}
+		\gantttitle[
+		title label node/.append style={below left=5pt and 3pt}
+		]{$2024-2027$ Year:\quad}{0}
+		\gantttitlelist{9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10}{1} \\
+		\ganttgroup[progress=50]{1 SHM Method Investigation}{1}{12} \\
+		\ganttbar[
+		progress=30,
+		name=WBS1A
+		]{\textbf{1.1} Simulation model formulation for damage detection}{1}{12} \\
+		\ganttbar[
+		progress=60,
+		name=WBS1B
+		]{\textbf{1.2} Vibration-based SHM method investigation}{1}{12} \\
+	%	\ganttbar[
+		%progress=0,
+		%name=WBS1D
+		%]{\textbf{WBS 1.4} Activity D}{4}{10} \\[grid]
+		\ganttgroup[progress=10]{2  Practical Damage Observation Study}{1}{15} \\
+		\ganttbar[progress=10]{\textbf{2.1} Damage Detection Case study}{1}{12} \\
+		\ganttbar[progress=0]{\textbf{2.2} Real industry observation data collection}{1}{15} \\
+		\ganttbar[progress=10]{\textbf{2.3} SHM methods state of art investigation}{1}{12} \\
+		\ganttbar[progress=0]{\textbf{2.4} SHM in industry condition investigation}{1}{12} \\
+		\ganttgroup[progress=20]{3 sequential Decision Making Modelling}{1}{25} \\
+		\ganttbar[progress=20]{\textbf{3.1} Heuristic Principle Decision Modelling}{1}{15} \\
+		\ganttbar[progress=40]{\textbf{3.2} Markov Decision Process Modeling}{1}{17} \\
+		\ganttbar[progress=10]{\textbf{3.3} Partially Observable Markov Decision Process Modelling}{1}{17} \\
+		\ganttbar[progress=0]{\textbf{3.4} Environmental Variability Modelling}{1}{19} \\
+		
+		\ganttgroup[progress=10]{4 Deep Reinforcement Learning Algorithm Implementaion}{1}{25} \\
+		\ganttbar[progress=10]{\textbf{4.1} Single-agent Actor-Critic Algorithm}{4}{8} \\
+		\ganttbar[progress=10]{\textbf{4.2} Multi-agent Actor-Critic Algorithm}{5}{10} \\
+		
+%		\ganttgroup[progress=30]{5 Sampling based Method solving inverse problem}{1}{13} \\
+%		\ganttbar[progress=100]{\textbf{5.1} MCMC in linear and log scale}{1}{1} \\
+%		\ganttbar[progress=20]{\textbf{5.2} Transitional MCMC in linear and log scale}{1}{6} \\
+%		\ganttbar[progress=0]{\textbf{5.3} Reversible TMCMC for trans-dimensional problem in linear and log scale}{7}{12} \\
+		
+		\ganttgroup[progress=10]{6 Writing formal paper to summarize}{1}{38} \\
+		\ganttbar[progress=0]{\textbf{6.1} Contribution on Decision Making Modelling}{10}{20} \\
+		\ganttbar[progress=0]{\textbf{6.2} Contribution on Structural Integrity Management Modelling}{13}{15} \\
+		\ganttbar[progress=0]{\textbf{6.3} Contribution on quantifying the value of information of a SHM system}{15}{19}  \\
+		\ganttbar[progress=0]{\textbf{6.4} Final thesis writing}{19}{38} 
+	%	\ganttlink[link type=s-s]{WBS1A}{WBS1B}
+	%	\ganttlink[link type=f-s]{WBS1B}{WBS1C}
+	%	\ganttlink[
+	%	link type=f-f,
+	%	link label node/.append style=left
+	%	]{WBS1C}{WBS1D}
+	\end{ganttchart}
+
+	
+\end{document}

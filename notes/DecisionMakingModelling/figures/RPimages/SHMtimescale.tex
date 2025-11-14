@@ -1,0 +1,43 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{arrows,calc,decorations.markings,positioning,shapes.misc,shapes.multipart}
+
+\begin{document}
+	\begin{tikzpicture}
+		% Time segments
+		\draw [thick] (0,0)--++(2,0) node[xshift = -10mm,yshift = -5mm] {seconds};
+		\draw [thick] (3,0)--++(2,0) node[xshift = -10mm,yshift = -5mm] {hours};
+		\draw [thick] (6,0)--++(2,0) node[xshift = -10mm,yshift = -5mm] {days};
+		\draw [thick] (9,0)--++(2,0) node[xshift = -10mm,yshift = -5mm] {months};
+		\draw [thick] (12,0)--++(2,0) node[xshift = -10mm,yshift = -5mm] {years};    
+		\draw [thick,-latex] (15,0)--++(2,0) node[xshift = -10mm,yshift = -5mm] {lifetime} node[xshift = 5mm]{time};    
+		
+		% Vertical ticks
+		\foreach \x in {1,4,7,10,13,16}{
+			\draw[thick] (\x,-0.3)--++(0,1);
+			\node at (\x+1.5,0) {\dots};}
+		
+		% Time interval for Extreme Events / Sudden faults
+		\node [midway, xshift = -7mm, yshift=13mm, align=center]  {Damaging \\ Processes \\ or events};
+		\draw [thick, |<->|] (1,1)--++(3,0) 
+		node[midway, yshift=5mm, align=center] {Extreme Events \\ Sudden faults};
+		\draw [thick, |<->|] (4,1.4)--++(7,0) 
+		node[midway, yshift=5mm, align=center] {Fast Evolving \\ Deterioration};
+		\draw [thick, |<->|] (11,1.8)--++(6,0) 
+		node[midway, yshift=5mm, align=center] {Ageing \\ Slow Deterioration};
+		
+		% Confounding Processes
+		\node [midway, xshift = -7mm, yshift=40mm, align=center]  {Confounding \\ Processes };
+		\draw [thick, |<->|] (4,3)--++(5,0) 
+		node[midway, yshift=5mm, align=center] {Operational\\ Variability};
+		\draw [thick, |<->|] (7.8,3.8)--++(7,0) 
+		node[midway, yshift=5mm, align=center] {Environmental \\ Variability};
+		
+		% Assessment Goal
+		\node [midway, xshift = -7mm, yshift=60mm, align=center]  {Assessment \\ Goal };
+		\node [midway, xshift = 28mm, yshift=60mm, align=center]  {Rear or near \\ real-time  diagnostics };
+		\node [midway, xshift = 80mm, yshift=60mm, align=center]  {Diagnosis and \\reaction to \\fast envolving \\deterioration processes};
+		\node [midway, xshift = 140mm, yshift=60mm, align=center]  {Prognosis of \\ slow envolving \\deterioration processes};
+	\end{tikzpicture}
+\end{document}
