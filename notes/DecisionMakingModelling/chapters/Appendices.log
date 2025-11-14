@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  14 NOV 2025 13:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  14 NOV 2025 13:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**03_ActiveInference.tex
-(./03_ActiveInference.tex
+**Appendices.tex
+(./Appendices.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/subfiles/subfiles.cls
@@ -1347,27 +1347,27 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 \@quotelevel=\count525
 \@quotereset=\count526
 
-(./03_ActiveInference.aux)
-\openout1 = `03_ActiveInference.aux'.
+(./Appendices.aux)
+\openout1 = `Appendices.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 3.
+LaTeX Font Info:    ... okay on input line 3.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -1377,14 +1377,14 @@ File: english.lbx 2023/03/05 v3.19 biblatex localization (PK/MW)
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout3 = `03_ActiveInference.bcf'.
+\openout3 = `Appendices.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file '03_ActiveInference.bbl' found.
+Package biblatex Info: ... file 'Appendices.bbl' found.
 
-(./03_ActiveInference.bbl)
-Package biblatex Info: Reference section=0 on input line 4.
-Package biblatex Info: Reference segment=0 on input line 4.
+(./Appendices.bbl)
+Package biblatex Info: Reference section=0 on input line 3.
+Package biblatex Info: Reference segment=0 on input line 3.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1417,21 +1417,21 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \celsius on input line 4.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 4.
+LaTeX Info: Redefining \celsius on input line 3.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 3.
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 4.
-Package gensymb Info: Using \upOmega for \ohm on input line 4.
+LaTeX Info: Redefining \ohm on input line 3.
+Package gensymb Info: Using \upOmega for \ohm on input line 3.
 
 Package gensymb Warning: Not defining \micro.
 
-Package hyperref Info: Link coloring OFF on input line 4.
-(./03_ActiveInference.out) (./03_ActiveInference.out)
+Package hyperref Info: Link coloring OFF on input line 3.
+(./Appendices.out) (./Appendices.out)
 \@outlinefile=\write5
-\openout5 = `03_ActiveInference.out'.
+\openout5 = `Appendices.out'.
 
 
 *geometry* driver: auto-detecting
@@ -1469,37 +1469,24 @@ Package hyperref Info: Link coloring OFF on input line 4.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Chapter 1.
-
-LaTeX Warning: Reference `fig:framework' on page i undefined on input line 11.
-
-
-LaTeX Warning: Citation 'lee2019optimization' on page 1 undefined on input line
- 25.
-
-
-Overfull \hbox (44.67209pt too wide) in paragraph at lines 25--26
-\T1/cmr/m/n/12 The pro-posed al-go-rithm builds upon the foun-da-tion es-tab-li
-shed by [[]].
- []
-
-LaTeX Font Info:    Trying to load font information for U+zeur on input line 31
+LaTeX Font Info:    Trying to load font information for U+zeur on input line 11
 .
 (/usr/local/texlive/2024/texmf-dist/tex/latex/eulervm/uzeur.fd
 File: uzeur.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeus on input line 31
+LaTeX Font Info:    Trying to load font information for U+zeus on input line 11
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/eulervm/uzeus.fd
 File: uzeus.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for U+zeuex on input line 3
+LaTeX Font Info:    Trying to load font information for U+zeuex on input line 1
 1.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/eulervm/uzeuex.fd
 File: uzeuex.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Trying to load font information for U+esint on input line 3
+LaTeX Font Info:    Trying to load font information for U+esint on input line 1
 1.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/esint/uesint.fd
@@ -1508,52 +1495,149 @@ File: uesint.fd
 
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local
-/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2]
-(./03_ActiveInference.aux)
+al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+<../figures/RPimages/EV_distribution_plots.png, id=58, 867.24pt x 578.16pt>
+File: ../figures/RPimages/EV_distribution_plots.png Graphic file (type png)
+<use ../figures/RPimages/EV_distribution_plots.png>
+Package pdftex.def Info: ../figures/RPimages/EV_distribution_plots.png  used on
+ input line 58.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+
+Overfull \hbox (15.36526pt too wide) in paragraph at lines 57--60
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/Bernoull
+iProcess.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5
+> allowed
+<../figures/RPimages/BernoulliProcess.pdf, id=61, 1042.85606pt x 522.03032pt>
+File: ../figures/RPimages/BernoulliProcess.pdf Graphic file (type pdf)
+<use ../figures/RPimages/BernoulliProcess.pdf>
+Package pdftex.def Info: ../figures/RPimages/BernoulliProcess.pdf  used on inpu
+t line 77.
+(pdftex.def)             Requested size: 625.71848pt x 313.2206pt.
+
+Overfull \hbox (207.4648pt too wide) in paragraph at lines 76--79
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}]
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/PoissonP
+rocess.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> 
+allowed
+<../figures/RPimages/PoissonProcess.pdf, id=75, 1070.07776pt x 448.5558pt>
+File: ../figures/RPimages/PoissonProcess.pdf Graphic file (type pdf)
+<use ../figures/RPimages/PoissonProcess.pdf>
+Package pdftex.def Info: ../figures/RPimages/PoissonProcess.pdf  used on input 
+line 92.
+(pdftex.def)             Requested size: 663.44136pt x 278.10172pt.
+
+Overfull \hbox (245.18768pt too wide) in paragraph at lines 91--94
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3 <../figures/RPimages/EV_distribution_plots.png>]
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/Compound
+PoissonProcess.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
+n <1.5> allowed
+<../figures/RPimages/CompoundPoissonProcess.pdf, id=84, 911.32468pt x 1051.0466
+9pt>
+File: ../figures/RPimages/CompoundPoissonProcess.pdf Graphic file (type pdf)
+<use ../figures/RPimages/CompoundPoissonProcess.pdf>
+Package pdftex.def Info: ../figures/RPimages/CompoundPoissonProcess.pdf  used o
+n input line 104.
+(pdftex.def)             Requested size: 546.79903pt x 630.63289pt.
+
+Overfull \hbox (128.54535pt too wide) in paragraph at lines 103--106
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 63.60268pt on input line 108.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4 <../figures/RPimages/BernoulliProcess.pdf>]
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 1
+16.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmss.fd
+File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+) [5 <../figures/RPimages/PoissonProcess.pdf>]
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/GammaPro
+cess.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> al
+lowed
+<../figures/RPimages/GammaProcess.pdf, id=219, 638.385pt x 283.0575pt>
+File: ../figures/RPimages/GammaProcess.pdf Graphic file (type pdf)
+<use ../figures/RPimages/GammaProcess.pdf>
+Package pdftex.def Info: ../figures/RPimages/GammaProcess.pdf  used on input li
+ne 142.
+(pdftex.def)             Requested size: 395.7946pt x 175.49382pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6] [7 <../figures/RPimages/CompoundPoissonProcess.pdf>] [8 <../figures/RPimage
+s/GammaProcess.pdf>] (./Appendices.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-Package rerunfilecheck Info: File `03_ActiveInference.out' has not changed.
-(rerunfilecheck)             Checksum: 8028A856B2BD0AF718CB4FDD1825144B;745.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                03_ActiveInference
-(biblatex)                and rerun LaTeX afterwards.
-
-Package logreq Info: Writing requests to '03_ActiveInference.run.xml'.
-\openout1 = `03_ActiveInference.run.xml'.
+Package rerunfilecheck Info: File `Appendices.out' has not changed.
+(rerunfilecheck)             Checksum: 501D4710555CE1AB660E6DC2C4AA3A3D;513.
+Package logreq Info: Writing requests to 'Appendices.run.xml'.
+\openout1 = `Appendices.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39120 strings out of 474116
- 734049 string characters out of 5743682
- 1937187 words of memory out of 5000000
- 60804 multiletter control sequences out of 15000+600000
- 577380 words of font info for 89 fonts, out of 8000000 for 9000
+ 39065 strings out of 474116
+ 734237 string characters out of 5743682
+ 1944187 words of memory out of 5000000
+ 60715 multiletter control sequences out of 15000+600000
+ 583417 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 135i,12n,127p,2397b,1136s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pf
-b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.
-pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx0800.pf
-b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></us
-r/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/
-local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/lo
-cal/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on 03_ActiveInference.pdf (2 pages, 143967 bytes).
+ 135i,11n,127p,2389b,854s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eurm7.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.
+pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
+m10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx120
+0.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.
+pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pf
+b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></
+usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb>
+Output written on Appendices.pdf (8 pages, 1074095 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
- 23 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 450 PDF objects out of 1000 (max. 8388607)
+ 371 compressed objects within 4 object streams
+ 40 named destinations out of 1000 (max. 500000)
+ 70 words of extra memory for PDF output out of 10000 (max. 10000000)
 

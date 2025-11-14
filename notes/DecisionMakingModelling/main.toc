@@ -1,7 +1,7 @@
 \contentsline {chapter}{Abstract}{i}{chapter*.1}%
 \contentsline {chapter}{Acknowledgements}{ii}{chapter*.2}%
 \contentsline {chapter}{Dedication}{iii}{chapter*.3}%
-\contentsline {chapter}{\numberline {1}Reninforcement Learning}{2}{chapter.1}%
+\contentsline {chapter}{\numberline {1}Reninforcement Learning(RL)}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Markov Decision Process}{2}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Basic Formulation and terminology}{2}{subsection.1.1.1}%
 \contentsline {subsubsection}{State space $\mathds {S}$ }{3}{section*.9}%
@@ -59,4 +59,12 @@
 \contentsline {section}{\numberline {2.1}simple example}{34}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Problem Formulation: 1D Beam with deteriorating stiffness}{34}{subsection.2.1.1}%
 \contentsline {section}{\numberline {2.2}Proposed Framework}{39}{section.2.2}%
-\contentsline {chapter}{\numberline {A}Additional Data}{40}{appendix.A}%
+\contentsline {chapter}{\numberline {A}Appendices}{40}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Probability Basis}{40}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Random Variables}{40}{subsection.A.1.1}%
+\contentsline {subsubsection}{Extreme Value (EV) distributions}{40}{section*.64}%
+\contentsline {subsection}{\numberline {A.1.2}Random Process}{41}{subsection.A.1.2}%
+\contentsline {subsubsection}{Bernoulli Process}{41}{section*.66}%
+\contentsline {subsubsection}{Poisson Process}{42}{section*.68}%
+\contentsline {subsubsection}{Compound Poisson Process}{43}{section*.70}%
+\contentsline {subsubsection}{Gamma Process}{44}{section*.72}%

@@ -1,0 +1,147 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	
+\chapter{Appendices}
+	\label{chap:Appendix}
+\section{Probability Basis}
+
+\subsection{Random Variables}
+\subsubsection{Extreme Value (EV) distributions}
+Let $\bX = \begin{bmatrix}
+	X_1,X_2,\cdots,X_n
+\end{bmatrix}^T$ denote a random vector, with its smallest value denoted by $X_{\min}$ and its largest value denoted by $X_{\max}$. If the distribution of $\bX$ is known, one can also find the distirbution of $X_{\min}$ and $X_{\max}$.
+
+For the special case when $X_i$s are iid, one can obtain simple expressions for the distribution of $X_{\min}$ and $X_{\max}$.
+
+Let $f_X(x)$ and $F_X(x)$ denote the PDF and CDF of the $X_i$s, the minimum value is larger than $x$ means than $\{X_{\min} > x\} = \{ X_1 > x \cap X_2 > x \cap \cdots \cap X_n > x \}$
+To derive the CDF of $X_{\min}$
+\begin{align}
+	\label{eqn:CDFofXmin}
+	F_{X_{\min}}(x) &= Pr(X_{\min} \leq x) \\
+	&= 1- Pr(X_{\min} > x) \\
+	&- 1- Pr(X_1>x \cap X_2 > x \cap \cdots \cap X_n>x)\\
+	&= 1-\prod_{i=1}^{n} Pr(X_i >x)  \\
+	&= 1-[1-F_X(x)]^n
+\end{align}
+
+The PDF of $X_{\min}$ is 
+\begin{align}
+	\label{eqn:PDFofXmin}
+	f_{X_{\min}}(x) &= \frac{dF_{X_{\min}}(x)}{dx} \\
+	&= nf_X(x) [1-F_X(x)]^{n-1}
+\end{align}
+
+To derive the CDF of $X_{\max}$, we could start from the fact that $\{X_{\max} \leq x\} = \{ X_1 \leq x \cap \cdots \cap X_n \leq x\}$:
+\begin{align}
+	\label{eqn:CDFofXmax}
+	F_{X_{\max}} (x) &= Pr(X_{\max} \leq x) \\ 
+	& = Pr(X_1 \leq x \cap \cdots \cap X_n \leq x) \\
+	& = \prod_{i=1}^{n}Pr(X_i \leq x) \\
+	& = [F_X(x)]^n
+\end{align}
+The PDF of $X_{\max}$ is
+\begin{equation}
+	\label{eqn:PDFofXmax}
+	f_{X_{\max}}(x) = \frac{dF_X(x)}{dx} = nf_X(x)[F_X(x)]^{n-1}
+\end{equation}
+The results can be generalized to the $k^{th}$ largest value in $\bX$ denoted by $Y_k$: the CDF of $Y_k$ is 
+\begin{equation}
+	F_{Y_k}(x) = \sum_{j=k}^{n} C_n^j (F_X(x))^j(1-F_X(x))^{n-j}
+\end{equation}
+The underlying $X_i$s are often unknown, and the above solutions are therefore not directly applicable. However, extreme value distributions that arise as asymptotic solutions of the above for $n \rightarrow \infty$ provide a useful model in these cases. 
+
+It can be shown that the solutions given above in Eqs \eqref{eqn:CDFofXmin}, \eqref{eqn:PDFofXmin}, \eqref{eqn:CDFofXmax}, \eqref{eqn:PDFofXmax} converge to one of three distribution types, depending on the distribution of the $X_i$s.
+
+\begin{figure}[h]
+	\includegraphics[scale = 0.5
+	]{figures/RPimages/EV_distribution_plots}
+	\centering
+	\caption{Extreme Value distribution for Maximum}		
+	\label{fig: EV_distribution_plots}
+\end{figure}
+
+The type I EV distribution for maxima is named Gumbel distribution.
+
+
+\subsection{Random Process}
+\subsubsection{Bernoulli Process}
+A Bernoulli process is a finite or infinite seqeunce of independent random variables $X_1,X_2,\cdots$, such that 
+\begin{itemize}
+	\item for each i, the value of $X_i$ is either 0 or 1;
+	\item for all values of i, the probability p is the same.
+\end{itemize}
+In other words, Bernoullic process is a sequence of independent identically distributed Bernoulli trials. The summary of Bernoulli process and its associated distributions are shonw in Figure \ref{fig: Bernoulli Process}
+\begin{figure}[h]
+	\includegraphics[scale = 0.6
+	]{figures/RPimages/BernoulliProcess}
+	\centering
+	\caption{Bernoulli Process and its associated Probability Distribution}		
+	\label{fig: Bernoulli Process}
+\end{figure}
+\subsubsection{Poisson Process}
+The homogeneous Poisson process can be defined as a counting process with rate $\lambda >0$  and follows the three properties
+\begin{itemize}
+	\item Independent occurences: In two non-overlapping intervals, the corresponding numbers of occurences must be statistically independent of each other
+	\item Oribability of occurences proportional to duration: In an interval $(t,t+\Delta t)$, the probability of exactly one occurence is asymptotically proportional to the interval length $\Delta t$ as $\Delta t \rightarrow 0$
+	\item Occurences do not coincide: The probability of two or more occurences within a sufficiently small interval  $(t.t+\Delta t)$ must be orders of magnitude lower than the probability of one occurence
+\end{itemize}
+For the homogeneous Poisson Process, the mean rate of occurence $\lambda$ is constant with tme or locations, whereas for nonhomogeneous case, $\lambda $ is the function of time or location.
+\begin{figure}[h]
+	\includegraphics[scale = 0.62
+	]{figures/RPimages/PoissonProcess}
+	\centering
+	\caption{Poisson Process and its associated Probability Distribution}		
+	\label{fig: PoissonProcess}
+\end{figure}
+\subsubsection{Compound Poisson Process}
+A compound Poisson process with rate $\gamma > 0$ abd jump size distribution is a continuous-time stochastic process $\{S(t): t\geq 0\}$ given by\begin{equation}
+	S(t) = \sum_{i=1}^{Y(t)}X_i,
+\end{equation}
+where the sum is by convention equal to zero as long as $Y(t) = 0$. Here $\{Y(t),t\geq 0\}\}$ is a Poisson process with rate $\gamma$ and $\{X_i; i \geq 1\}\}$ are independent and identically distributed random variables with distribution function $f_{X_i}$, which is also independent of $\{Y(t),t\geq 0\}\}$. The summary of Compound Poisson Process in shown in Figure \ref{fig: CompoundPoissonProcess}
+\begin{figure}[h]
+	\includegraphics[scale = 0.6
+	]{figures/RPimages/CompoundPoissonProcess}
+	\centering
+	\caption{Compound Process Process and its associated Probability Distribution}		
+	\label{fig: CompoundPoissonProcess}
+\end{figure}
+Compound poisson Process builds on the Poisson process by adding randomness to the event magnitudes. The Poisson porcess models the timing of the events, while the compound Poisson Process accounts for both the timing and the accumulated effect of events.
+\subsubsection{Gamma Process}
+The gamma process $\Gamma(t;\gamma,\lambda)$ is a process which measures the number of occurences of independent gamma-distributed variables over a span of time.
+
+The gamma distribution is a two-parameter continuous parobability distributions family. The exponential, Erlang and chi-squared distributions are special cases of the gamma distributions. The two parameters are the shape parameter $\gamma>0$ and the rate parameter $\lambda>0$ (or equivalently the scale parameter $\theta = \frac{1}{\lambda}$). 
+Assume the random variable $X \sim \Gamma(\gamma,\lambda)$, then the probability density function is 
+\begin{equation}
+	f_X(x;\gamma,\lambda) = \frac{x^{\gamma-1}e^{-\lambda x}\lambda^{\gamma}}{\Gamma(\gamma)}, \textsf{ for } x>0
+\end{equation}
+
+
+The gamma function $\Gamma(\cdot)$ is the extension of factorial function to complex numbers. It is defined for all complex numbers $z$ except nno-positive integers.  
+\begin{equation}
+	\Gamma(z) = 
+	\begin{cases}
+		(z-1)! ,& z \in \mathbb{Z}_{>0} \\ 
+		\int_{0}^{\infty}t^{z-1}e^{-t}dt ,& \mathbf{R}(z)>0
+	\end{cases}
+\end{equation}
+
+
+For the gamma process: the increment distribution is following the gamma distribution.
+\begin{equation}
+	S(t+\Delta t) - S(t) \sim \Gamma(\gamma \Delta t, \lambda)
+\end{equation}
+It is used to model phenomena where the cumulative total grows smoothly over time, e.g. Modelling degradation and aging in systems due to wear and tear.
+
+In contrast  the compound Poisson Process models the phenomena where discrete random events contribute to a cumulative sum, e.g. total rainfall, aggregate claims in insurance, financial losses.
+
+The gamma process is a random process consisting of independently distributed gamma distributions where $Y(t)$ represents the number of event occurences from time 0 to time t.  The gamma distribution has shape parameter $\gamma$ and rate parameter $\lambda$, often wirtten as $\Gamma(\gamma,\lambda)$,  $\gamma > 0$ and $\lambda >0$. 
+The gamma process is often written as $\Gamma(t;\gamma,\lambda)$ where $t$ represents the time from $0$. The process is a pure-jump increasing Levy proess with intensity measure $\nu(x) = \gamma x^{-1}e^{(-\lambda x)}$ for all positive x. Thus jumps whose size lies in the interval $[x,x+d)$ occur as a Poisson process with intensity $\nu(x)dx$. The parameter $\gamma$ controls the rate of jump arrivals and the scaling parameter $\gamma$ inversely controls the jump size. It is assumed the process starts from a value 0 at t=0 , i.e. $Y(0)=0$
+\begin{figure}[h]
+	\includegraphics[scale = 0.62
+	]{figures/RPimages/GammaProcess}
+	\centering
+	\caption{Gamma Process and its associated Probability Distribution}		
+	\label{fig: GammaProcess}
+\end{figure}
+\end{document}
