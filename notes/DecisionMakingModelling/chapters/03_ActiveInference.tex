@@ -7,9 +7,80 @@
 	\label{chap:AIF}
 	
 	\section{Active Inference}
+	 
+	 Recall the definition of POMDP, we will define a 7-tuple for the whole decision making process:  $\{\mathbb{S},\mathbb{A},\mathbb{O},\mathbf{T},\mathbf{R},\mathbf{O},\gamma\}$, where at time step $t$, the state $s _t\in \mathbb{S}$ are hidden in the real world, its transition mechanism is illustrated by the transition model $T(s_{t+1}|s_t,a_t)$, action will be taken according to a policy $\pi(a_t|s_t)$, the observation comes from the observation model $o_t = O(o_t|s_t)$. To optimize the policy, we define a reward model $r_t = R(s_t,a_t)$ and the weighted accumulated total return $\mathbb{E} \left[U_t^{\pi}\right] =\mathbb{E} \left[ \sum_{i=t}^{\infty} \gamma^{i-t}r_i\right]$. 
+	 \begin{figure}[h]
+	 	\includegraphics[width=1.0\textwidth
+	 	]{figures/ActiveInference/OriginalPOMDP}
+	 	\centering
+	 	\caption{Original POMDP Model}		
+	 	\label{fig: OriginalPOMDP}
+	 \end{figure}
+	 
+	 There are only one model for the real world
+	 
+	 After understanding the basics of Partially Observable Markov Decision Process (POMDP), we can 
+	 To have an basic understanding of Active Inference shown in the Figure \ref{fig: GenerativeProcessAndGenerativeModel}, we should clarify that there are two models defined, i.e. the real world model described by the generative process $P^{\star}(s^{\star},o)$ 
+	 and the generative model $P(s,o) = P(s|o) P(o) = P(o|s) P(s)$. 
+	 
+	 The true process is always unknown, the agent has a generative model about how the outside world works. The only true connection between the interior and external world is the outcome (or observation).
+	 
+	 The internal generative model would be updated every time observe some outcome. The prior belief is defined as the probability density of the state $P(s)$, 
+	 the posterior is defined as 
+	\begin{equation}
+		\label{eq:PosteriorBayesianUpdating}
+		P(s|o) = \frac{P(s,o)}{P(o)} = \frac{P(o|s)P(s)}{P(o)}
+	\end{equation}
+	 
+	 Due to the difficulty of calculating the evidence $P(o) = \int_{S\in \mathbb{S}} P(o|S)P(S)$,
+	 we may use $Q(s)$ to approximate the posterior distribution $P(s|o)$.
+	 The information loss caused when using $Q(s)$ to approximate $P(s|o)$ is given by the relative Kullback-Divergence:
+	 \begin{equation}
+	 	\label{eq: KLDivergenceDefinitionOfInformationLoss}
+	 	D_{KL}[Q(s)||P(s|o)] = \mathbb{E}_{Q(s)} \left[ln(Q(s)) - ln(P(s|o))\right]
+	 \end{equation}
+	 When substitute the \eqref{eq:PosteriorBayesianUpdating} to the \eqref{eq: KLDivergenceDefinitionOfInformationLoss} we could get:
+	 \begin{subequations}
+	 	\begin{align}
+	 		D_{KL}[Q(s)||P(s|o)] &=  \mathbb{E}_{Q(s)} \left[ln(Q(s)) - ln(P(s|o))\right] \\
+	 		& =  \mathbb{E}_{Q(s)} \left[ln(Q(s)) - ln\left (\frac{P(s,o)}{P(o)} \right )\right] \\
+	 		& =  \mathbb{E}_{Q(s)} \left[ln(Q(s)) - ln\left(P(s,o) \right)\right] + \mathbb{E}_{Q(s)}\left[ln(P(o))\right]
+		 \end{align}
+	\end{subequations}
+	The first term is defined as the variational free energy $\mathcal{F} \defeq \mathbb{E}_{Q(s)} \left[ln(Q(s)) - ln\left(P(s,o) \right)\right] = D_{KL}[Q(s)||P(s,o)]$
+	Then we can write that 
+	 \begin{subequations}
+	 	\begin{align}
+	 	 \mathcal{F} &= D_{KL}\left[Q(s)||P(s,o)\right] \\
+	 	 &=  D_{KL}\left[Q(s)||P(s|o)\right] - \mathbb{E}_{Q(s)}[ln(P(o))]  \label{subequation: DivergenceSurprisal}\\
+	 	 &= D_{KL}\left[Q(s)||P(s)\right] - \mathbb{E}_{Q(s)}[ln(P(o|s))] \label{subequation: ComplexityAccuracy}
+	 	\end{align}
+	 \end{subequations}
+	 
+	 \begin{table}[]
+	 	\centering
+	 	\caption{The physical meaning of variational Free Energy $\mathcal{F}$}
+	 	\label{Table: The physical Meaning of variaiton Free Energy}
+	 	\begin{tabular}{l|llll|}
+	 		\cline{2-5}
+	 		Variational   & = & $D_{KL}\left[Q(s)||P(s|o)\right] - \mathbb{E}_{Q(s)}[ln(P(o))]$ & + & $- \mathbb{E}_{Q(s)}[ln(P(o))]$                       \\
+	 		Free          & = & Divergence                                                      & + & Surprisal                                             \\ \cline{2-5} 
+	 		Energy        & = & $D_{KL}\left[Q(s)||P(s)\right]$                                 & - & $\mathbb{E}_{Q(s)}[ln(P(o|s))] $\\
+	 		$\mathcal{F}$ & = & Complexity                                                      & - & Accuracy  (Goodness of fit)                                            \\ \cline{2-5} 
+	 	\end{tabular}
+	 \end{table}
+
+	 The physical meaning of \eqref{subequation: DivergenceSurprisal} 
+	 \begin{figure}[h]
+	 	\includegraphics[width=1.0\textwidth
+	 	]{figures/ActiveInference/GenerativeProcessAndGenerativeModel}
+	 	\centering
+	 	\caption{Graphical Representation of the Generative Process(based on the true states $s^{\star}$) in the world and the corresponding (internal) generative model (based on probabilistic beliefs random variables $s$) that best explain the outcomes $o$. The outcomes are shared between the generative process and model. \cite{sajid2021active}}		
+	 	\label{fig: GenerativeProcessAndGenerativeModel}
+	 \end{figure}
 	
-	xs
-	This section presents the proposed framework for addressing the research problem. The overall architecture is depicted in \Cref{fig:framework}.
+
+
 	
 	\subsection{Data Collection}
 	

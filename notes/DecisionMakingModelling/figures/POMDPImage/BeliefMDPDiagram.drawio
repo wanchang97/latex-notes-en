@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.5 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" version="28.2.5">
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
   <diagram name="Page-1" id="n_hfr_sszOEUW7_Lpu6b">
-    <mxGraphModel dx="384" dy="342" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+    <mxGraphModel dx="1315" dy="851" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -44,7 +44,7 @@
           <mxGeometry x="515" y="160" width="65" height="40" as="geometry" />
         </mxCell>
         <mxCell id="UNbwVvVhms77LrtXSPrp-22" value="" style="group;fontStyle=1;fontSize=18;" parent="1" vertex="1" connectable="0">
-          <mxGeometry x="240" y="1096" width="1590" height="50" as="geometry" />
+          <mxGeometry x="237.5" y="1120" width="1590" height="50" as="geometry" />
         </mxCell>
         <mxCell id="UNbwVvVhms77LrtXSPrp-23" value="Reward Model:&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;strokeWidth=3;fontStyle=1" parent="UNbwVvVhms77LrtXSPrp-22" vertex="1">
           <mxGeometry x="115" y="1" width="150" height="40" as="geometry" />
@@ -55,8 +55,8 @@
             <mxPoint x="90" y="17" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UNbwVvVhms77LrtXSPrp-25" value="&lt;span&gt;&amp;nbsp;\(r(a_t,\mathbf{b}_t) =&amp;nbsp; \int_{s_t \in \mathbb{S}} r(a_t,s_t)b_t(s_t)\)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=18;" parent="UNbwVvVhms77LrtXSPrp-22" vertex="1">
-          <mxGeometry x="140" y="6" width="550" height="40" as="geometry" />
+        <mxCell id="UNbwVvVhms77LrtXSPrp-25" value="&lt;span&gt;&amp;nbsp;\(r(a_t,\mathbf{b}_t) =&amp;nbsp; \int_{s_t \in \mathbb{S}} r(a_t,s_t)b_t(s_t)ds_t\)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=18;" parent="UNbwVvVhms77LrtXSPrp-22" vertex="1">
+          <mxGeometry x="125" y="6" width="580" height="40" as="geometry" />
         </mxCell>
         <mxCell id="UNbwVvVhms77LrtXSPrp-27" value="" style="group" parent="1" vertex="1" connectable="0">
           <mxGeometry x="560" y="722" width="700" height="170" as="geometry" />
@@ -262,7 +262,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="UNbwVvVhms77LrtXSPrp-69" value="&lt;span&gt;&amp;nbsp;\(r(a_t,\mathbf{b}_t) =&amp;nbsp; \sum_{s_t \in \mathbb{S}} r(a_t,s_t)b_t(s_t)\)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=18;" parent="1" vertex="1">
-          <mxGeometry x="380" y="1146" width="560" height="40" as="geometry" />
+          <mxGeometry x="367" y="1180" width="560" height="40" as="geometry" />
         </mxCell>
         <mxCell id="NjM9QFXJbv90d1HKG8xk-1" value="\(o_t|s_t\)" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;fillColor=none;strokeColor=#6c8ebf;fontSize=19;strokeWidth=3;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="232" y="900" width="65" height="40" as="geometry" />
@@ -304,18 +304,18 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="UNbwVvVhms77LrtXSPrp-20" value="&lt;span style=&quot;font-size: 18px; font-weight: 700;&quot;&gt;&amp;nbsp;\(P(\mathbf{b}_{t+1}|\mathbf{b}_t,a_t) =\sum_{o_{t+1}\in \mathbb{O}}P(o_{t+1}|\mathbf{b}_t,a_t)\)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="272.5" y="1056" width="850" height="40" as="geometry" />
+          <mxGeometry x="232" y="1060" width="850" height="40" as="geometry" />
         </mxCell>
         <mxCell id="UNbwVvVhms77LrtXSPrp-21" value="&amp;nbsp;\(P(\mathbf{b}_{t+1}|\symbf{b}_t,a_t) = \int_{o_{t+1} \in \mathbb{O}}&amp;nbsp; P(o_{t+1}|\mathbf{b}_t,a_t)do_{t+1}\)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1;fontSize=18;" parent="1" vertex="1">
-          <mxGeometry x="286" y="1016" width="860" height="40" as="geometry" />
+          <mxGeometry x="244" y="1010" width="860" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="6_QZFpgqGbBgU1bEkfhI-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=18;strokeWidth=3;fontStyle=1" edge="1" parent="1">
+        <mxCell id="6_QZFpgqGbBgU1bEkfhI-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=18;strokeWidth=3;fontStyle=1" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="239" y="1041" as="sourcePoint" />
             <mxPoint x="329" y="1041" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="6_QZFpgqGbBgU1bEkfhI-2" value="Transition Model:&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;strokeWidth=3;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="6_QZFpgqGbBgU1bEkfhI-2" value="Transition Model:&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;strokeWidth=3;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="352" y="1022" width="170" height="40" as="geometry" />
         </mxCell>
       </root>

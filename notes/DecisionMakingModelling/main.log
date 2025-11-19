@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  14 NOV 2025 13:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  19 NOV 2025 10:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1512,13 +1512,13 @@ File: uesint.fd
 \openout6 = `main.toc'.
 
  [5]
-(./main.lof)
+(./main.lof [6
+
+])
 \tf@lof=\write7
 \openout7 = `main.lof'.
 
- [6
-
-] (./main.lot)
+ [7] (./main.lot)
 \tf@lot=\write8
 \openout8 = `main.lot'.
 
@@ -1543,7 +1543,7 @@ Chapter 1.
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/POMDPImage/MDPDiag
 ram.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> all
 owed
-<figures/POMDPImage/MDPDiagram.pdf, id=255, 725.8317pt x 241.86359pt>
+<figures/POMDPImage/MDPDiagram.pdf, id=293, 725.8317pt x 241.86359pt>
 File: figures/POMDPImage/MDPDiagram.pdf Graphic file (type pdf)
 <use figures/POMDPImage/MDPDiagram.pdf>
 Package pdftex.def Info: figures/POMDPImage/MDPDiagram.pdf  used on input line 
@@ -1687,7 +1687,7 @@ Overfull \hbox (3.56912pt too wide) in paragraph at lines 475--476
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/DeepQNetw
 ork.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> all
 owed
-<figures/RPimages/DeepQNetwork.pdf, id=472, 337.26pt x 171.76169pt>
+<figures/RPimages/DeepQNetwork.pdf, id=509, 337.26pt x 171.76169pt>
 File: figures/RPimages/DeepQNetwork.pdf Graphic file (type pdf)
 <use figures/RPimages/DeepQNetwork.pdf>
 Package pdftex.def Info: figures/RPimages/DeepQNetwork.pdf  used on input line 
@@ -1711,7 +1711,7 @@ eus/m/n/12 « \U/zeur/m/n/12 ^^Mq []
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/DuelingQN
 etwork.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> 
 allowed
-<figures/RPimages/DuelingQNetwork.pdf, id=527, 470.7186pt x 271.97609pt>
+<figures/RPimages/DuelingQNetwork.pdf, id=566, 470.7186pt x 271.97609pt>
 File: figures/RPimages/DuelingQNetwork.pdf Graphic file (type pdf)
 <use figures/RPimages/DuelingQNetwork.pdf>
 Package pdftex.def Info: figures/RPimages/DuelingQNetwork.pdf  used on input li
@@ -1739,7 +1739,7 @@ Overfull \vbox (82.6311pt too high) has occurred while \output is active []
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/PolicyNet
 work.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> al
 lowed
-<figures/RPimages/PolicyNetwork.pdf, id=577, 403.5075pt x 171.76169pt>
+<figures/RPimages/PolicyNetwork.pdf, id=614, 403.5075pt x 171.76169pt>
 File: figures/RPimages/PolicyNetwork.pdf Graphic file (type pdf)
 <use figures/RPimages/PolicyNetwork.pdf>
 Package pdftex.def Info: figures/RPimages/PolicyNetwork.pdf  used on input line
@@ -1750,7 +1750,7 @@ Package pdftex.def Info: figures/RPimages/PolicyNetwork.pdf  used on input line
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/ActorCrit
 ic.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allo
 wed
-<figures/RPimages/ActorCritic.pdf, id=579, 403.5075pt x 363.27718pt>
+<figures/RPimages/ActorCritic.pdf, id=616, 403.5075pt x 363.27718pt>
 File: figures/RPimages/ActorCritic.pdf Graphic file (type pdf)
 <use figures/RPimages/ActorCritic.pdf>
 Package pdftex.def Info: figures/RPimages/ActorCritic.pdf  used on input line 6
@@ -1772,7 +1772,7 @@ ine 812.
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/DCMAC.pdf
 ): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/RPimages/DCMAC.pdf, id=685, 615.25856pt x 363.27718pt>
+<figures/RPimages/DCMAC.pdf, id=723, 615.25856pt x 363.27718pt>
 File: figures/RPimages/DCMAC.pdf Graphic file (type pdf)
 <use figures/RPimages/DCMAC.pdf>
 Package pdftex.def Info: figures/RPimages/DCMAC.pdf  used on input line 815.
@@ -1797,7 +1797,7 @@ LaTeX Warning: Citation 'andriotis2021deep' on page 24 undefined on input line
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/DDMAC.pdf
 ): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/RPimages/DDMAC.pdf, id=720, 612.36775pt x 389.5353pt>
+<figures/RPimages/DDMAC.pdf, id=757, 612.36775pt x 389.5353pt>
 File: figures/RPimages/DDMAC.pdf Graphic file (type pdf)
 <use figures/RPimages/DDMAC.pdf>
 Package pdftex.def Info: figures/RPimages/DDMAC.pdf  used on input line 825.
@@ -1828,7 +1828,7 @@ n-forcemnt learn-ing [[]]
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/POMDPImage/POMDPDi
 agram.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> a
 llowed
-<figures/POMDPImage/POMDPDiagram.pdf, id=756, 777.86606pt x 357.25468pt>
+<figures/POMDPImage/POMDPDiagram.pdf, id=794, 777.86606pt x 357.25468pt>
 File: figures/POMDPImage/POMDPDiagram.pdf Graphic file (type pdf)
 <use figures/POMDPImage/POMDPDiagram.pdf>
 Package pdftex.def Info: figures/POMDPImage/POMDPDiagram.pdf  used on input lin
@@ -1847,7 +1847,7 @@ U/zeur/m/n/12 P\U/zeus/m/n/12 ¨\U/zeur/m/n/12 S[] \U/zeus/m/n/12 ½ \U/zeur/m/n/
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/POMDPImage/BeliefM
 DPDiagram.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.
 5> allowed
-<figures/POMDPImage/BeliefMDPDiagram.pdf, id=819, 1205.46356pt x 337.26pt>
+<figures/POMDPImage/BeliefMDPDiagram.pdf, id=856, 1205.46356pt x 337.26pt>
 File: figures/POMDPImage/BeliefMDPDiagram.pdf Graphic file (type pdf)
 <use figures/POMDPImage/BeliefMDPDiagram.pdf>
 Package pdftex.def Info: figures/POMDPImage/BeliefMDPDiagram.pdf  used on input
@@ -1939,15 +1939,65 @@ n sev-eral key ar-eas. [[]]
 LaTeX Warning: Citation 'brown2021deeplearning' on page 32 undefined on input l
 ine 1116.
 
-[32]) (./chapters/04_StructuralIntegrationManagement.tex [33]
+[32]) (./chapters/03_ActiveInference.tex [33]
 Chapter 2.
+
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/ActiveInference/Or
+iginalPOMDP.pdf): PDF inclusion: found PDF version <1.7>, but at most version <
+1.5> allowed
+<figures/ActiveInference/OriginalPOMDP.pdf, id=999, 833.03218pt x 339.18718pt>
+File: figures/ActiveInference/OriginalPOMDP.pdf Graphic file (type pdf)
+<use figures/ActiveInference/OriginalPOMDP.pdf>
+Package pdftex.def Info: figures/ActiveInference/OriginalPOMDP.pdf  used on inp
+ut line 14.
+(pdftex.def)             Requested size: 418.25368pt x 170.30223pt.
+[34
+
+ <./figures/ActiveInference/OriginalPOMDP.pdf>]
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/ActiveInference/Ge
+nerativeProcessAndGenerativeModel.pdf): PDF inclusion: found PDF version <1.7>,
+ but at most version <1.5> allowed
+<figures/ActiveInference/GenerativeProcessAndGenerativeModel.pdf, id=1078, 406.
+3983pt x 120.45pt>
+File: figures/ActiveInference/GenerativeProcessAndGenerativeModel.pdf Graphic f
+ile (type pdf)
+<use figures/ActiveInference/GenerativeProcessAndGenerativeModel.pdf>
+Package pdftex.def Info: figures/ActiveInference/GenerativeProcessAndGenerative
+Model.pdf  used on input line 28.
+(pdftex.def)             Requested size: 418.25368pt x 123.9693pt.
+
+LaTeX Warning: Citation 'sajid2021active' on page 35 undefined on input line 30
+.
+
+
+LaTeX Warning: Citation 'sajid2021active' on page 35 undefined on input line 30
+.
+
+
+LaTeX Warning: Reference `fig:framework' on page 1 undefined on input line 34.
+
+
+LaTeX Warning: Citation 'lee2019optimization' on page 35 undefined on input lin
+e 50.
+
+
+Overfull \hbox (44.67209pt too wide) in paragraph at lines 50--51
+\T1/cmr/m/n/12 The pro-posed al-go-rithm builds upon the foun-da-tion es-tab-li
+shed by [[]].
+ []
+
+[35 <./figures/ActiveInference/GenerativeProcessAndGenerativeModel.pdf>])
+(./chapters/04_StructuralIntegrationManagement.tex [36]
+Chapter 3.
 
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/SimpleExampleFigur
 e/flowchart_Echanges.pdf): PDF inclusion: found PDF version <1.7>, but at most 
 version <1.5> allowed
-<figures/SimpleExampleFigure/flowchart_Echanges.pdf, id=962, 533.1117pt x 421.5
-75pt>
+<figures/SimpleExampleFigure/flowchart_Echanges.pdf, id=1126, 533.1117pt x 421.
+575pt>
 File: figures/SimpleExampleFigure/flowchart_Echanges.pdf Graphic file (type pdf
 )
 <use figures/SimpleExampleFigure/flowchart_Echanges.pdf>
@@ -1967,7 +2017,8 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/SimpleExampleFigur
 e/1DBeamExample.pdf): PDF inclusion: found PDF version <1.7>, but at most versi
 on <1.5> allowed
-<figures/SimpleExampleFigure/1DBeamExample.pdf, id=964, 204.765pt x 78.2925pt>
+<figures/SimpleExampleFigure/1DBeamExample.pdf, id=1128, 204.765pt x 78.2925pt>
+
 File: figures/SimpleExampleFigure/1DBeamExample.pdf Graphic file (type pdf)
 <use figures/SimpleExampleFigure/1DBeamExample.pdf>
 Package pdftex.def Info: figures/SimpleExampleFigure/1DBeamExample.pdf  used on
@@ -1976,11 +2027,11 @@ Package pdftex.def Info: figures/SimpleExampleFigure/1DBeamExample.pdf  used on
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[34
+[37
 
-] [35 <./figures/SimpleExampleFigure/flowchart_Echanges.pdf>]
+] [38 <./figures/SimpleExampleFigure/flowchart_Echanges.pdf>]
 
-LaTeX Warning: Citation 'ellingwood2005risk' on page 36 undefined on input line
+LaTeX Warning: Citation 'ellingwood2005risk' on page 39 undefined on input line
  69.
 
 
@@ -1994,7 +2045,7 @@ Overfull \hbox (0.32771pt too wide) in paragraph at lines 76--77
 y the deriva-
  []
 
-<figures/Deterioration_Natural/Deterioration_Gradual_Model1.png, id=1023, 336.7
+<figures/Deterioration_Natural/Deterioration_Gradual_Model1.png, id=1185, 336.7
 782pt x 336.7782pt>
 File: figures/Deterioration_Natural/Deterioration_Gradual_Model1.png Graphic fi
 le (type png)
@@ -2006,10 +2057,10 @@ del1.png  used on input line 84.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Citation 'van2009survey' on page 36 undefined on input line 90.
+LaTeX Warning: Citation 'van2009survey' on page 39 undefined on input line 90.
 
 
-LaTeX Warning: Citation 'sanchez2016reliability' on page 36 undefined on input 
+LaTeX Warning: Citation 'sanchez2016reliability' on page 39 undefined on input 
 line 90.
 
 
@@ -2025,8 +2076,8 @@ oissonProcess\U/zeus/m/n/12 ¨\U/zeur/m/n/12 ^^U\U/zeus/m/n/12 ©$\T1/cmr/m/n/12
 ;
  []
 
-[36 <./figures/SimpleExampleFigure/1DBeamExample.pdf>]
-<figures/Deterioration_Natural/Deterioration_Sudden_Model1.png, id=1043, 501.55
+[39 <./figures/SimpleExampleFigure/1DBeamExample.pdf>]
+<figures/Deterioration_Natural/Deterioration_Sudden_Model1.png, id=1205, 501.55
 38pt x 336.7782pt>
 File: figures/Deterioration_Natural/Deterioration_Sudden_Model1.png Graphic fil
 e (type png)
@@ -2045,8 +2096,8 @@ Overfull \hbox (62.94655pt too wide) in paragraph at lines 102--111
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[37 <./figures/Deterioration_Natural/Deterioration_Gradual_Model1.png>]
-[38 <./figures/Deterioration_Natural/Deterioration_Sudden_Model1.png>]
+[40 <./figures/Deterioration_Natural/Deterioration_Gradual_Model1.png>]
+[41 <./figures/Deterioration_Natural/Deterioration_Sudden_Model1.png>]
 Overfull \hbox (178.65714pt too wide) in paragraph at lines 178--197
  [][] 
  []
@@ -2059,12 +2110,12 @@ LaTeX Warning: Reference `fig:framework' on page 1 undefined on input line 203.
 
 LaTeX Warning: Empty bibliography on input line 46.
 
-(./chapters/Appendices.tex [39]
+(./chapters/Appendices.tex [42]
 Appendix A.
-[40
+[43
 
 ]
-<figures/RPimages/EV_distribution_plots.png, id=1081, 867.24pt x 578.16pt>
+<figures/RPimages/EV_distribution_plots.png, id=1245, 867.24pt x 578.16pt>
 File: figures/RPimages/EV_distribution_plots.png Graphic file (type png)
 <use figures/RPimages/EV_distribution_plots.png>
 Package pdftex.def Info: figures/RPimages/EV_distribution_plots.png  used on in
@@ -2083,7 +2134,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/Bernoulli
 Process.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5>
  allowed
-<figures/RPimages/BernoulliProcess.pdf, id=1083, 1042.85606pt x 522.03032pt>
+<figures/RPimages/BernoulliProcess.pdf, id=1247, 1042.85606pt x 522.03032pt>
 File: figures/RPimages/BernoulliProcess.pdf Graphic file (type pdf)
 <use figures/RPimages/BernoulliProcess.pdf>
 Package pdftex.def Info: figures/RPimages/BernoulliProcess.pdf  used on input l
@@ -2097,12 +2148,12 @@ Overfull \hbox (207.4648pt too wide) in paragraph at lines 76--79
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[41]
+[44]
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/PoissonPr
 ocess.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> a
 llowed
-<figures/RPimages/PoissonProcess.pdf, id=1097, 1070.07776pt x 448.5558pt>
+<figures/RPimages/PoissonProcess.pdf, id=1259, 1070.07776pt x 448.5558pt>
 File: figures/RPimages/PoissonProcess.pdf Graphic file (type pdf)
 <use figures/RPimages/PoissonProcess.pdf>
 Package pdftex.def Info: figures/RPimages/PoissonProcess.pdf  used on input lin
@@ -2116,12 +2167,12 @@ Overfull \hbox (245.18768pt too wide) in paragraph at lines 91--94
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[42 <./figures/RPimages/EV_distribution_plots.png>]
+[45 <./figures/RPimages/EV_distribution_plots.png>]
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/CompoundP
 oissonProcess.pdf): PDF inclusion: found PDF version <1.7>, but at most version
  <1.5> allowed
-<figures/RPimages/CompoundPoissonProcess.pdf, id=1105, 911.32468pt x 1051.04669
+<figures/RPimages/CompoundPoissonProcess.pdf, id=1267, 911.32468pt x 1051.04669
 pt>
 File: figures/RPimages/CompoundPoissonProcess.pdf Graphic file (type pdf)
 <use figures/RPimages/CompoundPoissonProcess.pdf>
@@ -2139,13 +2190,13 @@ LaTeX Warning: Float too large for page by 63.60268pt on input line 108.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[43 <./figures/RPimages/BernoulliProcess.pdf>] [44 <./figures/RPimages/PoissonP
+[46 <./figures/RPimages/BernoulliProcess.pdf>] [47 <./figures/RPimages/PoissonP
 rocess.pdf>]
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/GammaProc
 ess.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> all
 owed
-<figures/RPimages/GammaProcess.pdf, id=1234, 638.385pt x 283.0575pt>
+<figures/RPimages/GammaProcess.pdf, id=1397, 638.385pt x 283.0575pt>
 File: figures/RPimages/GammaProcess.pdf Graphic file (type pdf)
 <use figures/RPimages/GammaProcess.pdf>
 Package pdftex.def Info: figures/RPimages/GammaProcess.pdf  used on input line 
@@ -2155,7 +2206,7 @@ Package pdftex.def Info: figures/RPimages/GammaProcess.pdf  used on input line
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[45] [46 <./figures/RPimages/CompoundPoissonProcess.pdf>] [47 <./figures/RPimag
+[48] [49 <./figures/RPimages/CompoundPoissonProcess.pdf>] [50 <./figures/RPimag
 es/GammaProcess.pdf>] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -2166,7 +2217,7 @@ L3 programming layer <2024-02-20>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4E35695EBAF1D2F20332E3E95EAAC0C7;5169.
+(rerunfilecheck)             Checksum: 58501C3F256828DEF7E544CAB3667B50;5891.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                main
@@ -2177,13 +2228,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 40038 strings out of 474116
- 755201 string characters out of 5743682
+ 40110 strings out of 474116
+ 757312 string characters out of 5743682
  1946187 words of memory out of 5000000
- 61268 multiletter control sequences out of 15000+600000
+ 61307 multiletter control sequences out of 15000+600000
  599646 words of font info for 163 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 115i,20n,110p,2359b,1593s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 115i,20n,110p,2359b,1676s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
@@ -2230,10 +2281,10 @@ sr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr
 ocal/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/loc
 al/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local
 /texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on main.pdf (55 pages, 2017720 bytes).
+Output written on main.pdf (59 pages, 2133177 bytes).
 PDF statistics:
- 1614 PDF objects out of 1728 (max. 8388607)
- 1393 compressed objects within 14 object streams
- 374 named destinations out of 1000 (max. 500000)
- 327 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1782 PDF objects out of 2073 (max. 8388607)
+ 1541 compressed objects within 16 object streams
+ 400 named destinations out of 1000 (max. 500000)
+ 377 words of extra memory for PDF output out of 10000 (max. 10000000)
 

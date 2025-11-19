@@ -1,0 +1,55 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.8 Chrome/140.0.7339.240 Electron/38.4.0 Safari/537.36" version="28.2.8">
+  <diagram name="Page-1" id="RxlnpsP4udd44bsDGAbk">
+    <mxGraphModel dx="371" dy="527" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="45aquR3-2RywIttAMsrg-17" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="40" y="120" width="200" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-1" value="&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="45aquR3-2RywIttAMsrg-17">
+          <mxGeometry width="200" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-5" value="&lt;b style=&quot;font-size: 20px;&quot;&gt;Agent&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="45aquR3-2RywIttAMsrg-17">
+          <mxGeometry x="70" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-8" value="(internal) Generative Model&amp;nbsp; \(P(s,o) = P(o|s)P(s)\)&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="45aquR3-2RywIttAMsrg-17">
+          <mxGeometry x="22.5" y="100" width="155" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-18" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="400" y="120" width="200" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-2" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="45aquR3-2RywIttAMsrg-18">
+          <mxGeometry width="200" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-3" value="\(O\)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="45aquR3-2RywIttAMsrg-18">
+          <mxGeometry x="20" y="115" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-4" value="\(P(o)\)" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="45aquR3-2RywIttAMsrg-18">
+          <mxGeometry x="7.5" y="135" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-6" value="&lt;b style=&quot;font-size: 20px;&quot;&gt;Environment&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="45aquR3-2RywIttAMsrg-18">
+          <mxGeometry x="35" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-7" value="Generative Process : \(P^{\star}(s^{\star},o)\)&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="45aquR3-2RywIttAMsrg-18">
+          <mxGeometry x="7.5" y="30" width="185" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-13" value="True state \(s^{\star}\), causes outcome" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="45aquR3-2RywIttAMsrg-18">
+          <mxGeometry x="35" y="85" width="105" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.119;exitY=0.993;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="45aquR3-2RywIttAMsrg-18" source="45aquR3-2RywIttAMsrg-7" target="45aquR3-2RywIttAMsrg-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="45aquR3-2RywIttAMsrg-8" target="45aquR3-2RywIttAMsrg-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-15" value="\(P(o) = \int_S P(o|S)P(S)dS\)" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="234" y="220" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="45aquR3-2RywIttAMsrg-16" value="Probability of outcome given prior beliefs" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="250" width="150" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

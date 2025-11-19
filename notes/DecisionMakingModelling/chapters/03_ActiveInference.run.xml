@@ -80,6 +80,7 @@
     </requires>
     <requires type="editable">
       <file>DecisionMakingModeling.bib</file>
+      <file>AIFz.bib</file>
     </requires>
   </external>
 </requests>

@@ -55,16 +55,21 @@
 \contentsline {section}{\numberline {1.5}Recent Advances}{32}{section.1.5}%
 \contentsline {subsection}{\numberline {1.5.1}Machine Learning Techniques}{33}{subsection.1.5.1}%
 \contentsline {section}{\numberline {1.6}Research Gaps}{33}{section.1.6}%
-\contentsline {chapter}{\numberline {2}Structural Integration Management}{34}{chapter.2}%
-\contentsline {section}{\numberline {2.1}simple example}{34}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Problem Formulation: 1D Beam with deteriorating stiffness}{34}{subsection.2.1.1}%
-\contentsline {section}{\numberline {2.2}Proposed Framework}{39}{section.2.2}%
-\contentsline {chapter}{\numberline {A}Appendices}{40}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Probability Basis}{40}{section.A.1}%
-\contentsline {subsection}{\numberline {A.1.1}Random Variables}{40}{subsection.A.1.1}%
-\contentsline {subsubsection}{Extreme Value (EV) distributions}{40}{section*.64}%
-\contentsline {subsection}{\numberline {A.1.2}Random Process}{41}{subsection.A.1.2}%
-\contentsline {subsubsection}{Bernoulli Process}{41}{section*.66}%
-\contentsline {subsubsection}{Poisson Process}{42}{section*.68}%
-\contentsline {subsubsection}{Compound Poisson Process}{43}{section*.70}%
-\contentsline {subsubsection}{Gamma Process}{44}{section*.72}%
+\contentsline {chapter}{\numberline {2}Active Inference(AIF)}{34}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Active Inference}{34}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Data Collection}{35}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Algorithm Design}{35}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Experimental Setup}{35}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Structural Integration Management}{37}{chapter.3}%
+\contentsline {section}{\numberline {3.1}simple example}{37}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Problem Formulation: 1D Beam with deteriorating stiffness}{37}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Proposed Framework}{42}{section.3.2}%
+\contentsline {chapter}{\numberline {A}Appendices}{43}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Probability Basis}{43}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Random Variables}{43}{subsection.A.1.1}%
+\contentsline {subsubsection}{Extreme Value (EV) distributions}{43}{section*.67}%
+\contentsline {subsection}{\numberline {A.1.2}Random Process}{44}{subsection.A.1.2}%
+\contentsline {subsubsection}{Bernoulli Process}{44}{section*.69}%
+\contentsline {subsubsection}{Poisson Process}{45}{section*.71}%
+\contentsline {subsubsection}{Compound Poisson Process}{46}{section*.73}%
+\contentsline {subsubsection}{Gamma Process}{47}{section*.75}%
