@@ -20,37 +20,32 @@ INDEX_HTML="$BUILD_DIR/index.html"
   echo ""
 } > "$INDEX_MD"
 
-
 # 查找所有 PDF 并按修改时间排序（最新在前）
 find "$NOTES_DIR" -type f -name "*.pdf" -printf "%T@ %p\n" \
-  | sort -nr \
-  | cut -d' ' -f2- \
-  | while read -r pdf; do
-      base=$(basename "$pdf" .pdf) # base 现在是 DecisionMakingModelling_main 或 DecisionMakingModelling_colloquioumPresentation
-      relpath="notes/${base}.pdf"
+  | sort -nr \
+  | cut -d' ' -f2- \
+  | while read -r pdf; do
+      base=$(basename "$pdf" .pdf) # base 是文件名，例如 DecisionMakingModelling_main
+      relpath="notes/${base}.pdf"
 
-      # --- 新增：创建友好显示名称 ---
-      display_name="${base}"
+      # --- 创建友好显示名称 ---
+      display_name="${base}"
 
-      # 1. 将文件名中的下划线替换为空格
-      display_name="${display_name//_/ }"
-      
-      # 2. (可选) 为特定文件添加后缀，例如 (Report) 或 (Presentation)
-      if [[ "$base" == *"_main"* ]]; then
-        # 替换 _main 并添加 (Report)
-        display_name=$(echo "$display_name" | sed 's/ main$/ (Report)/')
-      elif [[ "$base" == *"_colloquioumPresentation"* ]]; then
-        # 替换 _colloquioumPresentation 并添加 (Presentation)
-        display_name=$(echo "$display_name" | sed 's/ colloquioumPresentation$/ (Colloquium Presentation)/')
-      fi
+      # 1. 将文件名中的下划线替换为空格
+      display_name="${display_name//_/ }"
+      
+      # 2. 为特定文件添加描述性后缀，以区分报告和演示文稿
+      if [[ "$base" == *"_main"* ]]; then
+        # 匹配 *_main，并添加 (Report)
+        display_name=$(echo "$display_name" | sed 's/ main$/ (Report)/')
+      elif [[ "$base" == *"_colloquioumPresentation"* ]]; then
+        # 匹配 *_colloquioumPresentation，并添加 (Colloquium Presentation)
+        display_name=$(echo "$display_name" | sed 's/ colloquioumPresentation$/ (Colloquium Presentation)/')
+      fi
 
-      # 3. 对文件名进行适当的首字母大写或美化（可选）
-      # 由于 bash 字符串操作复杂，我们仅依赖于之前的替换，假设您的文件夹名和文件名是合理的。
-      # 最终生成的链接文本是 ${display_name}
-
-      # 4. 生成 Markdown 列表项
-      echo "- [${display_name}](${relpath})" >> "$INDEX_MD"
-    done
+      # 3. 生成 Markdown 列表项
+      echo "- [${display_name}](${relpath})" >> "$INDEX_MD"
+    done
 
 # 添加页脚
 {
