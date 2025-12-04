@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  17 NOV 2025 13:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  3 DEC 2025 22:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1507,7 +1507,7 @@ Chapter 1.
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/POMDPImage/MDPDia
 gram.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> al
 lowed
-<../figures/POMDPImage/MDPDiagram.pdf, id=102, 725.8317pt x 241.86359pt>
+<../figures/POMDPImage/MDPDiagram.pdf, id=101, 725.8317pt x 241.86359pt>
 File: ../figures/POMDPImage/MDPDiagram.pdf Graphic file (type pdf)
 <use ../figures/POMDPImage/MDPDiagram.pdf>
 Package pdftex.def Info: ../figures/POMDPImage/MDPDiagram.pdf  used on input li
@@ -1651,7 +1651,7 @@ Overfull \hbox (3.56912pt too wide) in paragraph at lines 475--476
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/DeepQNet
 work.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> al
 lowed
-<../figures/RPimages/DeepQNetwork.pdf, id=327, 337.26pt x 171.76169pt>
+<../figures/RPimages/DeepQNetwork.pdf, id=326, 337.26pt x 171.76169pt>
 File: ../figures/RPimages/DeepQNetwork.pdf Graphic file (type pdf)
 <use ../figures/RPimages/DeepQNetwork.pdf>
 Package pdftex.def Info: ../figures/RPimages/DeepQNetwork.pdf  used on input li
@@ -1675,7 +1675,7 @@ eus/m/n/12 « \U/zeur/m/n/12 ^^Mq []
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/DuelingQ
 Network.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5>
  allowed
-<../figures/RPimages/DuelingQNetwork.pdf, id=383, 470.7186pt x 271.97609pt>
+<../figures/RPimages/DuelingQNetwork.pdf, id=382, 470.7186pt x 271.97609pt>
 File: ../figures/RPimages/DuelingQNetwork.pdf Graphic file (type pdf)
 <use ../figures/RPimages/DuelingQNetwork.pdf>
 Package pdftex.def Info: ../figures/RPimages/DuelingQNetwork.pdf  used on input
@@ -1703,7 +1703,7 @@ Overfull \vbox (82.6311pt too high) has occurred while \output is active []
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/PolicyNe
 twork.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> a
 llowed
-<../figures/RPimages/PolicyNetwork.pdf, id=433, 403.5075pt x 171.76169pt>
+<../figures/RPimages/PolicyNetwork.pdf, id=432, 403.5075pt x 171.76169pt>
 File: ../figures/RPimages/PolicyNetwork.pdf Graphic file (type pdf)
 <use ../figures/RPimages/PolicyNetwork.pdf>
 Package pdftex.def Info: ../figures/RPimages/PolicyNetwork.pdf  used on input l
@@ -1714,7 +1714,7 @@ ine 652.
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/ActorCri
 tic.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> all
 owed
-<../figures/RPimages/ActorCritic.pdf, id=435, 403.5075pt x 363.27718pt>
+<../figures/RPimages/ActorCritic.pdf, id=434, 403.5075pt x 363.27718pt>
 File: ../figures/RPimages/ActorCritic.pdf Graphic file (type pdf)
 <use ../figures/RPimages/ActorCritic.pdf>
 Package pdftex.def Info: ../figures/RPimages/ActorCritic.pdf  used on input lin
@@ -1736,7 +1736,7 @@ ine 812.
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/DCMAC.pd
 f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<../figures/RPimages/DCMAC.pdf, id=544, 615.25856pt x 363.27718pt>
+<../figures/RPimages/DCMAC.pdf, id=543, 615.25856pt x 363.27718pt>
 File: ../figures/RPimages/DCMAC.pdf Graphic file (type pdf)
 <use ../figures/RPimages/DCMAC.pdf>
 Package pdftex.def Info: ../figures/RPimages/DCMAC.pdf  used on input line 815.
@@ -1762,7 +1762,7 @@ LaTeX Warning: Citation 'andriotis2021deep' on page 24 undefined on input line
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/DDMAC.pd
 f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<../figures/RPimages/DDMAC.pdf, id=579, 612.36775pt x 389.5353pt>
+<../figures/RPimages/DDMAC.pdf, id=578, 612.36775pt x 389.5353pt>
 File: ../figures/RPimages/DDMAC.pdf Graphic file (type pdf)
 <use ../figures/RPimages/DDMAC.pdf>
 Package pdftex.def Info: ../figures/RPimages/DDMAC.pdf  used on input line 825.
@@ -1794,14 +1794,14 @@ n-forcemnt learn-ing [[]]
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/POMDPImage/POMDPD
 iagram.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> 
 allowed
-<../figures/POMDPImage/POMDPDiagram.pdf, id=616, 777.86606pt x 357.25468pt>
+<../figures/POMDPImage/POMDPDiagram.pdf, id=615, 777.86606pt x 357.25468pt>
 File: ../figures/POMDPImage/POMDPDiagram.pdf Graphic file (type pdf)
 <use ../figures/POMDPImage/POMDPDiagram.pdf>
 Package pdftex.def Info: ../figures/POMDPImage/POMDPDiagram.pdf  used on input 
 line 847.
 (pdftex.def)             Requested size: 418.25368pt x 192.09695pt.
 [25 <../figures/POMDPImage/POMDPDiagram.pdf>] [26]
-Overfull \hbox (63.3428pt too wide) detected at line 898
+Overfull \hbox (63.3428pt too wide) detected at line 902
 [][][]\U/zeur/m/n/12 b[]\U/zeus/m/n/12 ¨\U/zeur/m/n/12 s[]\U/zeus/m/n/12 © [] \
 U/zeur/m/n/12 P\U/zeus/m/n/12 ¨\U/zeur/m/n/12 S[] \U/zeus/m/n/12 ½ \U/zeur/m/n/
 12 s[][]o[]\OT1/cmr/m/n/12 , \U/zeur/m/n/12 a[]\OT1/cmr/m/n/12 , \OT1/cmr/b/n/1
@@ -1813,22 +1813,19 @@ U/zeur/m/n/12 P\U/zeus/m/n/12 ¨\U/zeur/m/n/12 S[] \U/zeus/m/n/12 ½ \U/zeur/m/n/
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/POMDPImage/Belief
 MDPDiagram.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1
 .5> allowed
-<../figures/POMDPImage/BeliefMDPDiagram.pdf, id=681, 1205.46356pt x 337.26pt>
+<../figures/POMDPImage/BeliefMDPDiagram.pdf, id=680, 1205.46356pt x 337.26pt>
 File: ../figures/POMDPImage/BeliefMDPDiagram.pdf Graphic file (type pdf)
 <use ../figures/POMDPImage/BeliefMDPDiagram.pdf>
 Package pdftex.def Info: ../figures/POMDPImage/BeliefMDPDiagram.pdf  used on in
-put line 929.
+put line 935.
 (pdftex.def)             Requested size: 585.55258pt x 163.82306pt.
 
-Overfull \hbox (167.2989pt too wide) in paragraph at lines 928--931
+Overfull \hbox (167.2989pt too wide) in paragraph at lines 934--937
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [27]
-Overfull \hbox (92.57857pt too wide) detected at line 950
+Overfull \hbox (92.57857pt too wide) detected at line 956
 [][][]\U/zeur/m/n/12 P\U/zeus/m/n/12 ¨\OT1/cmr/b/n/12 b[]\U/zeus/m/n/12 j\OT1/c
 mr/b/n/12 b[]\OT1/cmr/m/n/12 , \U/zeur/m/n/12 a[]\U/zeus/m/n/12 © ½ [][] \U/zeu
 r/m/n/12 P\U/zeus/m/n/12 ¨\OT1/cmr/b/n/12 b[]\U/zeus/m/n/12 j\OT1/cmr/b/n/12 b[
@@ -1841,7 +1838,7 @@ s/m/n/12 ©\U/zeur/m/n/12 do[]
  []
 
 
-Overfull \hbox (18.20909pt too wide) detected at line 954
+Overfull \hbox (18.20909pt too wide) detected at line 960
 [][][]\U/zeur/m/n/12 P\U/zeus/m/n/12 ¨\OT1/cmr/b/n/12 b[]\U/zeus/m/n/12 j\OT1/c
 mr/b/n/12 b[]\OT1/cmr/m/n/12 , \U/zeur/m/n/12 a[]\U/zeus/m/n/12 © ½ [] \U/zeur/
 m/n/12 P\U/zeus/m/n/12 ¨\OT1/cmr/b/n/12 b[]\U/zeus/m/n/12 j\OT1/cmr/b/n/12 b[]\
@@ -1853,13 +1850,13 @@ OT1/cmr/m/n/12 , \U/zeur/m/n/12 a[]\U/zeus/m/n/12 ©
  []
 
 [28 <../figures/POMDPImage/BeliefMDPDiagram.pdf>] [29] [30]
-Overfull \hbox (45.91293pt too wide) detected at line 1052
+Overfull \hbox (45.91293pt too wide) detected at line 1058
 [][][]\U/zeur/m/n/12 V[]\U/zeus/m/n/12 ¨\OT1/cmr/b/n/12 b[]\U/zeus/m/n/12 © ½ [
 ] []
  []
 
 
-Overfull \hbox (23.22975pt too wide) in paragraph at lines 1052--1055
+Overfull \hbox (23.22975pt too wide) in paragraph at lines 1058--1061
 \T1/cmr/m/n/12 Considering the be-lief up-date for-mu-lar in Eq. []1.73[] $\U/z
 eur/m/n/12 b[]\U/zeus/m/n/12 ¨\U/zeur/m/n/12 s[]\U/zeus/m/n/12 © [] \U/zeur/m/n
 /12 P\U/zeus/m/n/12 ¨\U/zeur/m/n/12 s[]\U/zeus/m/n/12 j\U/zeur/m/n/12 o[]\OT1/c
@@ -1868,44 +1865,80 @@ mr/m/n/12 , \U/zeur/m/n/12 a[]\OT1/cmr/m/n/12 , \OT1/cmr/b/n/12 b[]\U/zeus/m/n/
  []
 
 
-Overfull \hbox (143.11526pt too wide) detected at line 1060
+Overfull \hbox (143.11526pt too wide) detected at line 1066
 [][][]\U/zeur/m/n/12 V[]\U/zeus/m/n/12 ¨\OT1/cmr/b/n/12 b[]\U/zeus/m/n/12 © ½ [
 ] []
  []
 
 [31]
-Overfull \hbox (68.06674pt too wide) detected at line 1065
+Overfull \hbox (68.06674pt too wide) detected at line 1071
 [][][]\U/zeur/m/n/12 V[]\U/zeus/m/n/12 ¨\OT1/cmr/b/n/12 b[]\U/zeus/m/n/12 © ½ [
 ] []
  []
 
 
-Overfull \hbox (120.76306pt too wide) detected at line 1071
+Overfull \hbox (120.76306pt too wide) detected at line 1077
 [][][]\U/zeur/m/n/12 V[]\U/zeus/m/n/12 ¨\OT1/cmr/b/n/12 b[]\U/zeus/m/n/12 © ½ [
 ] []
  []
 
 
-Overfull \hbox (120.76306pt too wide) detected at line 1078
+Overfull \hbox (120.76306pt too wide) detected at line 1084
 [][][]\U/zeur/m/n/12 V[]\U/zeus/m/n/12 ¨\OT1/cmr/b/n/12 b[]\U/zeus/m/n/12 © ½ [
 ] []
  []
+
+
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/DeepQNet
+workBelief.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1
+.5> allowed
+<../figures/RPimages/DeepQNetworkBelief.pdf, id=812, 491.91779pt x 434.58359pt>
+
+File: ../figures/RPimages/DeepQNetworkBelief.pdf Graphic file (type pdf)
+<use ../figures/RPimages/DeepQNetworkBelief.pdf>
+Package pdftex.def Info: ../figures/RPimages/DeepQNetworkBelief.pdf  used on in
+put line 1099.
+(pdftex.def)             Requested size: 491.91658pt x 434.58252pt.
+
+Overfull \hbox (73.6629pt too wide) in paragraph at lines 1098--1101
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/RPimages/DuelingQ
+NetworkBelief.pdf): PDF inclusion: found PDF version <1.7>, but at most version
+ <1.5> allowed
+<../figures/RPimages/DuelingQNetworkBelief.pdf, id=815, 512.8761pt x 334.3692pt
+>
+File: ../figures/RPimages/DuelingQNetworkBelief.pdf Graphic file (type pdf)
+<use ../figures/RPimages/DuelingQNetworkBelief.pdf>
+Package pdftex.def Info: ../figures/RPimages/DuelingQNetworkBelief.pdf  used on
+ input line 1110.
+(pdftex.def)             Requested size: 512.87485pt x 334.36838pt.
+
+Overfull \hbox (94.62117pt too wide) in paragraph at lines 1109--1112
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: Citation 'johnson2018foundations' on page 32 undefined on input 
-line 1089.
+line 1118.
 
+[32]
 
-Overfull \hbox (106.63159pt too wide) in paragraph at lines 1089--1090
-\T1/cmr/m/n/12 The the-o-ret-i-cal foun-da-tions of this re-search are rooted i
-n sev-eral key ar-eas. [[]]
- []
+LaTeX Warning: Citation 'brown2021deeplearning' on page 33 undefined on input l
+ine 1145.
 
-
-LaTeX Warning: Citation 'brown2021deeplearning' on page 32 undefined on input l
-ine 1116.
-
-[32] [33] (./02_ReinforcementLearning.aux)
+[33] [34] [35 <../figures/RPimages/DeepQNetworkBelief.pdf>] [36 <../figures/RPi
+mages/DuelingQNetworkBelief.pdf>] (./02_ReinforcementLearning.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1916,7 +1949,7 @@ LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `02_ReinforcementLearning.out' has not change
 d.
-(rerunfilecheck)             Checksum: 2DC45CBD6BF86932AF80B0533563BC2C;3489.
+(rerunfilecheck)             Checksum: 713F054499E133BC38DF70B3B8A1465C;3434.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                02_ReinforcementLearning
@@ -1927,10 +1960,10 @@ Package logreq Info: Writing requests to '02_ReinforcementLearning.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39742 strings out of 474116
- 747103 string characters out of 5743682
+ 39775 strings out of 474116
+ 748481 string characters out of 5743682
  1945187 words of memory out of 5000000
- 61102 multiletter control sequences out of 15000+600000
+ 61130 multiletter control sequences out of 15000+600000
  599244 words of font info for 161 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  135i,20n,127p,2430b,1136s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1978,10 +2011,10 @@ fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb
 sr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr
 /local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/l
 ocal/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on 02_ReinforcementLearning.pdf (33 pages, 883659 bytes).
+Output written on 02_ReinforcementLearning.pdf (36 pages, 969700 bytes).
 PDF statistics:
- 1059 PDF objects out of 1200 (max. 8388607)
- 904 compressed objects within 10 object streams
- 297 named destinations out of 1000 (max. 500000)
- 194 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1134 PDF objects out of 1200 (max. 8388607)
+ 966 compressed objects within 10 object streams
+ 302 named destinations out of 1000 (max. 500000)
+ 204 words of extra memory for PDF output out of 10000 (max. 10000000)
 

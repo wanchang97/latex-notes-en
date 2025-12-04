@@ -1,0 +1,265 @@
+\pdfobjcompresslevel=0
+\pdfminorversion=4
+\documentclass{beamer}
+\usetheme{Boadilla}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx,dsfont}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}  % For older LaTeX versions
+\usepackage[T1]{fontenc}     % For proper character encoding
+\makeatother
+\setbeamertemplate{footline}
+{
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortauthor
+		\end{beamercolorbox}%
+		
+		\begin{beamercolorbox}[wd=0.7\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshorttitle
+		\end{beamercolorbox}%
+		
+		\begin{beamercolorbox}[wd=0.15\paperwidth,ht=2.25ex,dp=1ex,center]{page number in head/foot}%
+			\usebeamerfont{page number in head/foot} \insertframenumber{} / \inserttotalframenumber{}
+		\end{beamercolorbox}%
+	}
+	\vskip0pt%
+}
+
+\setbeamerfont{bibliography item}{size=\footnotesize}
+\setbeamerfont{bibliography entry author}{size=\footnotesize}
+\setbeamerfont{bibliography entry title}{size=\footnotesize}
+\setbeamerfont{bibliography entry location}{size=\footnotesize}
+\setbeamerfont{bibliography entry note}{size=\footnotesize}
+%\usepackage{enumitem}
+%\newlist{steps}{enumerate}{1}
+%\setlist[steps, 1]{label = Step \arabic*:}
+\makeatletter
+\setbeamertemplate{navigation symbols}{}
+\usepackage[linesnumbered,lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{pgfgantt}
+\usepackage{xcolor}
+\usepackage[
+maxbibnames=99,
+backend=biber,
+style= authoryear-icomp,
+sorting=nty
+]{biblatex}
+\addbibresource{bibliography/RP.bib} 
+\usepackage{tikz,pgfplots,amssymb,bm,varwidth,adjustbox}
+\usetikzlibrary{shapes, arrows, positioning}
+\tikzstyle{mainnode} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm,text centered, draw=black, fill=white!30]
+\tikzstyle{forwardarrow} = [thick,->,dashed,blue]
+\tikzstyle{inversearrow} = [thick,->,dotted,purple]
+\tikzstyle{QoIarrowWithoutObservation} = [thick,->,loosely dashed,gray]
+\tikzstyle{QoIarrowWithObservation} = [thick,->,dashdotted,olive]
+%\usepackage{enumitem}
+%\newlist{steps}{enumerate}{1}
+%\setlist[steps, 1]{label = Step \arabic*:}
+
+\usepackage{amsmath,amsfonts,amssymb,empheq,graphicx,tabularx,caption,subcaption,bm,biblatex,tikz,mathtools}
+\usetikzlibrary{arrows.meta, calc, fit, tikzmark}
+\usepackage[customcolors,norndcorners]{hf-tikz}
+\usepackage{textcomp}
+\usepackage{pgf-pie}
+
+%Imports bibliography file
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\bS}{\bm{\mathcal{S}}}
+\newcommand{\bL}{\bm{\mathcal{L}}}
+\newcommand{\bK}{\bm{K}}
+\newcommand{\bl}{\bm{l}}
+\newcommand{\by}{\bm{y}}
+\newcommand{\bs}{\bm{s}}
+\newcommand{\bw}{\bm{w}}
+\newcommand{\bepsilon}{\bm{\epsilon}}
+\newcommand{\bD}{\bm{D}}
+\newcommand \RR {\mathbb{R}}
+\newcommand \EE {\mathbb{E}}
+\newcommand{\bX}{\bm{X}}
+\newcommand{\bY}{\bm{Y}}
+\newcommand{\obY}{\tilde{\bm{Y}}}
+\newcommand{\obX}{\tilde{\bm{X}}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\QoIfirst}{\bm{Z}}
+\newcommand{\QoIany}{\bm{Q}}
+\newcommand{\QoIfirstfun}{\mathcal{M}}
+\newcommand{\QoIanyfun}{g}
+\newcommand{\blob}{Z(\bs_i,t_j)}
+\newcommand\defequal{\stackrel{\mathclap{\normalfont\mbox{\tiny def}}}{=}}
+\newcommand\addequal{\stackrel{\mathclap{\normalfont\mbox{\tiny add}}}{=}}
+\newcommand\multiequal{\stackrel{\mathclap{\normalfont\mbox{\tiny mul}}}{=}}
+\newcommand{\PriorPDF}{f_{\prior}(\btheta)}
+\newcommand{\PostPDF}{f_{\post}(\btheta)}
+\newcommand{\bEpsilon}{\bm{\epsilon}}
+\newcommand{\ns}{n_{\textsf{sample}}}
+\newcommand{\ev}{\bm{X}}
+\newcommand{\bbeta}{\bm{\beta}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand \para {\bm{t}}
+
+\newcommand \CI {\textsf{CI}}
+\newcommand \ob {\textsf{ob}}
+\newcommand \opt {\textsf{opt}}
+\newcommand \prior {\textsf{prior}}
+\newcommand \post {\textsf{post}}
+\newcommand \LAB {\textsf{LAB}}
+\newcommand \Error {\textsf{Error}}
+\newcommand \SVI {\textsf{SVI}}
+\newcommand \MLE{\textsf{MLE}}
+\newcommand \true {\textsf{true}}
+\newcommand \qua {\textsf{quad}}
+\newcommand \MC {\textsf{MC}}
+\newcommand \burn {\textsf{burn}}
+\newcommand \MH {\textsf{MH}}
+\newcommand \IS {\textsf{IS}}
+\newcommand \MCMC {\textsf{MCMC}}
+\newcommand \TMCMC {\textsf{TMCMC}}
+\newcommand \RW {\textsf{RW}}
+\newcommand \out {\textsf{out}}
+\newcommand \In {\textsf{in}}
+\newcommand \pressure {\textsf{pressure}}
+\newcommand \gravity {\textsf{gravity}}
+\newcommand \viscous {\textsf{viscous}}
+\newcommand \surface {\textsf{surface}}
+\newcommand \mb {\bm{m}}
+\newcommand \mbk {\bm{m}_k}
+\newcommand \mbkp {\bm{m}_{k'}'}
+\newcommand \B {\bm{B}}
+\newcommand \J {\bm{J}}
+\newcommand \Mb {\bm{M}}
+\newcommand \M{\bm{\mathcal{M}}}
+\newcommand \m{\mathcal{m}}
+\newcommand \fb {\bm{f}}
+\newcommand \bF {\bm{F}}
+\newcommand \bE {\bm{E}}
+\newcommand \bV {\bm{V}}
+\newcommand \be {\bm{e}}
+\newcommand \bv {\bm{v}}
+\newcommand \bk {\bm{k}}
+\newcommand \q {\bm{q}}
+\newcommand \bp {\bm{p}}
+\newcommand \bP {\bm{P}}
+\newcommand \bB {\bm{B}}
+\newcommand \bb {\bm{b}}
+\newcommand \bn {\hat{\bm{n}}}
+\newcommand \bu {\bm{u}}
+\newcommand \bt {\bm{t}}
+\newcommand \bi {\bm{i}}
+\newcommand \bj {\bm{j}}
+\newcommand \bI {\bm{I}}
+\newcommand \bU {\bm{U}}
+\newcommand \ba {\bm{a}}
+\newcommand \bg {\bm{g}}
+\newcommand \bq {\bm{q}}
+\newcommand \btau {\bm{\tau}}
+\newcommand \btheta {\bm{\theta}}
+\newcommand \bmu {\bm{\mu}}
+\newcommand \bH {\bm{\mathcal{H}}}
+%\newcommand \bL {\bm{\mathcal{L}}}
+\newcommand \bsigma {\bm{\sigma}}
+\newcommand \bSigma {\bm{\Sigma}}
+\newcommand \bnabla {\bm{\nabla}}
+\newcommand \blambda {\bm{\lambda}}
+%\newcommand \bepsilon{\bm{\epsilon}}
+\newcommand \bDelta {\bm{\Delta}}
+\newcommand \bA {\bm{A}}
+\newcommand \bd {\bm{d}}
+\newcommand \bc{\bm{c}}
+\newcommand \C{\bm{C}}
+\newcommand \bC {\bm{C}}
+%\newcommand \bD {\bm{D}}
+%\newcommand \bK {\bm{K}}
+\newcommand \bG {\bm{G}}
+\newcommand \bM {\bm{M}}
+\newcommand \bx {\bm{x}}
+\newcommand \br {\bm{r}}
+\newcommand \bz {\bm{z}}
+
+%\newcommand \bX {\bm{X}}
+\newcommand \bnu {\bm{\nu}}
+\newcommand \bxi {\bm{\xi}}
+%\newcommand \D {\bm{\mathcal{D}}}
+\newcommand \bN {\bm{N}}
+\newcommand \mmin {\bm{m}_{\textsf{min}}}
+\newcommand \mmax {\bm{m}_{\textsf{max}}}
+\newcommand \Pprior {\Pi_{\prior}}
+\newcommand \Ppost {\Pi_{\post}}
+%\newcommand \RR {\mathbb{R}}
+\newcommand \nvel {n_{\textsf{u}}}
+\newcommand \np {n_{\textsf{p}}}
+\newcommand \nk {n_{\textsf{k}}}
+\newcommand \ndof {n_{\textsf{dof}}}
+\newcommand \nm {n_{\textsf{m}}}
+\newcommand \nob {n_{\ob}}
+%\newcommand \ns {n_{\textsf{sample}}}
+\newcommand \nsteady {n_{\textsf{steady}}}
+\newcommand \nsd {n_{\textsf{sd}}}
+\newcommand \ndd {n_{\textsf{dd}}}
+\newcommand \neu {n_{\textsf{eu}}}	
+\newcommand\End{\textsf{end}}
+\newcommand \nep {n_{\textsf{ep}}}
+\newcommand \I {\mathcal{I}}
+\newcommand \Ii {\mathcal{I}^{(i)}}
+\newcommand \mi {\mb^{(i)}}
+\newcommand \nclass {n_{\textsf{class}}}
+\newcommand \eob {\bm{\epsilon}_{\ob}}
+\newcommand \sob {\bm{\sigma}_{\ob}}
+\newcommand\sRW{\sigma_{_{\textsf{RW}}}}
+
+\newcommand \nq {{n_{\textsf{Q}}}}
+\newcommand\nMC{{n_{\textsf{MC}}}}
+\newcommand\nMCMC{{n_{\textsf{MCMC}}}}
+\newcommand\nIS{{n_{\textsf{IS}}}}
+\newcommand\nMH{{n_{\textsf{MH}}}}
+\newcommand\nRW{{n_{\textsf{RW}}}}	
+\newcommand \nSVI {n_{\textsf{SVI}}}
+
+\newcommand{\QoI}{Q}
+\newcommand{\QoIes}{\hat{\QoI}}
+\newcommand{\QoIfun}{\mathcal{Q}}
+
+
+% absolute value and norm
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\spn}{span}	
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\author{Wanchang Zhang} 
+\author[Wanchang Zhang]{Wanchang Zhang  \\[10mm]{\small Supervisor: Prof. Dr. Tom Lahmer }}
+\institute{{
+		Institut für Strukturmechanik (ISM) }\\
+	{ an der Bauhaus Universität Weimar  } 	}
+\date{\today}
+
+
+
+%	{\and} \\
+%	{\textit{Supervisor}} \\
+%	{Prof. Dr. Tom Lahmer} 
+%\titlegraphic{
+	%	\includegraphics[scale = 0.02]{logos/logoLaCaN}
+	%	\includegraphics[scale = 0.02]{logos/cimne-simple-logo}
+	%	\includegraphics[scale=0.02]{logos/upclogo}
+	%}
+
+%\institute{{
+		%		Institut für Strukturmechanik (ISM) }\\
+	%	{ an der Bauhaus Universität Weimar  } }

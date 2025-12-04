@@ -1,10 +1,11 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {1.1}{\ignorespaces Example of a table estimation for the optimal state-action value function $Q(S,A)$}}{10}{table.caption.24}%
 \contentsline {table}{\numberline {1.2}{\ignorespaces Example of a table estimation for $Q^{\pi }(S,A)$}}{12}{table.caption.25}%
-\contentsline {table}{\numberline {1.3}{\ignorespaces Comparison of traditional methods}}{33}{table.caption.56}%
+\contentsline {table}{\numberline {1.3}{\ignorespaces Comparison of traditional methods}}{33}{table.caption.58}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces The physical meaning of \textbf {variational free energy} $\mathcal {F}$}}{39}{table.caption.61}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Configuration of Steel Truss Bridge Structure}}{37}{table.caption.62}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Prior distribution of deterioration model parameters}}{40}{table.caption.65}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Cost Definition in the beam monitoring process}}{42}{table.caption.66}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Configuration of Steel Truss Bridge Structure}}{43}{table.caption.67}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Prior distribution of deterioration model parameters}}{46}{table.caption.70}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Cost Definition in the beam monitoring process}}{48}{table.caption.71}%
 \addvspace {10\p@ }

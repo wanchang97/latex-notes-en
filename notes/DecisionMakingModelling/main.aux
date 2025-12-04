@@ -91,6 +91,8 @@
 \newlabel{eqn:ParameterUpdateJcontinue}{{1.43}{13}{Policy Learning}{equation.1.1.43}{}}
 \newlabel{eqn:ParameterUpdateJcontinue@cref}{{[equation][43][1]1.43}{[1][13][]13}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.2}Deep Reinforcement Learning}{13}{section.1.2}\protected@file@percent }
+\newlabel{sec: HowToSolveMDP}{{1.2}{13}{Deep Reinforcement Learning}{section.1.2}{}}
+\newlabel{sec: HowToSolveMDP@cref}{{[section][2][1]1.2}{[1][13][]13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Deep Q-Network (DQN)}{14}{subsection.1.2.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Deep Q-Network approximate the Q function for every available action using state as input $Q(s_t,a_t)$}}{14}{figure.caption.26}\protected@file@percent }
 \newlabel{fig: NNapproximateQ}{{1.2}{14}{Deep Q-Network approximate the Q function for every available action using state as input $Q(s_t,a_t)$}{figure.caption.26}{}}
@@ -157,6 +159,8 @@
 \newlabel{fig: POMDPDiagramSequential}{{1.8}{25}{Probabilistic Graphical Model of Partially Observable Markovian Decision Process defined in State Space}{figure.caption.42}{}}
 \newlabel{fig: POMDPDiagramSequential@cref}{{[figure][8][1]1.8}{[1][25][]25}}
 \@writefile{toc}{\contentsline {subsubsection}{Belief Space $\mathbb  {B}$}{26}{section*.43}\protected@file@percent }
+\newlabel{eq:BeliefDefinition}{{1.69}{26}{Belief Space $\mathbb {B}$}{equation.1.3.69}{}}
+\newlabel{eq:BeliefDefinition@cref}{{[equation][69][1]1.69}{[1][26][]26}}
 \@writefile{toc}{\contentsline {subsubsection}{Belief Update Rule}{27}{section*.44}\protected@file@percent }
 \newlabel{eqn: BeliefUpdate}{{1.73}{27}{Belief Update Rule}{equation.1.3.73}{}}
 \newlabel{eqn: BeliefUpdate@cref}{{[equation][73][1]1.73}{[1][27][]27}}
@@ -183,132 +187,170 @@
 \newlabel{eqn:OptimalValueFunctionAffineHyperplaneRepresentation@cref}{{[equation][90][1]1.90}{[1][31][]31}}
 \abx@aux@cite{0}{johnson2018foundations}
 \abx@aux@segm{0}{0}{johnson2018foundations}
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}How solve a Partially Observable Markov Decision Process}{32}{section.1.4}\protected@file@percent }
 \abx@aux@cite{0}{brown2021deeplearning}
 \abx@aux@segm{0}{0}{brown2021deeplearning}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Algorithm to solve a Partially Observable Markov Decision Process}{32}{subsection.1.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.4}Common Implementations}{32}{section.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.5}Recent Advances}{32}{section.1.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1.3}{\ignorespaces Comparison of traditional methods}}{33}{table.caption.56}\protected@file@percent }
-\newlabel{tab:traditional_methods}{{1.3}{33}{Comparison of traditional methods}{table.caption.56}{}}
-\newlabel{tab:traditional_methods@cref}{{[table][3][1]1.3}{[1][32][]33}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5.1}Machine Learning Techniques}{33}{subsection.1.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.6}Research Gaps}{33}{section.1.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Active Inference(AIF)}{34}{chapter.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.5}Common Implementations}{33}{section.1.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1.3}{\ignorespaces Comparison of traditional methods}}{33}{table.caption.58}\protected@file@percent }
+\newlabel{tab:traditional_methods}{{1.3}{33}{Comparison of traditional methods}{table.caption.58}{}}
+\newlabel{tab:traditional_methods@cref}{{[table][3][1]1.3}{[1][33][]33}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.6}Recent Advances}{33}{section.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6.1}Machine Learning Techniques}{33}{subsection.1.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.7}Research Gaps}{33}{section.1.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.10}{\ignorespaces Deep Q-Network approximate the Q function for every available action using belief as input $Q(\mathbf  {b}_t,a_t)$}}{35}{figure.caption.56}\protected@file@percent }
+\newlabel{fig: NNapproximateQBelief}{{1.10}{35}{Deep Q-Network approximate the Q function for every available action using belief as input $Q(\bb _t,a_t)$}{figure.caption.56}{}}
+\newlabel{fig: NNapproximateQBelief@cref}{{[figure][10][1]1.10}{[1][32][]35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.11}{\ignorespaces Dueling Network architecture}}{36}{figure.caption.57}\protected@file@percent }
+\newlabel{fig: Dueling Network approximate QBelief}{{1.11}{36}{Dueling Network architecture}{figure.caption.57}{}}
+\newlabel{fig: Dueling Network approximate QBelief@cref}{{[figure][11][1]1.11}{[1][32][]36}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Active Inference(AIF)}{37}{chapter.2}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chap:AIF}{{2}{34}{Active Inference(AIF)}{chapter.2}{}}
-\newlabel{chap:AIF@cref}{{[chapter][2][]2}{[1][34][]34}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}Active Inference}{34}{section.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Original POMDP Model}}{34}{figure.caption.57}\protected@file@percent }
-\newlabel{fig: OriginalPOMDP}{{2.1}{34}{Original POMDP Model}{figure.caption.57}{}}
-\newlabel{fig: OriginalPOMDP@cref}{{[figure][1][2]2.1}{[1][34][]34}}
+\newlabel{chap:AIF}{{2}{37}{Active Inference(AIF)}{chapter.2}{}}
+\newlabel{chap:AIF@cref}{{[chapter][2][]2}{[1][37][]37}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Active Inference}{37}{section.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Original POMDP Model}}{37}{figure.caption.59}\protected@file@percent }
+\newlabel{fig: OriginalPOMDP}{{2.1}{37}{Original POMDP Model}{figure.caption.59}{}}
+\newlabel{fig: OriginalPOMDP@cref}{{[figure][1][2]2.1}{[1][37][]37}}
+\newlabel{eq:PosteriorBayesianUpdating}{{2.1}{38}{Active Inference}{equation.2.1.1}{}}
+\newlabel{eq:PosteriorBayesianUpdating@cref}{{[equation][1][2]2.1}{[1][38][]38}}
+\newlabel{eq: KLDivergenceDefinitionOfInformationLoss}{{2.2}{38}{Active Inference}{equation.2.1.2}{}}
+\newlabel{eq: KLDivergenceDefinitionOfInformationLoss@cref}{{[equation][2][2]2.2}{[1][38][]38}}
+\newlabel{subequation: VFE}{{2.3c}{38}{Active Inference}{equation.2.1.3c}{}}
+\newlabel{subequation: VFE@cref}{{[subequation][3][2,3]2.3c}{[1][38][]38}}
 \abx@aux@cite{0}{sajid2021active}
 \abx@aux@segm{0}{0}{sajid2021active}
 \abx@aux@cite{0}{sajid2021active}
 \abx@aux@segm{0}{0}{sajid2021active}
+\@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces The physical meaning of \textbf  {variational free energy} $\mathcal  {F}$}}{39}{table.caption.61}\protected@file@percent }
+\newlabel{table: The physical Meaning of variaiton Free Energy}{{2.1}{39}{The physical meaning of \textbf {variational free energy} $\mathcal {F}$}{table.caption.61}{}}
+\newlabel{table: The physical Meaning of variaiton Free Energy@cref}{{[table][1][2]2.1}{[1][39][]39}}
+\@writefile{toc}{\contentsline {subsubsection}{Variational Free Energy (VFE) $\mathcal  {F}$}{39}{section*.60}\protected@file@percent }
+\newlabel{subequation: DivergenceSurprisal}{{2.4b}{39}{Variational Free Energy (VFE) $\mathcal {F}$}{equation.2.1.4b}{}}
+\newlabel{subequation: DivergenceSurprisal@cref}{{[subequation][2][2,4]2.4b}{[1][38][]39}}
+\newlabel{subequation: ComplexityAccuracy}{{2.4c}{39}{Variational Free Energy (VFE) $\mathcal {F}$}{equation.2.1.4c}{}}
+\newlabel{subequation: ComplexityAccuracy@cref}{{[subequation][3][2,4]2.4c}{[1][38][]39}}
+\@writefile{toc}{\contentsline {subsubsection}{Expected Free Energy (EFE) $\mathcal  {G}$}{39}{section*.63}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Graphical Representation of the Generative Process(based on the true states $s^{\star }$) in the world and the corresponding (internal) generative model (based on probabilistic beliefs random variables $s$) that best explain the outcomes $o$. The outcomes are shared between the generative process and model. \blx@tocontentsinit {0}\cite {sajid2021active}}}{40}{figure.caption.62}\protected@file@percent }
+\newlabel{fig: GenerativeProcessAndGenerativeModel}{{2.2}{40}{Graphical Representation of the Generative Process(based on the true states $s^{\star }$) in the world and the corresponding (internal) generative model (based on probabilistic beliefs random variables $s$) that best explain the outcomes $o$. The outcomes are shared between the generative process and model. \cite {sajid2021active}}{figure.caption.62}{}}
+\newlabel{fig: GenerativeProcessAndGenerativeModel@cref}{{[figure][2][2]2.2}{[1][39][]40}}
+\newlabel{eqn: EFE}{{2.5}{40}{Expected Free Energy (EFE) $\mathcal {G}$}{equation.2.1.5}{}}
+\newlabel{eqn: EFE@cref}{{[subequation][5][2]2.5}{[1][39][]40}}
+\newlabel{subequation:EFE_ProductRuleOfProbability}{{2.5b}{40}{Expected Free Energy (EFE) $\mathcal {G}$}{equation.2.1.5b}{}}
+\newlabel{subequation:EFE_ProductRuleOfProbability@cref}{{[subequation][2][2,5]2.5b}{[1][39][]40}}
+\newlabel{subequation:EFE_Q(s|o)}{{2.5d}{40}{Expected Free Energy (EFE) $\mathcal {G}$}{equation.2.1.5d}{}}
+\newlabel{subequation:EFE_Q(s|o)@cref}{{[subequation][4][2,5]2.5d}{[1][39][]40}}
+\newlabel{subequation:EFE_P(o|C)}{{2.5e}{40}{Expected Free Energy (EFE) $\mathcal {G}$}{equation.2.1.5e}{}}
+\newlabel{subequation:EFE_P(o|C)@cref}{{[subequation][5][2,5]2.5e}{[1][39][]40}}
+\newlabel{subequation:EFE_Q(o|s)}{{2.5f}{40}{Expected Free Energy (EFE) $\mathcal {G}$}{equation.2.1.5f}{}}
+\newlabel{subequation:EFE_Q(o|s)@cref}{{[subequation][6][2,5]2.5f}{[1][39][]40}}
+\newlabel{subequation:EFE_P(o|s)}{{2.5g}{40}{Expected Free Energy (EFE) $\mathcal {G}$}{equation.2.1.5g}{}}
+\newlabel{subequation:EFE_P(o|s)@cref}{{[subequation][7][2,5]2.5g}{[1][39][]40}}
+\newlabel{subequation:EFE_RiskAmbiguity}{{2.5h}{40}{Expected Free Energy (EFE) $\mathcal {G}$}{equation.2.1.5h}{}}
+\newlabel{subequation:EFE_RiskAmbiguity@cref}{{[subequation][8][2,5]2.5h}{[1][39][]40}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Data Collection}{41}{subsection.2.1.1}\protected@file@percent }
 \abx@aux@cite{0}{lee2019optimization}
 \abx@aux@segm{0}{0}{lee2019optimization}
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Graphical Representation of the Generative Process(based on the true states $s^{\star }$) in the world and the corresponding (internal) generative model (based on probabilistic beliefs random variables $s$) that best explain the outcomes $o$. The outcomes are shared between the generative process and model. \blx@tocontentsinit {0}\cite {sajid2021active}}}{35}{figure.caption.58}\protected@file@percent }
-\newlabel{fig: GenerativeProcessAndGenerativeModel}{{2.2}{35}{Graphical Representation of the Generative Process(based on the true states $s^{\star }$) in the world and the corresponding (internal) generative model (based on probabilistic beliefs random variables $s$) that best explain the outcomes $o$. The outcomes are shared between the generative process and model. \cite {sajid2021active}}{figure.caption.58}{}}
-\newlabel{fig: GenerativeProcessAndGenerativeModel@cref}{{[figure][2][2]2.2}{[1][35][]35}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Data Collection}{35}{subsection.2.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}Algorithm Design}{35}{section.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}Experimental Setup}{35}{section.2.3}\protected@file@percent }
-\@writefile{loa}{\contentsline {algocf}{\numberline {6}{\ignorespaces Proposed Optimization Algorithm}}{36}{algocf.6}\protected@file@percent }
-\newlabel{alg:proposed}{{6}{36}{Algorithm Design}{algocf.6}{}}
-\newlabel{alg:proposed@cref}{{[algorithm][6][]6}{[1][35][]36}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Structural Integration Management}{37}{chapter.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Algorithm Design}{42}{section.2.2}\protected@file@percent }
+\@writefile{loa}{\contentsline {algocf}{\numberline {6}{\ignorespaces Proposed Optimization Algorithm}}{42}{algocf.6}\protected@file@percent }
+\newlabel{alg:proposed}{{6}{42}{Algorithm Design}{algocf.6}{}}
+\newlabel{alg:proposed@cref}{{[algorithm][6][]6}{[1][42][]42}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Experimental Setup}{42}{section.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Structural Integration Management}{43}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chap:StructuralIntegrationManagement}{{3}{37}{Structural Integration Management}{chapter.3}{}}
-\newlabel{chap:StructuralIntegrationManagement@cref}{{[chapter][3][]3}{[1][37][]37}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}simple example}{37}{section.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Problem Formulation: 1D Beam with deteriorating stiffness}{37}{subsection.3.1.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Configuration of Steel Truss Bridge Structure}}{37}{table.caption.62}\protected@file@percent }
-\newlabel{table: ConfigurationBeam}{{3.1}{37}{Configuration of Steel Truss Bridge Structure}{table.caption.62}{}}
-\newlabel{table: ConfigurationBeam@cref}{{[table][1][3]3.1}{[1][37][]37}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Flowchart diagram}}{38}{figure.caption.60}\protected@file@percent }
-\newlabel{fig: flowchart}{{3.1}{38}{Flowchart diagram}{figure.caption.60}{}}
-\newlabel{fig: flowchart@cref}{{[figure][1][3]3.1}{[1][37][]38}}
+\newlabel{chap:StructuralIntegrationManagement}{{3}{43}{Structural Integration Management}{chapter.3}{}}
+\newlabel{chap:StructuralIntegrationManagement@cref}{{[chapter][3][]3}{[1][43][]43}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}simple example}{43}{section.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Problem Formulation: 1D Beam with deteriorating stiffness}{43}{subsection.3.1.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces Configuration of Steel Truss Bridge Structure}}{43}{table.caption.67}\protected@file@percent }
+\newlabel{table: ConfigurationBeam}{{3.1}{43}{Configuration of Steel Truss Bridge Structure}{table.caption.67}{}}
+\newlabel{table: ConfigurationBeam@cref}{{[table][1][3]3.1}{[1][43][]43}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Flowchart diagram}}{44}{figure.caption.65}\protected@file@percent }
+\newlabel{fig: flowchart}{{3.1}{44}{Flowchart diagram}{figure.caption.65}{}}
+\newlabel{fig: flowchart@cref}{{[figure][1][3]3.1}{[1][43][]44}}
 \abx@aux@cite{0}{ellingwood2005risk}
 \abx@aux@segm{0}{0}{ellingwood2005risk}
 \abx@aux@cite{0}{van2009survey}
 \abx@aux@segm{0}{0}{van2009survey}
 \abx@aux@cite{0}{sanchez2016reliability}
 \abx@aux@segm{0}{0}{sanchez2016reliability}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Geometrical Property of Steel Truss Bridge Structure}}{39}{figure.caption.61}\protected@file@percent }
-\newlabel{fig: 1D beam example}{{3.2}{39}{Geometrical Property of Steel Truss Bridge Structure}{figure.caption.61}{}}
-\newlabel{fig: 1D beam example@cref}{{[figure][2][3]3.2}{[1][37][]39}}
-\newlabel{eqn: gradualDeteriorationModel1}{{3.1}{39}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.1}{}}
-\newlabel{eqn: gradualDeteriorationModel1@cref}{{[equation][1][3]3.1}{[1][39][]39}}
-\newlabel{eqn: changeOfgradualDeteriorationModel1}{{3.2}{39}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.2}{}}
-\newlabel{eqn: changeOfgradualDeteriorationModel1@cref}{{[equation][2][3]3.2}{[1][39][]39}}
-\newlabel{eqn: fSuddenDeteriorationModel1}{{3.3}{39}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.3}{}}
-\newlabel{eqn: fSuddenDeteriorationModel1@cref}{{[equation][3][3]3.3}{[1][39][]39}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Gradual deterioration realization plot modeled by a simple rate function}}{40}{figure.caption.63}\protected@file@percent }
-\newlabel{fig: gradual deterioration example plot}{{3.3}{40}{Gradual deterioration realization plot modeled by a simple rate function}{figure.caption.63}{}}
-\newlabel{fig: gradual deterioration example plot@cref}{{[figure][3][3]3.3}{[1][39][]40}}
-\newlabel{eqn: changeOfSuddenDeteriorationModel1}{{3.4}{40}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.4}{}}
-\newlabel{eqn: changeOfSuddenDeteriorationModel1@cref}{{[equation][4][3]3.4}{[1][39][]40}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Prior distribution of deterioration model parameters}}{40}{table.caption.65}\protected@file@percent }
-\newlabel{table: Prior distribution of deterioration model parameters}{{3.2}{40}{Prior distribution of deterioration model parameters}{table.caption.65}{}}
-\newlabel{table: Prior distribution of deterioration model parameters@cref}{{[table][2][3]3.2}{[1][40][]40}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces sudden deterioration realization plot modelled by a CPP process}}{41}{figure.caption.64}\protected@file@percent }
-\newlabel{fig: sudden deterioration example plot}{{3.4}{41}{sudden deterioration realization plot modelled by a CPP process}{figure.caption.64}{}}
-\newlabel{fig: sudden deterioration example plot@cref}{{[figure][4][3]3.4}{[1][40][]41}}
-\newlabel{eqn: staticDisplacementCalculation}{{3.5}{41}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.5}{}}
-\newlabel{eqn: staticDisplacementCalculation@cref}{{[equation][5][3]3.5}{[1][41][]41}}
-\newlabel{eqn: staticObservationCalculation}{{3.6}{41}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.6}{}}
-\newlabel{eqn: staticObservationCalculation@cref}{{[equation][6][3]3.6}{[1][41][]41}}
-\newlabel{eqn: dynamicAcc}{{3.7}{41}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.7}{}}
-\newlabel{eqn: dynamicAcc@cref}{{[equation][7][3]3.7}{[1][41][]41}}
-\newlabel{eqn: dynamicObservationCalculation}{{3.8}{41}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.8}{}}
-\newlabel{eqn: dynamicObservationCalculation@cref}{{[equation][8][3]3.8}{[1][41][]41}}
-\newlabel{def:AccumulatedDiscountReward}{{3.9}{41}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.9}{}}
-\newlabel{def:AccumulatedDiscountReward@cref}{{[equation][9][3]3.9}{[1][41][]41}}
-\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Cost Definition in the beam monitoring process}}{42}{table.caption.66}\protected@file@percent }
-\newlabel{table: Cost definition in the beam monitoring process}{{3.3}{42}{Cost Definition in the beam monitoring process}{table.caption.66}{}}
-\newlabel{table: Cost definition in the beam monitoring process@cref}{{[table][3][3]3.3}{[1][42][]42}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Proposed Framework}{42}{section.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Appendices}{43}{appendix.A}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Geometrical Property of Steel Truss Bridge Structure}}{45}{figure.caption.66}\protected@file@percent }
+\newlabel{fig: 1D beam example}{{3.2}{45}{Geometrical Property of Steel Truss Bridge Structure}{figure.caption.66}{}}
+\newlabel{fig: 1D beam example@cref}{{[figure][2][3]3.2}{[1][43][]45}}
+\newlabel{eqn: gradualDeteriorationModel1}{{3.1}{45}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.1}{}}
+\newlabel{eqn: gradualDeteriorationModel1@cref}{{[equation][1][3]3.1}{[1][45][]45}}
+\newlabel{eqn: changeOfgradualDeteriorationModel1}{{3.2}{45}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.2}{}}
+\newlabel{eqn: changeOfgradualDeteriorationModel1@cref}{{[equation][2][3]3.2}{[1][45][]45}}
+\newlabel{eqn: fSuddenDeteriorationModel1}{{3.3}{45}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.3}{}}
+\newlabel{eqn: fSuddenDeteriorationModel1@cref}{{[equation][3][3]3.3}{[1][45][]45}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Gradual deterioration realization plot modeled by a simple rate function}}{46}{figure.caption.68}\protected@file@percent }
+\newlabel{fig: gradual deterioration example plot}{{3.3}{46}{Gradual deterioration realization plot modeled by a simple rate function}{figure.caption.68}{}}
+\newlabel{fig: gradual deterioration example plot@cref}{{[figure][3][3]3.3}{[1][45][]46}}
+\newlabel{eqn: changeOfSuddenDeteriorationModel1}{{3.4}{46}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.4}{}}
+\newlabel{eqn: changeOfSuddenDeteriorationModel1@cref}{{[equation][4][3]3.4}{[1][45][]46}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.2}{\ignorespaces Prior distribution of deterioration model parameters}}{46}{table.caption.70}\protected@file@percent }
+\newlabel{table: Prior distribution of deterioration model parameters}{{3.2}{46}{Prior distribution of deterioration model parameters}{table.caption.70}{}}
+\newlabel{table: Prior distribution of deterioration model parameters@cref}{{[table][2][3]3.2}{[1][46][]46}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces sudden deterioration realization plot modelled by a CPP process}}{47}{figure.caption.69}\protected@file@percent }
+\newlabel{fig: sudden deterioration example plot}{{3.4}{47}{sudden deterioration realization plot modelled by a CPP process}{figure.caption.69}{}}
+\newlabel{fig: sudden deterioration example plot@cref}{{[figure][4][3]3.4}{[1][46][]47}}
+\newlabel{eqn: staticDisplacementCalculation}{{3.5}{47}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.5}{}}
+\newlabel{eqn: staticDisplacementCalculation@cref}{{[equation][5][3]3.5}{[1][47][]47}}
+\newlabel{eqn: staticObservationCalculation}{{3.6}{47}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.6}{}}
+\newlabel{eqn: staticObservationCalculation@cref}{{[equation][6][3]3.6}{[1][47][]47}}
+\newlabel{eqn: dynamicAcc}{{3.7}{47}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.7}{}}
+\newlabel{eqn: dynamicAcc@cref}{{[equation][7][3]3.7}{[1][47][]47}}
+\newlabel{eqn: dynamicObservationCalculation}{{3.8}{47}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.8}{}}
+\newlabel{eqn: dynamicObservationCalculation@cref}{{[equation][8][3]3.8}{[1][47][]47}}
+\newlabel{def:AccumulatedDiscountReward}{{3.9}{47}{Problem Formulation: 1D Beam with deteriorating stiffness}{equation.3.1.9}{}}
+\newlabel{def:AccumulatedDiscountReward@cref}{{[equation][9][3]3.9}{[1][47][]47}}
+\@writefile{lot}{\contentsline {table}{\numberline {3.3}{\ignorespaces Cost Definition in the beam monitoring process}}{48}{table.caption.71}\protected@file@percent }
+\newlabel{table: Cost definition in the beam monitoring process}{{3.3}{48}{Cost Definition in the beam monitoring process}{table.caption.71}{}}
+\newlabel{table: Cost definition in the beam monitoring process@cref}{{[table][3][3]3.3}{[1][48][]48}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Proposed Framework}{48}{section.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Flowchart POMDP diagram}}{49}{figure.caption.72}\protected@file@percent }
+\newlabel{fig: flowchartPOMDP}{{3.5}{49}{Flowchart POMDP diagram}{figure.caption.72}{}}
+\newlabel{fig: flowchartPOMDP@cref}{{[figure][5][3]3.5}{[1][48][]49}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Appendices}{50}{appendix.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
-\newlabel{chap:Appendix}{{A}{43}{Appendices}{appendix.A}{}}
-\newlabel{chap:Appendix@cref}{{[appendix][1][2147483647]A}{[1][43][]43}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Probability Basis}{43}{section.A.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.1}Random Variables}{43}{subsection.A.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Extreme Value (EV) distributions}{43}{section*.67}\protected@file@percent }
-\newlabel{eqn:CDFofXmin}{{A.1}{43}{Extreme Value (EV) distributions}{equation.A.1.1}{}}
-\newlabel{eqn:CDFofXmin@cref}{{[equation][1][2147483647,1]A.1}{[1][43][]43}}
-\newlabel{eqn:PDFofXmin}{{A.6}{43}{Extreme Value (EV) distributions}{equation.A.1.6}{}}
-\newlabel{eqn:PDFofXmin@cref}{{[equation][6][2147483647,1]A.6}{[1][43][]43}}
-\newlabel{eqn:CDFofXmax}{{A.8}{44}{Extreme Value (EV) distributions}{equation.A.1.8}{}}
-\newlabel{eqn:CDFofXmax@cref}{{[equation][8][2147483647,1]A.8}{[1][43][]44}}
-\newlabel{eqn:PDFofXmax}{{A.12}{44}{Extreme Value (EV) distributions}{equation.A.1.12}{}}
-\newlabel{eqn:PDFofXmax@cref}{{[equation][12][2147483647,1]A.12}{[1][44][]44}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.2}Random Process}{44}{subsection.A.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Bernoulli Process}{44}{section*.69}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Extreme Value distribution for Maximum}}{45}{figure.caption.68}\protected@file@percent }
-\newlabel{fig: EV_distribution_plots}{{A.1}{45}{Extreme Value distribution for Maximum}{figure.caption.68}{}}
-\newlabel{fig: EV_distribution_plots@cref}{{[figure][1][2147483647,1]A.1}{[1][44][]45}}
-\@writefile{toc}{\contentsline {subsubsection}{Poisson Process}{45}{section*.71}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces Bernoulli Process and its associated Probability Distribution}}{46}{figure.caption.70}\protected@file@percent }
-\newlabel{fig: Bernoulli Process}{{A.2}{46}{Bernoulli Process and its associated Probability Distribution}{figure.caption.70}{}}
-\newlabel{fig: Bernoulli Process@cref}{{[figure][2][2147483647,1]A.2}{[1][44][]46}}
-\@writefile{toc}{\contentsline {subsubsection}{Compound Poisson Process}{46}{section*.73}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces Poisson Process and its associated Probability Distribution}}{47}{figure.caption.72}\protected@file@percent }
-\newlabel{fig: PoissonProcess}{{A.3}{47}{Poisson Process and its associated Probability Distribution}{figure.caption.72}{}}
-\newlabel{fig: PoissonProcess@cref}{{[figure][3][2147483647,1]A.3}{[1][45][]47}}
-\@writefile{toc}{\contentsline {subsubsection}{Gamma Process}{47}{section*.75}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {A.4}{\ignorespaces Compound Process Process and its associated Probability Distribution}}{49}{figure.caption.74}\protected@file@percent }
-\newlabel{fig: CompoundPoissonProcess}{{A.4}{49}{Compound Process Process and its associated Probability Distribution}{figure.caption.74}{}}
-\newlabel{fig: CompoundPoissonProcess@cref}{{[figure][4][2147483647,1]A.4}{[1][46][]49}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.5}{\ignorespaces Gamma Process and its associated Probability Distribution}}{50}{figure.caption.76}\protected@file@percent }
-\newlabel{fig: GammaProcess}{{A.5}{50}{Gamma Process and its associated Probability Distribution}{figure.caption.76}{}}
-\newlabel{fig: GammaProcess@cref}{{[figure][5][2147483647,1]A.5}{[1][48][]50}}
+\newlabel{chap:Appendix}{{A}{50}{Appendices}{appendix.A}{}}
+\newlabel{chap:Appendix@cref}{{[appendix][1][2147483647]A}{[1][50][]50}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Probability Basis}{50}{section.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.1}Random Variables}{50}{subsection.A.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Extreme Value (EV) distributions}{50}{section*.73}\protected@file@percent }
+\newlabel{eqn:CDFofXmin}{{A.1}{50}{Extreme Value (EV) distributions}{equation.A.1.1}{}}
+\newlabel{eqn:CDFofXmin@cref}{{[equation][1][2147483647,1]A.1}{[1][50][]50}}
+\newlabel{eqn:PDFofXmin}{{A.6}{50}{Extreme Value (EV) distributions}{equation.A.1.6}{}}
+\newlabel{eqn:PDFofXmin@cref}{{[equation][6][2147483647,1]A.6}{[1][50][]50}}
+\newlabel{eqn:CDFofXmax}{{A.8}{51}{Extreme Value (EV) distributions}{equation.A.1.8}{}}
+\newlabel{eqn:CDFofXmax@cref}{{[equation][8][2147483647,1]A.8}{[1][50][]51}}
+\newlabel{eqn:PDFofXmax}{{A.12}{51}{Extreme Value (EV) distributions}{equation.A.1.12}{}}
+\newlabel{eqn:PDFofXmax@cref}{{[equation][12][2147483647,1]A.12}{[1][51][]51}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1.2}Random Process}{51}{subsection.A.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Bernoulli Process}{51}{section*.75}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Extreme Value distribution for Maximum}}{52}{figure.caption.74}\protected@file@percent }
+\newlabel{fig: EV_distribution_plots}{{A.1}{52}{Extreme Value distribution for Maximum}{figure.caption.74}{}}
+\newlabel{fig: EV_distribution_plots@cref}{{[figure][1][2147483647,1]A.1}{[1][51][]52}}
+\@writefile{toc}{\contentsline {subsubsection}{Poisson Process}{52}{section*.77}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces Bernoulli Process and its associated Probability Distribution}}{53}{figure.caption.76}\protected@file@percent }
+\newlabel{fig: Bernoulli Process}{{A.2}{53}{Bernoulli Process and its associated Probability Distribution}{figure.caption.76}{}}
+\newlabel{fig: Bernoulli Process@cref}{{[figure][2][2147483647,1]A.2}{[1][51][]53}}
+\@writefile{toc}{\contentsline {subsubsection}{Compound Poisson Process}{53}{section*.79}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {A.3}{\ignorespaces Poisson Process and its associated Probability Distribution}}{54}{figure.caption.78}\protected@file@percent }
+\newlabel{fig: PoissonProcess}{{A.3}{54}{Poisson Process and its associated Probability Distribution}{figure.caption.78}{}}
+\newlabel{fig: PoissonProcess@cref}{{[figure][3][2147483647,1]A.3}{[1][52][]54}}
+\@writefile{toc}{\contentsline {subsubsection}{Gamma Process}{54}{section*.81}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {A.4}{\ignorespaces Compound Process Process and its associated Probability Distribution}}{56}{figure.caption.80}\protected@file@percent }
+\newlabel{fig: CompoundPoissonProcess}{{A.4}{56}{Compound Process Process and its associated Probability Distribution}{figure.caption.80}{}}
+\newlabel{fig: CompoundPoissonProcess@cref}{{[figure][4][2147483647,1]A.4}{[1][53][]56}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.5}{\ignorespaces Gamma Process and its associated Probability Distribution}}{57}{figure.caption.82}\protected@file@percent }
+\newlabel{fig: GammaProcess}{{A.5}{57}{Gamma Process and its associated Probability Distribution}{figure.caption.82}{}}
+\newlabel{fig: GammaProcess@cref}{{[figure][5][2147483647,1]A.5}{[1][55][]57}}
 \abx@aux@read@bbl@mdfivesum{D41D8CD98F00B204E9800998ECF8427E}
 \abx@aux@read@bblrerun
-\gdef \@abspage@last{59}
+\gdef \@abspage@last{66}

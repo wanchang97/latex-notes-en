@@ -1,0 +1,1137 @@
+\input{ColloquiumStructure.tex}
+
+\subtitle{ISM Colloquium}
+\title{Structural Integration Management Decision Making Modeling using RL}
+\setbeamertemplate{caption}[numbered]
+\begin{document}
+	\setcounter{footnote}{0}
+	\maketitle
+	\tableofcontents
+	
+	
+	%\section{Sequential Decision Making Modelling}
+	\section{What is a Decision Making Process?  an optimization problem}
+	\begin{frame}{Basic Idea: an optimization problem}
+		\begin{block}{Decision Making}
+			Decision Making is about \textcolor{red}{choice} in everyone's life. We tend to make decisions like where to live, how we react etc. based on our experience instinction and constraints.  Finally the decision would be made to \textcolor{red}{maximize our benefits, no matter physically or mentally}. %\textcolor{red}{information related to the damage} ,
+		\end{block}
+		\begin{block}{Seqeuntial Decision Making }
+			Sequential Decision Making focuses on the decision process in the whole time-domain. It is about not only one choices but \textcolor{red}{ a sequence of choices}.  The decision made at every time step would dynamically influence the environment and the following state. 
+			Thus the decison would be made to \textcolor{red}{maximize the accumulated total satisfaction of the whole time span}.
+		\end{block}
+
+	\end{frame}
+	\section{How to model the decision making process?}
+	
+	\begin{frame}{How to model the decision making process?}
+		\begin{block}{The basic formulation of a decision making modelling}
+		The decision making process is a dynamic interaction between decision makers (agents) and the environment. The basic elements would be the state space, action space, transition model, reward model. For the case when we can not observe the true state, but partially get some observations of the true state, we would add the observation space and observation model.
+		\end{block}
+		
+		\begin{block}{Typical Applications of Decision Making Modeling}
+	
+		\begin{itemize}
+					\item alpha-go chess playing: finite discrete state(discrete observation), discrete action, discrete time step
+					\item  Autonomous driving: continuous state like the velocity, location, continuous action space like the steering wheel angles, continuous time step
+	             	\item Strucutral Integration Management
+		\end{itemize}
+		\end{block}
+		\end{frame}
+		
+		\begin{frame}{How to model the decision making process?}
+		\begin{figure}[h]
+		\includegraphics[scale = 0.7
+		]{figures/RPimages/AgentEnvironmentInteractionsSequential2}
+		\centering
+		\caption{Sequential Decision Making Modeling in Structural Integration Management}	
+		\label{fig: Sequential Decision Making Modeling}
+		\end{figure}
+		\end{frame}
+		
+
+		
+		
+	
+	\subsection{Markov Decision Process}
+	\subsubsection{Basic Terminology}
+	\begin{frame}{Basic terminologies in Sequential Decision Making Analysis}
+		In summary, a basic discrete decision making process with discrete time steps (aka. Markov Decision Process) can be generally defined by 4-tuple ($\mathds{S},\mathds{A},\mathbf{T},\mathbf{R}$)
+		\begin{itemize}
+			\item a finite set of states $\mathds{S}$;
+			\item a finite set of actions $\mathds{A}$; $A_{i\geq t} \in \mathds{A}$
+			\item a policy $\pi(a|s)$: the state-dependent sequence of actions
+			\begin{itemize}
+				\item Deterministic policy  $\pi(a|s): \mathds{S} \rightarrow \mathds{A}$
+				\item or Stochastic policy  $\pi(a|s): \mathds{S}\times \mathds{A} \rightarrow \mathds{R} \in [0,1]$ 
+			\end{itemize} Depending on how we choose the $a_t$ we can have: Online-policy $A_{i\geq t} \sim \pi$ and Offline-policy: $A_{i>t} \sim \pi$, $a_t \sim \mu$		
+			\item a state transition model $\mathbf{T}$:
+			\begin{itemize}
+				\item It could be a deterministic transition function: e.g. $s_{t+1} = f(s_t,a_t)$;
+				\item or a transition probability: $P(s_{t+1}|s_t, a_t, \cdots , s_1, a_1)$ ($P(s_{t+1}|s_t, a_t)$ under the Markov Assumption)
+			\end{itemize} 
+			\item a reward function $,\mathbf{R}$ (negative cost function), could be formulated as:
+			\begin{itemize}
+				\item A general reward function $R(s_t,a_t,s_{t+1})$
+				\item Or an immediate reward function $R(s_t,a_t)$
+			\end{itemize} 
+
+		\end{itemize}
+	\end{frame}
+	\subsubsection{Value functions definition}
+\begin{frame}[allowframebreaks]{Value function definitions}
+	\begin{block}{Accumulated Discounted Reward for one episode}
+		\begin{equation}
+			U^{\pi}_t = U^{\pi} (s_t,a_t,\cdots,s_T,a_T) = \sum_{i=t}^{T}\gamma^{i-t} R(s_i,a_i,s_{i+1}),
+		\end{equation}
+		where $\gamma \in [0,1]$ is the discount factor weighting more on the current reward than the future reward.$\gamma = 0$: only the current reward matters, $\gamma=1$: rewards in all steps equally matter.
+	\end{block}
+	\begin{block}{Value of state-action pair following a policy $\pi$: $Q^{\pi}(s_t,a_t)$ }
+		\begin{equation}
+			Q^{\pi}(s_t,a_t) = \mathds{E}_{s_{i>t} \sim \rho,A_{i>t}\sim \pi}[U^{\pi}_t|s_t,a_t]
+		\end{equation}
+	\end{block}
+	
+	\begin{block}{Value of state following a policy $\pi$: $V^{\pi}(s_t)$ }
+		\begin{equation}
+			V^{\pi}(s_t) = \mathds{E}_{a_{t}\sim \mu}[Q^{\pi}(s_t,a_t)] =\mathds{E}_{s_{i>t} \sim \rho,A_{i> t}\sim \pi}[U^{\pi}_t|s_t]
+		\end{equation}
+	\end{block}
+	
+	\begin{block}{Optimal Value of state-action pair: $Q(s_t,a_t)$ }
+		\begin{equation}
+			Q(s_t,a_t) = \max_{\pi} \mathbb{E}_{S_{i>t}\sim \rho}\left[\sum_{i=t}^T\gamma^{i-t}R(s_i,a_i,s_{i+1})\bigg|s_t,a_t\right]
+		\end{equation}
+	\end{block}
+	
+	\begin{block}{Optimal Value of state: $V(s_t)$ }
+		\begin{equation}
+			V(s_t) = \max_{\pi} \mathbb{E}_{S_{i>t}\sim \rho}\left[\sum_{i=t}^T\gamma^{i-t}R(s_i,a_i,s_{i+1})\bigg|s_t\right]
+		\end{equation}
+	\end{block}
+	\end{frame}
+	
+	
+		\subsubsection{Bellman Equations for Value functions }
+	\begin{frame}[allowframebreaks]{Bellman Equations for general reward $R(s_t,a_t,s_{t+1})$} \footnotesize
+		\begin{block}{Value of state-action pair following a policy $\pi$: $Q^{\pi}(s_t,a_t)$ }
+				\begin{subequations}
+				\begin{align}
+					Q^\pi(s_t, a_t) &= \mathbb{E}_{S_{t+1} \sim \rho}\left[R(s_t,a_t,s_{t+1}) + \gamma \mathbb{E}_{A_{t+1} \sim \pi} Q^{\pi}(S_{t+1},A_{t+1})\right] \\
+					&= \sum_{s_{t+1} \in \mathbb{S}} p(s_{t+1} | s_t, a_t) \left[ R(s_t, a_t, s_{t+1}) + \gamma \sum_{a_{t+1} \in \mathbb{A}} \pi(a_{t+1} | s_{t+1}) Q^\pi(s_{t+1}, a_{t+1}) \right]
+				\end{align}
+			\end{subequations}
+		\end{block}
+		
+		\begin{block}{Value of state following a policy $\pi$: $V^{\pi}(s_t)$ }
+			\begin{subequations}
+				\begin{align}
+					V^\pi(s_t) &= \mathbb{E}_{A_t \sim \mu, S_{t+1} \sim \rho } \left[ R(s_t, A_t,S_{t+1})+ \gamma  V^\pi(S_{t+1}) \right] 
+					\\&= \sum_{a_t \in \mathbb{A}} \mu(a_t | s_t) \sum_{s_{t+1} \in \mathbb{S}} p(s_{t+1} | s_t, a_t) \left[ R(s_t, a_t, s_{t+1}) + \gamma V^\pi(s_{t+1}) \right]
+				\end{align}
+			\end{subequations}
+		\end{block}
+		
+		\begin{block}{Optimal Value of state-action pair: $Q(s_t,a_t)$ }
+			\begin{subequations}
+				\begin{align}
+					Q(s_t,a_t) &= \mathbb{E}_{S_{t+1} \sim \rho}  \left[ R(s_t, a_t, S_{t+1}) + \gamma \max_{a_{t+1} \in \mathbb{A}} Q(S_{t+1}, a_{t+1}) \right] \\
+					&= \sum_{s_{t+1} \in \mathbb{S}} p(s_{t+1} | s_t, a_t) \left[ R(s_t, a_t, s_{t+1}) + \gamma \max_{a_{t+1} \in \mathbb{A}} Q(s_{t+1}, a_{t+1}) \right] 
+				\end{align}
+			\end{subequations}
+		\end{block}s
+		
+		\begin{block}{Optimal Value of state: $V(s_t)$ }
+		\begin{subequations}
+			\begin{align}
+				V(s_t) &= \max_{a_t \in \mathbb{A}} \mathbb{E}_{ S_{t+1} \sim \rho } \left[ R(s_t, a_t,S_{t+1})+ \gamma  V(S_{t+1}) \right] 
+				\\&= \max_{a_t \in \mathbb{A}} \sum_{s_{t+1} \in \mathbb{S}} p(s_{t+1} | s_t, a_t) \left[ R(s_t, a_t, s_{t+1}) + \gamma V(s_{t+1}) \right]
+			\end{align}
+		\end{subequations}
+		\end{block}
+	\end{frame}
+	
+		\begin{frame}[allowframebreaks]{Bellman Equations for intermediate reward $R(s_t,a_t)$} \footnotesize
+		\begin{block}{Value of state-action pair following a policy $\pi$: $Q^{\pi}(s_t,a_t)$ }
+			\begin{subequations}
+				\begin{align}
+					Q^{\pi}(s_t,a_t) &= R(s_t,a_t) + \gamma \mathbb{E}_{S_{t+1}\sim \rho, A_{t+1} \sim \pi} \left[Q^{\pi}(S_{t+1}, A_{t+1})\right] \\ &= R(s_t,a_t) + \gamma \sum_{s_{t+1} \in \mathbb{S}} \sum_{a_{t+1} \in \mathbb{A}}p(s_{t+1}|s_t,a_{t+1}) \pi(a_{t+1}|s_{t+1})Q^{\pi}(s_{t+1},a_{t+1})
+				\end{align}
+			\end{subequations}
+			
+		\end{block}
+		
+		\begin{block}{Value of state following a policy $\pi$: $V^{\pi}(s_t)$ }
+			\begin{subequations}
+			\begin{align}
+				V^\pi(s_t) &= \mathbb{E}_{A_t \sim \mu} \left[ R(s_t, A_t) \right] + \gamma \mathbb{E}_{A_t \sim \mu, S_{t+1} \sim \rho} \left[ V^\pi(S_{t+1}) \right]
+				\\&=  \sum_{a_t \in \mathbb{A}} \mu(a_t | s_t) R(s_t, a_t) + \gamma  \sum_{a_t \in \mathbb{A}} \mu(a_t | s_t) \sum_{s_{t+1} \in \mathbb{S}} p(s_{t+1} | s_t, a_t) V^\pi(s_{t+1}) 
+			\end{align}
+		\end{subequations}
+		\end{block}
+		
+		\begin{block}{Optimal Value of state-action pair: $Q(s_t,a_t)$ }
+			\begin{subequations}
+				\begin{align}
+					Q(s_t,a_t) &= R(s_t,a_t) + \gamma \mathbb{E}_{S_{t+1} \sim \rho} \left[\max_{a_{t+1} \in \mathbb{A}}Q(S_{t+1},a_{t+1})\right] \\
+					&= R(s_t,a_t) + \gamma \sum_{s_{t+1} \in \mathbb{S}} p(s_{t+1} | s_t, a_t)  \max_{a_{t+1} \in \mathbb{A}} Q(s_{t+1}, a_{t+1}) 
+				\end{align}
+			\end{subequations}
+		\end{block}
+		
+		\begin{block}{Optimal Value of state: $V(s_t)$ }
+				\begin{subequations}
+				\begin{align}
+					V(s_t) &=  \max_{a_t \in \mathbb{A}}\left\{ R(s_t,a_t) + \gamma \mathbb{E}_{S_{t+1} \sim \rho } \left[V(S_{t+1})\right] \right\}
+					\\&=   \max_{a_t \in \mathbb{A}} \left\{ R(s_t,a_t) + \gamma \sum_{s_{t+1} \in \mathbb{S}} p(s_{t+1} | s_t, a_t) V(s_{t+1}) \right\}
+				\end{align}
+			\end{subequations}
+		\end{block}
+	\end{frame}
+	 \begin{frame}{From the Bellman Equation to Temporal Difference Learning}
+	 	The Bellman equations can be seen as a recursive update rule
+	 	
+	 	tell us the true value of a state or the true value of state-action pair would be, given the dynamics of the environment and the policy
+	 \end{frame}
+	 \subsubsection{On policy learning}
+		\begin{frame}[allowframebreaks]{On-policy Temporal Difference Learning} \footnotesize
+		\begin{block}{Use $\hat{q}^{\pi}(s_t,a_t)$ to approximate State-action Value function: $Q^{\pi}(s_t,a_t)= R(s_t,a_t) + \gamma \sum_{s_{t+1} \in \mathbb{S}} \sum_{a_{t+1} \in \mathbb{A}}p(s_{t+1}|s_t,a_{t+1}) \pi(a_{t+1}|s_{t+1})Q^{\pi}(s_{t+1},a_{t+1})$ }
+				\begin{itemize}
+		\item we are in state $s_t$ and we take action $a_t$
+		\item we observe next state $s_{t+1}$ and reward $r_{t+1}$
+		\item we take the next action $a_{t+1}$ from $s_{t+1}$ following the policy (e.g. $\epsilon$-greedy)
+	\end{itemize}
+	The algorithm SARSA (State-Action-Reward-State-Action) uses the experience tuple $(S_t,A_t,R_{t+1},S_{t+1},A_{t+1})$ to form its TD target:
+	
+	SARSA TD Target is 
+	\begin{equation}
+		\hat {y}_t = R_{t+1} + \gamma Q(s_{t+1},a_{t+1})				 
+	\end{equation}
+	
+	SARSA TD error is
+	\begin{equation}
+		\delta_t = \hat{y}_t - Q(s_t,a_t)
+	\end{equation}
+	SARSA Update Rule:
+	\begin{equation}
+		Q(s_t,a_t) \leftarrow Q(s_t,a_t) + \alpha  \delta_t
+	\end{equation}
+			
+		\end{block}
+		
+		\begin{block}{Value of state following a policy $\pi$: $V^{\pi}(s_t)=  \sum_{a_t \in \mathbb{A}} \mu(a_t | s_t) R(s_t, a_t) + \gamma  \sum_{a_t \in \mathbb{A}} \mu(a_t | s_t) \sum_{s_{t+1} \in \mathbb{S}} p(s_{t+1} | s_t, a_t) V^\pi(s_{t+1}) $ }
+
+			\begin{itemize}
+				\item we are in state $s_t$
+				\item we take an action $a_t$ (according to some policy e.g. $\epsilon$-greedy)
+				\item we observe the next state $s_{t+1}$ and receive a reward $r_{t+1}$
+				\item  TD target $\hat{y}_t = r_{t+1} + \gamma V(s_{t+1})$. The target is a biased estimate of the true value of $s_t$, but it is often better than your current estimate $V(s_t)$
+				\item TD error $\delta_t =\hat{y}_t - V(s_t)  $
+				\item TD (0) Update 
+				\begin{equation}
+					V(s_t) \leftarrow V(s_t) + \alpha \delta_T
+				\end{equation} where $\alpha$ is the learning rate.
+			\end{itemize}
+		\end{block}
+	\end{frame}
+	
+	\subsubsection{Off-policy learning}
+		\begin{frame}[allowframebreaks]{Off-policy Temporal Difference Learning}
+		\begin{block}{Optimal Value of state-action pair:  StateActionRewardStateAction $Q(s_t,a_t) = R(s_t,a_t) + \gamma \sum_{s_{t+1} \in \mathbb{S}} p(s_{t+1} | s_t, a_t)  \max_{a_{t+1} \in \mathbb{A}} Q(s_{t+1}, a_{t+1}) $}
+			\begin{itemize}
+				\item we are in state $s_t$ and we take action $a_t$
+				\item we observe next state $s_{t+1}$ and reward $r_{t+1}$
+				\item we take the next action $a_{t+1}$ from $s_{t+1}$ following the policy $\pi$(e.g. $\epsilon$-greedy)
+			\end{itemize}
+			The algorithm SARSA (State-Action-Reward-State-Action) uses the experience tuple $(S_t,A_t,R_{t+1},S_{t+1},A_{t+1})$ to form its TD target:
+			
+			SARSA TD Target is 
+			\begin{equation}
+				\hat {y}_t = R_{t+1} + \gamma Q(s_{t+1},a_{t+1})				 
+			\end{equation}
+			
+			SARSA TD error is
+			\begin{equation}
+				\delta_t = \hat{y}_t - Q(s_t,a_t)
+			\end{equation}
+			SARSA Update Rule:
+			\begin{equation}
+			Q(s_t,a_t) \leftarrow Q(s_t,a_t) + \alpha  \delta_t
+			\end{equation}
+		\end{block}
+		
+		\begin{block}{Optimal Value of state: $V(s_t)=   \max_{a_t \in \mathbb{A}} \left\{ R(s_t,a_t) + \gamma \sum_{s_{t+1} \in \mathbb{S}} p(s_{t+1} | s_t, a_t) V(s_{t+1}) \right\}$ }
+			in model-free TD learning, we sample from the environment.
+			\begin{itemize}
+				\item we are in state $s_t$
+				\item we take an action $a_t$ (according to some policy e.g. $\epsilon$-greedy)
+				\item we observe the next state $s_{t+1}$ and receive a reward $r_{t+1}$
+				\item  TD target $\hat{y}_t = r_{t+1} + \gamma V(s_{t+1})$. The target is a biased estimate of the true value of $s_t$, but it is often better than your current estimate $V(s_t)$
+				\item TD error $\delta_t =\hat{y}_t - V(s_t)  $
+				\item TD (0) Update 
+				\begin{equation}
+					V(s_t) \leftarrow V(s_t) + \alpha \delta_T
+				\end{equation} where $\alpha$ is the learning rate.
+			\end{itemize}
+		\end{block}
+		
+	\end{frame}
+	
+	\begin{frame}{ How to use the value functions to find the best policy? }
+	
+		\begin{table}[h!]\small
+		\centering
+		\caption{Example of a table estimation for the optimal state-action value function $Q(S,A)$}
+		\label{table: ExampleOfTableEstimationForQ}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			$Q(S,A)$                             & $A_1$ do nothing & $A_2$ inspection & $A_3$ repair& $A_4$ replace\\ \hline
+			$S_0$ perfect state         & 300  & 50  &  -40   & -300   \\ \hline
+			$S_1$ minor damage          & 200   & 100  &  70   & -100   \\ \hline
+			$S_2$  major damage        & -7    & 150   & 240 & 100   \\ \hline
+			$S_3$  total failure                      & -500  & -300   & -300   & 200  \\ \hline
+		\end{tabular}
+	\end{table}
+	If we already know such a value table, our acitons could be chosen guided by this table. If we are in thse major damage states, the repair action is most valuable choices since this optimal state-action value function is the largest.
+\end{frame}
+
+\begin{frame}{Ways to solve MDP}
+	\begin{block}{Temporal Difference Learning}
+		Derived from the Bellman Equation to recursively update the value approximation based on the new collected experience every time step
+		\end{block}
+		
+		
+		\begin{block}{Dynamic Programming}
+			Dynamic Programming requires a perfect model of environment, i.e. we need to know exactly the transition probability $T(s_{t+1}|s_t,a_t)$ and the reward model $R(s_t,a_t)$
+		\end{block}
+		
+		\begin{block}{Reinforcement Learning}
+			RL could be used for model-free cases when we can not exactly describe the transition model and the reward model.
+			The agent earn from the interaction with the environment via trial and errors. This requires a very good simulator. 
+		\end{block}
+\end{frame}
+
+
+%	\subsubsection{Structural Integration Management MDP}
+	%\begin{frame}Structural Integration Management MD
+	%	content...
+	%\end{frame}
+	
+	
+	\subsection{Partially Observable Markov Decision Process}
+	%\subsubsection{Basic Terminology}
+	\begin{frame}{Basic terminologies in POMDP}
+		A discrete-time POMDP models the relationship between an agent and its environment. Formally, a POMDP is a $6-$tuple $(\mathds{S},\mathds{O},\mathds{A},\mathbf{T},\mathbf{R},\mathbf{O})$
+		\begin{itemize}
+			\item $\mathds{S}$: a finite set of states 
+			\item $\mathds{A}$: a finite set of actions 
+			\item $\mathds{O}$: the finite set of observations
+			\item $\mathbf{T}$: a set of conditional transition probabilities between states 
+			\item $\mathbf{R}$: $\mathds{S} \times \mathds{A} \rightarrow \RR$: the reward function 
+			\item $\mathbf{O}$: the set of conditional observation probabilities 
+		\end{itemize}
+		At each time period, the environment is in some state $s \in \mathbf{S}$, the agent takes an action $a \in \mathds{A}$, which causes the environment to transition to states $s'$ with probability  $T(s'|s,a)$. At the same time, the agent receives an observation $o' \in \mathds{O}$ which depends on the new state of the environment, $s'$ and the just taken action $a$ with probability $O(o'|s',a)$ or sometimes $O(o'|s')$ depending on the sensor model. 
+		Finally the agent receives a reward $r$ equal to $R(s,a)$ or $R(s,a,s')$ depending on the reward model. The goal is for the agent to choose actions at each time step that maximize its expected future discounted reward $E[\sum_{i=t}^{T}\gamma^t R_t]$
+		
+	\end{frame}
+	\section{How to model Structural Integration Management as POMDP}
+	
+	\begin{frame}[allowframebreaks]{How to model Structural Integration Management as MDP}
+		\begin{figure}[h]
+			\includegraphics[scale = 1 
+			]{figures/SimpleExampleFigure/1DBeamExample}
+			\centering
+			%\caption{Geometrical Property of Steel Truss Bridge Structure}	
+			%\label{fig: 1D beam example}
+		\end{figure}
+				\begin{columns}
+			\begin{column}{1\textwidth}
+					\begin{table}[h!]
+					\small
+					\caption{Configuration of Steel Truss Bridge Structure}	
+					\centering
+					\begin{tabular}{|l|l|l|}
+						\hline
+						Geometry Property          & length $L$           & $1m $   \\
+						& Cross Section $A$    & $1.0 m^2 $  \\
+						\hline
+						Machanical Property  &  Youngs modulus $E $                 & $E(t=0) = 210e9 Pa $\\
+						\hline
+						Material Property & Density  $\rho$    & $7800 kg/m^3 $  \\
+						\hline
+						Loading            & Mid point load $F$   & 10kN  \\
+						\hline
+						Boundary Condition & $u_L = 0$, $u_R = 0$ &       \\
+						\hline
+					\end{tabular}
+					\label{table: ConfigurationBeam}
+				\end{table}
+			\end{column}
+			\begin{column}{0.5\textwidth}  %%<--- here
+
+			\end{column}
+		\end{columns}
+	\end{frame}
+	
+	\begin{frame}[allowframebreaks]{How to model Structural Integration Management as MDP}
+			To model as a POMDP model, we will think through the following components of the model
+		\begin{itemize} \small
+			\item States space $\mathbb{S}$: is a continuous spaces $\RR^N$ containing the Youngs modulus for all elements  $\mathbf{E} = [E_1, E_2,\cdots,E_{n_{elements}}]$. In other words, we will assume that the only changing parameters over time is the mechanical property Youngs modulus. The mass (usually depends on density and geometry) is constant if we assume that the density and geometry do not change over time.
+			\item  Action space $\mathbb{A}$: is a discrete space contains three elements ${a_0,a_1,a_2}$
+			
+			The state-dependent sequence of actions is defined as policy $\pi$. There could be two types of policies, the deterministic policy $\pi(a|s): \mathbb{S} \rightarrow \mathbb{A}$ (mapping from the state space to the action space) and the stochastic policy $\pi(a|s): \mathbb{S} \times \mathbb{A} \rightarrow  \RR \in [0,1]$(mapping from the state space to the probability of actions PDF or PMF).  
+			
+			\item  Observation space $\mathbb{O}$: is a continous observation space containing the observation of the mid-point displacement observations or damage sensitive features.
+			
+			\item Observation model $\mathbf{O}(o_{t+\Delta t}|s_{t+\Delta t},a_t)$:
+			\begin{itemize}
+				\item Static analysis:
+				Observation from the static analysis is the midpoint displacement. It is continuous observation. The displacement vector is calculated via 
+				\begin{equation}
+					\label{eqn: staticDisplacementCalculation}
+					u_{t+\Delta t} = StaticSolver (K(E(t+\Delta t)),F_{t+\Delta t}).
+				\end{equation}
+				We could generate the synthetic observations by adding the noise 
+				\begin{equation}
+					\label{eqn: staticObservationCalculation}
+					o_{t+\Delta t} = f(u_{t+\Delta t}+ \mathbf{N}(0,\sigma^2)).
+				\end{equation}
+				
+				\item Dynamic analysis:
+				We could generate the synthetic observation from dynamic analysis is the acceleration time series data. 
+				\begin{equation}
+					\label{eqn: dynamicAcc}
+					acc_{t+\Delta t} = dynamicSolver (K(E(t+\Delta t)),F_{t+\Delta t}).
+				\end{equation} We could use the Vibration-based SHM method to extract the damage sensitive feature from the acceleration time serires data. 
+				\begin{equation}
+					\label{eqn: dynamicObservationCalculation}
+					DSF_{t+\Delta t} = DamageSensitiveFeatureExtraction (acc_{0: t+\Delta t}) 
+				\end{equation}
+				
+			\end{itemize}
+			
+			\item Reward Model $\mathbf{r}(s,a)$: 
+			
+			Accumulated Discount Reward for the whole episode $T$ is defined as the weighted sum of reward at each time step:
+			\begin{equation}
+				\label{def:AccumulatedDiscountReward}
+				R = R(s_0,a_0,\cdots,s_T.a_T) = \sum_{i = 0}^T \gamma^{i-t}R(s_i,a_i)
+			\end{equation}
+			
+			where the discount factor $\gamma \in [0,1]$. It weights more on the current reward than the future reward. When $\gamma = 0$: only the current reward matters;
+			when $\gamma = 1$: rewards in all steps equally matter.
+			
+			The total reward is also composed of three parts: $R = R_{insp} + R_{disp} + R_{repair} + R_{replace}+ R_{failure}$
+			
+
+			
+		
+		
+		
+	
+		\begin{table}[h!]
+			\caption{Cost Definition in the beam monitoring process}	\footnotesize
+			\centering
+			\begin{tabular}{|l|l|l|}
+				\hline
+				Displacement &  $R_{disp} = - \sum_{i=1}^T k_i u_i^2$    &  $k_i = 10 $  for $i = 0, \cdots ,T$  \\
+				  Cost & or simpler $-\beta |u_i|$   & $\beta = 50$  \\
+				\hline
+				Repair  &   $R_{repair} = -c_{repair} \cdot n_{repair}$               & $c_{repair} = 500  $   \\
+				  Cost  &  & $n_{repair}$ is the total repair times \\
+				\hline
+				Replace & $R_{replace} = -c_{replace} \cdot n_{replace}$   & $c_{replace} = 2000$\\ 
+				  Cost  &  & $n_{replace}$ is the total replace times \\
+				\hline
+				Inspection   & $R_{insp} = -c_{insp} \cdot n_{inspection}$   & $c_{insp} = 200$  \\
+				  Cost  &  & $n_{insp}$ is the total inspection times \\
+				\hline
+				Failure  & $R_{failure} = - c_{failure}$ &$c_{failure} = 10^4$ equivalent injury cost   \\
+				  Cost &  &  Failure terminates the process   \\
+				\hline
+			\end{tabular}
+			\label{table: Cost definition in the beam monitoring process}
+		\end{table}
+		
+		\item Transition Model $\mathbf{T}$: $s_{t+\Delta t} \leftarrow \mathbf{T}(s_t,a_t)$. The transition depends on the actions: 
+		
+		when $a_0$: do nothing $\rightarrow$ natural deterioration. 
+		
+		We could define a deterioration level as $D (t) = E(t=0)  - 	E(t ) $ to indicate the deterioration extent from the beginning to the time $t$.
+		\begin{itemize}
+			\item gradual deterioration (aging process):
+			The gradual deterioration process can be modelled as a simple rate function \cite{ellingwood2005risk}: 
+			\begin{equation}
+				\label{eqn: gradualDeteriorationModel1}
+				D(t) = E(t=0) - E(t)  =  A t^B e^{w(t)} 
+			\end{equation}
+			where $A$ is the random variable modelling the deterioration rate, $B$ is the random variable modelling the nonlinearity effect in terms of a lower law in time and $w(t)$ models the gaussian stochastic process noise. Realization plot of an aging process is shown in Figure \ref{fig: gradual deterioration example plot}
+			
+			The changes of the deterioration can be approximated by the derivative $\frac{dD}{dt} \Delta t$ if we treate $w(t)$ as a constant number $w_k$
+			\begin{equation}
+				\label{eqn: changeOfgradualDeteriorationModel1}
+				\Delta D(t)= E(t) - E(t + \Delta t) \approx AB  t^{B-1} e^{w_k} \Delta t
+			\end{equation}
+				\begin{figure}[h!]
+	\includegraphics[scale = 0.3
+	]{figures/Deterioration_Natural/Deterioration_Gradual_Model1}
+	\centering
+	\caption{Gradual deterioration realization modeled by simple rate function}		
+	\label{fig: gradual deterioration example plot}
+\end{figure}
+
+\item sudden deterioration:
+The sudden deterioration can be modelled as a homogeneous compound Poisson Process(CPP) \cite{van2009survey,sanchez2016reliability}
+\begin{equation}
+	\label{eqn: fSuddenDeteriorationModel1}
+	D (t) =   E(t=0)  - 	E(t ) =  \sum_{i=1}^{N( t)} D_i \sim CPP( t; \lambda, F_D(d))
+\end{equation}
+where the number of jumps in the time interval $t$  $N(\Delta t) \sim PoissonProcess(\lambda)$; the amplitude of each jump $D_i \sim F_D(d) $ are independent and identically distributed random variables following a given distribution $F_D(d)$ e.g. a Gamma distribution. Realization plot of a CPP process is shown in Figure \ref{fig: sudden deterioration example plot}
+
+The change of the deterioration during the time interval $\Delta t$ is calculated as: 
+
+\begin{equation}
+	\label{eqn: changeOfSuddenDeteriorationModel1}
+	\Delta D (t)= E(t) - 	E(t + \Delta t) =  \sum_{i=1}^{N(\Delta t)} D_i \sim CPP(\Delta t; \lambda, F_D(d))
+\end{equation}
+
+
+	\begin{figure}[h!]
+	\includegraphics[scale = 0.3
+	]{figures/Deterioration_Natural/Deterioration_Sudden_Model1}
+	\centering
+	\caption{sudden deterioration realization modelled by  CPP process}		
+	\label{fig: sudden deterioration example plot}
+\end{figure}
+
+			\end{itemize}
+				\item $a_1$: minor repair $\rightarrow$ $E(t+\Delta t) = E(t)  + (E(t=0) - E(t))\cdot \alpha_{repair} $
+			\item $a_2$: full replacement $\rightarrow$ $E(t+\Delta t) = E(t=0)$
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Implementation Idea to model SIM as POMDP}
+	\begin{figure}[h]
+	\includegraphics[scale = 0.57
+	]{figures/SimpleExampleFigure/flowchart_Echanges}
+	\centering
+	\caption{Flowchart diagram}	
+	\label{fig: flowchart}
+\end{figure}
+	\end{frame}
+
+	
+	
+
+	
+	\begin{frame}[allowframebreaks]{References} \tiny
+		\printbibliography[heading=bibintoc]
+	\end{frame}
+	\appendix
+	
+	
+
+\end{document}
+	
+\begin{frame}{Partially Observable Markov Decision Process}
+	The simple influence diagram of a Partially Observable Markov Decision Process is shown here:
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{RPimages/SimplePOMDPDiagramMyAgreement}
+		%			\caption{The Agent Environment Interaction Diagram}
+	\end{figure}
+\end{frame}
+
+\subsection{What is Structural Integration Management?}	
+
+\begin{frame}[allowframebreaks]{What is Structural Integration Management? }
+	\textcolor{blue}{Structural Integrity Managment (SIM)}, from a general perspective, is a cross-field combining the \textcolor{green}{Structural Health Monitoring} and \textcolor{orange}{sequential decision analysis}  (\cite{faber2017risk,zhang2024optimizing,ali2022information}). 
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.87\textwidth]{RPimages/UnifiedFrameWork}
+		%\caption{Unified Framework of Structural Integration Management}
+	\end{figure}
+	
+	To be more specific, Structural Integrity Management includes all the decisions and actions during the Structural Operation and Maintenance process, e.g. how and where to place the sensors, how often to inspect
+	the damage, and which preventions to take etc.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{RPimages/SIMOverview}
+		%	\caption{SIM Overview}
+	\end{figure}
+\end{frame}
+\subsection{Why to study the Structural Integration Management?}
+\begin{frame}{Why to study the Structural Integration Management?}
+	SHM has been researched extensively for thirthy years, but there are still very few SHM systems installed on the bridge for operation and maintenance purpose (\cite{ye2022implementing}). 
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.87\textwidth]{RPimages/ImageDresden}
+		\caption{\href{https://www.dw.com/en/germany-bridge-in-dresden-collapses-into-elbe-river/a-70185172}{Bridge in Dresden collapses into Elbe river}}
+	\end{figure}
+\end{frame}	
+
+
+\begin{frame}{Why to study the Structural Integration Management?}
+	\begin{block}{What can we get from SHM system?}
+		The SHM system, whatever complexity it is, will end by providing some \textcolor{red}{information related to the damage} ,
+		like the damage location, severity etc.
+		The SHM system provides knowledge of damage with uncertainties which could provide a false alarm or miss a true warning.
+	\end{block}
+	\begin{block}{How the bridge manager make decisions? }
+		The bridge manager (which we refer to “agent” in the following) will decide to repair the bridge not when the SHM system shows that the damage is more likely
+		to happen than the non-damage, but when \textcolor{red}{the loss of doing nothing would be greater than the cost of an intervention}, which requires a research combining the SHM and the utility theory.
+		
+		Past engineering experience is used more often than SHM system information in reality.
+	\end{block}
+\end{frame}
+\subsection{Interesting Research Questions}
+\begin{frame}{Interesting Research Questions}
+	\begin{block}{Objectives}
+		To develop a Decision Making Model tailored for one specific SHM system and a general type of structure.
+	\end{block}
+	Related interesting questions:
+	\begin{itemize}
+		\item What kind of SHM system to utilize? 
+		\begin{itemize}
+			\item Vibration-based SHM
+			\item Vision-based SHM
+		\end{itemize}
+		\item How to evaluate the Value of Information (VoI) from a SHM system? $\rightarrow$ Preposterior Bayesian Analysis with and without a SHM installed.
+		\item What is the main threatens of such structure in operation. $\rightarrow$ Field Research and reliability model of the structure.
+		\item How to solve the optimal sequential decision making problem?
+		$\rightarrow$ utilize an appropriate NN architecture.
+	\end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\section{Sequential Decision Making Modelling}	
+\begin{frame}{Decision Making Modelling}
+	%	In a decision making analysis, there is an agent interacts with the environment for a long time period $T$.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{RPimages/IteractionSteps/StepBeginning}
+		%			\caption{The Agent Environment Interaction Diagram}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Decision Making Modelling}
+	%	In a decision making analysis, there is an agent interacts with the environment for a long time period $T$.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{RPimages/IteractionSteps/StepObservation}
+		%			\caption{The Agent Environment Interaction Diagram}
+	\end{figure}
+\end{frame}
+\begin{frame}{Decision Making Modelling}
+	%	In a decision making analysis, there is an agent interacts with the environment for a long time period $T$.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{RPimages/IteractionSteps/StepAction}
+		%			\caption{The Agent Environment Interaction Diagram}
+	\end{figure}
+\end{frame}
+\begin{frame}{Decision Making Modelling}
+	%	In a decision making analysis, there is an agent interacts with the environment for a long time period $T$.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.9\textwidth]{RPimages/IteractionSteps/StepReward}
+		%			\caption{The Agent Environment Interaction Diagram}
+	\end{figure}
+\end{frame}
+\begin{frame}{Sequential Decision Making Modelling}
+	%	In a decision making analysis, there is an agent interacts with the environment for a long time period $T$.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{RPimages/IteractionSteps/StepSequential}
+		%			\caption{The Agent Environment Interaction Diagram}
+	\end{figure}
+\end{frame}
+\begin{frame}{Sequential Decision Making Modelling}
+	In a decision making analysis, there is an agent interacts with the environment for an episode starting from initial state and ending at terminal state with the total planning horizon $T$.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{RPimages/AgentEnvironmentInteractionsSequential}
+		%			\caption{The Agent Environment Interaction Diagram}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Sequential Decision Making optimization problem forulation}
+	To find an optimal policy (actions at different time step) so that the total life-cycle cost is minimized
+	\begin{equation}
+		\pi^{\star} = \argmin_{\pi}\mathds{E}\left[ C_{total (S)} \right]
+	\end{equation}
+	
+\end{frame}
+\subsection{Basic terminologies in Markov Decision Process(MDP)}
+\begin{frame}{Basic terminologies in Sequential Decision Making Analysis}
+	In summary, a basic discrete decision making process with discrete time steps (aka. Markov Decision Process) can be generally defined by 4-tuple ($\mathds{S},\mathds{A},\mathbf{T},\mathbf{R}$)
+	\begin{itemize}
+		\item a finite set of states $\mathds{S}$;
+		\item a finite set of actions $\mathds{A}$; $A_{i\geq t} \in \mathds{A}$
+		\item a policy $\pi(a|s)$: the state-dependent sequence of actions
+		\begin{itemize}
+			\item Deterministic policy  $\pi(a|s): \mathds{S} \rightarrow \mathds{A}$
+			\item or Stochastic policy  $\pi(a|s): \mathds{S}\times \mathds{A} \rightarrow \mathds{R} \in [0,1]$ 
+		\end{itemize} Depending on how we choose the $a_t$ we can have: Online-policy $A_{i\geq t} \sim \pi$ and Offline-policy: $A_{i>t} \sim \pi$, $a_t \sim \mu$		
+		\item a reward function (negative cost function), could be formulated as:
+		\begin{itemize}
+			\item A general reward function $R(s_t,a_t,s_{t+1})$
+			\item Or an immediate reward function $R(s_t,a_t)$
+		\end{itemize} 
+		\item a state transition model:
+		\begin{itemize}
+			\item It could be a deterministic transition function: e.g. $s_{t+1} = f(s_t,a_t)$;
+			\item or a transition probability: $P(s_{t+1}|s_t, a_t, \cdots , s_1, a_1)$ ($P(s_{t+1}|s_t, a_t)$ under the Markov Assumption)
+		\end{itemize} 
+	\end{itemize}
+\end{frame}
+\begin{frame}{Markov Decision Process Terminology explanation}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{RPimages/MDP4-tuple}
+		%			\caption{The Agent Environment Interaction Diagram}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Markov Decision Process}
+	The simple influence diagram of a Markov Decision Process is shown here:
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\textwidth]{RPimages/SimpleMDPDiagramMyAgreement}
+		%			\caption{The Agent Environment Interaction Diagram}
+	\end{figure}
+\end{frame}
+
+
+
+\begin{frame}{Optimization Problem Formulation}
+	\begin{block}{The Optimization Problem Formulation}
+		To find the optimal policy $\pi$, to maximize the expected total reward
+		\begin{subequations}
+			\begin{align}
+				\pi^{\star} &= \argmax_{\pi}Q^{\pi} (s_t,a_t) ;  Q^{\star} (s_t,a_t) = \max_{\pi} Q^{\pi} (s_t,a_t) \textsf{ or equivalently}\\ 
+				\pi^{\star} &= \argmax_{\pi}V^{\pi} (s_t) ;  V^{\star} (s_t) = \max_{\pi}V^{\pi}(s_t)
+			\end{align}		
+		\end{subequations}
+	\end{block}
+	\begin{block}{Optimal Bellman Equation}
+		\begin{subequations}
+			\label{eqn: MaxValueOfStateAction}
+			\begin{align}
+				Q^{\star}(s_t,a_t) &= \mathds{E}_{s_{i>t}\sim \rho}\left[ R(s_t,a_t,s_{t+1}) + \gamma \max_{a_{t+1} \in \mathds{A}} Q^{\star}(s_{t+1},a_{t+1})\right]\textsf{ or}\\
+				V^{\star}(s_t) &=\max_{a_t \in \mathds{A}}   \mathds{E}_{s_{i>t}\sim \rho} \left(R(s_t,a_t,s_{t+1})+ \gamma V^{\star}(s_{t+1})\right) 
+			\end{align}
+		\end{subequations}
+	\end{block}
+\end{frame}
+\begin{frame}{Solve the optimization problem}
+	\begin{block}{Monte Carlo Methods (Episodic Learning Methods)}
+		MC uses an entire episode of experience to update the value function $V(s_t)$.  $\alpha$ is the learning rate
+		\begin{equation}
+			V^{new}(s_t) \leftarrow V^{old}(s_t) + \alpha [R_t^{\pi}-V^{old}(s_t)]
+		\end{equation}
+		
+		%Equivalently
+		%\begin{equation}
+		%	Q^{new}(s_t,a_t) \leftarrow Q^{old}(s_t) + \alpha [G_t-Q^{old}(s_t,a_t)],
+		%\end{equation}
+	\end{block}
+	\begin{block}{Temporal Difference Methods (Step Learning Methods) $\rightarrow$ Model-free Methods}
+		Temporal Difference Learning only use some nearby experience to update the value function $V(s_t)$. 
+		
+		TD(0): We will update the value function at each time step.
+		\begin{equation}
+			V^{new}(s_t) \leftarrow V^{old}(s_t) + \alpha [V_{target}-V^{old}(s_t)],
+		\end{equation}
+		where
+		\begin{equation}
+			V_{target} = R(s_t,a_t,s_{t+1})+\gamma V^{old}(s_{t+1})
+		\end{equation}
+		
+		%	Or 
+		%	\begin{equation}
+			%		Q^{new}(s_t,a_t) \leftarrow Q^{old}(s_t,a_t) + \alpha(Q_{target}-Q^{old}(s_t,a_t))
+			%	\end{equation} where
+		%	\begin{equation}
+			%		Q_{target} = R(s_t,a_t,s_{t+1}) + \gamma \max_{a_{t+1} \in \mathds{A}}Q^{old}(s_{t+1},a_{t+1})
+			%	\end{equation} 
+	\end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%POMDP
+\subsection{Basic terminologies in Partially Observable Markov Decision Process(POMDP)}
+\begin{frame}{Partially Observable Markov Decision Process Terminology explanation}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{RPimages/POMDP6-tuple}
+		%			\caption{The Agent Environment Interaction Diagram}
+	\end{figure}
+\end{frame}
+\begin{frame}{Basic terminologies in POMDP}
+	A discrete-time POMDP models the relationship between an agent and its environment. Formally, a POMDP is a $6-$tuple $(\mathds{S},\mathds{O},\mathds{A},\mathbf{T},\mathbf{R},\mathbf{O})$
+	\begin{itemize}
+		\item $\mathds{S}$: a finite set of states 
+		\item $\mathds{A}$: a finite set of actions 
+		\item $\mathds{O}$: the finite set of observations
+		\item $\mathbf{T}$: a set of conditional transition probabilities between states 
+		\item $\mathbf{R}$: $\mathds{S} \times \mathds{A} \rightarrow \RR$: the reward function 
+		\item $\mathbf{O}$: the set of conditional observation probabilities 
+	\end{itemize}
+	At each time period, the environment is in some state $s \in \mathbf{S}$, the agent takes an action $a \in \mathds{A}$, which causes the environment to transition to states $s'$ with probability  $T(s'|s,a)$. At the same time, the agent receives an observation $o' \in \mathds{O}$ which depends on the new state of the environment, $s'$ and the just taken action $a$ with probability $O(o'|s',a)$ or sometimes $O(o'|s')$ depending on the sensor model. 
+	Finally the agent receives a reward $r$ equal to $R(s,a)$ or $R(s,a,s')$ depending on the reward model. The goal is for the agent to choose actions at each time step that maximize its expected future discounted reward $E[\sum_{i=t}^{T}\gamma^t r_t]$
+	
+\end{frame}
+
+\begin{frame}{The Belief Update}
+	\begin{block}{What is Belief?}
+		The belief $b$ is the probability distribution over the whole state space $\mathds{S}$. If the state space is discrete, then $b$ is PMF; if the state space is continuous, then $b$ is a PDF.
+		$b(s)$ denotes the probability of being in state $s$
+	\end{block}
+	\begin{block}{The Bayes Belief Updating}
+		\begin{equation}
+			b'(s') =\frac{O(o|s',a)b(s')}{PR(o|b,a)} = \frac{O(o|s',a)\sum_{s\in\mathds{S}}T(s'|s,a)b(s)}{\sum_{s'\in\mathds{S}}O(o|s',a)\sum_{s\in\mathds{S}}T(s'|s,a)b(s)}
+		\end{equation}
+		\begin{itemize}
+			\item Prior distribution of $s'$: $b(s') =\sum_{s\in\mathds{S}}T(s'|s,a)b(s)$
+			\item Likelihood: $O(o'|s',a)$
+			\item Posterior distribution of $s'$: $b'(s')$ 
+			\item Evidence: $PR(o'|b,a) = \sum_{s'\in\mathds{S}}O(o'|s',a)\sum_{s\in\mathds{S}}T(s'|s,a)b(s)$
+		\end{itemize}
+		
+	\end{block}
+\end{frame}
+\begin{frame}{Belief MDP}
+	A belief MDP is defined as a tuple $(\mathds{B},\mathds{A},\tau,r)$, where
+	\begin{itemize}
+		\item $\mathds{B}$ is the infinte set of belief states over the POMDP states. Even if the originating POMDP has a finite number of states, there are infinite belief states in $\mathds{B}$ because there are an infinite number of probability distributions over the states of $\mathds{S}$
+		\item $\mathds{A}$ is the finite set of actions
+		\item $\tau$ is the belief transition function: deterministic belief update
+		$b' = \tau(b,a) = \sum_{o' \in \mathds{O}}PR(b'|b,a,o')PR(o'|a,b)$; where $PR(b'|b,a,o') = 1$
+		\item $r$: $\mathds{B} \times \mathds{A} \rightarrow \RR$ is the reward function on belief and action 
+		\begin{equation}
+			R(b,a) = \sum_{s\in \mathds{S}} b(s) R(s,a) = \sum_{s\in \mathds{S}} b(s) \sum_{s' \in \mathds{S}} R(s,a,s')T(s'|s,a) 
+		\end{equation}
+		\item Policy $\pi(a|b)$: the belief-dependent sequence of actions
+		\begin{itemize}
+			\item Deterministic policy  $\pi(a|b): \mathds{B} \rightarrow \mathds{A}$
+			\item or Stochastic policy  $\pi(a|b): \mathds{B}\times \mathds{A} \rightarrow \mathds{R} \in [0,1]$ 
+		\end{itemize}
+	\end{itemize}
+	The belief MDP is not partially observable anymore, since at any given time the agent knows its belief exactly.
+\end{frame}
+%\subsection{Optimization Problem formulation}
+\begin{frame}{Value of following a policy $\pi$ from a given belief}
+	\begin{block}{Accumulated Discounted Reward for one episode}
+		\begin{equation}
+			R^{\pi}_t = R^{\pi} (b_t,a_t,\cdots,b_T,a_T) = \sum_{i=t}^{T}\gamma^{i-t} R(b_i,a_i) = \sum_{i=t}^{T}\gamma^{i-t} \sum_{s_i\in\mathds{S}}b_i(s_i)R(s_i,a_i) ,
+		\end{equation}
+		where $\gamma \in [0,1]$ is the discount factor weighting more on the current reward than the future reward.$\gamma = 0$: only the current reward matters, $\gamma=1$: rewards in all steps equally matter.
+	\end{block}
+	\begin{block}{Value of state-action pair: $Q^{\pi}(b_t,a_t)$ expected total reward}
+		\begin{equation}
+			Q^{\pi}(b_t,a_t) = \mathds{E}_{b_{i>t} \sim \rho,A_{i>t}\sim \pi}[R^{\pi}_t|b_t,a_t]
+		\end{equation}
+	\end{block}
+	
+	\begin{block}{Value of state: $V^{\pi}(b_t)$ expected total reward}
+		\begin{equation}
+			V^{\pi}(b_t) = \mathds{E}_{a_{t}\sim \mu}[Q^{\pi}(s_t,a_t)] =\mathds{E}_{s_{i>t} \sim \rho,A_{i> t}\sim \pi}[R^{\pi}_t|s_t]
+		\end{equation}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Optimization Problem Formulation}
+	\begin{block}{The Optimization Problem Formulation}
+		To find the optimal policy $\pi$, to maximize the expected total reward
+		\begin{subequations}
+			\begin{align}
+				\pi^{\star} &= \argmax_{\pi}Q^{\pi} (b_t,a_t) ;  Q^{\star} (b_t,a_t) = \max_{\pi} Q^{\pi} (b_t,a_t) \textsf{ or equivalently}\\ 
+				\pi^{\star} &= \argmax_{\pi}V^{\pi} (b_t) ;  V^{\star} (b_t) = \max_{\pi}V^{\pi}(b_t)
+			\end{align}		
+		\end{subequations}
+	\end{block}
+	\begin{block}{Optimal Bellman Equation}
+		\begin{subequations}
+			\label{eqn: MaxValueOfStateActionBeliefMDP}
+			\begin{align}
+				Q^{\star}(b_t,a_t) &= \mathds{E}_{b_{i>t}\sim \rho}\left[ R(b_t,a_t) + \gamma \max_{a_{t+1} \in \mathds{A}} Q^{\star}(b_{t+1},a_{t+1})\right]\textsf{ or}\\
+				V^{\star}(b_t) &=\max_{a_t \in \mathds{A}}   \mathds{E}_{b_{i>t}\sim \rho} \left(R(b_t,a_t)+ \gamma V^{\star}(b_{t+1})\right) 
+			\end{align}
+		\end{subequations}
+	\end{block}
+\end{frame}
+\begin{frame}{The Optimal Bellman Equation}
+	\begin{subequations}
+		\label{eqn:BellmanEqnOptimalValueFunctionPOMDP2}
+		\begin{align}
+			V^{\star}(b_t) 
+			&= \max_{a_t \in \mathds{A}} \left\{\sum_{s_t\in\mathds{S}}b_t(s_t)R(s_t,a_t) + \gamma \sum_{b_{t+1}\in \mathds{B}} \sum_{o_{t+1} \in \mathds{O}} PR(b_{t+1}|b_t,a_t,o_{t+1})Pr_{t+1}|b_t,a_t)V^{\star}(b_{t+1})\right\} \\
+			&= \max_{a_t \in \mathds{A}} \left\{\sum_{s_t\in\mathds{S}}b_t(s_t)R(s_t,a_t) + \gamma  \sum_{o_{t+1} \in \mathds{O}} PR(o_{t+1}|b_t,a_t)V^{\star}(b_{t+1})\right\} \\
+			& = 
+		\end{align}
+	\end{subequations}
+\end{frame}
+\begin{frame}{Solve the optimization problem}
+	\begin{block}{Monte Carlo Methods (Episodic Learning Methods)}
+		MC uses an entire episode of experience to update the value function $V(b_t)$.  $\alpha$ is the learning rate
+		\begin{equation}
+			V^{new}(b_t) \leftarrow V^{old}(b_t) + \alpha [R_t^{\pi}-V^{old}(b_t)]
+		\end{equation}
+		
+		%Equivalently
+		%\begin{equation}
+		%	Q^{new}(s_t,a_t) \leftarrow Q^{old}(s_t) + \alpha [G_t-Q^{old}(s_t,a_t)],
+		%\end{equation}
+	\end{block}
+	\begin{block}{Temporal Difference Methods (Step Learning Methods) $\rightarrow$ Model-free Methods}
+		Temporal Difference Learning only use some nearby experience to update the value function $V(s_t)$. 
+		
+		TD(0): We will update the value function at each time step.
+		\begin{equation}
+			V^{new}(s_t) \leftarrow V^{old}(s_t) + \alpha [V_{target}-V^{old}(s_t)],
+		\end{equation}
+		where
+		\begin{equation}
+			V_{target} = R(s_t,a_t,s_{t+1})+\gamma V^{old}(s_{t+1})
+		\end{equation}
+		
+		%	Or 
+		%	\begin{equation}
+			%		Q^{new}(s_t,a_t) \leftarrow Q^{old}(s_t,a_t) + \alpha(Q_{target}-Q^{old}(s_t,a_t))
+			%	\end{equation} where
+		%	\begin{equation}
+			%		Q_{target} = R(s_t,a_t,s_{t+1}) + \gamma \max_{a_{t+1} \in \mathds{A}}Q^{old}(s_{t+1},a_{t+1})
+			%	\end{equation} 
+	\end{block}
+\end{frame}
+
+
+%		\begin{frame}{Optimization Problem formulation}
+	%		\begin{figure}[h!]
+		%			\centering
+		%			\includegraphics[width=0.8\textwidth]{RPimages/AgentEnvironmentInteractionsSequential}
+		%		%	\caption{The Agent Environment Interaction Diagram}
+		%		\end{figure}
+	%		\begin{itemize}
+		%			\item How to write objective function? To maximize the expected total reward, or minimize the expected total cost
+		%			\begin{itemize}
+			%				\item how to write the reward function for each time step?
+			%				\item how does the state envolve with time?
+			%			\end{itemize}
+		%			\item How to parameterize policy $\pi(a|s)$?
+		%			\item How to solve this optimal decision making problem?
+		%		\end{itemize}
+	%	\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\subsection{Reinforcement Learning}
+
+\section{Deep Reinforcement Learning}
+\subsection{Deep Neural Network}
+\begin{frame}{Deep Neural Network}
+	Neural networks (like any other approximation structure like polynomials, splines, radial basis functions) can approximate any continous function within a compact set. In other words, given a continous function $f(x)$, a finite range for the input $x \in [a,b]$ and an expected approximation accuracy $\epsilon$, there exists a neural network that approximate $f(x)$ with an approximation error less than $\epsilon$ everywhere within $[a,b]$.
+	\begin{block}{Neural Networks}
+		According to the universal approximation theorem, any continuous function can be arbitrarily closely approximated by a multi-layer perceptron with only one hidden layer and a finite number of neurons (\cite{yarotsky2017error}). Deep neural networks is a type of artificial neural network with more than two layers.
+	\end{block}	
+	
+\end{frame}
+
+\begin{frame}{Deep Learning NN architectures}
+	
+	\begin{itemize}
+		\item Use NN to approximate the value function (either $V^{\star}(s_t)$ or $Q^{\star}(s_t,a_t)$): e.g. Deep Q-Networks
+		\begin{figure}[h]
+			\includegraphics[scale = 0.5
+			]{RPimages/NNapproximateQ}
+			\centering
+			%	\caption{NN approximates $Q(s_t,a_t)$}		
+			\label{fig: NNapproximateQ}
+		\end{figure}
+		\item Use NN to approximate the policy function $\pi(a_t|s_t)$: e.g. Deep Policy Gradients
+		\begin{figure}[h]
+			\includegraphics[scale = 0.5
+			]{RPimages/NNapproximatePI}
+			\centering
+			%\caption{NN approximates $\pi(a_t|s_t)$}		
+			\label{fig: NNapproximatepi}
+		\end{figure}
+		\item Use NN to approximate both the value and policy functions:e.g. Deep Centralized Multi-agent Actor Critic
+	\end{itemize}
+\end{frame}
+\begin{frame}{Reinforcement Learning Methods}
+	\begin{figure}[h]
+		\includegraphics[scale = 0.5
+		]{RPimages/RLmethodsScreen}
+		\centering
+		\caption{RLmethods \cite{brunton2022data}}		
+		\label{fig: RLmethods}
+	\end{figure}
+\end{frame}
+\begin{frame}{How to formulate the Decision Making problem of system Operation and Maintenance}
+	\begin{block}{Calculate the Failure probability of the system}
+		Extract and build a Multi-Component System from the physical relationship, e.g. the Parallel-Series system:
+		\begin{columns}
+			\begin{column}{0.5\textwidth}
+				\begin{figure}[h!]
+					\centering
+					\includegraphics[width=0.9\textwidth]{RPimages/Parallel-series system}
+					%			\caption{The Agent Environment Interaction Diagram}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.5\textwidth}  %%<--- here
+				The failure probability of the system can be calculated by the failure probablity of its components
+			\end{column}
+		\end{columns}
+	\end{block}
+\end{frame}
+\begin{frame}{An example of single component modelling}
+	For each component, we can use the POMDP to model its deterioration process. And it is needed to clarify the key components of $(\mathds{S},\mathds{O},\mathds{A},\mathbf{T},\mathbf{R},\mathbf{O})$
+	\begin{itemize}
+		\item States Set
+		\item Actions Set
+		\item Observations Set
+		\item Transition model
+		\item Reward (negative cost) model
+		\item Sensor model
+	\end{itemize}
+\end{frame}
+\begin{frame}{An example of single component modelling-States set}
+	
+	
+	States Set: $\bm{s} = \{\bx, \tau\}$; where $\bx = \{x_1,x_2,x_3,x_4\}$ showing the condition of the components: intact, minor damage, major damage, failure. $\tau$ denotes the deterioration rate (which changes continuously).
+	\begin{block}{State-Transition model of $\bx$ basic version}
+		\begin{equation}
+			\mathbf{T}  = [T(x'|x,a_M=a_{M_{given}})] =
+			\begin{array}{cc}
+				&\begin{array}{cccc} x_1   & x_2 & x_3 & x_4 \end{array} \\
+				\begin{array}{c}
+					x_1 \\
+					x_2 \\
+					x_3 \\
+					x_4
+				\end{array} 
+				& \left[ \begin{array}{cccc}
+					p_{11} & p_{12} & p_{13} & p_{14} \\
+					p_{21} & p_{22} & p_{23} & p_{24} \\
+					p_{31} & p_{32} & p_{33} & p_{34} \\
+					p_{41} & p_{42} & p_{43} & p_{44}
+				\end{array} \right]
+			\end{array} 
+		\end{equation}
+	\end{block}
+	
+	
+	The transition model (without intervention) are
+	the $4 \times 4$ transtion matrix
+	\begin{equation}
+		\mathbf{T}  = [T(x'|x,a_M=No \ Action)] =
+		\begin{array}{cc}
+			&\begin{array}{cccc} x_1   & x_2 & x_3 & x_4 \end{array} \\
+			\begin{array}{c}
+				x_1 \\
+				x_2 \\
+				x_3 \\
+				x_4
+			\end{array} 
+			& \left[ \begin{array}{cccc}
+				p_{11} & p_{12} & p_{13} & p_{14} \\
+				0 & p_{22} & p_{23} & p_{24} \\
+				0 & 0 & p_{33} & p_{34} \\
+				0 & 0 & 0 & 1 
+			\end{array} \right]
+		\end{array} 
+	\end{equation}
+	
+\end{frame}
+\begin{frame}{An example of single component modelling- Action set}
+	The actions could include maintenance actions, inspection actions. 
+	\begin{itemize}
+		\item Maintenance Action: there are preventive and correction maintenance. Here we name some example of corrective maintenance:
+		\begin{itemize}
+			\item No repair
+			\item Partial repair
+			\item Replacement
+		\end{itemize}
+		\item Inspection Action
+		\begin{itemize}
+			\item No inspection
+			\item Inspection
+		\end{itemize}
+	\end{itemize}
+	Since the real aciton is the combination of maintenance and inspection, so there are here $3\times 2 - 1 = 5$ actions, where the replacement will automatically leads to no inspection. 
+	\begin{table}[h!]
+		\centering
+		\caption{All possible actions $\mathds{A}$}
+		\label{table: Actionspace}
+		\begin{tabular}{lll}
+			\hline
+			Maintenance \textbackslash Inspection & No inspection & Inspection    \\ \hline
+			No repair                             & $a_1$         & $a_2$         \\
+			Partial repair                        & $a_3$         & $a_4$         \\
+			Replacement                           & $a_5$         & Not available \\ \hline
+		\end{tabular}
+	\end{table}
+\end{frame}
+\begin{frame}{An example of single component modelling- Observation set}
+	We could select the SCADA data here as our observations for each component 
+	It the observation set is also finite discrete, we could also write an observation matrix $\mathds{O} = [O(o_{t+1}|s_{t+1})]$ or $\mathds{O} = [O(o_{t+1}|s_{t+1},a_t)]$
+	\begin{block}{Observation Model} \tiny
+		If we take inspection 
+		\begin{equation}
+			\mathds{O}_I = [O(o_{t+1}|s_{t+1},a_t \in \mathds{A}_M \times {Inspection})] = 	\begin{array}{cc}
+				&\begin{array}{ccccc} x_1   & x_2 & x_3 & x_4 &x_5 \end{array} \\
+				\begin{array}{c}
+					o_1 \\
+					o_2 \\
+					o_3 \\
+					o_4 \\
+					o_5
+				\end{array} 
+				& \left[ \begin{array}{ccccc}
+					O_{11} & O_{12} & O_{13} & O_{14} & 0\\
+					O_{21} & O_{22} & O_{23} & O_{24} & 0\\
+					O_{31} & O_{32} & O_{33} & O_{34} & 0\\
+					O_{41} & O_{42} & O_{43} & O_{44} & 0\\
+					0 & 0 & 0 & 0 & 1
+				\end{array} \right]
+			\end{array} 
+		\end{equation}
+		If we do not take inspection
+		\begin{equation}
+			\mathds{O}_{NI} = [O(o_{t+1}|s_{t+1},a_t \in \mathds{A}_M \times {No Inspection})] = \begin{array}{cc}
+				&\begin{array}{ccccc} x_1   & x_2 & x_3 & x_4 &x_5 \end{array} \\
+				\begin{array}{c}
+					undamaged \\
+					damaged 
+				\end{array} 
+				& \left[ \begin{array}{ccccc}
+					1 & 1 & 1 & 1 & 0\\
+					0 & 0 & 0 & 0 & 1\\
+				\end{array} \right]
+			\end{array} 
+		\end{equation}
+	\end{block}
+\end{frame}
+\begin{frame}{An example of single component modelling- Reward Model}
+	The reward or cost are resulted from all the actions we may taken and the damage equivalent cost (\cite{andriotis2021deep}).
+	\begin{itemize}
+		\item Maintenance Cost
+		\item Inspection cost
+		\item Shutdown cost
+		\item Damage state cost
+	\end{itemize}
+	\begin{block}{Reward Model}
+		Inhalt...
+	\end{block}
+\end{frame}
+\begin{frame}{Transition Model}
+	Inhalt...
+\end{frame}
+
+
+

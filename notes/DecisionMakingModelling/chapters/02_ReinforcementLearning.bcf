@@ -2358,7 +2358,7 @@
   <!-- CITATION DATA -->
   <!-- SECTION 0 -->
   <bcf:bibdata section="0">
-    <bcf:datasource type="file" datatype="bibtex" glob="false">DecisionMakingModeling.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex" glob="false">bibliography/DecisionMakingModeling.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex" glob="false">DeepRL.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">

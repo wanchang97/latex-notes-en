@@ -79,7 +79,7 @@
       <file>02_ReinforcementLearning.bcf</file>
     </requires>
     <requires type="editable">
-      <file>DecisionMakingModeling.bib</file>
+      <file>bibliography/DecisionMakingModeling.bib</file>
       <file>DeepRL.bib</file>
     </requires>
   </external>

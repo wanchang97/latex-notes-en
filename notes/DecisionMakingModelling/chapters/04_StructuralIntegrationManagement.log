@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  13 NOV 2025 11:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  3 DEC 2025 10:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1612,7 +1612,29 @@ Overfull \hbox (178.65714pt too wide) in paragraph at lines 178--197
 LaTeX Warning: Reference `fig:framework' on page i undefined on input line 203.
 
 
-[6] (./04_StructuralIntegrationManagement.aux)
+
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/SimpleExampleFigu
+re/flowchartPOMDP.pdf): PDF inclusion: found PDF version <1.7>, but at most ver
+sion <1.5> allowed
+<../figures/SimpleExampleFigure/flowchartPOMDP.pdf, id=145, 954.4458pt x 640.31
+218pt>
+File: ../figures/SimpleExampleFigure/flowchartPOMDP.pdf Graphic file (type pdf)
+
+<use ../figures/SimpleExampleFigure/flowchartPOMDP.pdf>
+Package pdftex.def Info: ../figures/SimpleExampleFigure/flowchartPOMDP.pdf  use
+d on input line 207.
+(pdftex.def)             Requested size: 477.22173pt x 320.1553pt.
+
+Overfull \hbox (58.96805pt too wide) in paragraph at lines 206--209
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6] [7 <../figures/SimpleExampleFigure/flowchartPOMDP.pdf>]
+(./04_StructuralIntegrationManagement.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1635,10 +1657,10 @@ n.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39208 strings out of 474116
- 738711 string characters out of 5743682
+ 39222 strings out of 474116
+ 739416 string characters out of 5743682
  1939187 words of memory out of 5000000
- 60880 multiletter control sequences out of 15000+600000
+ 60892 multiletter control sequences out of 15000+600000
  579197 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  135i,11n,127p,2413b,1461s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1658,11 +1680,11 @@ m10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx120
 pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pf
 b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on 04_StructuralIntegrationManagement.pdf (6 pages, 352202 bytes
+Output written on 04_StructuralIntegrationManagement.pdf (7 pages, 516470 bytes
 ).
 PDF statistics:
- 229 PDF objects out of 1000 (max. 8388607)
- 170 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 65 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 328 PDF objects out of 1000 (max. 8388607)
+ 252 compressed objects within 3 object streams
+ 29 named destinations out of 1000 (max. 500000)
+ 70 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -79,7 +79,7 @@
       <file>main.bcf</file>
     </requires>
     <requires type="editable">
-      <file>DecisionMakingModeling.bib</file>
+      <file>bibliography/DecisionMakingModeling.bib</file>
     </requires>
   </external>
 </requests>

@@ -47,8 +47,8 @@
 \contentsline {subsubsection}{The Optimal State Action Value Function $Q^{\star }(\mathbf {b}_t,a_t)$}{30}{section*.47}%
 \contentsline {subsubsection}{The Optimal State Value Function $V^{\star }(\mathbf {b}_t)$}{30}{section*.48}%
 \contentsline {subsubsection}{The Optimal State Action Value Function $V^{\star }(\mathbf {b}_t)$}{30}{section*.49}%
-\contentsline {subsection}{\numberline {1.3.2}Algorithm to solve a Partially Observable Markov Decision Process}{32}{subsection.1.3.2}%
-\contentsline {section}{\numberline {1.4}Common Implementations}{32}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Recent Advances}{32}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}Machine Learning Techniques}{33}{subsection.1.5.1}%
-\contentsline {section}{\numberline {1.6}Research Gaps}{33}{section.1.6}%
+\contentsline {section}{\numberline {1.4}How solve a Partially Observable Markov Decision Process}{32}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Common Implementations}{33}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Recent Advances}{33}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Machine Learning Techniques}{33}{subsection.1.6.1}%
+\contentsline {section}{\numberline {1.7}Research Gaps}{33}{section.1.7}%

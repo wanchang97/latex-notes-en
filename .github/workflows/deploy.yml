@@ -33,27 +33,46 @@ jobs:
             texlive-pictures
 
       - name: Compile all notes
-        run: |
-          mkdir -p $BUILD_DIR/notes
-          export TEXINPUTS="./styles:"
+        run: |
+          mkdir -p $BUILD_DIR/notes
+          export TEXINPUTS="./styles:"
 
-          find notes -name "main.tex" -type f | while read texfile; do
-            dir=$(dirname "$texfile")
-            name=$(basename "$dir")
-            echo "📘 Compiling: $name"
+          # --- 编译逻辑开始 ---
+          
+          # 1. 查找所有笔记文件夹 (如 DecisionMakingModelling)
+          find notes -type d -mindepth 1 -maxdepth 1 | while read notedir; do
+            foldername=$(basename "$notedir")
+            
+            # 2. 在每个笔记文件夹内查找所有顶级 .tex 文件
+            find "$notedir" -maxdepth 1 -name "*.tex" -type f | while read texfile; do
+              filename=$(basename "$texfile" .tex) # 如 main 或 colloquioumPresentation
+              
+              # 跳过 preamble.tex 等辅助文件 (根据您的目录结构，它们可能是辅助文件)
+              if [[ "$filename" == "preamble" ]]; then
+                continue
+              fi
 
-            cd "$dir"
-            pdflatex -interaction=nonstopmode main.tex || true
+              echo "📘 Compiling: $foldername/$filename"
 
-            if [ -f "main.pdf" ]; then
-              cp main.pdf "../../$BUILD_DIR/notes/${name}.pdf"
-              echo "✅ Success: $name"
-            else
-              echo "❌ Failed: $name"
-              grep -A 5 -B 5 "Error:" main.log || tail -20 main.log
-            fi
-            cd - > /dev/null
-          done
+              cd "$notedir"
+              pdflatex -interaction=nonstopmode "$filename.tex" || true
+              
+              if [ -f "$filename.pdf" ]; then
+                # 关键修改：将 PDF 复制到 BUILD_DIR/notes/，命名格式为 FolderName_FileName.pdf
+                target_name="${foldername}_${filename}.pdf"
+                cp "$filename.pdf" "../../$BUILD_DIR/notes/${target_name}"
+                echo "✅ Success: Saved as $target_name"
+              else
+                echo "❌ Failed: $foldername/$filename"
+                grep -A 5 -B 5 "Error:" "$filename.log" || tail -20 "$filename.log"
+              fi
+              cd - > /dev/null
+            done
+          done
+          # --- 编译逻辑结束 ---
+    
+          
+
 
       - name: Generate index page
         run: bash scripts/generate_index.sh

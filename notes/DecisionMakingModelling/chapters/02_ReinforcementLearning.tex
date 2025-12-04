@@ -467,7 +467,7 @@
 	\end{itemize}
 	
 	\section{Deep Reinforcement Learning}
-	
+	\label{sec: HowToSolveMDP}
 		Deep Reinforcement Learning is the Reinforcment Learning employed the deep neural networks.
 	
 	Neural networks (like any other approximation structure like polynomials, splines, radial basis functions) can approximate any continous function within a compact set. In other words, given a continous function $f(x)$, a finite range for the input $x \in [a,b]$ and an expected approximation accuracy $\epsilon$, there exists a neural network that approximate $f(x)$ with an approximation error less than $\epsilon$ everywhere within $[a,b]$.
@@ -854,9 +854,13 @@
 	\subsubsection{Belief Space $\mathbb{B}$}
 	To implement those methods for solving MDP in solving POMDP, we can introduce the belief of the state variable, which is the probability distribution over the whole state space. to transfer the POMDP as a belief-MDP. 
 	\begin{equation}
+		\label{eq:BeliefDefinition}
 		b_t(s) \defeq P(S_t = s|o_{1:t},a_{0:t-1}) 
 	\end{equation}
-	$\bb_t \in \mathbb{B} $ is the our believed-disctribution of all possible state variables based on all history observations and actions until time $t$. The dimension of the belief state space is dependent on the original state space $\mathbb{S}$
+	$\bb_t \in \mathbb{B} $ is the our believed-disctribution of all possible state variables based on all history observations and actions until time $t$. The dimension of the belief state space is dependent on the original state space $\mathbb{S}$.
+	
+
+	
 	
 	\begin{itemize}
 		\item For discrete state space, the belief $\bb$ is the Probability Mass Function (PMF). If the discrete state has $N$ possible values, then the belief state $\bb_t$ is a point in the $(N-1)$-simplex $\Delta^{N-1}$. The definition of a simplex is 
@@ -885,11 +889,11 @@
 	
 	$\bb_t$ contains the probability of the whole state space.
 	
-	For discrete state variables, $\bb_t$
-	$\bb_t$ denotes the probability density function 
-	
-	
+
 	\subsubsection{Belief Update Rule}
+	
+	When we connecting with the Bayesian updating, the belief $\bb_t$ is actually the posterior distribution.
+	
 	The belief $\bb_t$ is our current guess of the state distributions based on the information we have until time $t$, it is not stationary, and it will update dynamically when we perform new actions $a_t$ and the new observation $o_{t+1}$. If we have performed action $a_t$ and obtained the new observation $o_{t+1}$, how to update our belief $\bb_{t+1}$?
 	\begin{equation}
 		\label{eqn: BeliefUpdate}
@@ -911,7 +915,9 @@
 			\big|s_{t+1},a_t) P(s_{t+1}\big|a_t,\bb_t)}{P(o_{t+1}\big|a_t,\bb_t)}
 	\end{equation}
 	
+	As in the real case, multi-dimensional integral are difficult to calculate. We will use the sequential Monte Carlo Simulation to update the belief (the posterior distribution) at each time step. 
 	
+	Use the particle filtering method to approximate the quantitty of interest like value function, State action value function etc.
 	
 	\subsubsection{Belief-MDP}
 	
@@ -1078,12 +1084,35 @@
 	\end{equation}
 	
 	
-	\subsection{Algorithm to solve a Partially Observable Markov Decision Process}
+	\section{How solve a Partially Observable Markov Decision Process}
+	
+	Although have mentioned above, we will here emphasize the way to solve the Partially Observable Markov Decision Process based on the previous section about the Reinforcement Learning to solve the Markov Decision Process \ref{sec: HowToSolveMDP}.
+	
+	Partially Observable Markov Decision Process can be treated as the Belelif-MDP. Where the belief is actually the posterior distribution of the state \eqref{eq:BeliefDefinition}.
+	
+	
+All of the algorithm and neural network when solving MDP problem used to have the states as input. But here we will first use sequential Monte Carlo Simulation (particle filtering) to get the updated belief (which is actually a number of particles with its corresponding weights) as the input. Which means that, the figures \ref{fig: NNapproximateQ} become now \ref{fig: NNapproximateQBelief}
+	
+	
+		\begin{figure}[h]
+		\includegraphics[scale = 1
+		]{figures/RPimages/DeepQNetworkBelief}
+		\centering
+		\caption{Deep Q-Network approximate the Q function for every available action using belief as input $Q(\bb_t,a_t)$}		
+		\label{fig: NNapproximateQBelief}
+	\end{figure}
 	
 	
 	
-	
-	
+Figure \ref{fig: Dueling Network approximate Q} becomes now figure \ref{fig: Dueling Network approximate QBelief}
+	\begin{figure}[h]
+		\includegraphics[scale = 1
+		]{figures/RPimages/DuelingQNetworkBelief}
+		\centering
+		\caption{Dueling Network architecture}		
+		\label{fig: Dueling Network approximate QBelief}
+	\end{figure}
+
 	
 	
 	The theoretical foundations of this research are rooted in several key areas. \cite{johnson2018foundations} provided a comprehensive overview of the fundamental principles.

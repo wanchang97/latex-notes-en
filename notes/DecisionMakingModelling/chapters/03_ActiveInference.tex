@@ -23,6 +23,7 @@
 	 To have an basic understanding of Active Inference shown in the Figure \ref{fig: GenerativeProcessAndGenerativeModel}, we should clarify that there are two models defined, i.e. the real world model described by the generative process $P^{\star}(s^{\star},o)$ 
 	 and the generative model $P(s,o) = P(s|o) P(o) = P(o|s) P(s)$. 
 	 
+
 	 The true process is always unknown, the agent has a generative model about how the outside world works. The only true connection between the interior and external world is the outcome (or observation).
 	 
 	 The internal generative model would be updated every time observe some outcome. The prior belief is defined as the probability density of the state $P(s)$, 
@@ -42,35 +43,54 @@
 	 When substitute the \eqref{eq:PosteriorBayesianUpdating} to the \eqref{eq: KLDivergenceDefinitionOfInformationLoss} we could get:
 	 \begin{subequations}
 	 	\begin{align}
-	 		D_{KL}[Q(s)||P(s|o)] &=  \mathbb{E}_{Q(s)} \left[ln(Q(s)) - ln(P(s|o))\right] \\
-	 		& =  \mathbb{E}_{Q(s)} \left[ln(Q(s)) - ln\left (\frac{P(s,o)}{P(o)} \right )\right] \\
-	 		& =  \mathbb{E}_{Q(s)} \left[ln(Q(s)) - ln\left(P(s,o) \right)\right] + \mathbb{E}_{Q(s)}\left[ln(P(o))\right]
+	 		D_{KL}[Q(s)||P(s|o)] &=  \mathbb{E}_{Q(s)} \left[lnQ(s) - lnP(s|o)\right] \\
+	 		& =  \mathbb{E}_{Q(s)} \left[lnQ(s) - ln\left (\frac{P(s,o)}{P(o)} \right )\right] \\
+	 		& =  \mathbb{E}_{Q(s)} \left[lnQ(s) - ln\left(P(s,o) \right)\right] + \mathbb{E}_{Q(s)}\left[lnP(o)\right] \label{subequation: VFE}
 		 \end{align}
 	\end{subequations}
-	The first term is defined as the variational free energy $\mathcal{F} \defeq \mathbb{E}_{Q(s)} \left[ln(Q(s)) - ln\left(P(s,o) \right)\right] = D_{KL}[Q(s)||P(s,o)]$
+	
+		  
+	The active inference framework is based on the premise that perception and learning can be understood as minimizing a quantity known as \textbf{variational free energy} (VFE), and that action selection, planning and decision-makoing can be understood as minimizing the \textbf{expected free energy} (EFE).
+	\begin{itemize}
+		\item \textbf{Perception}: posterior state inference after each new observation
+		\item \textbf{Learning}: slowly updating the priors and likelihood distributions in the model over many observations (which facilitates more accurate state inference in the long run).
+		\item \textbf{Action selection, planning and deccision-making}: to select policy that will bring about future observations that minimize VFE.
+	\end{itemize}
+	
+	\subsubsection{Variational Free Energy (VFE) $\mathcal{F}$}
+	The first term in \eqref{subequation: VFE} is defined as the \textbf{variational free energy} $\mathcal{F} \defeq \mathbb{E}_{Q(s)} \left[ln(Q(s)) - ln\left(P(s,o) \right)\right] = D_{KL}[Q(s)||P(s,o)]$
 	Then we can write that 
 	 \begin{subequations}
 	 	\begin{align}
 	 	 \mathcal{F} &= D_{KL}\left[Q(s)||P(s,o)\right] \\
-	 	 &=  D_{KL}\left[Q(s)||P(s|o)\right] - \mathbb{E}_{Q(s)}[ln(P(o))]  \label{subequation: DivergenceSurprisal}\\
-	 	 &= D_{KL}\left[Q(s)||P(s)\right] - \mathbb{E}_{Q(s)}[ln(P(o|s))] \label{subequation: ComplexityAccuracy}
+	 	 &=  D_{KL}\left[Q(s)||P(s|o)\right] - \mathbb{E}_{Q(s)}[lnP(o)]  \label{subequation: DivergenceSurprisal}\\
+	 	 &= D_{KL}\left[Q(s)||P(s)\right] - \mathbb{E}_{Q(s)}[lnP(o|s)] \label{subequation: ComplexityAccuracy}
 	 	\end{align}
 	 \end{subequations}
 	 
 	 \begin{table}[]
 	 	\centering
-	 	\caption{The physical meaning of variational Free Energy $\mathcal{F}$}
-	 	\label{Table: The physical Meaning of variaiton Free Energy}
+	 	\caption{The physical meaning of \textbf{variational free energy} $\mathcal{F}$}
+	 	\label{table: The physical Meaning of variaiton Free Energy}
 	 	\begin{tabular}{l|llll|}
 	 		\cline{2-5}
-	 		Variational   & = & $D_{KL}\left[Q(s)||P(s|o)\right] - \mathbb{E}_{Q(s)}[ln(P(o))]$ & + & $- \mathbb{E}_{Q(s)}[ln(P(o))]$                       \\
+	 		Variational   & = & $D_{KL}\left[Q(s)||P(s|o)\right] $ & + & $- \mathbb{E}_{Q(s)}[lnP(o)]$     \eqref{subequation: DivergenceSurprisal}                   \\
 	 		Free          & = & Divergence                                                      & + & Surprisal                                             \\ \cline{2-5} 
-	 		Energy        & = & $D_{KL}\left[Q(s)||P(s)\right]$                                 & - & $\mathbb{E}_{Q(s)}[ln(P(o|s))] $\\
+	 		Energy        & = & $D_{KL}\left[Q(s)||P(s)\right]$                                 & - & $\mathbb{E}_{Q(s)}[lnP(o|s)] $ \eqref{subequation: ComplexityAccuracy} \\
 	 		$\mathcal{F}$ & = & Complexity                                                      & - & Accuracy  (Goodness of fit)                                            \\ \cline{2-5} 
 	 	\end{tabular}
 	 \end{table}
 
-	 The physical meaning of \eqref{subequation: DivergenceSurprisal} 
+	 The physical meaning of the \textbf{variational free energy} (VFE) is shown in Table \ref{table: The physical Meaning of variaiton Free Energy}: 
+	 
+	 From the \eqref{subequation: DivergenceSurprisal}, the term Divergence is the information loss when using the approximated density to approximate the posterior, which is no less than zero. Minimizing the \textbf{variational free energy} is equivalent to minimize the \textbf{ surprisal} (defined as the negative log evidence ) and also equivalent to maximize the evidence.
+	 
+	 From the \eqref{subequation: ComplexityAccuracy}, the Complexity is a measure of the difference between the approximation model and the prior density. And the accuracy is a meassure of the likelihood, to show how well the model fit the observation. Minimizing VFE means only increase the accuracy of the model, also reducing the change effort when observing new observation.
+	 
+	 In summary, by minimizing the \textbf{variational free energy}, we can perform the task of both perception and learning to find (approximatedly) optimal posterior beliefts after each new observation.
+	 
+	
+	 
 	 \begin{figure}[h]
 	 	\includegraphics[width=1.0\textwidth
 	 	]{figures/ActiveInference/GenerativeProcessAndGenerativeModel}
@@ -78,10 +98,59 @@
 	 	\caption{Graphical Representation of the Generative Process(based on the true states $s^{\star}$) in the world and the corresponding (internal) generative model (based on probabilistic beliefs random variables $s$) that best explain the outcomes $o$. The outcomes are shared between the generative process and model. \cite{sajid2021active}}		
 	 	\label{fig: GenerativeProcessAndGenerativeModel}
 	 \end{figure}
-	
 
+\subsubsection{Expected Free Energy (EFE) $\mathcal{G}$}
+The task of action selection and planning is to select policies that will bring about future observations that minimize VFE. However, the future outocmes have not yet been observed. Actions must therefore be selected such that they minimize expected free energy (EFE).
 
+Similarly to the previous introduced posterior approximation $P(s|o) \approx Q(s)$, the approximation of observations are written as $Q(o)$, the joint distribution of state and observation is $Q(s,o) = Q(o|s)Q(s)$
+
+The expected free energy can be seen as the expectation of the variational free energy over observations
+\begin{subequations}
+	\label{eqn: EFE}
+	\begin{align}
+		\mathcal{G} &\defeq \mathbb{E}_{Q(o|s)}\left[\mathcal{F}\right]= \mathbb{E}_{Q(s,o)}\left[lnQ(s)-lnP(s,o)\right]\\
+		&= \mathbb{E}_{Q(o,s)}\left[lnQ(s)- lnP(s|o)\right] - \mathbb{E}_{Q(o,s)}[lnP(o)]\label{subequation:EFE_ProductRuleOfProbability}  \\ 
+		&= \mathbb{E}_{Q(o,s)}\left[lnQ(s)- lnP(s|o)\right] - \mathbb{E}_{Q(o)}[lnP(o)] \\
+		&\approx  \mathbb{E}_{Q(o,s)}\left[lnQ(s)- lnQ(s|o)\right] - \mathbb{E}_{Q(o)}[lnP(o)] \label{subequation:EFE_Q(s|o)}\\
+		&\approx  \mathbb{E}_{Q(o,s)}\left[lnQ(s)- lnQ(s|o)\right] - \mathbb{E}_{Q(o)}[lnP(o|C)] \label{subequation:EFE_P(o|C)}\\
+		&=   \mathbb{E}_{Q(o,s)}\left[lnQ(o)-lnQ(o|s)\right] - \mathbb{E}_{Q(o)}[lnP(o|C)] \label{subequation:EFE_Q(o|s)}\\
+		&= \mathbb{E}_{Q(o,s)}\left[lnQ(o)-lnP(o|s)\right] - \mathbb{E}_{Q(o)}[lnP(o|C)] \label{subequation:EFE_P(o|s)} \\
+		&= D_{KL}[Q(o)||P(o|C)] + \mathbb{E}_{Q(s)}\left[H[P(o|s)]\right] \label{subequation:EFE_RiskAmbiguity}
+	\end{align}
+\end{subequations}
+where the second line \eqref{subequation:EFE_ProductRuleOfProbability} uses the product rule of probability $P(s,o) = P(s|o) P(o)$ to rearrange EFE into two terms that can be associated with information-seeking (epistemic value) and reward-seeking (pragmatic value). In active inference, we did not define the reward specifically. But instead, we have observed that the organism has an instinction to observe some thing in their expectation. If the observation aligns with their expectation, even the observation itself is a bad phenomena like a war happening or a disaster, if it was predicted by themselves, it is a signal of reward. Which means that the internal model of the world is quite effective. ???.
+With this explanation, we could treat the expectation of observation as the reward. And the difference between the true posterior model and the approximation could be treated as the information-seeking.
+Minimizing the expected free energy means minimizing the discrepancy between the approximation and the true posterior and at the same time maximizing the possibility of observing desired results.
+
+The third line \eqref{subequation:EFE_Q(s|o)} uses a new introduced approximation of true posterior $P(s|o) \approx Q(s|o)$.
+
+The fourth line \eqref{subequation:EFE_P(o|C)} uses a new introduced terminology prior expectation over observations $p(o|C)$, that plays the role of preference.
 	
+The fifth line \eqref{subequation:EFE_Q(o|s)} uses the equality $\frac{Q(s)}{Q(s|o)}=\frac{Q(s)Q(o)}{Q(o|s)Q(s)} = \frac{Q(o)}{Q(o|s)}$
+
+The sixth line \eqref{subequation:EFE_P(o|s)} assumes that $P(o|s) = Q(o|s)$.
+
+The final line \eqref{subequation:EFE_RiskAmbiguity} introduces a new terminology: Entropy of a distribution $P(x)$ is defined as  $H[P(x)] \defeq - \mathbb{E}_{P(x)}[\ln P(x)]$. Mutual information of $x$ and $y$ is defined as 
+\begin{equation}
+	I(x,y) \defeq H[p(x)] - H[p(x|y)] = H[p(y)] - H[p(y|x)]
+\end{equation}
+$I(x,y)$ is symmetric and scores the reduction in uncertainty (entropy) about the value of a variable $x$ afoorded by knowledge of another variable $y$. If these two variables are independent, mutual information is $0$.
+To derive \eqref{subequation:EFE_RiskAmbiguity}, we start from \eqref{subequation:EFE_P(o|s)}
+\begin{subequations}
+	\begin{align}
+		\mathcal{G} &= \mathbb{E}_{Q(o,s)}\left[lnQ(o)-lnP(o|s)\right] - \mathbb{E}_{Q(o)}[lnP(o|C)]  \\
+		&= \mathbb{E}_{Q(o,s)}\left[ln\frac{Q(o)}{P(o|s)}\right] - \mathbb{E}_{Q(o,s)}[lnP(o|C)]  \\
+		&= \mathbb{E}_{Q(o,s)}\left[ln\frac{Q(o)}{P(o|s)}-lnP(o|C)\right]   \\
+		&= \mathbb{E}_{Q(o,s)}\left[ln\frac{Q(o)}{P(o|s)P(o|C)}\right]  \\
+		&= \mathbb{E}_{Q(o,s)}\left[ln\frac{Q(o)}{P(o|C)}-lnP(o|s)\right]   \\
+		&= \mathbb{E}_{Q(o,s)}\left[ln\frac{Q(o)}{P(o|C)}\right] -  \mathbb{E}_{Q(o,s)}\left[lnP(o|s)\right]   \\
+		&= \mathbb{E}_{Q(o)}\left[ln\frac{Q(o)}{P(o|C)}\right] -  \mathbb{E}_{Q(o|s)Q(s)}\left[lnP(o|s)\right]   \\
+		&=\mathbb{E}_{Q(o)}\left[ln\frac{Q(o)}{P(o|C)}\right] -  \mathbb{E}_{Q(s)}\left[\mathbb{E}_{Q(o|s)}[lnP(o|s)]\right]   \\
+		&=\mathbb{E}_{Q(o)}\left[ln\frac{Q(o)}{P(o|C)}\right] -  \mathbb{E}_{Q(s)}\left[\mathbb{E}_{P(o|s)}[lnP(o|s)]\right]  \\
+		&=D_{KL}[Q(o)||P(o|C)]- \mathbb{E}_{Q(s)}\left[H(P(o|s))\right] 
+	\end{align}
+\end{subequations}
+
 	\subsection{Data Collection}
 	
 	The research employs multiple datasets to ensure comprehensive evaluation:
