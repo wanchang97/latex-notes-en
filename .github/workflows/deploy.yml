@@ -1,85 +1,97 @@
-name: Build and Deploy English LaTeX Notes
+#!/bin/bash
+set -e
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+BUILD_DIR="public"
+NOTES_DIR="$BUILD_DIR/notes"
 
-permissions:
-  contents: write
+echo "🧩 Generating Markdown-style index page..."
+mkdir -p "$BUILD_DIR"
 
-env:
-  BUILD_DIR: public
+INDEX_MD="$BUILD_DIR/index.md"
+INDEX_HTML="$BUILD_DIR/index.html"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# 生成 Markdown 文件头
+{
+  echo "# 📚 My LaTeX Notes"
+  echo ""
+  echo "_Auto-generated on $(date)_"
+  echo ""
+  echo "## 🗂️ Notes List (Newest First)"
+  echo ""
+} > "$INDEX_MD"
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+# 查找所有 PDF 并按修改时间排序（最新在前）
+find "$NOTES_DIR" -type f -name "*.pdf" -printf "%T@ %p\n" \
+  | sort -nr \
+  | cut -d' ' -f2- \
+  | while read -r pdf; do
+      base=$(basename "$pdf" .pdf) # base 是文件名，例如 DecisionMakingModelling_main
+      relpath="notes/${base}.pdf"
 
-      - name: Setup LaTeX environment
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            texlive-latex-base \
-            texlive-latex-extra \
-            texlive-latex-recommended \
-            texlive-fonts-recommended \
-            texlive-fonts-extra \
-            texlive-science \
-            texlive-pictures
+      # --- 关键修改部分：创建友好显示名称 ---
+      display_name="${base}"
 
-      - name: Compile all notes
-        run: |
-          mkdir -p $BUILD_DIR/notes
-          export TEXINPUTS="./styles:"
+      # 1. 将文件名中的下划线替换为空格
+      display_name="${display_name//_/ }"
+      
+      # 2. 为特定文件添加描述性后缀，以区分报告和演示文稿
+      if [[ "$base" == *"_main"* ]]; then
+        # 匹配 DecisionMakingModelling_main，并添加 (Report)
+        display_name=$(echo "$display_name" | sed 's/ main$/ (Report)/')
+      elif [[ "$base" == *"_colloquioumPresentation"* ]]; then
+        # 匹配 DecisionMakingModelling_colloquioumPresentation，并添加 (Colloquium Presentation)
+        display_name=$(echo "$display_name" | sed 's/ colloquioumPresentation$/ (Colloquium Presentation)/')
+      fi
 
-          # --- 编译逻辑开始 ---
-          
-          # 1. 查找所有笔记文件夹 (如 DecisionMakingModelling)
-          find notes -type d -mindepth 1 -maxdepth 1 | while read notedir; do
-            foldername=$(basename "$notedir")
-            
-            # 2. 在每个笔记文件夹内查找所有顶级 .tex 文件
-            find "$notedir" -maxdepth 1 -name "*.tex" -type f | while read texfile; do
-              filename=$(basename "$texfile" .tex) # 如 main 或 colloquioumPresentation
-              
-              # 跳过 preamble.tex 等辅助文件 (根据您的目录结构，它们可能是辅助文件)
-              if [[ "$filename" == "preamble" ]]; then
-                continue
-              fi
+      # 3. 生成 Markdown 列表项
+      echo "- [${display_name}](${relpath})" >> "$INDEX_MD"
+    done
+# ----------------------------------------------
 
-              echo "📘 Compiling: $foldername/$filename"
+# 添加页脚
+{
+  echo ""
+  echo "---"
+  echo "_Last updated: $(date)_"
+} >> "$INDEX_MD"
 
-              cd "$notedir"
-              pdflatex -interaction=nonstopmode "$filename.tex" || true
-              
-              if [ -f "$filename.pdf" ]; then
-                # 关键修改：将 PDF 复制到 BUILD_DIR/notes/，命名格式为 FolderName_FileName.pdf
-                target_name="${foldername}_${filename}.pdf"
-                cp "$filename.pdf" "../../$BUILD_DIR/notes/${target_name}"
-                echo "✅ Success: Saved as $target_name"
-              else
-                echo "❌ Failed: $foldername/$filename"
-                grep -A 5 -B 5 "Error:" "$filename.log" || tail -20 "$filename.log"
-              fi
-              cd - > /dev/null
-            done
-          done
-          # --- 编译逻辑结束 ---
-    
-          
+# 转换 Markdown -> HTML (这部分保持原样，因为它负责格式化)
+{
+cat <<EOF
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>My LaTeX Notes</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 40px; line-height: 1.6; color: #333; }
+    h1, h2 { color: #2c3e50; }
+    a { color: #007acc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
+    hr { border: 0; border-top: 1px solid #ddd; margin: 30px 0; }
+  </style>
+</head>
+<body>
+<article>
+EOF
 
+# 简单 Markdown 转 HTML（保留基本格式）
+sed -E '
+  s/^# (.*)$/<h1>\1<\/h1>/;
+  s/^## (.*)$/<h2>\1<\/h2>/;
+  s/^---$/<hr>/;
+  s/^_([^_]+)_$/<em>\1<\/em>/;
+  s/^- \[(.*)\]\((.*)\)$/<li><a href="\2" target="_blank">\1<\/a><\/li>/;
+' "$INDEX_MD"
 
-      - name: Generate index page
-        run: bash scripts/generate_index.sh
+cat <<EOF
+</article>
+</body>
+</html>
+EOF
+} > "$INDEX_HTML"
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          force_orphan: true
+echo "✅ Generated:"
+echo " - $INDEX_MD"
+echo " - $INDEX_HTML"
