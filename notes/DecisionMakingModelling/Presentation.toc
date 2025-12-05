@@ -1,0 +1,11 @@
+\babel@toc {ngerman}{}\relax 
+\beamer@sectionintoc {1}{What is a Decision Making Process? an optimization problem}{2}{0}{1}
+\beamer@sectionintoc {2}{How to model the decision making process?}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Markov Decision Process}{6}{0}{2}
+\beamer@subsubsectionintoc {2}{1}{1}{Basic Terminology}{6}{0}{2}
+\beamer@subsubsectionintoc {2}{1}{2}{Value functions definition}{7}{0}{2}
+\beamer@subsubsectionintoc {2}{1}{3}{Bellman Equations for Value functions }{9}{0}{2}
+\beamer@subsubsectionintoc {2}{1}{4}{On policy learning}{14}{0}{2}
+\beamer@subsubsectionintoc {2}{1}{5}{Off-policy learning}{16}{0}{2}
+\beamer@subsectionintoc {2}{2}{Partially Observable Markov Decision Process}{20}{0}{2}
+\beamer@sectionintoc {3}{How to model Structural Integration Management as POMDP}{21}{0}{3}

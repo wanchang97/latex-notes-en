@@ -1,0 +1,16 @@
+\beamer@slide {fig: Sequential Decision Making Modeling}{5}
+\beamer@slide {table: ExampleOfTableEstimationForQ}{18}
+\beamer@slide {table: ConfigurationBeam}{21}
+\beamer@slide {eqn: staticDisplacementCalculation}{22}
+\beamer@slide {eqn: staticObservationCalculation}{22}
+\beamer@slide {eqn: dynamicAcc}{22}
+\beamer@slide {eqn: dynamicObservationCalculation}{22}
+\beamer@slide {def:AccumulatedDiscountReward}{22}
+\beamer@slide {table: Cost definition in the beam monitoring process}{22}
+\beamer@slide {eqn: gradualDeteriorationModel1}{22}
+\beamer@slide {eqn: changeOfgradualDeteriorationModel1}{22}
+\beamer@slide {fig: gradual deterioration example plot}{22}
+\beamer@slide {eqn: fSuddenDeteriorationModel1}{22}
+\beamer@slide {eqn: changeOfSuddenDeteriorationModel1}{22}
+\beamer@slide {fig: sudden deterioration example plot}{22}
+\beamer@slide {fig: flowchart}{31}
