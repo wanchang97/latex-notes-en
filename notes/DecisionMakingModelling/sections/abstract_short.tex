@@ -1,0 +1,22 @@
+% sections/abstract.tex
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	
+This thesis presents an investigation into decision-making modelling for structural integration management, comparing Partially Observable Markov Decision Processes (POMDP) and Active Inference. The research addresses optimal maintenance decision-making under uncertainty in civil infrastructure systems, where structural states are partially observable through limited sensor measurements.
+
+Structural integration management involves sequential maintenance decisions under uncertainty. Traditional approaches often rely on simplified assumptions that may not capture real-world structural deterioration complexities. This research bridges the gap between theoretical decision-making frameworks and practical structural health monitoring by developing two parallel methodological frameworks.
+
+The POMDP framework formulates structural integration management as a belief-updated POMDP, where system state (e.g., Young's modulus) evolves according to a combined deterioration model incorporating both gradual degradation (Gamma Process) and sudden damage events (Compound Poisson Process). Observations are derived from forward structural models, and beliefs about hidden states are updated using Sequential Monte Carlo methods, enabling optimal policy selection through reward maximization. The objective function is $\mathbb{E}[U_t^{\pi}] = \mathbb{E}[\sum_{i=t}^T\gamma^{i-t}r(a_i,s_i)]$.
+
+In contrast, the Active Inference framework minimizes variational free energy (or "surprise") as its fundamental objective, offering a neuroscientifically-inspired alternative that avoids explicit reward engineering while maintaining decision-making efficacy under uncertainty. This approach provides a different perspective where actions minimize expected free energy rather than maximize reward.
+
+The primary contributions are: (1) Development of a unified mathematical framework for structural integration management accounting for partial observability; (2) First comprehensive comparison between POMDP and Active Inference for infrastructure management; (3) Implementation of efficient computational algorithms for both approaches.
+
+This work advances both theoretical understanding and practical applications in structural health monitoring. Theoretically, it contributes to decision-making under uncertainty by bridging control theory, Bayesian statistics, and active inference principles. Practically, it provides implementable frameworks for infrastructure managers to optimize maintenance scheduling and resource allocation.
+
+\vspace{6pt}
+
+\noindent\textbf{Keywords:} Structural Integration Management, POMDP, Active Inference, Bayesian Filtering, Sequential Decision Making
+	
+\end{document}

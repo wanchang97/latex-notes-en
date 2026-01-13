@@ -1,0 +1,74 @@
+\documentclass[12pt,a4paper]{article}
+
+% 必要的包
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{setspace}
+
+% 页面设置 - 调整页边距以适合单页
+\geometry{
+	top=0.4in,
+	bottom=0.4in,
+	left=0.6in,
+	right=0.6in,
+	includefoot
+}
+
+% 行距设置
+\setstretch{1.0}  % 单倍行距
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% 自定义命令
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\EE}{\mathbb{E}}
+
+\begin{document}
+	
+	% 标题和作者信息
+	\begin{center}
+		\Large\textbf{Decision Making Modelling for Structural Integration Management}
+		
+		\vspace{4pt}
+		
+		\large{Wanchang ZHANG}
+		
+		\vspace{3pt}
+		
+		\small{Supervisor: Prof. Tom Lahmer}
+		
+		\vspace{6pt}
+		
+		\textbf{Abstract}
+	\end{center}
+	
+	% 摘要正文 - 精简版本
+	This thesis presents an investigation into decision-making modelling for structural integration management, comparing Partially Observable Markov Decision Processes (POMDP) and Active Inference. The research addresses optimal maintenance decision-making under uncertainty in civil infrastructure systems, where structural states are partially observable through limited sensor measurements.
+	
+	Structural integration management involves sequential maintenance decisions under uncertainty. Traditional approaches often rely on simplified assumptions that may not capture real-world structural deterioration complexities. This research bridges the gap between theoretical decision-making frameworks and practical structural health monitoring by developing two parallel methodological frameworks.
+	
+	The POMDP framework formulates structural integration management as a belief-updated POMDP, where system state (e.g., Young's modulus) evolves according to a combined deterioration model incorporating both gradual degradation (Gamma Process) and sudden damage events (Compound Poisson Process). Observations are derived from forward structural models, and beliefs about hidden states are updated using Sequential Monte Carlo methods, enabling optimal policy selection through reward maximization. The objective function is $\EE[U_t^{\pi}] = \EE[\sum_{i=t}^T\gamma^{i-t}r(a_i,s_i)]$.
+	
+	In contrast, the Active Inference framework minimizes variational free energy (or "surprise") as its fundamental objective, offering a neuroscientifically-inspired alternative that avoids explicit reward engineering while maintaining decision-making efficacy under uncertainty. This approach provides a different perspective where actions minimize expected free energy rather than maximize reward.
+	
+	The primary contributions are: (1) Development of a unified mathematical framework for structural integration management accounting for partial observability; (2) First comprehensive comparison between POMDP and Active Inference for infrastructure management; (3) Implementation of efficient computational algorithms for both approaches.
+	
+	This work advances both theoretical understanding and practical applications in structural health monitoring. Theoretically, it contributes to decision-making under uncertainty by bridging control theory, Bayesian statistics, and active inference principles. Practically, it provides implementable frameworks for infrastructure managers to optimize maintenance scheduling and resource allocation.
+	
+	\vspace{6pt}
+	
+	\noindent\textbf{Keywords:} Structural Integration Management, POMDP, Active Inference, Bayesian Filtering, Sequential Decision Making
+	
+	\vspace{4pt}
+	
+	\begin{center}
+		\rule{0.7\textwidth}{0.4pt}
+	\end{center}
+	
+	\begin{center}
+		\small
+		\textit{Submitted for the Bauhaus Colloquium 2026}
+	\end{center}
+	
+\end{document}

@@ -1,27 +1,29 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Sequential Probabilistic Graphical Model of Markovian Decision Process}}{2}{figure.caption.8}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Deep Q-Network approximate the Q function for every available action using state as input $Q(s_t,a_t)$}}{14}{figure.caption.26}%
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Dueling Network architecture}}{18}{figure.caption.30}%
-\contentsline {figure}{\numberline {1.4}{\ignorespaces NN approximates $\pi (a_t|s_t)$}}{19}{figure.caption.31}%
-\contentsline {figure}{\numberline {1.5}{\ignorespaces Actor Critic Neural Network architecture}}{20}{figure.caption.32}%
-\contentsline {figure}{\numberline {1.6}{\ignorespaces Deep Centralized Multi-agent Actor Critic Neural Network architecture}}{23}{figure.caption.38}%
-\contentsline {figure}{\numberline {1.7}{\ignorespaces Deep Decentralized Multi-agent Actor Critic Neural Network architecture}}{24}{figure.caption.40}%
-\contentsline {figure}{\numberline {1.8}{\ignorespaces Probabilistic Graphical Model of Partially Observable Markovian Decision Process defined in State Space}}{25}{figure.caption.42}%
-\contentsline {figure}{\numberline {1.9}{\ignorespaces Probabilistic Graphical Model of Partially Observable Markovian Decision Process defined in Belief Space}}{28}{figure.caption.46}%
-\contentsline {figure}{\numberline {1.10}{\ignorespaces Deep Q-Network approximate the Q function for every available action using belief as input $Q(\mathbf {b}_t,a_t)$}}{35}{figure.caption.56}%
-\contentsline {figure}{\numberline {1.11}{\ignorespaces Dueling Network architecture}}{36}{figure.caption.57}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Sequential Probabilistic Graphical Model of Markovian Decision Process}}{2}{figure.caption.7}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Deep Q-Network approximate the Q function for every available action using state as input $Q(s_t,a_t)$}}{14}{figure.caption.25}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Dueling Network architecture}}{18}{figure.caption.29}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces NN approximates $\pi (a_t|s_t)$}}{19}{figure.caption.30}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Actor Critic Neural Network architecture}}{20}{figure.caption.31}%
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Deep Centralized Multi-agent Actor Critic Neural Network architecture}}{23}{figure.caption.37}%
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Deep Decentralized Multi-agent Actor Critic Neural Network architecture}}{24}{figure.caption.39}%
+\contentsline {figure}{\numberline {1.8}{\ignorespaces Probabilistic Graphical Model of Partially Observable Markovian Decision Process defined in State Space}}{25}{figure.caption.41}%
+\contentsline {figure}{\numberline {1.9}{\ignorespaces Probabilistic Graphical Model of Partially Observable Markovian Decision Process defined in Belief Space}}{28}{figure.caption.45}%
+\contentsline {figure}{\numberline {1.10}{\ignorespaces Deep Q-Network approximate the Q function for every available action using belief as input $Q(\mathbf {b}_t,a_t)$}}{35}{figure.caption.55}%
+\contentsline {figure}{\numberline {1.11}{\ignorespaces Dueling Network architecture}}{36}{figure.caption.56}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Original POMDP Model}}{37}{figure.caption.59}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Graphical Representation of the Generative Process(based on the true states $s^{\star }$) in the world and the corresponding (internal) generative model (based on probabilistic beliefs random variables $s$) that best explain the outcomes $o$. The outcomes are shared between the generative process and model. \blx@tocontentsinit {0}\cite {sajid2021active}}}{40}{figure.caption.62}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Original POMDP Model}}{37}{figure.caption.58}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Graphical Representation of the Generative Process(based on the true states $s^{\star }$) in the world and the corresponding (internal) generative model (based on probabilistic beliefs random variables $s$) that best explain the outcomes $o$. The outcomes are shared between the generative process and model. \blx@tocontentsinit {0}\cite {sajid2021active}}}{40}{figure.caption.61}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Flowchart diagram}}{44}{figure.caption.65}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Geometrical Property of Steel Truss Bridge Structure}}{45}{figure.caption.66}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Gradual deterioration realization plot modeled by a simple rate function}}{46}{figure.caption.68}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces sudden deterioration realization plot modelled by a CPP process}}{47}{figure.caption.69}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Flowchart POMDP diagram}}{49}{figure.caption.72}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Flowchart diagram}}{44}{figure.caption.64}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Geometrical Property of Steel Truss Bridge Structure}}{45}{figure.caption.65}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Gradual deterioration realization plot modeled by a simple rate function}}{46}{figure.caption.67}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces sudden deterioration realization plot modelled by a CPP process}}{47}{figure.caption.68}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Flowchart Belief MDP diagram}}{50}{figure.caption.71}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Flowchart Active Inference diagram}}{51}{figure.caption.72}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Extreme Value distribution for Maximum}}{52}{figure.caption.74}%
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Bernoulli Process and its associated Probability Distribution}}{53}{figure.caption.76}%
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Poisson Process and its associated Probability Distribution}}{54}{figure.caption.78}%
-\contentsline {figure}{\numberline {A.4}{\ignorespaces Compound Process Process and its associated Probability Distribution}}{56}{figure.caption.80}%
-\contentsline {figure}{\numberline {A.5}{\ignorespaces Gamma Process and its associated Probability Distribution}}{57}{figure.caption.82}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Extreme Value distribution for Maximum}}{56}{figure.caption.74}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Bernoulli Process and its associated Probability Distribution}}{57}{figure.caption.76}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Poisson Process and its associated Probability Distribution}}{58}{figure.caption.78}%
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Compound Process Process and its associated Probability Distribution}}{60}{figure.caption.80}%
+\contentsline {figure}{\numberline {A.5}{\ignorespaces Gamma Process and its associated Probability Distribution}}{61}{figure.caption.82}%

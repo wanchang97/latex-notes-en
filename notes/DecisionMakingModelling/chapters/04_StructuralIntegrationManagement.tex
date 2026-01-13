@@ -63,20 +63,25 @@
 		$s_{t+\Delta t} \leftarrow \mathbf{T}(s_t,a_t)$
 		The natural degradation process is modelled as the basic deterioration and repairs are applied element-wise
 		\begin{itemize}
-			\item $a_0$: do nothing $\rightarrow$ natural deterioration. We could define a deterioration level as $D (t)\defeq  E(t=0)  - 	E(t ) $ to indicate the deterioration extent from the beginning to the time $t$.
+			\item $a_0$: do nothing $\rightarrow$ natural deterioration. We could define a deterioration level as $D (t)\defeq  E(t=0)  - 	E(t ) $ to indicate the deterioration extent from the beginning to the time $t$. The deterioration of the infrastructures is usually modelled by the mixed Levy process including the gradual deterioration (aging process) and the sudden deterioration (jump process). 
+			\begin{equation}
+				E(t) = Gradual(t) + Jump(t) = G(t) + J(t)
+			\end{equation}
+		
+			The gradual process $G(t)$ focuses on the material aging, wearing, corrosion of the environment etc. The Jump process $J(t)$ focuses on those infrastures in the overloading areas, earthquake zone etc. Below is the mathematical model we choose to model the deterioration process. For the gradual deterioration, we could use a simple rate function or a Gamma process. For the jump process, we could use a Compound Poisson Process shown below.
 			\begin{itemize}
-				\item gradual deterioration (aging process):
-				The gradual deterioration process can be modelled as a simple rate function \cite{ellingwood2005risk}: 
+				\item gradual deterioration (aging process) modelled as a simple rate function
+				\cite{ellingwood2005risk}: 
 				\begin{equation}
 					\label{eqn: gradualDeteriorationModel1}
-					D(t) \defeq E(t=0) - E(t)  =  A t^B e^{w(t)} 
+					G(t)  =  A t^B e^{w(t)} 
 				\end{equation}
 				where $A$ is the random variable modelling the deterioration rate, $B$ is the random variable modelling the nonlinearity effect in terms of a lower law in time and $w(t)$ models the gaussian stochastic process noise. Realization plot of an aging process is shown in Figure \ref{fig: gradual deterioration example plot}
 				
 				The changes of the deterioration can be approximated by the derivative $\frac{dD}{dt} \Delta t$ if we treate $w(t)$ as a constant number $w_k$
 				\begin{equation}
-					\label{eqn: changeOfgradualDeteriorationModel1}
-					\Delta D(t)= E(t) - E(t + \Delta t) \approx AB  t^{B-1} e^{w_k} \Delta t
+					\label{eqn: changeOfgradualDeteriorationModelSimpleRateFunction}
+					\Delta G(t)= G(t) - G(t + \Delta t) \approx AB  t^{B-1} e^{w_k} \Delta t
 				\end{equation}
 				
 				\begin{figure}[h!]
@@ -86,21 +91,34 @@
 					\caption{Gradual deterioration realization plot modeled by a simple rate function}		
 					\label{fig: gradual deterioration example plot}
 				\end{figure}
+				\item gradual deterioration modelled as a gamma process 
+					\begin{equation}
+					\label{eqn: gradualDeteriorationModelGammaProcess}
+					G(t) \sim \Gamma(\alpha, \beta),
+					\end{equation}
+				where $\alpha, \beta$ denotes the aging rate.
+				Gamma Process is a time continuous, parameter space continuous, pure jump Levy process. Its path is not continuous, but combined by small jumps, which is a very suitable model for real deteriorations where the seemly-continuous wearing process is actually combined by a series of discrete broken of chemical bonds in microscope.
+				
+				The increment of Gamma process also follows a Gamma process $\Delta G(t) = G(t+\Delta t) - G(t) \sim \Gamma(\alpha \Delta t, \beta)$.
+				
+				Gamma process has independent increments, and the increment over any interval has a Gamma distribution. 
+				
 				\item sudden deterioration:
 				The sudden deterioration can be modelled as a homogeneous compound Poisson Process(CPP) \cite{van2009survey,sanchez2016reliability}
 				\begin{equation}
 					\label{eqn: fSuddenDeteriorationModel1}
-					D (t)\defeq  E(t=0)  - 	E(t ) =  \sum_{i=1}^{N( t)} D_i \sim CPP( t; \lambda, F_D(d))
+					J (t) =  \sum_{i=1}^{N( t)} J_i \sim CPP( t; \lambda, F_J(j))
 				\end{equation}
-				where the number of jumps in the time interval $t$  $N(\Delta t) \sim PoissonProcess(\lambda)$; the amplitude of each jump $D_i \sim F_D(d) $ are independent and identically distributed random variables following a given distribution $F_D(d)$ e.g. a Gamma distribution. Realization plot of a CPP process is shown in Figure \ref{fig: sudden deterioration example plot}
+				where the number of jumps in the time interval $t$  $N(\Delta t) \sim PoissonProcess(\lambda)$ with $\lambda$ denoting the frequency of sudden disaster; the amplitude of each jump $J_i \sim F_J(j) $ are independent and identically distributed random variables following a given distribution $F_J(j)$ e.g. a Gamma distribution or Lognormal$(\mu, \sigma^2)$ with $\mu$ and $\sigma$ representing the extend of the damage from each disaster. Realization plot of a CPP process is shown in Figure \ref{fig: sudden deterioration example plot}
 				
-				The change of the deterioration during the time interval $\Delta t$ is calculated as: 
+				Compound Poisson Process has also independent and stationary increments, so 
+				The change of the deterioration during the time interval $\Delta t$ is also a CPP process: 
 				
 				\begin{equation}
 					\label{eqn: changeOfSuddenDeteriorationModel1}
-					\Delta D (t)= E(t) - 	E(t + \Delta t) =  \sum_{i=1}^{N(\Delta t)} D_i \sim CPP(\Delta t; \lambda, F_D(d))
+					\Delta J (t)= 	J(t + \Delta t) - J(t) =  \sum_{i=N(t) + 1}^{N(t+ \Delta t)} J_i \sim CPP(t;\lambda \Delta t, F_J(j))
 				\end{equation}
-				where the number of jumps in the time interval $\Delta t$  $N(\Delta t) \sim PoissonProcess(\lambda)$; the amplitude of each jump $D_i \sim F_D(d) $ are independent and identically distributed random variables following a given distribution $F_D(d)$ e.g. a Gamma distribution
+				where the number of jumps in the time interval $\Delta t$  $N(\Delta t) \sim PoissonProcess(\lambda)$; the amplitude of each jump $J_i \sim F_J(j) $ are independent and identically distributed random variables following a given distribution $F_J(j)$ e.g. a Gamma distribution
 				\begin{figure}[h!]
 					\includegraphics[scale = 0.5
 					]{figures/Deterioration_Natural/Deterioration_Sudden_Model1}
@@ -204,9 +222,18 @@
 	
 		\begin{figure}[h]
 		\includegraphics[scale = 0.5 
-		]{figures/SimpleExampleFigure/flowchartPOMDP}
+		]{figures/SimpleExampleFigure/flowchartBeliefMDP}
 		\centering
-		\caption{Flowchart POMDP diagram}	
-		\label{fig: flowchartPOMDP}
+		\caption{Flowchart Belief MDP diagram}	
+		\label{fig: flowchartBeliefMDP}
+	\end{figure}
+	
+	
+	\begin{figure}[h]
+		\includegraphics[scale = 0.5 
+		]{figures/SimpleExampleFigure/flowchart_activeInference}
+		\centering
+		\caption{Flowchart Active Inference diagram}	
+		\label{fig: flowchartActiveInference}
 	\end{figure}
 \end{document}

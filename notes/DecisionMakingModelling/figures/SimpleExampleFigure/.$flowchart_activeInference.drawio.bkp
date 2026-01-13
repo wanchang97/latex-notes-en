@@ -1,0 +1,149 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram name="Page-1" id="nCPmuKLBr85yPGQF4kDp">
+    <mxGraphModel dx="731" dy="468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MPfw-Lintopc10GLGAlf-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=4;align=left;" vertex="1" parent="1">
+          <mxGeometry x="850" y="150" width="580" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-2" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#7EA6E0;strokeWidth=4;align=left;" vertex="1" parent="1">
+          <mxGeometry x="270" y="150" width="540" height="830" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;align=left;" vertex="1" parent="1">
+          <mxGeometry x="860" y="330" width="560" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;align=left;" edge="1" parent="1" source="MPfw-Lintopc10GLGAlf-5" target="MPfw-Lintopc10GLGAlf-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1140" y="310" />
+              <mxPoint x="990" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-5" value="\(E_{t + \Delta t} = E_t + \Delta E_{natural}\),&amp;nbsp; if \(a_t == 0 \)&amp;nbsp;&lt;div&gt;\(E_{t+\Delta t} = E_t *1.2 \), if \(a_t == 1\)&lt;/div&gt;&lt;div&gt;\(E_{t+\Delta t} = E_0\) if \(a_t == 2\)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="860" y="240" width="560" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-6" value="\(K_{t + \Delta t} =&amp;nbsp; \) &lt;b&gt;&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;assemble_K&lt;/font&gt;&lt;/b&gt;\((E_{t+\Delta t}, A,L_e,N\))" style="whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="870" y="340" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-7" value="\(\Delta E_{natural} = \) &lt;b&gt;&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;natural_deterioration_step&lt;/font&gt;&lt;/b&gt;\((t,\Delta t, \mu_A, \sigma_A, \mu_B,\sigma_B,\mu_w,\sigma_w,\lambda,\alpha,\beta)\)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;align=left;" vertex="1" parent="1">
+          <mxGeometry x="860" y="180" width="560" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;align=left;" edge="1" parent="1" source="MPfw-Lintopc10GLGAlf-9" target="MPfw-Lintopc10GLGAlf-33">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1330" y="390" />
+              <mxPoint x="1263" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-9" value="\(M =&amp;nbsp; \) &lt;b&gt;&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;assemble_M&lt;/font&gt;&lt;/b&gt;\((\ \rho , A,L_e,N\))" style="whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1142.5" y="340" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-10" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;\(q(s_t|O_t) = \mathbf{b}_t = Posterior(\mathbb{S})\) at time step \(t\), \(b_t(E_t) = P(E_t|O_t,a_{t-1},\mathbf{b}_{t-1})\)&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="280" y="180" width="520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-11" value="Observation Model&lt;div&gt;\(P(O_{t+\Delta t}|\mathbf{b}_t,a_t )=\int_{E_{t+\Delta t} \in \mathbb{S}}P(O_{t+\Delta t}|E_{t+\Delta t},a_t)\int_{E_t \in \mathbb{S}}P(E_{t+\Delta t}|E_t,a_t)b_t(E_t)dE_tdE_{t+\Delta t}\)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="280" y="360" width="520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-12" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Belief Update Rule, this is theory, in practice we may use the Sequential Monte Carlo SImulation to get posterior like the MCMC or Importance Sampling&lt;/span&gt;&lt;/div&gt;&lt;div&gt;\(b_{t+\Delta t}(E_{t+\Delta t}) = P(E_{t+\Delta t} | O_{t+\Delta t},a_t,\mathbf{b}_t) = \frac{P(O_{t+\Delta t}|E_{t+\Delta t},a_t)P(E_{t+\Delta t}|a_t,\mathbf{b}_t)}{P(O_{t+\Delta t}|a_t,\mathbf{b}_t)}\)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="280" y="230" width="520" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-13" value="Transition Model \(\mathbf{T}_{belief} = P(\mathbf{b}_t|\mathbf{b}_{t-1},a_{t-1})\)&lt;div&gt;\(P(\mathbf{b}_{t+\Delta t}|\mathbf{b}_t,a_t )=\int_{O_{t+\Delta t} \in \mathbb{O}}P(\mathbf{b}_{t+\Delta t}|\mathbf{b}_t,a_t,O_{t+\Delta t})dO_{t+\Delta t} \)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="280" y="300" width="520" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-14" value="&lt;div&gt;Surprise: A measure of how bad a model fits the observations it tries to explain&lt;div&gt;\(S_t = -\ln(Evidence) = -\ln(P(O_{t+\Delta t}|a_t,\mathbf{b}_t))\)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Bayesian Suprise: quantifies the difference between a prior and posterior probability of the state&lt;/div&gt;&lt;div&gt;\(Bayesian Surprise = D_{KL}[P_{prior} || P_{post}] = \mathbb{E}_{P_{prior}}[\ln P_{prior}-\ln P_{post}]\)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Perceptual Learning is to minimize the Variational Free Energy to infer \(q(s_t|o_t)\)&lt;br&gt;&lt;div&gt;Variational Free Energy:&lt;/div&gt;&lt;div&gt;\(F_t = -\mathbb{E}_{q(s_t|o_t)}[\ln(p(o_t|s_t))+D_{KL}[q(s_t|o_t),p(s_t|s_{t-1},a_{t-1})]\)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Looking into future time steps, the agent has a desired distribution \(\tilde{P}(o_{t+1})\) over future observations \(o_{\tau}\), for \(\tau \in \{t,t+1,\cdots,T\}\)&lt;/div&gt;&lt;div&gt;Expected Free Energy:&lt;/div&gt;&lt;/div&gt;&lt;div&gt;\(G_{AIF}(o_t) = \mathbb{E}_{q(s_{t:T},o_{t+1:T},a_{t:T-1}|o_t)} [\ln \frac{q(s_{t+1:T},a_{t:T-1}|s_t)}{P(s_{t+1:T},o_{t+1:T}|s_t,a_{t:T-1})}]\)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Biased generative model: given the prior preference&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;\(\tilde{P}(o_{t+1})\)&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;, the generative model is approximated by a biased generative model \(\tilde{P}(s_{t+1:T},o_{t+1:T}|s_t,a_{t:T-1})\)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;\(\tilde{P}(s_{t+1:T},o_{t+1:T}|s_t,a_{t:T-1}) = \prod_{\tau = t}^{T-1}\tilde{P}(o_{\tau+1}|s_{\tau},a_{\tau})q(s_{\tau+1}|o_{\tau+1})\)&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Then the expected Free Energy becomes:&lt;/div&gt;&lt;div&gt;\(G_{AIF}(o_t) = \mathbb{E}_{q(s_{t:T},o_{t+1:T},a_{t:T-1}|o_t)} [\ln \frac{q(s_{t+1:T},a_{t:T-1}|s_t)}{\prod_{\tau = t}^{T-1}\tilde{P}(o_{\tau+1}|s_{\tau},a_{\tau})q(s_{\tau+1}|o_{\tau+1})}]\)&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="280" y="410" width="520" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-15" value="" style="group;strokeWidth=4;strokeColor=none;align=left;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="280" y="640" width="520" height="325" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-16" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#d79b00;strokeWidth=4;align=left;fillColor=none;" vertex="1" parent="MPfw-Lintopc10GLGAlf-15">
+          <mxGeometry y="200" width="520" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-20" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;&amp;nbsp;Action is selected according to a policy&lt;/span&gt;&lt;span style=&quot;background-color: rgb(236, 236, 236); color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;div&gt;\(a_{t+\Delta t} \sim \pi(a|\mathbf{b}_{t+\Delta t}) \)&lt;div&gt;&lt;div style=&quot;forced-color-adjust: none; font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;b style=&quot;forced-color-adjust: none;&quot;&gt;&lt;font style=&quot;forced-color-adjust: none; color: rgb(255, 181, 112);&quot;&gt;The policy is supposed to minimize the expected free energy&amp;nbsp;&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;forced-color-adjust: none; font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;&lt;b style=&quot;forced-color-adjust: none;&quot;&gt;&lt;font style=&quot;forced-color-adjust: none; color: rgb(255, 181, 112);&quot;&gt;\(\pi = argmax_{a_{t:T-1}}G_{AIF}^{\pi}(o_t)\)&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="MPfw-Lintopc10GLGAlf-15">
+          <mxGeometry x="20" y="180" width="380" height="175" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-22" value="" style="group;align=left;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="870" y="400" width="550" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-23" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="MPfw-Lintopc10GLGAlf-22">
+          <mxGeometry width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-24" value="&lt;br&gt;&lt;div&gt;\(U_{t+\Delta t} = \) &lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;&lt;b&gt;Static_&lt;/b&gt;&lt;/font&gt;&lt;b&gt;&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;solve &lt;/font&gt;&lt;/b&gt;\((K_{t+\Delta t},F_{t + \Delta t})\)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="MPfw-Lintopc10GLGAlf-22">
+          <mxGeometry x="10" y="30" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;align=left;" edge="1" parent="MPfw-Lintopc10GLGAlf-22" source="MPfw-Lintopc10GLGAlf-26" target="MPfw-Lintopc10GLGAlf-29">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="138" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-26" value="&lt;br&gt;&lt;div&gt;\(O_{t+\Delta t} = (U_{t+\Delta t} + noise ) \) [mid_point]&amp;nbsp;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="MPfw-Lintopc10GLGAlf-22">
+          <mxGeometry x="10" y="80" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-27" value="Static Analysis:" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="MPfw-Lintopc10GLGAlf-22">
+          <mxGeometry width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;align=left;" edge="1" parent="MPfw-Lintopc10GLGAlf-22" source="MPfw-Lintopc10GLGAlf-24" target="MPfw-Lintopc10GLGAlf-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-29" value="All kinds of observations&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="MPfw-Lintopc10GLGAlf-22">
+          <mxGeometry y="130" width="550" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-30" value="" style="group;align=left;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="1120" y="400" width="295" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-31" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="MPfw-Lintopc10GLGAlf-30">
+          <mxGeometry width="295" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-32" value="\(DSF_{t+\Delta t}\) =&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt; &lt;b&gt;DamageSensitiveFeature&lt;/b&gt;&lt;/font&gt;(\(acc_{0:t+\Delta t}\))" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="MPfw-Lintopc10GLGAlf-30">
+          <mxGeometry x="8.431290322580647" y="80.00333333333333" width="278.146935483871" height="18.333333333333332" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-33" value="&lt;br&gt;&lt;div&gt;\(acc_{t+\Delta t} = \) &lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;&lt;b&gt;Dynamic_&lt;/b&gt;&lt;/font&gt;&lt;b&gt;&lt;font style=&quot;color: rgb(166, 128, 184);&quot;&gt;solve &lt;/font&gt;&lt;/b&gt;\((K_{t+\Delta t},M,F_{t+\Delta t})\)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="MPfw-Lintopc10GLGAlf-30">
+          <mxGeometry x="8.431290322580647" y="36.666666666666664" width="268.63080645161295" height="18.333333333333332" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-34" value="Dynamic Analysis:" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="MPfw-Lintopc10GLGAlf-30">
+          <mxGeometry width="141.57" height="27.5" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;align=left;" edge="1" parent="MPfw-Lintopc10GLGAlf-30" source="MPfw-Lintopc10GLGAlf-33" target="MPfw-Lintopc10GLGAlf-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;align=left;" edge="1" parent="1" source="MPfw-Lintopc10GLGAlf-6" target="MPfw-Lintopc10GLGAlf-33">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1050" y="390" />
+              <mxPoint x="1263" y="390" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;align=left;" edge="1" parent="1" source="MPfw-Lintopc10GLGAlf-6" target="MPfw-Lintopc10GLGAlf-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=none;align=left;" edge="1" parent="1" source="MPfw-Lintopc10GLGAlf-16" target="MPfw-Lintopc10GLGAlf-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=none;align=left;" edge="1" parent="1" source="MPfw-Lintopc10GLGAlf-16" target="MPfw-Lintopc10GLGAlf-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;align=left;" edge="1" parent="1" source="MPfw-Lintopc10GLGAlf-32" target="MPfw-Lintopc10GLGAlf-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;align=left;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=3;" edge="1" parent="1" source="MPfw-Lintopc10GLGAlf-29" target="MPfw-Lintopc10GLGAlf-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-43" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Agent with generative model \(P(s_t,o_t|a_{t-1},s_{t-1})\)&lt;/font&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="150" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-44" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;World with generative process&lt;/font&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="860" y="150" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MPfw-Lintopc10GLGAlf-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=3;" edge="1" parent="1" source="MPfw-Lintopc10GLGAlf-16" target="MPfw-Lintopc10GLGAlf-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

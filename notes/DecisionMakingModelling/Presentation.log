@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  5 DEC 2025 10:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  4 JAN 2026 22:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1598,7 +1598,7 @@ ikz package.
 ))
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 246.
+(hyperref)                removing `\\' on input line 247.
 
 )
 
@@ -1821,58 +1821,45 @@ Package caption Info: End \AtBeginDocument code.
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] (./Presen
-tation.toc) [2
+tation.toc)
 
-] [3] [4
-
-]
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/AgentEnvi
-ronmentInteractionsSequential2.pdf): PDF inclusion: found PDF version <1.5>, bu
-t at most version <1.4> allowed
-<figures/RPimages/AgentEnvironmentInteractionsSequential2.pdf, id=143, 520.2747
-3pt x 191.116pt>
-File: figures/RPimages/AgentEnvironmentInteractionsSequential2.pdf Graphic file
- (type pdf)
-<use figures/RPimages/AgentEnvironmentInteractionsSequential2.pdf>
-Package pdftex.def Info: figures/RPimages/AgentEnvironmentInteractionsSequentia
-l2.pdf  used on input line 49.
-(pdftex.def)             Requested size: 364.18982pt x 133.78027pt.
-
-Overfull \hbox (21.89452pt too wide) in paragraph at lines 49--49
- [] 
- []
-
-[5
-
- <./figures/RPimages/AgentEnvironmentInteractionsSequential2.pdf>]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 79.
-
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/BayesianFiltering/
+GenericStateSpaceModel.pdf): PDF inclusion: found PDF version <1.7>, but at mos
+t version <1.4> allowed
+<figures/BayesianFiltering/GenericStateSpaceModel.pdf, id=82, 809.9058pt x 288.
+11641pt>
+File: figures/BayesianFiltering/GenericStateSpaceModel.pdf Graphic file (type p
+df)
+<use figures/BayesianFiltering/GenericStateSpaceModel.pdf>
+Package pdftex.def Info: figures/BayesianFiltering/GenericStateSpaceModel.pdf  
+used on input line 24.
+(pdftex.def)             Requested size: 323.95659pt x 115.2445pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 79.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 79.
+ut line 24.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-)
-LaTeX Font Info:    Trying to load font information for U+dsrom on input line 7
-9.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/doublestroke/Udsrom.fd
-File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-)
+) [2
 
-LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/m/n' instead on input line 79.
+] [3 <./figures/BayesianFiltering/GenericStateSpaceModel.pdf>] [4
+
+] [5
+
+]
+Overfull \vbox (14.54356pt too high) detected at line 80
+ []
 
 [6
 
@@ -1880,18 +1867,45 @@ LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
 
 ] [8
 
-
 ] [9
 
-] [10
+]
 
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/RPimages/AgentEnvi
+ronmentInteractionsSequential2.pdf): PDF inclusion: found PDF version <1.5>, bu
+t at most version <1.4> allowed
+<figures/RPimages/AgentEnvironmentInteractionsSequential2.pdf, id=278, 520.2747
+3pt x 191.116pt>
+File: figures/RPimages/AgentEnvironmentInteractionsSequential2.pdf Graphic file
+ (type pdf)
+<use figures/RPimages/AgentEnvironmentInteractionsSequential2.pdf>
+Package pdftex.def Info: figures/RPimages/AgentEnvironmentInteractionsSequentia
+l2.pdf  used on input line 123.
+(pdftex.def)             Requested size: 364.18982pt x 133.78027pt.
 
-] [11
+Overfull \hbox (21.89452pt too wide) in paragraph at lines 123--123
+ [] 
+ []
+
+[10
+
+ <./figures/RPimages/AgentEnvironmentInteractionsSequential2.pdf>]
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
+53.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+)
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/m/n' instead on input line 153.
+
+[11
 
 ] [12
 
-
 ] [13
+
 
 ] [14
 
@@ -1900,11 +1914,7 @@ LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
 
 ] [16
 
-]
-Overfull \vbox (229.31512pt too high) detected at line 277
- []
-
-[17
+] [17
 
 
 ] [18
@@ -1913,111 +1923,127 @@ Overfull \vbox (229.31512pt too high) detected at line 277
 
 ] [20
 
+
+] [21
+
+]
+Overfull \vbox (229.31512pt too high) detected at line 351
+ []
+
+[22
+
+
+] [23
+
+] [24
+
+] [25
+
 ]
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/SimpleExampleFigur
 e/1DBeamExample.pdf): PDF inclusion: found PDF version <1.7>, but at most versi
 on <1.4> allowed
-<figures/SimpleExampleFigure/1DBeamExample.pdf, id=542, 204.765pt x 78.2925pt>
+<figures/SimpleExampleFigure/1DBeamExample.pdf, id=666, 204.765pt x 78.2925pt>
 File: figures/SimpleExampleFigure/1DBeamExample.pdf Graphic file (type pdf)
 <use figures/SimpleExampleFigure/1DBeamExample.pdf>
 Package pdftex.def Info: figures/SimpleExampleFigure/1DBeamExample.pdf  used on
- input line 373.
+ input line 447.
 (pdftex.def)             Requested size: 204.76448pt x 78.2923pt.
 
-Overfull \hbox (149.24759pt too wide) detected at line 373
+Overfull \hbox (149.24759pt too wide) detected at line 447
 [][][] $[]$[][][][][][][][] $[]$[][][][][][] 
  []
 
-[21
+[26
 
  <./figures/SimpleExampleFigure/1DBeamExample.pdf>]
-Overfull \hbox (21.90005pt too wide) in paragraph at lines 510--510
+Overfull \hbox (21.90005pt too wide) in paragraph at lines 584--584
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--510
+Underfull \hbox (badness 10000) in paragraph at lines 584--584
 
  []
 
 
-Overfull \hbox (0.87411pt too wide) in paragraph at lines 510--510
+Overfull \hbox (0.87411pt too wide) in paragraph at lines 584--584
  [] 
  []
 
 
-LaTeX Warning: Citation 'ellingwood2005risk' on page 22 undefined on input line
- 510.
+LaTeX Warning: Citation 'ellingwood2005risk' on page 27 undefined on input line
+ 584.
 
-<figures/Deterioration_Natural/Deterioration_Gradual_Model1.png, id=561, 336.77
+<figures/Deterioration_Natural/Deterioration_Gradual_Model1.png, id=685, 336.77
 82pt x 336.7782pt>
 File: figures/Deterioration_Natural/Deterioration_Gradual_Model1.png Graphic fi
 le (type png)
 <use figures/Deterioration_Natural/Deterioration_Gradual_Model1.png>
 Package pdftex.def Info: figures/Deterioration_Natural/Deterioration_Gradual_Mo
-del1.png  used on input line 510.
+del1.png  used on input line 584.
 (pdftex.def)             Requested size: 101.03423pt x 101.03423pt.
 
-Overfull \hbox (43.80011pt too wide) in paragraph at lines 510--510
+Overfull \hbox (43.80011pt too wide) in paragraph at lines 584--584
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--510
+Underfull \hbox (badness 10000) in paragraph at lines 584--584
 
  []
 
 
-LaTeX Warning: Citation 'van2009survey' on page 22 undefined on input line 510.
+LaTeX Warning: Citation 'van2009survey' on page 27 undefined on input line 584.
 
 
 
-LaTeX Warning: Citation 'sanchez2016reliability' on page 22 undefined on input 
-line 510.
+LaTeX Warning: Citation 'sanchez2016reliability' on page 27 undefined on input 
+line 584.
 
-<figures/Deterioration_Natural/Deterioration_Sudden_Model1.png, id=564, 501.553
+<figures/Deterioration_Natural/Deterioration_Sudden_Model1.png, id=688, 501.553
 8pt x 336.7782pt>
 File: figures/Deterioration_Natural/Deterioration_Sudden_Model1.png Graphic fil
 e (type png)
 <use figures/Deterioration_Natural/Deterioration_Sudden_Model1.png>
 Package pdftex.def Info: figures/Deterioration_Natural/Deterioration_Sudden_Mod
-el1.png  used on input line 510.
+el1.png  used on input line 584.
 (pdftex.def)             Requested size: 150.4673pt x 101.03423pt.
 
-Overfull \hbox (43.80011pt too wide) in paragraph at lines 510--510
+Overfull \hbox (43.80011pt too wide) in paragraph at lines 584--584
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--510
+Underfull \hbox (badness 10000) in paragraph at lines 584--584
 
  []
 
-[22
+[27
 
-] [23
-
-
-] [24
-
-
-] [25
-
-
-] [26
-
-
-] [27
-
-
- <./figures/Deterioration_Natural/Deterioration_Gradual_Model1.png>] [28
+] [28
 
 
 ] [29
 
 
- <./figures/Deterioration_Natural/Deterioration_Sudden_Model1.png>] [30
+] [30
+
+
+] [31
+
+
+] [32
+
+
+ <./figures/Deterioration_Natural/Deterioration_Gradual_Model1.png>] [33
+
+
+] [34
+
+
+ <./figures/Deterioration_Natural/Deterioration_Sudden_Model1.png>] [35
 
 
 ]
@@ -2025,25 +2051,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 510--510
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/SimpleExampleFigur
 e/flowchart_Echanges.pdf): PDF inclusion: found PDF version <1.7>, but at most 
 version <1.4> allowed
-<figures/SimpleExampleFigure/flowchart_Echanges.pdf, id=637, 533.1117pt x 421.5
+<figures/SimpleExampleFigure/flowchart_Echanges.pdf, id=760, 533.1117pt x 421.5
 75pt>
 File: figures/SimpleExampleFigure/flowchart_Echanges.pdf Graphic file (type pdf
 )
 <use figures/SimpleExampleFigure/flowchart_Echanges.pdf>
 Package pdftex.def Info: figures/SimpleExampleFigure/flowchart_Echanges.pdf  us
-ed on input line 520.
+ed on input line 594.
 (pdftex.def)             Requested size: 303.87682pt x 240.30023pt.
 
-Overfull \vbox (38.0004pt too high) detected at line 520
+Overfull \vbox (38.0004pt too high) detected at line 594
  []
 
-[31
+[36
 
  <./figures/SimpleExampleFigure/flowchart_Echanges.pdf>]
 
-LaTeX Warning: Empty bibliography on input line 528.
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/SimpleExampleFigur
+e/flowchartPOMDP.pdf): PDF inclusion: found PDF version <1.7>, but at most vers
+ion <1.4> allowed
+<figures/SimpleExampleFigure/flowchartPOMDP.pdf, id=816, 954.4458pt x 640.31218
+pt>
+File: figures/SimpleExampleFigure/flowchartPOMDP.pdf Graphic file (type pdf)
+<use figures/SimpleExampleFigure/flowchartPOMDP.pdf>
+Package pdftex.def Info: figures/SimpleExampleFigure/flowchartPOMDP.pdf  used o
+n input line 604.
+(pdftex.def)             Requested size: 334.06104pt x 224.11261pt.
+[37
 
-[32
+ <./figures/SimpleExampleFigure/flowchartPOMDP.pdf>]
+
+LaTeX Warning: Empty bibliography on input line 613.
+
+[38
 
 ]
 \tf@nav=\write7
@@ -2068,7 +2108,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `Presentation.out' has not changed.
-(rerunfilecheck)             Checksum: D4E0CB1E0FAB516934513969A5A8EDD8;1430.
+(rerunfilecheck)             Checksum: 29D953214F7C311B1F395D365EA703E8;2204.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                Presentation
@@ -2079,11 +2119,11 @@ Package logreq Info: Writing requests to 'Presentation.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52754 strings out of 474116
- 1220897 string characters out of 5743682
- 2139217 words of memory out of 5000000
- 74062 multiletter control sequences out of 15000+600000
- 597987 words of font info for 149 fonts, out of 8000000 for 9000
+ 52836 strings out of 474116
+ 1223036 string characters out of 5743682
+ 2139386 words of memory out of 5000000
+ 74120 multiletter control sequences out of 15000+600000
+ 601326 words of font info for 155 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  133i,15n,126p,1137b,2463s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -2113,19 +2153,21 @@ mf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2024/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/local/texlive/2024
 /texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/
 2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/local/texlive
-/2024/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texlive/2024/te
-xmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></usr/local/texlive/2024/texm
-f-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2024/texmf-
-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2024/texmf-di
-st/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2024/texmf-dist
-/fonts/type1/public/cm-super/sfsx1000.pfb>
-Output written on Presentation.pdf (32 pages, 867533 bytes).
+ve/2024/texmf-dist/fonts/type1/public/cm-super/sfso0800.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/cm-super/sfso1000.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/cm-super/sfss0500.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/cm-super/sfss0700.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/cm-super/sfss0900.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/cm-super/sfss1000.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2024/texmf-dist
+/fonts/type1/public/cm-super/sfss1200.pfb></usr/local/texlive/2024/texmf-dist/f
+onts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2024/texmf-dist/fon
+ts/type1/public/cm-super/sfsx1000.pfb>
+Output written on Presentation.pdf (38 pages, 1392733 bytes).
 PDF statistics:
- 860 PDF objects out of 1000 (max. 8388607)
- 91 named destinations out of 1000 (max. 500000)
- 966 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1098 PDF objects out of 1200 (max. 8388607)
+ 109 named destinations out of 1000 (max. 500000)
+ 1080 words of extra memory for PDF output out of 10000 (max. 10000000)
 

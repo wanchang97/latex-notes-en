@@ -2378,6 +2378,7 @@
     <bcf:citekey order="12" intorder="1">ellingwood2005risk</bcf:citekey>
     <bcf:citekey order="13" intorder="1">van2009survey</bcf:citekey>
     <bcf:citekey order="13" intorder="2">sanchez2016reliability</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">chen2003bayesian</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

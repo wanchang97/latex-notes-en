@@ -38,9 +38,9 @@ find "$NOTES_DIR" -type f -name "*.pdf" -printf "%T@ %p\n" \
       if [[ "$base" == *"_main"* ]]; then
         # 匹配 *_main，并添加 (Report)
         display_name=$(echo "$display_name" | sed 's/ main$/ (Report)/')
-      elif [[ "$base" == *"_colloquioumPresentation"* ]]; then
-        # 匹配 *_colloquioumPresentation，并添加 (Colloquium Presentation)
-        display_name=$(echo "$display_name" | sed 's/ colloquioumPresentation$/ (Colloquium Presentation)/')
+      elif [[ "$base" == *"_Presentation"* ]]; then
+        # 匹配 *_Presentation，并添加 (Presentation)
+        display_name=$(echo "$display_name" | sed 's/ Presentation$/ (Presentation)/')
       fi
 
       # 3. 生成 Markdown 列表项

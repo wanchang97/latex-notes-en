@@ -7,8 +7,82 @@
 	\setcounter{footnote}{0}
 	\maketitle
 	\tableofcontents
+	\section{Bayesian Filtering}
+	
+	\subsection{State-space formulation}
+	
+	\begin{frame}{State-space formulation}
+			\begin{figure}[h]
+			\includegraphics[scale = 0.4
+			]{figures/BayesianFiltering/GenericStateSpaceModel}
+			\centering
+			\caption{State Space Model in discretized time $(0,T) \rightarrow \{0,1,\cdots,N\}$}		
+			\label{fig: GenericDiscreteStateSpaceModel}
+		\end{figure}
+		
+			
+	\end{frame}
+	
+	\subsection{Bayesian Updating and Sequential Bayesian Updating}
+	
+	\begin{frame}{Bayesian Updating}
+			\begin{equation}
+			p( \bs| \bo) = \frac{p(\bo|\bs)p(\bs)}{p(\bo)}
+		\end{equation}
+		where
+		\begin{itemize}
+			\item Prior probability $p(\bs)$
+			\item Likelihood  $p(\bo|\bs)$
+			\item Evidence $p(\bo) = \int_{\bs}p(\bo|\bs)p(\bs) d\bs$
+			\item Posterior probability $p(\bs|\bo)$
+		\end{itemize}
+	\begin{block}{Intractable problems related to Bayesian statistics}
+		\begin{itemize}
+			\item Normalization
+			\item Marginalization
+			\item Expectation
+		\end{itemize}
+	\end{block}
 	
 	
+	\end{frame}
+	
+	\begin{frame}{Sequential Bayesian Updating}
+		\begin{block}{Three Concepts of Estimation problem in sequential Bayesian Updating}
+			\begin{itemize}
+				\item Filtering $f(\bs_t|\bo_{0:t})$, use the observation until time $t$ to estimate the state at time $t$; discrete version is $p(\bs_n|\bo_{0:n})$
+				\item Prediction $f(\bs_{t+\tau}|\bo_{0:t})$ with $\tau > 0$, use the observation until time $t$ to estimate the state at time $t+\tau$; discrete version is $p(\bs_n|\bo_{0:n+r})$, $r \geq 1$
+				\item Smoothing $f(\bs_{t'}|\bo_{0:t})$ with $t' < t$, use the observation until time $t$ to estimate the state at time $t'$; discrete version is $p(\bs_s|\bo_{0:n})$, $s < n$
+			\end{itemize}
+		\end{block}
+	\end{frame}
+	
+	\begin{frame}{Sequential Bayesian Filtering} \small
+		Sequential Bayesian Filtering is derived based on two assumptions:
+		\begin{itemize}
+			\item The states follow the $1^{st}$order Markov property, $p(\bs_n|\bs_{0,n-1}) = p(\bs_n|\bs_{n-1})$
+			\item  The observations are independent of the given states,  $p(\bo_n|\bo_{n-1},\bs_n) = p(\bo_n|\bs_n)$
+		\end{itemize}
+\begin{subequations}
+	\begin{align}
+		p( \bs_n| \bo_{0:n}) &= \frac{p(\bo_{0:n}|\bs_n)p(\bs_n)}{p(\bo_{0:n})} \\
+		&= \frac{p(\bo_{0:n-1},\bo_n|\bs_n)p(\bs_n)}{p(\bo_n,\bo_{0:n-1})}  \\
+		&= \frac{p(\bo_n|\bo_{0:n-1},\bs_n)p(\bo_{0:n-1}|\bs_n)p(\bs_n)}{p(\bo_n,\bo_{0:n-1})} \\
+		&= \frac{p(\bo_n|\bo_{0:n-1},\bs_n)p(\bs_n|\bo_{0:n-1})p(\bo_{0:n-1})}{p(\bo_n|\bo_{0:n-1})p(\bo_{0:n-1})} \\
+		&= \frac{p(\bo_n|\bs_{n})p(\bs_n|\bo_{0:n-1})}{p(\bo_n|\bo_{0:n-1})} 
+	\end{align}
+\end{subequations}
+		where 
+		\begin{itemize}
+		\item  $\bo_{0:n} = \{\bo_0,\bo_1,\cdots,\bo_n\}$
+		\item 
+		\end{itemize}
+	\end{frame}
+	\subsection{Kalman Filtering}
+	\begin{frame}{Bayesian Filtering: From Kalman Filters to Particle Filters}
+		
+		
+	\end{frame}
 	%\section{Sequential Decision Making Modelling}
 	\section{What is a Decision Making Process?  an optimization problem}
 	\begin{frame}{Basic Idea: an optimization problem}
@@ -16,7 +90,7 @@
 			Decision Making is about \textcolor{red}{choice} in everyone's life. We tend to make decisions like where to live, how we react etc. based on our experience instinction and constraints.  Finally the decision would be made to \textcolor{red}{maximize our benefits, no matter physically or mentally}. %\textcolor{red}{information related to the damage} ,
 		\end{block}
 		\begin{block}{Seqeuntial Decision Making }
-			Sequential Decision Making focuses on the decision process in the whole time-domain. It is about not only one choices but \textcolor{red}{ a sequence of choices}.  The decision made at every time step would dynamically influence the environment and the following state. 
+			Sequential Decision Making focuses on the decision process in the whole time-domain. It is about not only one choice but \textcolor{red}{ a sequence of choices}.  The decision made at every time step would dynamically influence the environment and the following state. 
 			Thus the decison would be made to \textcolor{red}{maximize the accumulated total satisfaction of the whole time span}.
 		\end{block}
 
@@ -518,6 +592,17 @@ The change of the deterioration during the time interval $\Delta t$ is calculate
 	\label{fig: flowchart}
 \end{figure}
 	\end{frame}
+	
+	\begin{frame}{Implementation Idea to model SIM as Belief MDP}
+		\begin{figure}[h]
+			\includegraphics[scale = 0.35
+			]{figures/SimpleExampleFigure/flowchartPOMDP}
+			\centering
+			%\caption{Flowchart diagram POMDP}	
+			\label{fig: flowchartPOMDP}
+		\end{figure}
+	\end{frame}
+	
 
 	
 	

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  3 DEC 2025 10:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.30)  13 JAN 2026 23:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1538,15 +1538,10 @@ al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local
 ures/SimpleExampleFigure/flowchart_Echanges.pdf>]
 
 LaTeX Warning: Citation 'ellingwood2005risk' on page 3 undefined on input line 
-69.
+74.
 
 
-Overfull \hbox (27.80693pt too wide) in paragraph at lines 68--70
-\T1/cmr/m/n/12 pro-cess can be mod-elled as a sim-ple rate func-tion [[]]: 
- []
-
-
-Overfull \hbox (0.32771pt too wide) in paragraph at lines 76--77
+Overfull \hbox (0.32771pt too wide) in paragraph at lines 81--82
 []\T1/cmr/m/n/12 The changes of the de-te-ri-o-ra-tion can be ap-prox-i-mated b
 y the deriva-
  []
@@ -1557,42 +1552,42 @@ File: ../figures/Deterioration_Natural/Deterioration_Gradual_Model1.png Graphic
  file (type png)
 <use ../figures/Deterioration_Natural/Deterioration_Gradual_Model1.png>
 Package pdftex.def Info: ../figures/Deterioration_Natural/Deterioration_Gradual
-_Model1.png  used on input line 84.
+_Model1.png  used on input line 89.
 (pdftex.def)             Requested size: 168.38869pt x 168.38869pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[3 <../figures/SimpleExampleFigure/1DBeamExample.pdf>]
 
-LaTeX Warning: Citation 'van2009survey' on page 3 undefined on input line 90.
-
-
-LaTeX Warning: Citation 'sanchez2016reliability' on page 3 undefined on input l
-ine 90.
+LaTeX Warning: Citation 'van2009survey' on page 4 undefined on input line 107.
 
 
-Overfull \hbox (1.85501pt too wide) in paragraph at lines 89--91
+LaTeX Warning: Citation 'sanchez2016reliability' on page 4 undefined on input l
+ine 107.
+
+
+Overfull \hbox (1.85501pt too wide) in paragraph at lines 106--108
 \T1/cmr/m/n/12 a ho-mo-ge-neous com-pound Pois-son Pro-cess(CPP) [[],
  []
 
 
-Overfull \hbox (54.39055pt too wide) in paragraph at lines 94--96
+Overfull \hbox (51.12747pt too wide) in paragraph at lines 111--113
 \T1/cmr/m/n/12 where the num-ber of jumps in the time in-ter-val $\U/zeur/m/n/1
 2 t$ $N\U/zeus/m/n/12 ¨\U/zeur/m/n/12 ^^At\U/zeus/m/n/12 © ^^X \U/zeur/m/n/12 P
-oissonProcess\U/zeus/m/n/12 ¨\U/zeur/m/n/12 ^^U\U/zeus/m/n/12 ©$\T1/cmr/m/n/12 
-;
+oissonProcess\U/zeus/m/n/12 ¨\U/zeur/m/n/12 ^^U\U/zeus/m/n/12 ©$
  []
 
-[3 <../figures/SimpleExampleFigure/1DBeamExample.pdf>]
-<../figures/Deterioration_Natural/Deterioration_Sudden_Model1.png, id=126, 501.
+[4 <../figures/Deterioration_Natural/Deterioration_Gradual_Model1.png>]
+<../figures/Deterioration_Natural/Deterioration_Sudden_Model1.png, id=132, 501.
 5538pt x 336.7782pt>
 File: ../figures/Deterioration_Natural/Deterioration_Sudden_Model1.png Graphic 
 file (type png)
 <use ../figures/Deterioration_Natural/Deterioration_Sudden_Model1.png>
 Package pdftex.def Info: ../figures/Deterioration_Natural/Deterioration_Sudden_
-Model1.png  used on input line 106.
+Model1.png  used on input line 124.
 (pdftex.def)             Requested size: 250.77629pt x 168.38869pt.
 
-Overfull \hbox (62.94655pt too wide) in paragraph at lines 102--111
+Overfull \hbox (62.94655pt too wide) in paragraph at lines 120--129
 \T1/cmr/m/n/12 where the num-ber of jumps in the time in-ter-val $\U/zeur/m/n/1
 2 ^^At$ $N\U/zeus/m/n/12 ¨\U/zeur/m/n/12 ^^At\U/zeus/m/n/12 © ^^X \U/zeur/m/n/1
 2 PoissonProcess\U/zeus/m/n/12 ¨\U/zeur/m/n/12 ^^U\U/zeus/m/n/12 ©$\T1/cmr/m/n/
@@ -1602,38 +1597,63 @@ Overfull \hbox (62.94655pt too wide) in paragraph at lines 102--111
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4 <../figures/Deterioration_Natural/Deterioration_Gradual_Model1.png>]
 [5 <../figures/Deterioration_Natural/Deterioration_Sudden_Model1.png>]
-Overfull \hbox (178.65714pt too wide) in paragraph at lines 178--197
+Overfull \hbox (178.65714pt too wide) in paragraph at lines 196--215
  [][] 
  []
 
 
-LaTeX Warning: Reference `fig:framework' on page i undefined on input line 203.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `fig:framework' on page i undefined on input line 221.
 
 
 
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/SimpleExampleFigu
-re/flowchartPOMDP.pdf): PDF inclusion: found PDF version <1.7>, but at most ver
-sion <1.5> allowed
-<../figures/SimpleExampleFigure/flowchartPOMDP.pdf, id=145, 954.4458pt x 640.31
-218pt>
-File: ../figures/SimpleExampleFigure/flowchartPOMDP.pdf Graphic file (type pdf)
+re/flowchartBeliefMDP.pdf): PDF inclusion: found PDF version <1.7>, but at most
+ version <1.5> allowed
+<../figures/SimpleExampleFigure/flowchartBeliefMDP.pdf, id=142, 866.27638pt x 6
+04.17719pt>
+File: ../figures/SimpleExampleFigure/flowchartBeliefMDP.pdf Graphic file (type 
+pdf)
+<use ../figures/SimpleExampleFigure/flowchartBeliefMDP.pdf>
+Package pdftex.def Info: ../figures/SimpleExampleFigure/flowchartBeliefMDP.pdf 
+ used on input line 225.
+(pdftex.def)             Requested size: 433.13713pt x 302.08784pt.
 
-<use ../figures/SimpleExampleFigure/flowchartPOMDP.pdf>
-Package pdftex.def Info: ../figures/SimpleExampleFigure/flowchartPOMDP.pdf  use
-d on input line 207.
-(pdftex.def)             Requested size: 477.22173pt x 320.1553pt.
+Overfull \hbox (14.88345pt too wide) in paragraph at lines 224--227
+ [][] 
+ []
 
-Overfull \hbox (58.96805pt too wide) in paragraph at lines 206--209
+[6]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../figures/SimpleExampleFigu
+re/flowchart_activeInference.pdf): PDF inclusion: found PDF version <1.7>, but 
+at most version <1.5> allowed
+<../figures/SimpleExampleFigure/flowchart_activeInference.pdf, id=153, 866.2763
+8pt x 613.33138pt>
+File: ../figures/SimpleExampleFigure/flowchart_activeInference.pdf Graphic file
+ (type pdf)
+<use ../figures/SimpleExampleFigure/flowchart_activeInference.pdf>
+Package pdftex.def Info: ../figures/SimpleExampleFigure/flowchart_activeInferen
+ce.pdf  used on input line 234.
+(pdftex.def)             Requested size: 433.13713pt x 306.66493pt.
+
+Overfull \hbox (14.88345pt too wide) in paragraph at lines 233--236
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6] [7 <../figures/SimpleExampleFigure/flowchartPOMDP.pdf>]
+[7] [8 <../figures/SimpleExampleFigure/flowchartBeliefMDP.pdf>] [9 <../figures/
+SimpleExampleFigure/flowchart_activeInference.pdf>]
 (./04_StructuralIntegrationManagement.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1657,10 +1677,10 @@ n.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 39222 strings out of 474116
- 739416 string characters out of 5743682
- 1939187 words of memory out of 5000000
- 60892 multiletter control sequences out of 15000+600000
+ 39241 strings out of 474116
+ 740399 string characters out of 5743682
+ 1940187 words of memory out of 5000000
+ 60906 multiletter control sequences out of 15000+600000
  579197 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  135i,11n,127p,2413b,1461s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1680,11 +1700,11 @@ m10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx120
 pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pf
 b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on 04_StructuralIntegrationManagement.pdf (7 pages, 516470 bytes
+Output written on 04_StructuralIntegrationManagement.pdf (9 pages, 671513 bytes
 ).
 PDF statistics:
- 328 PDF objects out of 1000 (max. 8388607)
- 252 compressed objects within 3 object streams
- 29 named destinations out of 1000 (max. 500000)
- 70 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 431 PDF objects out of 1000 (max. 8388607)
+ 339 compressed objects within 4 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 75 words of extra memory for PDF output out of 10000 (max. 10000000)
 

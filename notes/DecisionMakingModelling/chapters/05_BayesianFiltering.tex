@@ -1,0 +1,75 @@
+% chapters/03_methodology.tex
+\documentclass[../main.tex]{subfiles}
+\addbibresource{BayesianFiltering.bib} 
+\begin{document}
+	
+	
+	\chapter{Bayesian Filtering}
+	\label{chap:BayesianFiltering}
+	
+	
+	This chapter is a summary of Bayesian Filtering based on my Master thesis understanding and the manuscript from \cite{chen2003bayesian}.
+	
+	
+	\section{State-space formulations}
+	
+	Now let consider the following generic stochastic filtering problem in a dynamic state-space form written in continuous time domain.
+	
+	\begin{subequations}
+		\label{eqn: DynamicStateSpaceForm}
+	\begin{align}
+		\dot{\mathbf{s}}_t &= f(t,\mathbf{s}_t,\mathbf{a}_t,\mathbf{d}_t) \label{subeqn:stateEqn}\\
+		\mathbf{o}_t &= g(t,\mathbf{s}_t,\mathbf{a}_t,\mathbf{v}_t) \label{subeqn:observationEqn}
+	\end{align}
+	\end{subequations}
+	
+	where equation \eqref{subeqn:stateEqn} is called state eqation and \eqref{subeqn:observationEqn} is the measurement equation (or observation equation). where
+	\begin{itemize}
+		\item $\mathbf{s}_t \in \mathbb{S}$ represents the state vector.
+		\item  $\mathbf{a}_t \in \mathbb{A}$ represents the system input vector as driving force (action vector) in a controlled environment.
+		\item $\mathbf{o}_t \in \mathbb{O}$ represents the observation vector.
+		\item $f(\cdot): \mathbb{R}^{N_\mathbb{S}} \rightarrow \mathbb{R}^{N_\mathbb{S}}$
+		\item $g(\cdot):\mathbb{R}^{N_\mathbb{S}} \rightarrow \mathbb{R}^{N_\mathbb{O}}$
+		\item  $\mathbf{d}_t$ is the process (dynamical) noise
+		\item $\mathbf{v}_t$ is the measurement (observation) noise
+	\end{itemize}
+	
+	In practice more common form is the discrete-time equations, in the discrete time space, $t \in (0,T)$ is discretized to $n\in \{1,2,\cdots,N\}$
+	\begin{itemize}
+		\item $\mathbf{s}_t, t\in (0,T)$ becomes $\mathbf{s}_{n}, n \in \{1,\cdots,N\}$
+		\item $\mathbf{o}_t, t\in (0,T)$ becomes $\mathbf{o}_{n}, n \in \{1,\cdots,N\}$
+		\item white noise $\mathbf{d}_t, t\in (0,T)$ becomes $\mathbf{d}_{n}, n \in \{1,\cdots,N\}$
+		\item white noise $\mathbf{v}_t, t\in (0,T)$ becomes $\mathbf{v}_{n}, n \in \{1,\cdots,N\}$
+		\end{itemize}
+	\begin{subequations}
+		\label{eqn:DiscreteDynamicStateSpaceForm}
+		\begin{align}
+			\mathbf{s}_{n+1} &= f(\mathbf{s}_n,\mathbf{d}_n) \label{subeqn: discreteStateEqn}\\
+			\mathbf{o}_n &= g(\mathbf{s}_n,\mathbf{v}_n) \label{subeqn: discreteObservationEqn}
+		\end{align}
+	\end{subequations}
+	\eqref{subeqn: discreteStateEqn} characterizes the state transition probability $p(\mathbf{s}_{n+1}|\mathbf{s}_n)$, whereas the observation equation \eqref{subeqn: discreteObservationEqn} describes the observation probability $p(\mathbf{o}_n|\mathbf{s}_n)$.
+	
+	The \eqref{eqn:DiscreteDynamicStateSpaceForm} can be further simplified under the linear Quadratic Gaussian assumption as:
+	
+	\begin{subequations}
+		\label{eqn:SimplifiedDiscreteDynamicStateSpaceForm}
+		\begin{align}
+			\mathbf{s}_{n+1} &= \mathbf{F}_{n+1,n}\mathbf{s}_n + \mathbf{d}_n\label{subeqn: simplifieddiscreteStateEqn}\\
+			\mathbf{o}_n &= \mathbf{G}_n\mathbf{s}_n + \mathbf{v}_n \label{subeqn: simplifieddiscreteObservationEqn}
+		\end{align}
+	\end{subequations}
+	
+	For this simplified discrete dynamic state space governing equation with Linear Gaussian Quadratic assumption, Kalman filter could be implemented to get the analytical solution.
+	
+	
+	
+   \section{Sequential Monte Carlo Simulation}
+   
+   Some Items explanations
+   \begin{itemize}
+   	\item 
+   	\item 
+   \end{itemize}
+
+\end{document}

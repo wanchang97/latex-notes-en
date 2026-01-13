@@ -6,12 +6,71 @@
 	\chapter*{Abstract}
 	\addcontentsline{toc}{chapter}{Abstract}
 	
+	The topic is about formulating the Decision Making Modelling in Structural Integration Management Field using Partially Observable Markov Decision Process v.s. using Active Inference Method.
+	
+	In this Abstract, we will clarify all the main terminology of my research and then the details about the research framework.
+	
+	\subsection{Main terminologies} 
+	As indicated from the title, there are four terminologies to be clarified: Decision Making Modelling, Structural Integration Management, Partially Observable Markov Decision Process and Active Inference Methods 
+	
+	\subsubsection{Decision Making Modelling}
+	The key point of my research is about the Decision Making Modelling in a dynamic varying system. From playing a chess to autonomous driving, all of those sequential optimization problem can be modelled as decision making problem.
+	
+
+	Generally the so-called Markov Decision Process (MDP) would be used to simplify the real decision making process with markov property(given the current state, the probability of future state is not dependent on the past states) and fully observability (all states can be observed fully). Makov Decision Process has defined 5 key elements: State space $s_t \in \mathbb{S}$, action space $a_t\in \mathbb{A}$, transition probability $\mathbf{T} = P(s_{t+\Delta t} | s_t)$, reward function $\mathbf{R} = r(a_t,s_t)$, time discount factor $\gamma$.
+	
+	The policy (or the strategy containing decisions at all time step) will be selected from MDP by maximizing the expected total reward $\mathbb{E}[U_t^{\pi}] = \mathbb{E}[\sum_{i=t}^T\gamma^{i-t}r(a_i,s_i)]$.
+	
+	\subsubsection{Sturctural Integration Management modelled in Partially Observable Markov Decsion Process}
+ 	However in reality, most of the states can not be fully observed by only partially observed. In Structural Integration Management field e.g., the state of the infrastructure or the current material properties can only be inferred from other observeable quantities like accelerations, strain measurements at some superficial area.  Thus perfect Markov Decision Process Model  needs to be extended to the Partially Observable Markov Decision Process with 7-tuples $\{\mathbb{S},\mathbb{A},\mathbb{O},\mathbf{T},\mathbf{R},\mathbf{O},\gamma\}$.
+ 	
+ 	Before entering the real world as a black box but only noise measurement data, we will first assume a forward model based on physical law of structural analysis to generate the synthetic data.
+ 	
+ 	The bridge could be modelled by a beam structure, the state can be chosen as the Youngs Modulus $s_t= E_t$, it will change gradually with time (gradual deterioration) and also affected by sudden event like car accident (sudden deterioration). The gradual deterioration is modelled by Gamma Proces and the sudden deterioraiton could be modelled by Compound Poisson Process \cite{kamariotis2023framework}.
+ 	
+ 	The changes of youngs modulus will affect the measurement of the bridge (to be exact, first affect the stiffness matrix $\mathbf{K}$ and then the static analysis result, e.g. the mid-point displacement).
+ 	
+ 	
+	\subsubsection{Belief-updated Markov Decision Process}
+		Partially Observable Markov Decision Process do not satisfy the markov property (since now given the present observation, the future observation will still depend on the past observations). The new term belief $\bb \in \mathbb{B}$, i.e. the filtering probability of state given the present observations $p(s_t|o_{0:t})$, is introduced to the POMDP. In the Belief space, the POMDP is again a MDP, since given the present belief, the belief in next time step do not need the past beliefs $p(\bb_{t+1}|\bb_{0:t}) = p(\bb_{t+1}|\bb_{t})$. 
+		
+		The belief MDP is not exactly the same as the most classic MDP with discrete state space, discrete action space and discrete times steps. The ``state'' of belief MDP is the belief (or the filtering probability distribution) which is continuous. Thus when updating the state form every time step, we need to update the filtering distribution of belief. The easy assumption is to assume the belief to be a specific exponential family distribution, the more general update is to use the Sequential Monte Carlo Simulation to get the filtering distribution updated every time obtaining new observations.  Sequential Monte Carlo Simulation is more general and can handle with more complex formed state distribution \cite{chen2003bayesian}.
+		
+	
+		
+	\subsubsection{Active Inference Methods}
+	Active Inference is a different way for decision making modelling, where there will be no reward defined specifically \cite{malekzadeh2024active,parr2022active}. 
+	
+	The objective is then defined as the ``surprise" (negative log evidence in Bayesian Updates Forms). To be more 
+	
+	\subsection{Research Framework}
+	
+	
+	
+		\begin{figure}[h]
+		\includegraphics[scale = 0.5 
+		]{figures/SimpleExampleFigure/flowchartBeliefMDP}
+		\centering
+		\caption{Flowchart Belief MDP diagram}	
+		\label{fig: flowchartBeliefMDPabstract}
+	\end{figure}
+	
+	
+	 
+	\begin{figure}[h]
+		\includegraphics[scale = 0.5 
+		]{figures/SimpleExampleFigure/flowchart_activeInference}
+		\centering
+		\caption{Flowchart Active Inference diagram}	
+		\label{fig: flowchartActiveInferenceabstract}
+	\end{figure}
+	
 	This thesis presents a comprehensive investigation into [research topic]. The primary contribution of this work is the development of [main contribution]. Through extensive experimentation and analysis, we demonstrate that the proposed approach achieves [key results].
 	
 	The research addresses several critical challenges in [field], including [specific challenges]. Our methodology combines [technique A] with [technique B] to achieve superior performance compared to existing methods. Experimental results on [number] benchmark datasets show improvements of [percentage] in accuracy and [percentage] in efficiency.
 	
 	This work has significant implications for [application areas] and provides a foundation for future research in [related fields]. The findings contribute to both theoretical understanding and practical applications of [research domain].
 	
-	\textbf{Keywords:} keyword1, keyword2, keyword3, keyword4, keyword5
+	\textbf{Keywords:} Structural Integration Management, POMDP, Active Inference, Bayesian Filtering
 	
 \end{document}
